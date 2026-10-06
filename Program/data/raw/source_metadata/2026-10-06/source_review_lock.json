@@ -1,0 +1,11 @@
+{
+  "retrieved_date": "2026-10-06",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/FronkonGames/Steam-Games-Scraper/cdbbddd9b01c7be2a9d80635c1b93b4936915252/SteamGamesScraper.py",
+      "file": "SteamGamesScraper_source.py.txt",
+      "sha256": "b0acc91e260714ff92207c02541017aba4fbd6c17c7f805ea4817aea5f8a9b40",
+      "scope": "Current pinned upstream code, not proven exact collector revision of local 2025 data."
+    }
+  ]
+}

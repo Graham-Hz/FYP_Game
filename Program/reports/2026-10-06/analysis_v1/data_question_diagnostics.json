@@ -1,0 +1,16 @@
+{
+  "source_sha256": {
+    "data/interim/artem_games_march2025_full.parquet": "a7860d744d5f8326288ab353ef9b2bbe1f3f330ff69262d119b8c5e6f7f00160",
+    "data/interim/cleaning_candidate_v1/pc_row_ledger.parquet": "ad03172b7d32ee906785cec8c8aae1f8f171acee9511b4e6a61f99a1a63e5b10",
+    "data/interim/cleaning_candidate_v1/mobile_candidates.parquet": "972ac98371f0f107b165f2652d6d707d8e8749c2babbbfda401a28e3a4b9a060",
+    "data/interim/cleaning_candidate_v1/mobile_row_ledger.parquet": "27b859281237836aff9f675cceced3a935767e873713944502b25a7342a14ce8"
+  },
+  "demo_rule_survivors_after_other_base_rules": 53,
+  "explicit_demo_exceptions": 1,
+  "mobile_original_developer_labels": 131444,
+  "mobile_normalized_developer_labels": 131030,
+  "mobile_normalization_collision_groups": 408,
+  "mobile_conflict_rows": 5,
+  "mobile_conflict_missing_currency": 5,
+  "interpretation": "Normalization variants are reviewable strings, not proof of company identity. Current Steam API responses never replace historical fields."
+}

@@ -1,0 +1,122 @@
+{
+  "version": "analysis_v1",
+  "status": "frozen_operational_design_not_supervisor_approval",
+  "model_training": false,
+  "inputs": {
+    "data/interim/artem_games_march2025_full.parquet": "a7860d744d5f8326288ab353ef9b2bbe1f3f330ff69262d119b8c5e6f7f00160",
+    "data/interim/google_games.parquet": "14d09252a87a8d07f8823b520caf188e1b58fa6b0c1158043f818f6cb637a017",
+    "data/interim/cleaning_candidate_v1/pc_candidates.parquet": "491332865dc583a72658501428f1526fe712c49ead719a61e4ff620b326db644",
+    "data/interim/cleaning_candidate_v1/pc_row_ledger.parquet": "ad03172b7d32ee906785cec8c8aae1f8f171acee9511b4e6a61f99a1a63e5b10",
+    "data/interim/cleaning_candidate_v1/mobile_candidates.parquet": "972ac98371f0f107b165f2652d6d707d8e8749c2babbbfda401a28e3a4b9a060",
+    "data/interim/cleaning_candidate_v1/mobile_row_ledger.parquet": "27b859281237836aff9f675cceced3a935767e873713944502b25a7342a14ce8"
+  },
+  "dependencies": {
+    "config/analysis_v1.json": "d6386c4966176d10c34e01f48ba3531334207357cedac51863edc29618a31d5a",
+    "config/feature_policy_v1.json": "9dfb3b2d8d8e011c73bd38df054a53638e232b394ec354f9cca635664bc66861",
+    "config/cleaning_candidate_v1.json": "5f3299c21710e093494600cc470b5d23bbaa6845ec2985334d6c4fc1a4253b9a",
+    "reports/2026-10-06/cleaning_candidate_v1/manifest.json": "625fcd068b0e3795634baea1b28886148f1cd84780ec42a6946c12b093cc95cd",
+    "reports/2026-10-06/cleaning_candidate_v1/verification.json": "b09c241a47c1beec564f9857f98550bfd80b2f94be83b4e11beb5e52646f9f3b",
+    "uv.lock": "e51e69ce499af01c9e51dcdcd0251a3e54b7245ba5646ba19cc50eee84b69a01",
+    "src/data/freeze_analysis.py": "fe193321774d2d51fe880de3875925369c94f7108baca27478a6a675be79877f",
+    "src/data/group_splits.py": "0ccdc30f8c8d6e7424179d6ff4251bb51df3d5b7ea961629a37b167c9e6d38c8",
+    "src/data/cleaning_rules.py": "43f680e1fbff8d466bbd9cfb992085795d7c0ff476217015b3195079b9e742fd",
+    "src/data/clean_candidates.py": "9fbb052b596665004a7681641353842e9e0414c311c3f6c18e4245a7dc9f2c01",
+    "src/features/feature_policy.py": "90a26eb071e013ee8cf49bc18a7176412975496e654dd607fb776e6d89c777cc"
+  },
+  "outputs": {
+    "data/processed/analysis_v1/pc_developer_edges.parquet": "4b573192cb80b61b11b17356d6383043c9e2fac63511d28fc4e35e76c17b6ef9",
+    "data/processed/analysis_v1/pc_cohort_ledger.parquet": "d40aad34c9904fe34ec8d7dd8c1c315ed90deb752ba062cba9d542b587bc3433",
+    "data/processed/analysis_v1/pc_features.parquet": "5ce92fb1df2eccb18c2b0e0633565d69eb571ab39ceb41808aa5af166a775139",
+    "data/processed/analysis_v1/pc_labels_splits.parquet": "9ef6a994a3cfbe9458e8e3358d458708384d8738c1633f84a52d5d5968a83ae9",
+    "data/processed/analysis_v1/mobile_cohort_ledger.parquet": "e1af3fb7d7b79b8961c69af92f290ca4f5d5f27f98173b7beb277e03f2a228fd",
+    "data/processed/analysis_v1/mobile_features.parquet": "bcb0182c681f68caf4eefb512ae560655fc5392b58d302a1c140ae3e505a2597",
+    "data/processed/analysis_v1/mobile_labels_splits.parquet": "49a2eb7523f92decbdf41caa9e61d9e01bddea92eefec3974e06f5a89ad207c0",
+    "reports/2026-10-06/analysis_v1/cohort_flow.csv": "d6089b6084f60bf2d0ad53c6569280805b3c53bd4c466b4ac689bf0e7e482bf4",
+    "reports/2026-10-06/analysis_v1/split_class_counts.csv": "9302abca69300416be6bfd5f03a263dfe9f285a6a321626b715baa67abf03dff",
+    "reports/2026-10-06/analysis_v1/pc_developer_normalization_review.csv": "b1a54a0480d2cb32729d7c936433fd9bb8608b51f4c0a3332cb1a7b7cc98d5a8"
+  },
+  "summary": {
+    "pc": {
+      "base_rows_including_exceptions": 89454,
+      "primary_rows": 73527,
+      "excluded_primary": 15927,
+      "developer_groups": 43242,
+      "largest_group_rows": 832,
+      "split_rows": {
+        "train": 51152,
+        "calibration": 11435,
+        "test": 10940
+      },
+      "train_cv_rows": {
+        "0": 17516,
+        "1": 16967,
+        "2": 16669
+      },
+      "feature_columns_P": [
+        "genres",
+        "planning_categories",
+        "supported_languages",
+        "price_observed",
+        "windows",
+        "mac",
+        "linux",
+        "categories_unavailable",
+        "languages_unavailable"
+      ],
+      "feature_columns_P_plus_A": [
+        "genres",
+        "planning_categories",
+        "supported_languages",
+        "price_observed",
+        "windows",
+        "mac",
+        "linux",
+        "categories_unavailable",
+        "languages_unavailable",
+        "age_days"
+      ]
+    },
+    "mobile": {
+      "base_rows_including_exceptions": 318300,
+      "primary_rows": 318300,
+      "excluded_primary": 0,
+      "developer_groups": 131030,
+      "largest_group_rows": 1333,
+      "split_rows": {
+        "train": 221806,
+        "calibration": 48297,
+        "test": 48197
+      },
+      "train_cv_rows": {
+        "1": 74632,
+        "0": 73904,
+        "2": 73270
+      },
+      "feature_columns_P": [
+        "category",
+        "content_rating",
+        "free",
+        "price_usd",
+        "price_usd_unavailable",
+        "ad_supported",
+        "in_app_purchases",
+        "free_unavailable"
+      ],
+      "feature_columns_P_plus_A": [
+        "category",
+        "content_rating",
+        "free",
+        "price_usd",
+        "price_usd_unavailable",
+        "ad_supported",
+        "in_app_purchases",
+        "free_unavailable",
+        "age_days"
+      ],
+      "free_price_conflicts_masked": 5,
+      "unavailable_USD_price": 214
+    }
+  },
+  "split_target_use": "No labels used to assign groups, partitions or CV folds. Distribution counts are diagnostics only; no reroll.",
+  "verification": "pending independent verification"
+}

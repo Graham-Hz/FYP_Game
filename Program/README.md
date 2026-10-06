@@ -1,8 +1,17 @@
 # FYP game planning dataset audit
 
-此目錄包含資料可行性審核、研究設計及候選清理流程，沒有模型訓練或最終應用程式。結果是工作筆記，應由學生理解與核對後再作研究決定。
+此目錄包含資料可行性審核、研究設計、候選清理、文獻對照及已固定的分析特徵／群組切分，沒有模型訓練或最終應用程式。結果是工作筆記，應由學生理解與核對後再作研究決定。
 
-最新進度：[2026-10-06 候選清理報告](reports/2026-10-06/cleaning_candidate_v1/cleaning_report.md) 及 [資料字典](reports/2026-10-06/cleaning_candidate_v1/data_dictionary.md)。本輪修正字面名稱被當成缺失的問題；PC 基本 cohort 為 89,453 筆，其中 81,158 筆可用候選標籤；Android 318,300 筆。這些是尚待研究決定的候選資料，不是最終訓練集。
+最新階段：[analysis_v1 分析 protocol](reports/2026-10-06/analysis_v1/analysis_protocol.md)、[文獻對照](reports/2026-10-06/analysis_v1/literature_review_notes.md)、[資料疑點處理](reports/2026-10-06/analysis_v1/data_questions.md)。主要分析 cohort 為 PC 73,527 筆（觀察價格 >0 等限定）及 Mobile 318,300 筆；約 70/15/15 的 developer group split 和 train 內 3-fold CV 已產生，特徵與標籤分檔保存。這是工作版本，不表示導師已批准或模型性能已驗證。
+
+```powershell
+uv run --locked python src/data/freeze_analysis.py
+uv run --locked python src/data/verify_analysis.py
+uv run --locked python src/data/review_analysis_questions.py
+uv run --locked python -m unittest discover -s tests -v
+```
+
+前一階段：[2026-10-06 候選清理報告](reports/2026-10-06/cleaning_candidate_v1/cleaning_report.md) 及 [資料字典](reports/2026-10-06/cleaning_candidate_v1/data_dictionary.md)。該輪修正字面名稱被當成缺失的問題；PC 基本 cohort 為 89,453 筆，其中 81,158 筆可用候選標籤；Android 318,300 筆。此歷史 candidate 保留不改，新分析 cohort 的差異見 analysis_v1。
 
 ```powershell
 uv run --locked python src/data/clean_candidates.py
@@ -20,11 +29,11 @@ uv run --locked python src/data/verify_clean_candidates.py
 uv run --locked python src/data/target_design_diagnostics.py
 ```
 
-研究設計中的 81,156 個 PC 可用標籤及 318,298 筆 Mobile 記錄是上一輪參考 cohort。最新差異見上方候選清理報告；前一輪輸出保留作可追溯對照。正式清理仍需核對 PC 軟件產品、名稱篩選及 Mobile Free／price 衝突。
+研究設計中的 81,156 個 PC 可用標籤及 318,298 筆 Mobile 記錄是上一輪參考 cohort。各階段差異見上方報告；舊輸出保留作可追溯對照。PC 軟件產品、名稱篩選及 Mobile Free／price 衝突在 analysis_v1 已有明確處理政策與剩餘限制。
 
 ## 重跑
 
-在 PowerShell 切換至 `F:\HKBU_Y4\FYP\Program` 後，逐項執行：
+在 PowerShell 切換至 `F:\HKBU_Y4\FYP\My_FYP\Program` 後，逐項執行：
 
 ```powershell
 uv sync --locked
@@ -50,9 +59,10 @@ uv run --locked python src/data/verify_audit.py
 - `data/raw/huggingface/<revision>/steam.parquet`：固定版本的原始下載。
 - `data/interim/`：審核用 Parquet；保留原記錄，只作欄位命名／序列化及明確的 Google 分類子集。不是最終 cleaned data。
 - `data/interim/cleaning_candidate_v1/`：兩平台基本候選 cohort 與覆蓋每列輸入的 ledger；candidate 含 target，不可直接整表作模型特徵。
-- `data/processed/`：保留作日後正式清理輸出，本次沒有寫入。
+- `data/processed/analysis_v1/`：已固定工作 cohort 的特徵、標籤／群組切分、篩選 ledger 和 PC 全量 developer edges；Git 忽略這些生成資料。
 - `reports/2026-10-05/`：五份要求的輸出及支持證據。
 - `reports/2026-10-06/cleaning_candidate_v1/`：候選清理規則影響、欄位字典、邊界記錄、manifest 及獨立核對結果。
+- `reports/2026-10-06/analysis_v1/`：文獻矩陣、資料疑點、分析 protocol、實際 split 計數與獨立驗證。
 
 資料 profile 以 DuckDB 4 GB 記憶體上限、2 threads 執行，可能使用暫存磁碟；Python、Arrow 及其他物件另需記憶體。大型推薦資料的逐列去重及唯一值計算需較長時間。所有 CSV row count、缺失與基數均是全量；本次未作隨機抽樣。日後模型／抽樣預定 seed 42，但未在本次使用。
 

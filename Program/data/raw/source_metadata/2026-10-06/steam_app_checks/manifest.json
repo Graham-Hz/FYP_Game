@@ -1,0 +1,52 @@
+[
+  {
+    "app_id": "1129080",
+    "url": "https://store.steampowered.com/api/appdetails?appids=1129080&cc=us&l=english",
+    "sha256": "5e8395c492b384e85cb8d188fb72d86205f247e3dfb547d187fdc7425ff06a93",
+    "success": true,
+    "current_name": "Forex Demo Accelerator",
+    "current_type": "game",
+    "observation_date": "2026-10-06",
+    "not_historical_replacement": true
+  },
+  {
+    "app_id": "1000510",
+    "url": "https://store.steampowered.com/api/appdetails?appids=1000510&cc=us&l=english",
+    "sha256": "35e0e8792fb4eb154d1fb6d89e0ed59db13b0640f24f0239a8faad0fea471743",
+    "success": true,
+    "current_name": "The Marvellous Machine",
+    "current_type": "game",
+    "observation_date": "2026-10-06",
+    "not_historical_replacement": true
+  },
+  {
+    "app_id": "100400",
+    "url": "https://store.steampowered.com/api/appdetails?appids=100400&cc=us&l=english",
+    "sha256": "ef8332cbb5f91315891abaeefb56c9d36207c856edc5822acfcfecca1ad067d0",
+    "success": true,
+    "current_name": "Silo 2",
+    "current_type": "game",
+    "observation_date": "2026-10-06",
+    "not_historical_replacement": true
+  },
+  {
+    "app_id": "385020",
+    "url": "https://store.steampowered.com/api/appdetails?appids=385020&cc=us&l=english",
+    "sha256": "28e82ef3419512eec3253617c9b97dc42332daeef82adf089acdfb6c02afc0de",
+    "success": true,
+    "current_name": "none",
+    "current_type": "game",
+    "observation_date": "2026-10-06",
+    "not_historical_replacement": true
+  },
+  {
+    "app_id": "398970",
+    "url": "https://store.steampowered.com/api/appdetails?appids=398970&cc=us&l=english",
+    "sha256": "a519e8b1a6e7c674020eca8a76b9f3424f94f3e8bad437825574bd1993f017fb",
+    "success": true,
+    "current_name": "none",
+    "current_type": "game",
+    "observation_date": "2026-10-06",
+    "not_historical_replacement": true
+  }
+]

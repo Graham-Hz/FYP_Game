@@ -1,0 +1,21 @@
+{
+  "version": "feature_policy_v1",
+  "default": "deny_unlisted_columns",
+  "pc": {
+    "P": ["genres", "planning_categories", "supported_languages", "price_observed", "windows", "mac", "linux", "categories_unavailable", "languages_unavailable"],
+    "P+A": ["genres", "planning_categories", "supported_languages", "price_observed", "windows", "mac", "linux", "categories_unavailable", "languages_unavailable", "age_days"],
+    "age_only": ["age_days"],
+    "P_without_price": ["genres", "planning_categories", "supported_languages", "windows", "mac", "linux", "categories_unavailable", "languages_unavailable"]
+  },
+  "mobile": {
+    "P": ["category", "content_rating", "free", "price_usd", "price_usd_unavailable", "ad_supported", "in_app_purchases", "free_unavailable"],
+    "P+A": ["category", "content_rating", "free", "price_usd", "price_usd_unavailable", "ad_supported", "in_app_purchases", "free_unavailable", "age_days"],
+    "age_only": ["age_days"]
+  },
+  "forbidden_predictors": ["app_id", "title", "name", "app_name", "developers", "developer_id", "developer_group", "publishers", "target_tier", "target_status", "label_available", "owners_lower", "owners_upper", "estimated_owners", "installs", "minimum_installs", "maximum_installs", "positive", "negative", "num_reviews_total", "rating", "rating_count", "recommendations", "peak_ccu", "metacritic_score", "tags", "split", "cv_fold"],
+  "fit_only_on_training_fold": ["categorical and multilabel vocabulary", "missing-value imputation", "numeric scaling", "feature selection", "any learned transformation"],
+  "unknown_categories": "Ignore unseen tokens in fitted encoding and report unknown coverage; never refit on calibration/test.",
+  "interpretation": "P denotes planning-describable snapshot attributes, not proven pre-release measurements. P+A additionally conditions on accumulated observation age.",
+  "price_note": "PC price_observed retains source units and is not labelled USD. P_without_price is mandatory sensitivity while original collector currency remains unverified.",
+  "model_selection": "train 3-fold group CV only; calibration for calibration, not model-family selection; test evaluated after training protocol is fixed"
+}

@@ -1,0 +1,7 @@
+﻿platform,rule,independent_rows,first_exclusion_rows
+pc,exclude_unknown_target,8295,8295
+pc,exclude_unknown_developer,133,11
+pc,exclude_nonpositive_price,14020,6908
+pc,exclude_software_only_heuristic,1033,713
+mobile,exclude_unknown_target,0,0
+mobile,exclude_unknown_developer,0,0

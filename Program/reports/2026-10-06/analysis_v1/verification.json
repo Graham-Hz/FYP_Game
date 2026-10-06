@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "manifest_sha256": "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6",
+  "verifier_sha256": "29938bfd4bcc2bb87d8a66fa036445b6819b1861fcf09d81ca9d6c24edccd421",
+  "checks": [
+    {
+      "platform": "pc",
+      "rows": 73527,
+      "group_overlap": 0,
+      "fold_overlap": 0,
+      "independent_hash_assignment_mismatches": 0
+    },
+    {
+      "platform": "mobile",
+      "rows": 318300,
+      "group_overlap": 0,
+      "fold_overlap": 0,
+      "independent_hash_assignment_mismatches": 0
+    }
+  ],
+  "coverage": [
+    "all artifact/dependency hashes",
+    "complete source developer graph including excluded bridge games",
+    "independent primary ID derivation",
+    "group and training CV isolation",
+    "SQL hash partition recomputation",
+    "feature-target isolation",
+    "Mobile conflict masking and USD preservation",
+    "three classes in every partition and training fold"
+  ],
+  "model_training": false
+}

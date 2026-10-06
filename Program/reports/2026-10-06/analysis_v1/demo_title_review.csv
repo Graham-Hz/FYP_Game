@@ -1,0 +1,54 @@
+﻿app_id,name,genres,price,decision
+1129080,Forex Demo Accelerator,['Simulation'],4.99,explicit_exception_based_on_local_description
+1142180,SE VR World Demo,"['Action', 'Indie', 'Simulation']",0.0,retain_trial_title_exclusion_scope_heuristic
+1194740,MetaWare High School (Demo),"['Casual', 'Indie', 'Free To Play']",0.0,retain_trial_title_exclusion_scope_heuristic
+1209860,BDSM: Big Drunk Satanic Massacre Demo,"['Action', 'Free To Play', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+1304660,Vagrus - The Riven Realms: Demo (Prologue),"['Indie', 'RPG', 'Strategy']",0.0,retain_trial_title_exclusion_scope_heuristic
+1394090,Power of Ten - Demo,"['Action', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+1413540,Amarok Dreams Demo,"['Adventure', 'Free To Play', 'Indie', 'Strategy']",0.0,retain_trial_title_exclusion_scope_heuristic
+1434340,Insect Adventure Demo,"['Action', 'Adventure']",0.0,retain_trial_title_exclusion_scope_heuristic
+1478540,Bless Unleashed Playtest,"['Action', 'Free To Play', 'Massively Multiplayer', 'RPG']",0.0,retain_trial_title_exclusion_scope_heuristic
+1520110,Etched Memories Demo,"['Adventure', 'Free To Play', 'Indie', 'Simulation']",0.0,retain_trial_title_exclusion_scope_heuristic
+1539780,Winning Love by Daylight [Ep 1 Demo],"['RPG', 'Simulation', 'Free To Play']",0.0,retain_trial_title_exclusion_scope_heuristic
+1543590,Wildshape - Map Editor (free demo),"['Adventure', 'Indie', 'RPG', 'Simulation', 'Strategy', 'Early Access']",0.0,retain_trial_title_exclusion_scope_heuristic
+1551110,Mythic Prelude - Concept Demo,"['Action', 'Adventure', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+1560890,Morkredd Prøve (Demo),"['Adventure', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+1600320,Brisk Square Demo,"['Action', 'Adventure', 'Indie', 'Early Access']",0.0,retain_trial_title_exclusion_scope_heuristic
+1605230,Spaceship - Visual Effect Graph Demo,"['Action', 'Adventure']",0.0,retain_trial_title_exclusion_scope_heuristic
+2026470,Cyber Blades - Demo,"['Action', 'Indie', 'Early Access']",0.0,retain_trial_title_exclusion_scope_heuristic
+2128530,Signal & Echo: Iris is Missing (demo),"['Adventure', 'Casual', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+213390,Atooms to Moolecules Demo,"['Indie', 'Casual']",0.0,retain_trial_title_exclusion_scope_heuristic
+2138130,Flax Engine - Tech Demo 2022,"['Utilities', 'Game Development']",0.0,retain_trial_title_exclusion_scope_heuristic
+2169160,Hero Jumper Demo,"['Adventure', 'Casual', 'Free To Play', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+222500,Rail Adventures - VR Tech Demo,"['Action', 'Free To Play', 'Indie', 'Racing']",0.0,retain_trial_title_exclusion_scope_heuristic
+2232060,Desktop Dungeons: Rewind - Daily Demo,"['Adventure', 'Free To Play', 'Indie', 'Strategy']",0.0,retain_trial_title_exclusion_scope_heuristic
+2247450,Seeking Asylum: The Game (DEMO),"['Action', 'Adventure', 'Casual', 'Free To Play', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+2339820,Manic Archers - Bullseye DEMO,"['Action', 'Casual', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+2351820,Stellarace (Demo),['Racing'],0.0,retain_trial_title_exclusion_scope_heuristic
+2355750,Aker Fern: Rdzeń Szatrisa/ The Shatris Core Demo,"['Adventure', 'Indie', 'RPG', 'Free To Play']",0.0,retain_trial_title_exclusion_scope_heuristic
+2410120,The Dusk Alliance Playtest,"['Action', 'Adventure']",0.0,retain_trial_title_exclusion_scope_heuristic
+2423320,Homicipher: Demo,"['Adventure', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+2485950,Horror Engine: Tech Demo,"['Indie', 'Free To Play']",0.0,retain_trial_title_exclusion_scope_heuristic
+2667080,Journey's Land Demo,"['Action', 'Indie', 'RPG']",0.0,retain_trial_title_exclusion_scope_heuristic
+2698250,CRAZY DOG DEMO,"['Action', 'Casual', 'Massively Multiplayer', 'Racing', 'Free To Play']",0.0,retain_trial_title_exclusion_scope_heuristic
+2781110,Modulus Playtest,['Simulation'],0.0,retain_trial_title_exclusion_scope_heuristic
+2814080,Starecrown (DEMO),"['Indie', 'Strategy', 'Free To Play']",0.0,retain_trial_title_exclusion_scope_heuristic
+2888300,NBB.EXE Playtest,"['Action', 'Adventure']",0.0,retain_trial_title_exclusion_scope_heuristic
+2934870,Cyberpunk Sister Playtest,"['Action', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+3055160,Roman Triumph: Survival City Builder Playtest,"['Indie', 'Simulation', 'Strategy']",0.0,retain_trial_title_exclusion_scope_heuristic
+434430,Abbot's Book Demo,"['Adventure', 'Free To Play', 'Indie', 'RPG']",0.0,retain_trial_title_exclusion_scope_heuristic
+465090,Don Bradman Cricket 17 Demo,"['Simulation', 'Sports']",0.0,retain_trial_title_exclusion_scope_heuristic
+511360,UNCORPOREAL - Holographic Photography Demo,['Education'],0.0,retain_trial_title_exclusion_scope_heuristic
+551960,DatavizVR Demo,"['Accounting', 'Education', 'Software Training', 'Utilities', 'Early Access']",0.0,retain_trial_title_exclusion_scope_heuristic
+628440,Multiplayer FPS Demo,"['Action', 'Casual', 'Free To Play', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+703430,Star Rangers VR - Free Demo,"['Free To Play', 'Simulation']",0.0,retain_trial_title_exclusion_scope_heuristic
+708370,Reboant Demo,"['Violent', 'Gore', 'Action', 'Adventure']",0.99,retain_trial_title_exclusion_scope_heuristic
+772160,4 for the Money Demo,"['Action', 'Free To Play', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+791300,Canek: Quest for Corn [Demo],"['Action', 'Adventure', 'Casual', 'Free To Play', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+813200,DDS(D.I.Y Drone Simulator) Demo,"['Racing', 'Sports']",0.0,retain_trial_title_exclusion_scope_heuristic
+823420,Erinye Demo,"['Nudity', 'Violent', 'Adventure', 'Indie', 'RPG']",0.0,retain_trial_title_exclusion_scope_heuristic
+831230,Doors Quest Demo,"['Violent', 'Gore', 'Indie']",0.0,retain_trial_title_exclusion_scope_heuristic
+868940,The Curious Study of Dr. Blackwood:  A VR Tech Demo,"['Adventure', 'Free To Play']",0.0,retain_trial_title_exclusion_scope_heuristic
+890070,秋色的記憶(體驗版) / Fall...in Love (Demo),"['Adventure', 'Free To Play']",0.0,retain_trial_title_exclusion_scope_heuristic
+894380,Exoplanet: A Project Coreward Demo,"['Adventure', 'Casual', 'Indie', 'RPG', 'Simulation', 'Free To Play']",0.0,retain_trial_title_exclusion_scope_heuristic
+982830,Cappasity Demo,"['Education', 'Utilities']",0.0,retain_trial_title_exclusion_scope_heuristic

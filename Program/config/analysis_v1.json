@@ -1,0 +1,23 @@
+{
+  "version": "analysis_v1",
+  "status": "frozen_operational_design_not_supervisor_approval",
+  "date": "2026-10-06",
+  "seed": 42,
+  "input_cleaning_version": "cleaning_candidate_v1",
+  "pc_demo_exceptions": {"1129080": "Local description describes forex practice rather than a trial of another game; 2026-10-06 API retains same name. Explicit scope exception, not historical type proof."},
+  "developer_placeholder_tokens": ["", "none", "null", "nan", "n/a", "unknown"],
+  "developer_normalization": "Unicode NFKC + whitespace collapse + casefold; do not remove punctuation or fuzzy-match",
+  "pc_primary": "base_or_reviewed_demo_exception AND labelled AND positive_observed_price AND NOT software_only_heuristic AND known_developer_group",
+  "mobile_primary": "base AND labelled AND known_developer_group; mask free for free/price conflicts, preserve USD-only price rule",
+  "pc_planning_categories": ["Single-player", "Multi-player", "PvP", "Co-op", "Online PvP", "Online Co-op", "LAN PvP", "LAN Co-op", "Shared/Split Screen", "Shared/Split Screen PvP", "Shared/Split Screen Co-op", "Cross-Platform Multiplayer", "MMO", "Full controller support", "Partial Controller Support", "VR Only", "VR Supported", "VR Support", "Tracked Controller Support"],
+  "split_method": "SHA256 UTF8 of seed|holdout|platform|group_id; first 16 hex digits / 2**64; <0.70 train, <0.85 calibration, else test; no reroll for label balance",
+  "train_threshold": 0.7,
+  "calibration_threshold": 0.85,
+  "cv_method": "Independent SHA256 seed|cv|platform|group_id first 16 hex digits modulo 3; assigned only to train rows",
+  "train_cv_folds": 3,
+  "group_graph_scope": "All original PC input rows, including subsequently excluded and unlabelled games; connect games sharing any normalized non-placeholder developer",
+  "feature_policy_file": "config/feature_policy_v1.json",
+  "model_training": false,
+  "sensitivity_registry": ["PC all price states with known owner labels", "PC software-only heuristic inclusion", "PC no demo exception", "both platforms age >=180 and >=365", "Mobile four install tiers; same group assignments"],
+  "unresolved_limits": ["PC source price units not independently verified for the original collector invocation", "Developer labels are not resolved company entities", "No verified pre-release feature snapshots", "PC review counts unresolved; no review target", "Mobile snapshot is 2021", "Software-only exclusion is a scope heuristic, not ground truth"]
+}
