@@ -1,0 +1,56 @@
+[
+  {
+    "type": "directory",
+    "oid": "28eacfaa192cdc625a878273d0f0d322e4130b96",
+    "size": 0,
+    "path": "jsonl"
+  },
+  {
+    "type": "file",
+    "oid": "ea02f6a680a8c640fc5609abb61e5718fdcb9f15",
+    "size": 2883,
+    "path": ".gitattributes"
+  },
+  {
+    "type": "file",
+    "oid": "90793e622a214ffcba097a0ea645bef557848049",
+    "size": 9737,
+    "path": "README.md"
+  },
+  {
+    "type": "file",
+    "oid": "ff63d41a40ee4be0085bc4f519ae61a4a258ae6c",
+    "size": 4300705739,
+    "lfs": {
+      "oid": "10678e9b6c552e3b958b8b07bf2c2d260b545df3dfdf7767881472d1079e0ab8",
+      "size": 4300705739,
+      "pointerSize": 135
+    },
+    "xetHash": "6fe2b402ba03fcdcae89707173cf0876ead5d45b2ee8fe7e6fecb671b19db1e8",
+    "path": "jsonl/videogames_data.jsonl"
+  },
+  {
+    "type": "file",
+    "oid": "baaff3450b040c79adc82e7225325971e70a257f",
+    "size": 2000469667,
+    "lfs": {
+      "oid": "ab3eacabdc1a9021908b9190f28e2d5466c322d017e36c5979641f3f91b7eef7",
+      "size": 2000469667,
+      "pointerSize": 135
+    },
+    "xetHash": "2e06cf86b6e0ad59cadaf450bba360498ba0af6604c41a0608ab6ecea1387035",
+    "path": "videogames_data.csv"
+  },
+  {
+    "type": "file",
+    "oid": "ecb49a8f23b53a7330478c6c03b82b8b33f1d860",
+    "size": 1011662649,
+    "lfs": {
+      "oid": "9fe0024da52dac800ff0587b8bf7432388892c63cb99d041967afba53be1ee60",
+      "size": 1011662649,
+      "pointerSize": 135
+    },
+    "xetHash": "f195b5ffda582e1cf1c9eaae760e31e393aa4179beeb3fdc14f9aa2576abdb37",
+    "path": "videogames_data.parquet"
+  }
+]

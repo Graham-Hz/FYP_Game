@@ -1,0 +1,7 @@
+{
+  "local_csv_sha256": "1b48008b01a799d82385d6e66ba0cb65dd477b6aa4b6c2ec8c443025ab6880ad",
+  "hf_csv_lfs_sha256": "1b48008b01a799d82385d6e66ba0cb65dd477b6aa4b6c2ec8c443025ab6880ad",
+  "identical_csv_bytes": true,
+  "hf_revision": "ba4e26785af33bee500e96597068c6e77f4edea9",
+  "note": "HF repository CSV and Parquet are separate artifacts with different row counts; local Kaggle download version itself is not known."
+}

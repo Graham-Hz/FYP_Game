@@ -1,0 +1,212 @@
+﻿left,right,column,aligned_rows,comparison,literal_differences,compared_value_differences
+fronkon_local,fronkon_hf,achievements,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,app_id,124146,literal equality; collection serialization may differ,0,0
+fronkon_local,fronkon_hf,average_playtime_2weeks,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,average_playtime_forever,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,categories,124146,literal equality; collection serialization may differ,124146,124146
+fronkon_local,fronkon_hf,developers,124146,literal equality; collection serialization may differ,124146,124146
+fronkon_local,fronkon_hf,dlc_count,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,estimated_owners,124146,literal equality; collection serialization may differ,0,0
+fronkon_local,fronkon_hf,full_audio_languages,124146,literal equality; collection serialization may differ,50518,50518
+fronkon_local,fronkon_hf,genres,124146,literal equality; collection serialization may differ,124146,124146
+fronkon_local,fronkon_hf,header_image,124146,literal equality; collection serialization may differ,81,81
+fronkon_local,fronkon_hf,linux,124146,case-insensitive boolean text,124146,0
+fronkon_local,fronkon_hf,mac,124146,case-insensitive boolean text,124146,0
+fronkon_local,fronkon_hf,median_playtime_2weeks,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,median_playtime_forever,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,metacritic_score,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,metacritic_url,124146,literal equality; collection serialization may differ,119889,119889
+fronkon_local,fronkon_hf,movies,124146,literal equality; collection serialization may differ,124146,124146
+fronkon_local,fronkon_hf,name,124146,literal equality; collection serialization may differ,59,59
+fronkon_local,fronkon_hf,negative,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,notes,124146,literal equality; collection serialization may differ,104278,104278
+fronkon_local,fronkon_hf,peak_ccu,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,positive,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,price,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,publishers,124146,literal equality; collection serialization may differ,124146,124146
+fronkon_local,fronkon_hf,recommendations,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,release_date,124146,literal equality; collection serialization may differ,0,0
+fronkon_local,fronkon_hf,required_age,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,reviews,124146,numeric cast equality,123856,0
+fronkon_local,fronkon_hf,score_rank,124146,literal equality; collection serialization may differ,124106,124106
+fronkon_local,fronkon_hf,screenshots,124146,literal equality; collection serialization may differ,124146,124146
+fronkon_local,fronkon_hf,support_email,124146,literal equality; collection serialization may differ,22409,22409
+fronkon_local,fronkon_hf,support_url,124146,literal equality; collection serialization may differ,69397,69397
+fronkon_local,fronkon_hf,supported_languages,124146,literal equality; collection serialization may differ,115759,115759
+fronkon_local,fronkon_hf,tags,124146,literal equality; collection serialization may differ,124146,124146
+fronkon_local,fronkon_hf,user_score,124146,numeric cast equality,0,0
+fronkon_local,fronkon_hf,website,124146,literal equality; collection serialization may differ,74081,74081
+fronkon_local,fronkon_hf,windows,124146,case-insensitive boolean text,124146,0
+fronkon_local,fronkon_json,about_the_game,125855,literal equality; collection serialization may differ,74885,74885
+fronkon_local,fronkon_json,achievements,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,app_id,125855,literal equality; collection serialization may differ,0,0
+fronkon_local,fronkon_json,average_playtime_2weeks,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,average_playtime_forever,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,categories,125855,literal equality; collection serialization may differ,125855,125855
+fronkon_local,fronkon_json,developers,125855,literal equality; collection serialization may differ,125855,125855
+fronkon_local,fronkon_json,discount,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,dlc_count,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,estimated_owners,125855,literal equality; collection serialization may differ,0,0
+fronkon_local,fronkon_json,full_audio_languages,125855,literal equality; collection serialization may differ,51233,51233
+fronkon_local,fronkon_json,genres,125855,literal equality; collection serialization may differ,125855,125855
+fronkon_local,fronkon_json,header_image,125855,literal equality; collection serialization may differ,81,81
+fronkon_local,fronkon_json,linux,125855,case-insensitive boolean text,0,0
+fronkon_local,fronkon_json,mac,125855,case-insensitive boolean text,0,0
+fronkon_local,fronkon_json,median_playtime_2weeks,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,median_playtime_forever,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,metacritic_score,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,metacritic_url,125855,literal equality; collection serialization may differ,121597,121597
+fronkon_local,fronkon_json,movies,125855,literal equality; collection serialization may differ,125855,125855
+fronkon_local,fronkon_json,name,125855,literal equality; collection serialization may differ,61,61
+fronkon_local,fronkon_json,negative,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,notes,125855,literal equality; collection serialization may differ,105602,105602
+fronkon_local,fronkon_json,peak_ccu,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,positive,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,price,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,publishers,125855,literal equality; collection serialization may differ,125855,125855
+fronkon_local,fronkon_json,recommendations,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,release_date,125855,literal equality; collection serialization may differ,0,0
+fronkon_local,fronkon_json,required_age,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,reviews,125855,numeric cast equality,125565,0
+fronkon_local,fronkon_json,score_rank,125855,literal equality; collection serialization may differ,125815,125815
+fronkon_local,fronkon_json,screenshots,125855,literal equality; collection serialization may differ,125855,125855
+fronkon_local,fronkon_json,support_email,125855,literal equality; collection serialization may differ,22610,22610
+fronkon_local,fronkon_json,support_url,125855,literal equality; collection serialization may differ,70493,70493
+fronkon_local,fronkon_json,supported_languages,125855,literal equality; collection serialization may differ,117464,117464
+fronkon_local,fronkon_json,tags,125855,literal equality; collection serialization may differ,125855,125855
+fronkon_local,fronkon_json,user_score,125855,numeric cast equality,0,0
+fronkon_local,fronkon_json,website,125855,literal equality; collection serialization may differ,75335,75335
+fronkon_local,fronkon_json,windows,125855,case-insensitive boolean text,0,0
+fronkon_local,artem_games_march2025_full,about_the_game,94048,literal equality; collection serialization may differ,42580,42580
+fronkon_local,artem_games_march2025_full,achievements,94048,numeric cast equality,2220,2220
+fronkon_local,artem_games_march2025_full,app_id,94048,literal equality; collection serialization may differ,0,0
+fronkon_local,artem_games_march2025_full,average_playtime_2weeks,94048,numeric cast equality,3259,3259
+fronkon_local,artem_games_march2025_full,average_playtime_forever,94048,numeric cast equality,23321,23321
+fronkon_local,artem_games_march2025_full,categories,94048,literal equality; collection serialization may differ,94048,94048
+fronkon_local,artem_games_march2025_full,developers,94048,literal equality; collection serialization may differ,94048,94048
+fronkon_local,artem_games_march2025_full,discount,94048,numeric cast equality,32065,32065
+fronkon_local,artem_games_march2025_full,dlc_count,94048,numeric cast equality,1302,1302
+fronkon_local,artem_games_march2025_full,estimated_owners,94048,literal equality; collection serialization may differ,8183,8183
+fronkon_local,artem_games_march2025_full,full_audio_languages,94048,literal equality; collection serialization may differ,1816,1816
+fronkon_local,artem_games_march2025_full,genres,94048,literal equality; collection serialization may differ,94048,94048
+fronkon_local,artem_games_march2025_full,header_image,94048,literal equality; collection serialization may differ,21241,21241
+fronkon_local,artem_games_march2025_full,linux,94048,case-insensitive boolean text,231,231
+fronkon_local,artem_games_march2025_full,mac,94048,case-insensitive boolean text,252,252
+fronkon_local,artem_games_march2025_full,median_playtime_2weeks,94048,numeric cast equality,3259,3259
+fronkon_local,artem_games_march2025_full,median_playtime_forever,94048,numeric cast equality,23299,23299
+fronkon_local,artem_games_march2025_full,metacritic_score,94048,numeric cast equality,84,84
+fronkon_local,artem_games_march2025_full,metacritic_url,94048,literal equality; collection serialization may differ,62,62
+fronkon_local,artem_games_march2025_full,movies,94048,literal equality; collection serialization may differ,94048,94048
+fronkon_local,artem_games_march2025_full,name,94048,literal equality; collection serialization may differ,654,654
+fronkon_local,artem_games_march2025_full,negative,94048,numeric cast equality,23103,23103
+fronkon_local,artem_games_march2025_full,notes,94048,literal equality; collection serialization may differ,2402,2402
+fronkon_local,artem_games_march2025_full,peak_ccu,94048,numeric cast equality,18452,18452
+fronkon_local,artem_games_march2025_full,positive,94048,numeric cast equality,32735,32735
+fronkon_local,artem_games_march2025_full,price,94048,numeric cast equality,43261,43261
+fronkon_local,artem_games_march2025_full,publishers,94048,literal equality; collection serialization may differ,94048,94048
+fronkon_local,artem_games_march2025_full,recommendations,94048,numeric cast equality,17018,17018
+fronkon_local,artem_games_march2025_full,release_date,94048,literal equality; collection serialization may differ,94048,94048
+fronkon_local,artem_games_march2025_full,required_age,94048,numeric cast equality,19,19
+fronkon_local,artem_games_march2025_full,reviews,94048,numeric cast equality,10311,0
+fronkon_local,artem_games_march2025_full,score_rank,94048,literal equality; collection serialization may differ,39,39
+fronkon_local,artem_games_march2025_full,screenshots,94048,literal equality; collection serialization may differ,94048,94048
+fronkon_local,artem_games_march2025_full,support_email,94048,literal equality; collection serialization may differ,1052,1052
+fronkon_local,artem_games_march2025_full,support_url,94048,literal equality; collection serialization may differ,894,894
+fronkon_local,artem_games_march2025_full,supported_languages,94048,literal equality; collection serialization may differ,2958,2958
+fronkon_local,artem_games_march2025_full,tags,94048,literal equality; collection serialization may differ,94048,94048
+fronkon_local,artem_games_march2025_full,user_score,94048,numeric cast equality,0,0
+fronkon_local,artem_games_march2025_full,website,94048,literal equality; collection serialization may differ,1201,1201
+fronkon_local,artem_games_march2025_full,windows,94048,case-insensitive boolean text,1,1
+artem_games_march2025_full,artem_games_march2025_cleaned,about_the_game,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,achievements,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,app_id,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,average_playtime_2weeks,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,average_playtime_forever,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,categories,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,detailed_description,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,developers,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,discount,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,dlc_count,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,estimated_owners,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,full_audio_languages,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,genres,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,header_image,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,linux,89618,case-insensitive boolean text,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,mac,89618,case-insensitive boolean text,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,median_playtime_2weeks,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,median_playtime_forever,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,metacritic_score,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,metacritic_url,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,movies,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,name,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,negative,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,notes,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,num_reviews_recent,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,num_reviews_total,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,packages,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,pct_pos_recent,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,pct_pos_total,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,peak_ccu,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,positive,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,price,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,publishers,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,recommendations,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,release_date,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,required_age,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,reviews,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,score_rank,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,screenshots,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,short_description,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,support_email,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,support_url,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,supported_languages,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,tags,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,user_score,89618,numeric cast equality,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,website,89618,literal equality; collection serialization may differ,0,0
+artem_games_march2025_full,artem_games_march2025_cleaned,windows,89618,case-insensitive boolean text,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,about_the_game,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,achievements,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,app_id,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,average_playtime_2weeks,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,average_playtime_forever,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,categories,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,detailed_description,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,developers,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,dlc_count,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,estimated_owners,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,full_audio_languages,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,genres,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,header_image,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,linux,83646,case-insensitive boolean text,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,mac,83646,case-insensitive boolean text,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,median_playtime_2weeks,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,median_playtime_forever,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,metacritic_score,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,metacritic_url,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,movies,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,name,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,negative,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,notes,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,num_reviews_recent,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,num_reviews_total,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,packages,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,pct_pos_recent,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,pct_pos_total,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,peak_ccu,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,positive,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,price,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,publishers,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,recommendations,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,release_date,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,required_age,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,reviews,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,score_rank,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,screenshots,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,short_description,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,support_email,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,support_url,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,supported_languages,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,tags,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,user_score,83646,numeric cast equality,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,website,83646,literal equality; collection serialization may differ,0,0
+artem_games_may2024_full,artem_games_may2024_cleaned,windows,83646,case-insensitive boolean text,0,0

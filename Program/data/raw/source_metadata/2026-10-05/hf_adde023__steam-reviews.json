@@ -1,0 +1,2023 @@
+{
+  "_id": "69b29d69388ffec7bdd1ab8b",
+  "id": "adde023/steam-reviews",
+  "author": "adde023",
+  "sha": "d0ec12b33dffb8109b683b2e07780e2fc6b97187",
+  "lastModified": "2026-03-12T14:51:00.000Z",
+  "private": false,
+  "gated": false,
+  "disabled": false,
+  "tags": [
+    "size_categories:100M<n<1B",
+    "format:parquet",
+    "modality:tabular",
+    "modality:text",
+    "library:datasets",
+    "library:dask",
+    "library:polars",
+    "library:mlcroissant",
+    "region:us"
+  ],
+  "description": "\n\t\n\t\t\n\t\n\t\n\t\tSteam Reviews Dataset\n\t\n\n\n\t\n\t\t\n\t\n\t\n\t\tDescription\n\t\n\n113 million Steam user reviews collected via the Steam User Reviews API.\nOriginally sourced from Kaggle and converted to Parquet format for efficient distributed processing.\n\n\t\n\t\t\n\t\n\t\n\t\tSource\n\t\n\n\nOriginal dataset: https://www.kaggle.com/datasets/kieranpoc/steam-reviews\nLicense: CC BY-NC 4.0 (https://creativecommons.org/licenses/by-nc/4.0/)\n\n\n\t\n\t\t\n\t\n\t\n\t\tCitation\n\t\n\nCredit: kieranpoc on Kaggle\u2026 See the full description on the dataset page: https://huggingface.co/datasets/adde023/steam-reviews.",
+  "downloads": 2102,
+  "likes": 1,
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "part.0.parquet"
+    },
+    {
+      "rfilename": "part.1.parquet"
+    },
+    {
+      "rfilename": "part.10.parquet"
+    },
+    {
+      "rfilename": "part.100.parquet"
+    },
+    {
+      "rfilename": "part.101.parquet"
+    },
+    {
+      "rfilename": "part.102.parquet"
+    },
+    {
+      "rfilename": "part.103.parquet"
+    },
+    {
+      "rfilename": "part.104.parquet"
+    },
+    {
+      "rfilename": "part.105.parquet"
+    },
+    {
+      "rfilename": "part.106.parquet"
+    },
+    {
+      "rfilename": "part.107.parquet"
+    },
+    {
+      "rfilename": "part.108.parquet"
+    },
+    {
+      "rfilename": "part.109.parquet"
+    },
+    {
+      "rfilename": "part.11.parquet"
+    },
+    {
+      "rfilename": "part.110.parquet"
+    },
+    {
+      "rfilename": "part.111.parquet"
+    },
+    {
+      "rfilename": "part.112.parquet"
+    },
+    {
+      "rfilename": "part.113.parquet"
+    },
+    {
+      "rfilename": "part.114.parquet"
+    },
+    {
+      "rfilename": "part.115.parquet"
+    },
+    {
+      "rfilename": "part.116.parquet"
+    },
+    {
+      "rfilename": "part.117.parquet"
+    },
+    {
+      "rfilename": "part.118.parquet"
+    },
+    {
+      "rfilename": "part.119.parquet"
+    },
+    {
+      "rfilename": "part.12.parquet"
+    },
+    {
+      "rfilename": "part.120.parquet"
+    },
+    {
+      "rfilename": "part.121.parquet"
+    },
+    {
+      "rfilename": "part.122.parquet"
+    },
+    {
+      "rfilename": "part.123.parquet"
+    },
+    {
+      "rfilename": "part.124.parquet"
+    },
+    {
+      "rfilename": "part.125.parquet"
+    },
+    {
+      "rfilename": "part.126.parquet"
+    },
+    {
+      "rfilename": "part.127.parquet"
+    },
+    {
+      "rfilename": "part.128.parquet"
+    },
+    {
+      "rfilename": "part.129.parquet"
+    },
+    {
+      "rfilename": "part.13.parquet"
+    },
+    {
+      "rfilename": "part.130.parquet"
+    },
+    {
+      "rfilename": "part.131.parquet"
+    },
+    {
+      "rfilename": "part.132.parquet"
+    },
+    {
+      "rfilename": "part.133.parquet"
+    },
+    {
+      "rfilename": "part.134.parquet"
+    },
+    {
+      "rfilename": "part.135.parquet"
+    },
+    {
+      "rfilename": "part.136.parquet"
+    },
+    {
+      "rfilename": "part.137.parquet"
+    },
+    {
+      "rfilename": "part.138.parquet"
+    },
+    {
+      "rfilename": "part.139.parquet"
+    },
+    {
+      "rfilename": "part.14.parquet"
+    },
+    {
+      "rfilename": "part.140.parquet"
+    },
+    {
+      "rfilename": "part.141.parquet"
+    },
+    {
+      "rfilename": "part.142.parquet"
+    },
+    {
+      "rfilename": "part.143.parquet"
+    },
+    {
+      "rfilename": "part.144.parquet"
+    },
+    {
+      "rfilename": "part.145.parquet"
+    },
+    {
+      "rfilename": "part.146.parquet"
+    },
+    {
+      "rfilename": "part.147.parquet"
+    },
+    {
+      "rfilename": "part.148.parquet"
+    },
+    {
+      "rfilename": "part.149.parquet"
+    },
+    {
+      "rfilename": "part.15.parquet"
+    },
+    {
+      "rfilename": "part.150.parquet"
+    },
+    {
+      "rfilename": "part.151.parquet"
+    },
+    {
+      "rfilename": "part.152.parquet"
+    },
+    {
+      "rfilename": "part.153.parquet"
+    },
+    {
+      "rfilename": "part.154.parquet"
+    },
+    {
+      "rfilename": "part.155.parquet"
+    },
+    {
+      "rfilename": "part.156.parquet"
+    },
+    {
+      "rfilename": "part.157.parquet"
+    },
+    {
+      "rfilename": "part.158.parquet"
+    },
+    {
+      "rfilename": "part.159.parquet"
+    },
+    {
+      "rfilename": "part.16.parquet"
+    },
+    {
+      "rfilename": "part.160.parquet"
+    },
+    {
+      "rfilename": "part.161.parquet"
+    },
+    {
+      "rfilename": "part.162.parquet"
+    },
+    {
+      "rfilename": "part.163.parquet"
+    },
+    {
+      "rfilename": "part.164.parquet"
+    },
+    {
+      "rfilename": "part.165.parquet"
+    },
+    {
+      "rfilename": "part.166.parquet"
+    },
+    {
+      "rfilename": "part.167.parquet"
+    },
+    {
+      "rfilename": "part.168.parquet"
+    },
+    {
+      "rfilename": "part.169.parquet"
+    },
+    {
+      "rfilename": "part.17.parquet"
+    },
+    {
+      "rfilename": "part.170.parquet"
+    },
+    {
+      "rfilename": "part.171.parquet"
+    },
+    {
+      "rfilename": "part.172.parquet"
+    },
+    {
+      "rfilename": "part.173.parquet"
+    },
+    {
+      "rfilename": "part.174.parquet"
+    },
+    {
+      "rfilename": "part.175.parquet"
+    },
+    {
+      "rfilename": "part.176.parquet"
+    },
+    {
+      "rfilename": "part.177.parquet"
+    },
+    {
+      "rfilename": "part.178.parquet"
+    },
+    {
+      "rfilename": "part.179.parquet"
+    },
+    {
+      "rfilename": "part.18.parquet"
+    },
+    {
+      "rfilename": "part.180.parquet"
+    },
+    {
+      "rfilename": "part.181.parquet"
+    },
+    {
+      "rfilename": "part.182.parquet"
+    },
+    {
+      "rfilename": "part.183.parquet"
+    },
+    {
+      "rfilename": "part.184.parquet"
+    },
+    {
+      "rfilename": "part.185.parquet"
+    },
+    {
+      "rfilename": "part.186.parquet"
+    },
+    {
+      "rfilename": "part.187.parquet"
+    },
+    {
+      "rfilename": "part.188.parquet"
+    },
+    {
+      "rfilename": "part.189.parquet"
+    },
+    {
+      "rfilename": "part.19.parquet"
+    },
+    {
+      "rfilename": "part.190.parquet"
+    },
+    {
+      "rfilename": "part.191.parquet"
+    },
+    {
+      "rfilename": "part.192.parquet"
+    },
+    {
+      "rfilename": "part.193.parquet"
+    },
+    {
+      "rfilename": "part.194.parquet"
+    },
+    {
+      "rfilename": "part.195.parquet"
+    },
+    {
+      "rfilename": "part.196.parquet"
+    },
+    {
+      "rfilename": "part.197.parquet"
+    },
+    {
+      "rfilename": "part.198.parquet"
+    },
+    {
+      "rfilename": "part.199.parquet"
+    },
+    {
+      "rfilename": "part.2.parquet"
+    },
+    {
+      "rfilename": "part.20.parquet"
+    },
+    {
+      "rfilename": "part.200.parquet"
+    },
+    {
+      "rfilename": "part.201.parquet"
+    },
+    {
+      "rfilename": "part.202.parquet"
+    },
+    {
+      "rfilename": "part.203.parquet"
+    },
+    {
+      "rfilename": "part.204.parquet"
+    },
+    {
+      "rfilename": "part.205.parquet"
+    },
+    {
+      "rfilename": "part.206.parquet"
+    },
+    {
+      "rfilename": "part.207.parquet"
+    },
+    {
+      "rfilename": "part.208.parquet"
+    },
+    {
+      "rfilename": "part.209.parquet"
+    },
+    {
+      "rfilename": "part.21.parquet"
+    },
+    {
+      "rfilename": "part.210.parquet"
+    },
+    {
+      "rfilename": "part.211.parquet"
+    },
+    {
+      "rfilename": "part.212.parquet"
+    },
+    {
+      "rfilename": "part.213.parquet"
+    },
+    {
+      "rfilename": "part.214.parquet"
+    },
+    {
+      "rfilename": "part.215.parquet"
+    },
+    {
+      "rfilename": "part.216.parquet"
+    },
+    {
+      "rfilename": "part.217.parquet"
+    },
+    {
+      "rfilename": "part.218.parquet"
+    },
+    {
+      "rfilename": "part.219.parquet"
+    },
+    {
+      "rfilename": "part.22.parquet"
+    },
+    {
+      "rfilename": "part.220.parquet"
+    },
+    {
+      "rfilename": "part.221.parquet"
+    },
+    {
+      "rfilename": "part.222.parquet"
+    },
+    {
+      "rfilename": "part.223.parquet"
+    },
+    {
+      "rfilename": "part.224.parquet"
+    },
+    {
+      "rfilename": "part.225.parquet"
+    },
+    {
+      "rfilename": "part.226.parquet"
+    },
+    {
+      "rfilename": "part.227.parquet"
+    },
+    {
+      "rfilename": "part.228.parquet"
+    },
+    {
+      "rfilename": "part.229.parquet"
+    },
+    {
+      "rfilename": "part.23.parquet"
+    },
+    {
+      "rfilename": "part.230.parquet"
+    },
+    {
+      "rfilename": "part.231.parquet"
+    },
+    {
+      "rfilename": "part.232.parquet"
+    },
+    {
+      "rfilename": "part.233.parquet"
+    },
+    {
+      "rfilename": "part.234.parquet"
+    },
+    {
+      "rfilename": "part.235.parquet"
+    },
+    {
+      "rfilename": "part.236.parquet"
+    },
+    {
+      "rfilename": "part.237.parquet"
+    },
+    {
+      "rfilename": "part.238.parquet"
+    },
+    {
+      "rfilename": "part.239.parquet"
+    },
+    {
+      "rfilename": "part.24.parquet"
+    },
+    {
+      "rfilename": "part.240.parquet"
+    },
+    {
+      "rfilename": "part.241.parquet"
+    },
+    {
+      "rfilename": "part.242.parquet"
+    },
+    {
+      "rfilename": "part.243.parquet"
+    },
+    {
+      "rfilename": "part.244.parquet"
+    },
+    {
+      "rfilename": "part.245.parquet"
+    },
+    {
+      "rfilename": "part.246.parquet"
+    },
+    {
+      "rfilename": "part.247.parquet"
+    },
+    {
+      "rfilename": "part.248.parquet"
+    },
+    {
+      "rfilename": "part.249.parquet"
+    },
+    {
+      "rfilename": "part.25.parquet"
+    },
+    {
+      "rfilename": "part.250.parquet"
+    },
+    {
+      "rfilename": "part.251.parquet"
+    },
+    {
+      "rfilename": "part.252.parquet"
+    },
+    {
+      "rfilename": "part.253.parquet"
+    },
+    {
+      "rfilename": "part.254.parquet"
+    },
+    {
+      "rfilename": "part.255.parquet"
+    },
+    {
+      "rfilename": "part.256.parquet"
+    },
+    {
+      "rfilename": "part.257.parquet"
+    },
+    {
+      "rfilename": "part.258.parquet"
+    },
+    {
+      "rfilename": "part.259.parquet"
+    },
+    {
+      "rfilename": "part.26.parquet"
+    },
+    {
+      "rfilename": "part.260.parquet"
+    },
+    {
+      "rfilename": "part.261.parquet"
+    },
+    {
+      "rfilename": "part.262.parquet"
+    },
+    {
+      "rfilename": "part.263.parquet"
+    },
+    {
+      "rfilename": "part.264.parquet"
+    },
+    {
+      "rfilename": "part.265.parquet"
+    },
+    {
+      "rfilename": "part.266.parquet"
+    },
+    {
+      "rfilename": "part.267.parquet"
+    },
+    {
+      "rfilename": "part.268.parquet"
+    },
+    {
+      "rfilename": "part.269.parquet"
+    },
+    {
+      "rfilename": "part.27.parquet"
+    },
+    {
+      "rfilename": "part.270.parquet"
+    },
+    {
+      "rfilename": "part.271.parquet"
+    },
+    {
+      "rfilename": "part.272.parquet"
+    },
+    {
+      "rfilename": "part.273.parquet"
+    },
+    {
+      "rfilename": "part.274.parquet"
+    },
+    {
+      "rfilename": "part.275.parquet"
+    },
+    {
+      "rfilename": "part.276.parquet"
+    },
+    {
+      "rfilename": "part.277.parquet"
+    },
+    {
+      "rfilename": "part.278.parquet"
+    },
+    {
+      "rfilename": "part.279.parquet"
+    },
+    {
+      "rfilename": "part.28.parquet"
+    },
+    {
+      "rfilename": "part.280.parquet"
+    },
+    {
+      "rfilename": "part.281.parquet"
+    },
+    {
+      "rfilename": "part.282.parquet"
+    },
+    {
+      "rfilename": "part.283.parquet"
+    },
+    {
+      "rfilename": "part.284.parquet"
+    },
+    {
+      "rfilename": "part.285.parquet"
+    },
+    {
+      "rfilename": "part.286.parquet"
+    },
+    {
+      "rfilename": "part.287.parquet"
+    },
+    {
+      "rfilename": "part.288.parquet"
+    },
+    {
+      "rfilename": "part.289.parquet"
+    },
+    {
+      "rfilename": "part.29.parquet"
+    },
+    {
+      "rfilename": "part.290.parquet"
+    },
+    {
+      "rfilename": "part.291.parquet"
+    },
+    {
+      "rfilename": "part.292.parquet"
+    },
+    {
+      "rfilename": "part.293.parquet"
+    },
+    {
+      "rfilename": "part.294.parquet"
+    },
+    {
+      "rfilename": "part.295.parquet"
+    },
+    {
+      "rfilename": "part.296.parquet"
+    },
+    {
+      "rfilename": "part.297.parquet"
+    },
+    {
+      "rfilename": "part.298.parquet"
+    },
+    {
+      "rfilename": "part.299.parquet"
+    },
+    {
+      "rfilename": "part.3.parquet"
+    },
+    {
+      "rfilename": "part.30.parquet"
+    },
+    {
+      "rfilename": "part.300.parquet"
+    },
+    {
+      "rfilename": "part.301.parquet"
+    },
+    {
+      "rfilename": "part.302.parquet"
+    },
+    {
+      "rfilename": "part.303.parquet"
+    },
+    {
+      "rfilename": "part.304.parquet"
+    },
+    {
+      "rfilename": "part.305.parquet"
+    },
+    {
+      "rfilename": "part.306.parquet"
+    },
+    {
+      "rfilename": "part.307.parquet"
+    },
+    {
+      "rfilename": "part.308.parquet"
+    },
+    {
+      "rfilename": "part.309.parquet"
+    },
+    {
+      "rfilename": "part.31.parquet"
+    },
+    {
+      "rfilename": "part.310.parquet"
+    },
+    {
+      "rfilename": "part.311.parquet"
+    },
+    {
+      "rfilename": "part.312.parquet"
+    },
+    {
+      "rfilename": "part.313.parquet"
+    },
+    {
+      "rfilename": "part.314.parquet"
+    },
+    {
+      "rfilename": "part.315.parquet"
+    },
+    {
+      "rfilename": "part.316.parquet"
+    },
+    {
+      "rfilename": "part.317.parquet"
+    },
+    {
+      "rfilename": "part.318.parquet"
+    },
+    {
+      "rfilename": "part.319.parquet"
+    },
+    {
+      "rfilename": "part.32.parquet"
+    },
+    {
+      "rfilename": "part.320.parquet"
+    },
+    {
+      "rfilename": "part.321.parquet"
+    },
+    {
+      "rfilename": "part.322.parquet"
+    },
+    {
+      "rfilename": "part.323.parquet"
+    },
+    {
+      "rfilename": "part.324.parquet"
+    },
+    {
+      "rfilename": "part.325.parquet"
+    },
+    {
+      "rfilename": "part.326.parquet"
+    },
+    {
+      "rfilename": "part.327.parquet"
+    },
+    {
+      "rfilename": "part.328.parquet"
+    },
+    {
+      "rfilename": "part.329.parquet"
+    },
+    {
+      "rfilename": "part.33.parquet"
+    },
+    {
+      "rfilename": "part.330.parquet"
+    },
+    {
+      "rfilename": "part.331.parquet"
+    },
+    {
+      "rfilename": "part.332.parquet"
+    },
+    {
+      "rfilename": "part.333.parquet"
+    },
+    {
+      "rfilename": "part.334.parquet"
+    },
+    {
+      "rfilename": "part.335.parquet"
+    },
+    {
+      "rfilename": "part.336.parquet"
+    },
+    {
+      "rfilename": "part.337.parquet"
+    },
+    {
+      "rfilename": "part.338.parquet"
+    },
+    {
+      "rfilename": "part.339.parquet"
+    },
+    {
+      "rfilename": "part.34.parquet"
+    },
+    {
+      "rfilename": "part.340.parquet"
+    },
+    {
+      "rfilename": "part.341.parquet"
+    },
+    {
+      "rfilename": "part.342.parquet"
+    },
+    {
+      "rfilename": "part.343.parquet"
+    },
+    {
+      "rfilename": "part.344.parquet"
+    },
+    {
+      "rfilename": "part.345.parquet"
+    },
+    {
+      "rfilename": "part.346.parquet"
+    },
+    {
+      "rfilename": "part.347.parquet"
+    },
+    {
+      "rfilename": "part.348.parquet"
+    },
+    {
+      "rfilename": "part.349.parquet"
+    },
+    {
+      "rfilename": "part.35.parquet"
+    },
+    {
+      "rfilename": "part.350.parquet"
+    },
+    {
+      "rfilename": "part.351.parquet"
+    },
+    {
+      "rfilename": "part.352.parquet"
+    },
+    {
+      "rfilename": "part.353.parquet"
+    },
+    {
+      "rfilename": "part.354.parquet"
+    },
+    {
+      "rfilename": "part.355.parquet"
+    },
+    {
+      "rfilename": "part.356.parquet"
+    },
+    {
+      "rfilename": "part.357.parquet"
+    },
+    {
+      "rfilename": "part.358.parquet"
+    },
+    {
+      "rfilename": "part.359.parquet"
+    },
+    {
+      "rfilename": "part.36.parquet"
+    },
+    {
+      "rfilename": "part.360.parquet"
+    },
+    {
+      "rfilename": "part.361.parquet"
+    },
+    {
+      "rfilename": "part.362.parquet"
+    },
+    {
+      "rfilename": "part.363.parquet"
+    },
+    {
+      "rfilename": "part.364.parquet"
+    },
+    {
+      "rfilename": "part.365.parquet"
+    },
+    {
+      "rfilename": "part.366.parquet"
+    },
+    {
+      "rfilename": "part.367.parquet"
+    },
+    {
+      "rfilename": "part.368.parquet"
+    },
+    {
+      "rfilename": "part.369.parquet"
+    },
+    {
+      "rfilename": "part.37.parquet"
+    },
+    {
+      "rfilename": "part.370.parquet"
+    },
+    {
+      "rfilename": "part.371.parquet"
+    },
+    {
+      "rfilename": "part.372.parquet"
+    },
+    {
+      "rfilename": "part.373.parquet"
+    },
+    {
+      "rfilename": "part.374.parquet"
+    },
+    {
+      "rfilename": "part.375.parquet"
+    },
+    {
+      "rfilename": "part.376.parquet"
+    },
+    {
+      "rfilename": "part.377.parquet"
+    },
+    {
+      "rfilename": "part.378.parquet"
+    },
+    {
+      "rfilename": "part.379.parquet"
+    },
+    {
+      "rfilename": "part.38.parquet"
+    },
+    {
+      "rfilename": "part.380.parquet"
+    },
+    {
+      "rfilename": "part.381.parquet"
+    },
+    {
+      "rfilename": "part.382.parquet"
+    },
+    {
+      "rfilename": "part.383.parquet"
+    },
+    {
+      "rfilename": "part.384.parquet"
+    },
+    {
+      "rfilename": "part.385.parquet"
+    },
+    {
+      "rfilename": "part.386.parquet"
+    },
+    {
+      "rfilename": "part.387.parquet"
+    },
+    {
+      "rfilename": "part.388.parquet"
+    },
+    {
+      "rfilename": "part.389.parquet"
+    },
+    {
+      "rfilename": "part.39.parquet"
+    },
+    {
+      "rfilename": "part.390.parquet"
+    },
+    {
+      "rfilename": "part.391.parquet"
+    },
+    {
+      "rfilename": "part.392.parquet"
+    },
+    {
+      "rfilename": "part.393.parquet"
+    },
+    {
+      "rfilename": "part.394.parquet"
+    },
+    {
+      "rfilename": "part.395.parquet"
+    },
+    {
+      "rfilename": "part.396.parquet"
+    },
+    {
+      "rfilename": "part.397.parquet"
+    },
+    {
+      "rfilename": "part.398.parquet"
+    },
+    {
+      "rfilename": "part.399.parquet"
+    },
+    {
+      "rfilename": "part.4.parquet"
+    },
+    {
+      "rfilename": "part.40.parquet"
+    },
+    {
+      "rfilename": "part.400.parquet"
+    },
+    {
+      "rfilename": "part.401.parquet"
+    },
+    {
+      "rfilename": "part.402.parquet"
+    },
+    {
+      "rfilename": "part.403.parquet"
+    },
+    {
+      "rfilename": "part.404.parquet"
+    },
+    {
+      "rfilename": "part.405.parquet"
+    },
+    {
+      "rfilename": "part.406.parquet"
+    },
+    {
+      "rfilename": "part.407.parquet"
+    },
+    {
+      "rfilename": "part.408.parquet"
+    },
+    {
+      "rfilename": "part.409.parquet"
+    },
+    {
+      "rfilename": "part.41.parquet"
+    },
+    {
+      "rfilename": "part.410.parquet"
+    },
+    {
+      "rfilename": "part.411.parquet"
+    },
+    {
+      "rfilename": "part.412.parquet"
+    },
+    {
+      "rfilename": "part.413.parquet"
+    },
+    {
+      "rfilename": "part.414.parquet"
+    },
+    {
+      "rfilename": "part.415.parquet"
+    },
+    {
+      "rfilename": "part.416.parquet"
+    },
+    {
+      "rfilename": "part.417.parquet"
+    },
+    {
+      "rfilename": "part.418.parquet"
+    },
+    {
+      "rfilename": "part.419.parquet"
+    },
+    {
+      "rfilename": "part.42.parquet"
+    },
+    {
+      "rfilename": "part.420.parquet"
+    },
+    {
+      "rfilename": "part.421.parquet"
+    },
+    {
+      "rfilename": "part.422.parquet"
+    },
+    {
+      "rfilename": "part.423.parquet"
+    },
+    {
+      "rfilename": "part.424.parquet"
+    },
+    {
+      "rfilename": "part.425.parquet"
+    },
+    {
+      "rfilename": "part.426.parquet"
+    },
+    {
+      "rfilename": "part.427.parquet"
+    },
+    {
+      "rfilename": "part.428.parquet"
+    },
+    {
+      "rfilename": "part.429.parquet"
+    },
+    {
+      "rfilename": "part.43.parquet"
+    },
+    {
+      "rfilename": "part.430.parquet"
+    },
+    {
+      "rfilename": "part.431.parquet"
+    },
+    {
+      "rfilename": "part.432.parquet"
+    },
+    {
+      "rfilename": "part.433.parquet"
+    },
+    {
+      "rfilename": "part.434.parquet"
+    },
+    {
+      "rfilename": "part.435.parquet"
+    },
+    {
+      "rfilename": "part.436.parquet"
+    },
+    {
+      "rfilename": "part.437.parquet"
+    },
+    {
+      "rfilename": "part.438.parquet"
+    },
+    {
+      "rfilename": "part.439.parquet"
+    },
+    {
+      "rfilename": "part.44.parquet"
+    },
+    {
+      "rfilename": "part.440.parquet"
+    },
+    {
+      "rfilename": "part.441.parquet"
+    },
+    {
+      "rfilename": "part.442.parquet"
+    },
+    {
+      "rfilename": "part.443.parquet"
+    },
+    {
+      "rfilename": "part.444.parquet"
+    },
+    {
+      "rfilename": "part.445.parquet"
+    },
+    {
+      "rfilename": "part.446.parquet"
+    },
+    {
+      "rfilename": "part.447.parquet"
+    },
+    {
+      "rfilename": "part.448.parquet"
+    },
+    {
+      "rfilename": "part.449.parquet"
+    },
+    {
+      "rfilename": "part.45.parquet"
+    },
+    {
+      "rfilename": "part.450.parquet"
+    },
+    {
+      "rfilename": "part.451.parquet"
+    },
+    {
+      "rfilename": "part.452.parquet"
+    },
+    {
+      "rfilename": "part.453.parquet"
+    },
+    {
+      "rfilename": "part.454.parquet"
+    },
+    {
+      "rfilename": "part.455.parquet"
+    },
+    {
+      "rfilename": "part.456.parquet"
+    },
+    {
+      "rfilename": "part.457.parquet"
+    },
+    {
+      "rfilename": "part.458.parquet"
+    },
+    {
+      "rfilename": "part.459.parquet"
+    },
+    {
+      "rfilename": "part.46.parquet"
+    },
+    {
+      "rfilename": "part.460.parquet"
+    },
+    {
+      "rfilename": "part.461.parquet"
+    },
+    {
+      "rfilename": "part.462.parquet"
+    },
+    {
+      "rfilename": "part.463.parquet"
+    },
+    {
+      "rfilename": "part.464.parquet"
+    },
+    {
+      "rfilename": "part.465.parquet"
+    },
+    {
+      "rfilename": "part.466.parquet"
+    },
+    {
+      "rfilename": "part.467.parquet"
+    },
+    {
+      "rfilename": "part.468.parquet"
+    },
+    {
+      "rfilename": "part.469.parquet"
+    },
+    {
+      "rfilename": "part.47.parquet"
+    },
+    {
+      "rfilename": "part.470.parquet"
+    },
+    {
+      "rfilename": "part.471.parquet"
+    },
+    {
+      "rfilename": "part.472.parquet"
+    },
+    {
+      "rfilename": "part.473.parquet"
+    },
+    {
+      "rfilename": "part.474.parquet"
+    },
+    {
+      "rfilename": "part.475.parquet"
+    },
+    {
+      "rfilename": "part.476.parquet"
+    },
+    {
+      "rfilename": "part.477.parquet"
+    },
+    {
+      "rfilename": "part.478.parquet"
+    },
+    {
+      "rfilename": "part.479.parquet"
+    },
+    {
+      "rfilename": "part.48.parquet"
+    },
+    {
+      "rfilename": "part.480.parquet"
+    },
+    {
+      "rfilename": "part.481.parquet"
+    },
+    {
+      "rfilename": "part.482.parquet"
+    },
+    {
+      "rfilename": "part.483.parquet"
+    },
+    {
+      "rfilename": "part.484.parquet"
+    },
+    {
+      "rfilename": "part.485.parquet"
+    },
+    {
+      "rfilename": "part.486.parquet"
+    },
+    {
+      "rfilename": "part.487.parquet"
+    },
+    {
+      "rfilename": "part.488.parquet"
+    },
+    {
+      "rfilename": "part.489.parquet"
+    },
+    {
+      "rfilename": "part.49.parquet"
+    },
+    {
+      "rfilename": "part.490.parquet"
+    },
+    {
+      "rfilename": "part.491.parquet"
+    },
+    {
+      "rfilename": "part.492.parquet"
+    },
+    {
+      "rfilename": "part.493.parquet"
+    },
+    {
+      "rfilename": "part.494.parquet"
+    },
+    {
+      "rfilename": "part.495.parquet"
+    },
+    {
+      "rfilename": "part.496.parquet"
+    },
+    {
+      "rfilename": "part.497.parquet"
+    },
+    {
+      "rfilename": "part.498.parquet"
+    },
+    {
+      "rfilename": "part.499.parquet"
+    },
+    {
+      "rfilename": "part.5.parquet"
+    },
+    {
+      "rfilename": "part.50.parquet"
+    },
+    {
+      "rfilename": "part.500.parquet"
+    },
+    {
+      "rfilename": "part.501.parquet"
+    },
+    {
+      "rfilename": "part.502.parquet"
+    },
+    {
+      "rfilename": "part.503.parquet"
+    },
+    {
+      "rfilename": "part.504.parquet"
+    },
+    {
+      "rfilename": "part.505.parquet"
+    },
+    {
+      "rfilename": "part.506.parquet"
+    },
+    {
+      "rfilename": "part.507.parquet"
+    },
+    {
+      "rfilename": "part.508.parquet"
+    },
+    {
+      "rfilename": "part.509.parquet"
+    },
+    {
+      "rfilename": "part.51.parquet"
+    },
+    {
+      "rfilename": "part.510.parquet"
+    },
+    {
+      "rfilename": "part.511.parquet"
+    },
+    {
+      "rfilename": "part.512.parquet"
+    },
+    {
+      "rfilename": "part.513.parquet"
+    },
+    {
+      "rfilename": "part.514.parquet"
+    },
+    {
+      "rfilename": "part.515.parquet"
+    },
+    {
+      "rfilename": "part.516.parquet"
+    },
+    {
+      "rfilename": "part.517.parquet"
+    },
+    {
+      "rfilename": "part.518.parquet"
+    },
+    {
+      "rfilename": "part.519.parquet"
+    },
+    {
+      "rfilename": "part.52.parquet"
+    },
+    {
+      "rfilename": "part.520.parquet"
+    },
+    {
+      "rfilename": "part.521.parquet"
+    },
+    {
+      "rfilename": "part.522.parquet"
+    },
+    {
+      "rfilename": "part.523.parquet"
+    },
+    {
+      "rfilename": "part.524.parquet"
+    },
+    {
+      "rfilename": "part.525.parquet"
+    },
+    {
+      "rfilename": "part.526.parquet"
+    },
+    {
+      "rfilename": "part.527.parquet"
+    },
+    {
+      "rfilename": "part.528.parquet"
+    },
+    {
+      "rfilename": "part.529.parquet"
+    },
+    {
+      "rfilename": "part.53.parquet"
+    },
+    {
+      "rfilename": "part.530.parquet"
+    },
+    {
+      "rfilename": "part.531.parquet"
+    },
+    {
+      "rfilename": "part.532.parquet"
+    },
+    {
+      "rfilename": "part.533.parquet"
+    },
+    {
+      "rfilename": "part.534.parquet"
+    },
+    {
+      "rfilename": "part.535.parquet"
+    },
+    {
+      "rfilename": "part.536.parquet"
+    },
+    {
+      "rfilename": "part.537.parquet"
+    },
+    {
+      "rfilename": "part.538.parquet"
+    },
+    {
+      "rfilename": "part.539.parquet"
+    },
+    {
+      "rfilename": "part.54.parquet"
+    },
+    {
+      "rfilename": "part.540.parquet"
+    },
+    {
+      "rfilename": "part.541.parquet"
+    },
+    {
+      "rfilename": "part.542.parquet"
+    },
+    {
+      "rfilename": "part.543.parquet"
+    },
+    {
+      "rfilename": "part.544.parquet"
+    },
+    {
+      "rfilename": "part.545.parquet"
+    },
+    {
+      "rfilename": "part.546.parquet"
+    },
+    {
+      "rfilename": "part.547.parquet"
+    },
+    {
+      "rfilename": "part.548.parquet"
+    },
+    {
+      "rfilename": "part.549.parquet"
+    },
+    {
+      "rfilename": "part.55.parquet"
+    },
+    {
+      "rfilename": "part.550.parquet"
+    },
+    {
+      "rfilename": "part.551.parquet"
+    },
+    {
+      "rfilename": "part.552.parquet"
+    },
+    {
+      "rfilename": "part.553.parquet"
+    },
+    {
+      "rfilename": "part.554.parquet"
+    },
+    {
+      "rfilename": "part.555.parquet"
+    },
+    {
+      "rfilename": "part.556.parquet"
+    },
+    {
+      "rfilename": "part.557.parquet"
+    },
+    {
+      "rfilename": "part.558.parquet"
+    },
+    {
+      "rfilename": "part.559.parquet"
+    },
+    {
+      "rfilename": "part.56.parquet"
+    },
+    {
+      "rfilename": "part.560.parquet"
+    },
+    {
+      "rfilename": "part.561.parquet"
+    },
+    {
+      "rfilename": "part.562.parquet"
+    },
+    {
+      "rfilename": "part.563.parquet"
+    },
+    {
+      "rfilename": "part.564.parquet"
+    },
+    {
+      "rfilename": "part.565.parquet"
+    },
+    {
+      "rfilename": "part.566.parquet"
+    },
+    {
+      "rfilename": "part.567.parquet"
+    },
+    {
+      "rfilename": "part.568.parquet"
+    },
+    {
+      "rfilename": "part.569.parquet"
+    },
+    {
+      "rfilename": "part.57.parquet"
+    },
+    {
+      "rfilename": "part.570.parquet"
+    },
+    {
+      "rfilename": "part.571.parquet"
+    },
+    {
+      "rfilename": "part.572.parquet"
+    },
+    {
+      "rfilename": "part.573.parquet"
+    },
+    {
+      "rfilename": "part.574.parquet"
+    },
+    {
+      "rfilename": "part.575.parquet"
+    },
+    {
+      "rfilename": "part.576.parquet"
+    },
+    {
+      "rfilename": "part.577.parquet"
+    },
+    {
+      "rfilename": "part.578.parquet"
+    },
+    {
+      "rfilename": "part.579.parquet"
+    },
+    {
+      "rfilename": "part.58.parquet"
+    },
+    {
+      "rfilename": "part.580.parquet"
+    },
+    {
+      "rfilename": "part.581.parquet"
+    },
+    {
+      "rfilename": "part.582.parquet"
+    },
+    {
+      "rfilename": "part.583.parquet"
+    },
+    {
+      "rfilename": "part.584.parquet"
+    },
+    {
+      "rfilename": "part.585.parquet"
+    },
+    {
+      "rfilename": "part.586.parquet"
+    },
+    {
+      "rfilename": "part.587.parquet"
+    },
+    {
+      "rfilename": "part.588.parquet"
+    },
+    {
+      "rfilename": "part.589.parquet"
+    },
+    {
+      "rfilename": "part.59.parquet"
+    },
+    {
+      "rfilename": "part.590.parquet"
+    },
+    {
+      "rfilename": "part.591.parquet"
+    },
+    {
+      "rfilename": "part.592.parquet"
+    },
+    {
+      "rfilename": "part.593.parquet"
+    },
+    {
+      "rfilename": "part.594.parquet"
+    },
+    {
+      "rfilename": "part.595.parquet"
+    },
+    {
+      "rfilename": "part.596.parquet"
+    },
+    {
+      "rfilename": "part.597.parquet"
+    },
+    {
+      "rfilename": "part.598.parquet"
+    },
+    {
+      "rfilename": "part.599.parquet"
+    },
+    {
+      "rfilename": "part.6.parquet"
+    },
+    {
+      "rfilename": "part.60.parquet"
+    },
+    {
+      "rfilename": "part.600.parquet"
+    },
+    {
+      "rfilename": "part.601.parquet"
+    },
+    {
+      "rfilename": "part.602.parquet"
+    },
+    {
+      "rfilename": "part.603.parquet"
+    },
+    {
+      "rfilename": "part.604.parquet"
+    },
+    {
+      "rfilename": "part.605.parquet"
+    },
+    {
+      "rfilename": "part.606.parquet"
+    },
+    {
+      "rfilename": "part.607.parquet"
+    },
+    {
+      "rfilename": "part.608.parquet"
+    },
+    {
+      "rfilename": "part.609.parquet"
+    },
+    {
+      "rfilename": "part.61.parquet"
+    },
+    {
+      "rfilename": "part.610.parquet"
+    },
+    {
+      "rfilename": "part.611.parquet"
+    },
+    {
+      "rfilename": "part.612.parquet"
+    },
+    {
+      "rfilename": "part.613.parquet"
+    },
+    {
+      "rfilename": "part.614.parquet"
+    },
+    {
+      "rfilename": "part.615.parquet"
+    },
+    {
+      "rfilename": "part.616.parquet"
+    },
+    {
+      "rfilename": "part.617.parquet"
+    },
+    {
+      "rfilename": "part.618.parquet"
+    },
+    {
+      "rfilename": "part.619.parquet"
+    },
+    {
+      "rfilename": "part.62.parquet"
+    },
+    {
+      "rfilename": "part.620.parquet"
+    },
+    {
+      "rfilename": "part.621.parquet"
+    },
+    {
+      "rfilename": "part.622.parquet"
+    },
+    {
+      "rfilename": "part.623.parquet"
+    },
+    {
+      "rfilename": "part.624.parquet"
+    },
+    {
+      "rfilename": "part.625.parquet"
+    },
+    {
+      "rfilename": "part.626.parquet"
+    },
+    {
+      "rfilename": "part.627.parquet"
+    },
+    {
+      "rfilename": "part.628.parquet"
+    },
+    {
+      "rfilename": "part.629.parquet"
+    },
+    {
+      "rfilename": "part.63.parquet"
+    },
+    {
+      "rfilename": "part.630.parquet"
+    },
+    {
+      "rfilename": "part.631.parquet"
+    },
+    {
+      "rfilename": "part.632.parquet"
+    },
+    {
+      "rfilename": "part.633.parquet"
+    },
+    {
+      "rfilename": "part.634.parquet"
+    },
+    {
+      "rfilename": "part.635.parquet"
+    },
+    {
+      "rfilename": "part.636.parquet"
+    },
+    {
+      "rfilename": "part.637.parquet"
+    },
+    {
+      "rfilename": "part.638.parquet"
+    },
+    {
+      "rfilename": "part.639.parquet"
+    },
+    {
+      "rfilename": "part.64.parquet"
+    },
+    {
+      "rfilename": "part.640.parquet"
+    },
+    {
+      "rfilename": "part.641.parquet"
+    },
+    {
+      "rfilename": "part.642.parquet"
+    },
+    {
+      "rfilename": "part.643.parquet"
+    },
+    {
+      "rfilename": "part.644.parquet"
+    },
+    {
+      "rfilename": "part.645.parquet"
+    },
+    {
+      "rfilename": "part.646.parquet"
+    },
+    {
+      "rfilename": "part.647.parquet"
+    },
+    {
+      "rfilename": "part.648.parquet"
+    },
+    {
+      "rfilename": "part.649.parquet"
+    },
+    {
+      "rfilename": "part.65.parquet"
+    },
+    {
+      "rfilename": "part.650.parquet"
+    },
+    {
+      "rfilename": "part.651.parquet"
+    },
+    {
+      "rfilename": "part.652.parquet"
+    },
+    {
+      "rfilename": "part.653.parquet"
+    },
+    {
+      "rfilename": "part.654.parquet"
+    },
+    {
+      "rfilename": "part.655.parquet"
+    },
+    {
+      "rfilename": "part.656.parquet"
+    },
+    {
+      "rfilename": "part.657.parquet"
+    },
+    {
+      "rfilename": "part.658.parquet"
+    },
+    {
+      "rfilename": "part.659.parquet"
+    },
+    {
+      "rfilename": "part.66.parquet"
+    },
+    {
+      "rfilename": "part.660.parquet"
+    },
+    {
+      "rfilename": "part.661.parquet"
+    },
+    {
+      "rfilename": "part.662.parquet"
+    },
+    {
+      "rfilename": "part.67.parquet"
+    },
+    {
+      "rfilename": "part.68.parquet"
+    },
+    {
+      "rfilename": "part.69.parquet"
+    },
+    {
+      "rfilename": "part.7.parquet"
+    },
+    {
+      "rfilename": "part.70.parquet"
+    },
+    {
+      "rfilename": "part.71.parquet"
+    },
+    {
+      "rfilename": "part.72.parquet"
+    },
+    {
+      "rfilename": "part.73.parquet"
+    },
+    {
+      "rfilename": "part.74.parquet"
+    },
+    {
+      "rfilename": "part.75.parquet"
+    },
+    {
+      "rfilename": "part.76.parquet"
+    },
+    {
+      "rfilename": "part.77.parquet"
+    },
+    {
+      "rfilename": "part.78.parquet"
+    },
+    {
+      "rfilename": "part.79.parquet"
+    },
+    {
+      "rfilename": "part.8.parquet"
+    },
+    {
+      "rfilename": "part.80.parquet"
+    },
+    {
+      "rfilename": "part.81.parquet"
+    },
+    {
+      "rfilename": "part.82.parquet"
+    },
+    {
+      "rfilename": "part.83.parquet"
+    },
+    {
+      "rfilename": "part.84.parquet"
+    },
+    {
+      "rfilename": "part.85.parquet"
+    },
+    {
+      "rfilename": "part.86.parquet"
+    },
+    {
+      "rfilename": "part.87.parquet"
+    },
+    {
+      "rfilename": "part.88.parquet"
+    },
+    {
+      "rfilename": "part.89.parquet"
+    },
+    {
+      "rfilename": "part.9.parquet"
+    },
+    {
+      "rfilename": "part.90.parquet"
+    },
+    {
+      "rfilename": "part.91.parquet"
+    },
+    {
+      "rfilename": "part.92.parquet"
+    },
+    {
+      "rfilename": "part.93.parquet"
+    },
+    {
+      "rfilename": "part.94.parquet"
+    },
+    {
+      "rfilename": "part.95.parquet"
+    },
+    {
+      "rfilename": "part.96.parquet"
+    },
+    {
+      "rfilename": "part.97.parquet"
+    },
+    {
+      "rfilename": "part.98.parquet"
+    },
+    {
+      "rfilename": "part.99.parquet"
+    }
+  ],
+  "createdAt": "2026-03-12T11:03:05.000Z",
+  "usedStorage": 23463649848
+}

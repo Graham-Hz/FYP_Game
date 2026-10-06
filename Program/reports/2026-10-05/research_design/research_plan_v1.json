@@ -1,0 +1,55 @@
+{
+  "version": "research-design-v1",
+  "date": "2026-10-05",
+  "status": "proposed_working_design_not_supervisor_approved",
+  "seed": 42,
+  "model_training_performed": false,
+  "working_title": "Cross-Platform Data-Driven Game Development Planning and Decision-Support System",
+  "claim_scope": "platform-specific historical benchmarking and conditional classification; no revenue, causal optimization, or verified pre-launch forecasting",
+  "pc": {
+    "source": "artem_games_march2025_full",
+    "target_candidate": "estimated_owners_3_source_interval_tiers",
+    "unknown_target_policy": "0 - 0 remains unknown; never label commercial failure",
+    "rules": [
+      {"label": "O1", "lower_min": 0, "upper_max": 20000, "upper_must_be_positive": true},
+      {"label": "O2", "lower_min": 20000, "upper_max": 100000},
+      {"label": "O3", "lower_min": 100000}
+    ],
+    "reference_cohort_rows": 89450,
+    "reference_labelled_rows": 81156,
+    "deployment_candidate_scope": "positive observed price, adequate comparable support, and only after model validation",
+    "secondary_review_target": "on_hold_pending_definition_and_timing_reconciliation",
+    "reference_date_proxy": "2025-03-13"
+  },
+  "mobile": {
+    "source": "google_games",
+    "target_candidate": "minimum_installs_3_tiers",
+    "thresholds": [1000, 100000],
+    "labels": ["M1_under_1k", "M2_1k_to_under_100k", "M3_100k_plus"],
+    "sensitivity_thresholds": [1000, 100000, 1000000],
+    "reference_cohort_rows": 318298,
+    "sports_policy": "hold_out_ambiguous_category",
+    "maximum_installs_policy": "not_used_as_target_or_feature",
+    "numeric_price_policy": "use_only_source_USD_values; retain_other_rows_with_missing_price_indicator"
+  },
+  "evaluation": {
+    "primary_split": "developer_group_holdout",
+    "pc_group_rule": "connected_components_of_games_sharing_any_normalized_developer_name",
+    "mobile_group_rule": "developer_id_labels_not_verified_company_entities",
+    "approximate_train_calibration_test": [0.70, 0.15, 0.15],
+    "training_cv_folds": 3,
+    "baseline_candidates": ["majority", "class_prior", "age_only_simple_model"],
+    "model_candidates": ["regularized_multinomial_logistic_regression", "histogram_gradient_boosting"],
+    "primary_metric": "macro_f1",
+    "secondary_metrics": ["balanced_accuracy", "per_class_precision_recall_f1", "confusion_matrix", "ordinal_error_categories"],
+    "probability_metrics": ["log_loss", "multiclass_brier_sum_over_classes_then_mean", "reliability_diagram"],
+    "split_manifest_created": false,
+    "max_initial_parameter_combinations_per_family": 8,
+    "paired_group_bootstrap_repetitions": 1000
+  },
+  "sensitivity_candidates": ["positive_price_only_PC", "age_at_least_180_days", "age_at_least_365_days", "software_only_genre_exclusion_PC", "mobile_four_tiers", "random_vs_group_split"],
+  "core_system": ["platform_and_dataset_context", "historical_comparison", "feature_based_comparable_games", "validated_classification_if_supported", "scenario_comparison_with_source_export"],
+  "deferred": ["RAWG_join", "review_NLP", "Apple_validation", "LLM_agent"],
+  "before_training": ["confirm_research_scope_and_target_working_definitions", "refine_column_specific_missing_rules", "review_PC_product_type", "recompute_cleaned_cohorts", "create_versioned_feature_allowlist", "freeze_split_manifest"],
+  "unknowns": ["supervisor_dual_platform_feedback", "next_deliverable_and_deadline", "exact_original_Kaggle_download_versions", "per_record_PC_collection_times", "Steam_review_field_filters", "final_application_framework", "user_evaluation_recruitment"]
+}

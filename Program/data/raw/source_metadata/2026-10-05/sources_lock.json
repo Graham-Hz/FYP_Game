@@ -1,0 +1,6143 @@
+{
+  "audit_date": "2026-10-05",
+  "hf": {
+    "FronkonGames/steam-games-dataset": {
+      "revision": "ba4e26785af33bee500e96597068c6e77f4edea9",
+      "last_modified": "2026-10-02T18:40:25.000Z",
+      "downloads_last_month": 2076,
+      "license": "mit",
+      "files": [
+        {
+          "path": ".gitattributes",
+          "size": 2358,
+          "lfs": null
+        },
+        {
+          "path": "README.md",
+          "size": 596,
+          "lfs": null
+        },
+        {
+          "path": "data/train-00000-of-00001.parquet",
+          "size": 191983414,
+          "lfs": {
+            "oid": "775b17f2a5a52b96a8441739cd0dd4939916335b6edeebbfc4a1b238388c5a77",
+            "size": 191983414,
+            "pointerSize": 134
+          }
+        },
+        {
+          "path": "games.csv",
+          "size": 401140503,
+          "lfs": {
+            "oid": "1b48008b01a799d82385d6e66ba0cb65dd477b6aa4b6c2ec8c443025ab6880ad",
+            "size": 401140503,
+            "pointerSize": 134
+          }
+        },
+        {
+          "path": "games.json",
+          "size": 961591282,
+          "lfs": {
+            "oid": "4d759e57661a948bd1e302659bfd38443a736e5aa7e05e4587033ce53049b4ad",
+            "size": 961591282,
+            "pointerSize": 134
+          }
+        },
+        {
+          "path": "images/banner.png",
+          "size": 121791,
+          "lfs": {
+            "oid": "afa4988c6264c6eb751d09ec763f266297321f8e0fd259b60ea0935e4d30c928",
+            "size": 121791,
+            "pointerSize": 131
+          }
+        }
+      ],
+      "download": {
+        "path": "data\\raw\\huggingface\\ba4e26785af33bee500e96597068c6e77f4edea9\\steam.parquet",
+        "sha256": "775b17f2a5a52b96a8441739cd0dd4939916335b6edeebbfc4a1b238388c5a77",
+        "bytes": 191983414,
+        "retrieved_date": "2026-10-05",
+        "lfs_hash_verified": true
+      }
+    },
+    "atalaydenknalbant/video-games-dataset": {
+      "revision": "d9f5c486875b6309255b5fb10709480ace0eede7",
+      "last_modified": "2026-07-03T00:21:40.000Z",
+      "downloads_last_month": 305,
+      "license": "cc0-1.0",
+      "files": [
+        {
+          "path": ".gitattributes",
+          "size": 2883,
+          "lfs": null
+        },
+        {
+          "path": "README.md",
+          "size": 9737,
+          "lfs": null
+        },
+        {
+          "path": "jsonl/videogames_data.jsonl",
+          "size": 4300705739,
+          "lfs": {
+            "oid": "10678e9b6c552e3b958b8b07bf2c2d260b545df3dfdf7767881472d1079e0ab8",
+            "size": 4300705739,
+            "pointerSize": 135
+          }
+        },
+        {
+          "path": "videogames_data.csv",
+          "size": 2000469667,
+          "lfs": {
+            "oid": "ab3eacabdc1a9021908b9190f28e2d5466c322d017e36c5979641f3f91b7eef7",
+            "size": 2000469667,
+            "pointerSize": 135
+          }
+        },
+        {
+          "path": "videogames_data.parquet",
+          "size": 1011662649,
+          "lfs": {
+            "oid": "9fe0024da52dac800ff0587b8bf7432388892c63cb99d041967afba53be1ee60",
+            "size": 1011662649,
+            "pointerSize": 135
+          }
+        }
+      ]
+    },
+    "adde023/steam-reviews": {
+      "revision": "d0ec12b33dffb8109b683b2e07780e2fc6b97187",
+      "last_modified": "2026-03-12T14:51:00.000Z",
+      "downloads_last_month": 2102,
+      "license": null,
+      "files": [
+        {
+          "path": ".gitattributes",
+          "size": 2504,
+          "lfs": null
+        },
+        {
+          "path": "README.md",
+          "size": 474,
+          "lfs": null
+        },
+        {
+          "path": "part.0.parquet",
+          "size": 27325736,
+          "lfs": {
+            "oid": "53d4d207bc8eb29a6c2898541d0b58644502c76ff9fbea796415da075608522e",
+            "size": 27325736,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.1.parquet",
+          "size": 36315678,
+          "lfs": {
+            "oid": "4473b92bed009789a034514ec777589d1daa2d3bc9d840c5da1de4764d9e82bd",
+            "size": 36315678,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.10.parquet",
+          "size": 30860492,
+          "lfs": {
+            "oid": "71a89d285f8d7d266738cd4d0694d5653b55e69ffad7d6550f2476725b6b07f5",
+            "size": 30860492,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.100.parquet",
+          "size": 35788701,
+          "lfs": {
+            "oid": "df98fb4c87f0f440963e7c131dcc91e96582d77b0c8768c197db3a9d6ec8eab1",
+            "size": 35788701,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.101.parquet",
+          "size": 36691370,
+          "lfs": {
+            "oid": "fde23d31a38809124aba71c931efc1cfae683b4b03b1965bd00918d2d5c04463",
+            "size": 36691370,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.102.parquet",
+          "size": 35430637,
+          "lfs": {
+            "oid": "dd6fe1169960035a01874d363bba1eb63ce1621755befd3e71c869d240db21e5",
+            "size": 35430637,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.103.parquet",
+          "size": 36053837,
+          "lfs": {
+            "oid": "3d7ec311eba855796745d666124afe8b480abb7bd35c493536a10655e8759291",
+            "size": 36053837,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.104.parquet",
+          "size": 34944447,
+          "lfs": {
+            "oid": "c32ba89a42866cc2a10b8a38d200a90964de07e3f87a51cf5b8957bc9bbf5f90",
+            "size": 34944447,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.105.parquet",
+          "size": 35370937,
+          "lfs": {
+            "oid": "c6b42d0a5f9dfc7ea766bf09be57f67724a808f419a115b27526d09843900afc",
+            "size": 35370937,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.106.parquet",
+          "size": 37044694,
+          "lfs": {
+            "oid": "7809a5b97812fc5a146fb1d29d8d2ea00de41cc9999db4fff31a0cb90ad41d9b",
+            "size": 37044694,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.107.parquet",
+          "size": 36480430,
+          "lfs": {
+            "oid": "7e1ae7c0591c8668388bccaec4e70626c7bf156c4b08d13981f8f17a67d610ea",
+            "size": 36480430,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.108.parquet",
+          "size": 36837238,
+          "lfs": {
+            "oid": "812e8e2cf1d1c34d0c7c8b4736d1de1502309749216b47b26d129d2f1343c1ad",
+            "size": 36837238,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.109.parquet",
+          "size": 36575397,
+          "lfs": {
+            "oid": "54eaa6471a4065ef9effb344466aa36be6abedb4bdb3ac48b161bec4406677a0",
+            "size": 36575397,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.11.parquet",
+          "size": 30841318,
+          "lfs": {
+            "oid": "3d78daf6e52883062ce90a428c11f8e5ef09e7788d1654becc6871174f7d426f",
+            "size": 30841318,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.110.parquet",
+          "size": 35418977,
+          "lfs": {
+            "oid": "f8bba6f4437d933a9cc4e2deea10fdbad3b3edb1ac8c7554049a4f2075e32eb7",
+            "size": 35418977,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.111.parquet",
+          "size": 36928389,
+          "lfs": {
+            "oid": "c2f0216425e74583bc2ccc80a7785f7b87e4cefd331ecb0540a5379143421b88",
+            "size": 36928389,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.112.parquet",
+          "size": 36746689,
+          "lfs": {
+            "oid": "c112436edcda0d4f686b8d9d8b211af8ca9e6f34e4a08c648a44ed0115e1b96c",
+            "size": 36746689,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.113.parquet",
+          "size": 34850107,
+          "lfs": {
+            "oid": "357fadf55af44b91b118a6143fbc1884dedf8f339087ee7a86dd0642273a7225",
+            "size": 34850107,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.114.parquet",
+          "size": 35809697,
+          "lfs": {
+            "oid": "b6b7c67ed7dab7275731b13b1f6c0a1e11749e60b31ce6e5025234573be32265",
+            "size": 35809697,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.115.parquet",
+          "size": 35371777,
+          "lfs": {
+            "oid": "3716044459812a1072a5c849ee940cd37454bdcee3a07a07c916464b62b4859a",
+            "size": 35371777,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.116.parquet",
+          "size": 34376465,
+          "lfs": {
+            "oid": "d293b838a64acf251e1a8d7fb3a607af75dec0cc657b372fb7cbf72278d7586e",
+            "size": 34376465,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.117.parquet",
+          "size": 34712283,
+          "lfs": {
+            "oid": "70725842b98a85f98659a43f84fab05cf1b8c031d40d790aef9b00d8e1019e3f",
+            "size": 34712283,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.118.parquet",
+          "size": 36228749,
+          "lfs": {
+            "oid": "d741c6a483e08f6391c387d3f47cc44c0c04096be9176d9b5676cbd21e4c912f",
+            "size": 36228749,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.119.parquet",
+          "size": 36076391,
+          "lfs": {
+            "oid": "87a6fc34c996befb214544d0249ab3b99652c5311ad47aa054d26aa2ed3c1616",
+            "size": 36076391,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.12.parquet",
+          "size": 31397830,
+          "lfs": {
+            "oid": "4ba5788d4743de69335e5576870da65b2952fb288c45b33b64875dca1fc89ba2",
+            "size": 31397830,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.120.parquet",
+          "size": 34341708,
+          "lfs": {
+            "oid": "41ed64f9c97f57f9e887c9121bf00b20fbaf511733a821ed3882a30528b216b0",
+            "size": 34341708,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.121.parquet",
+          "size": 36090057,
+          "lfs": {
+            "oid": "2beaf54c59759e5161e795014a10a050f75314d8d757bd533fdd436f93bcfeba",
+            "size": 36090057,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.122.parquet",
+          "size": 31461389,
+          "lfs": {
+            "oid": "b7bab2a98e26b59417de07e9b0a5adfb6280d1892892b67a31d4eda569a643ab",
+            "size": 31461389,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.123.parquet",
+          "size": 32937822,
+          "lfs": {
+            "oid": "f353ef654d48ea4267cc121defe604beaaf3799083565ab46d1bf171bbf34acb",
+            "size": 32937822,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.124.parquet",
+          "size": 35921300,
+          "lfs": {
+            "oid": "ffb71005b41ab2a779c109a57d20b681054d9b2057e4ebaf56e2f29a22dd2fa4",
+            "size": 35921300,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.125.parquet",
+          "size": 37269541,
+          "lfs": {
+            "oid": "e390df584d96b9f88151c3c0fa60c0405f659b8d504d1a15865aa5ba7debc3d9",
+            "size": 37269541,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.126.parquet",
+          "size": 35181791,
+          "lfs": {
+            "oid": "18dc0552b492af86b1a8e78cd3d6ddf06fd98de222064c2d098e740b287b2edb",
+            "size": 35181791,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.127.parquet",
+          "size": 36302549,
+          "lfs": {
+            "oid": "d4fd0b316569672f1e17c8cd12b80c98eff611ee6874781ccbd8d88254a3715a",
+            "size": 36302549,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.128.parquet",
+          "size": 36077583,
+          "lfs": {
+            "oid": "dcc82adb30b5c9f84b9f91368ee5635f22c0d262bb12dbec82fc8edd484a3f30",
+            "size": 36077583,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.129.parquet",
+          "size": 36425362,
+          "lfs": {
+            "oid": "3443b2334d190e9faee6363836c55d972dcbc48d2c0557b0e9e5db4680fd7b09",
+            "size": 36425362,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.13.parquet",
+          "size": 34469401,
+          "lfs": {
+            "oid": "a4686b438e5e5bcf8af98fbbaca39dba4153ac8e00971eae4b6249594abab5bc",
+            "size": 34469401,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.130.parquet",
+          "size": 35606067,
+          "lfs": {
+            "oid": "2456d7c372c4ddb0ac8359085534d9f1d6d2b7e38a54427af859bffa222010d2",
+            "size": 35606067,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.131.parquet",
+          "size": 37821980,
+          "lfs": {
+            "oid": "25d87834745b0a8f14d185bc8f32aaa7700f94e1e728d4b6538b97e6c230a713",
+            "size": 37821980,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.132.parquet",
+          "size": 35232533,
+          "lfs": {
+            "oid": "6431fbd7019861d650b1bba13f4dfe03c9246ed8f2c2d290d493245ae8693661",
+            "size": 35232533,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.133.parquet",
+          "size": 36008831,
+          "lfs": {
+            "oid": "a4322693d281fbdc88c2ca436bfdbbe3ba259a62fcf6c99723be1994af67190e",
+            "size": 36008831,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.134.parquet",
+          "size": 34967259,
+          "lfs": {
+            "oid": "77960c24f114dc22810691ce8df35cf39985e7a2a58aed2107087331d95b8308",
+            "size": 34967259,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.135.parquet",
+          "size": 35716958,
+          "lfs": {
+            "oid": "f93ea36d35f566ee0f76b59aa945fbf07adbfab80c1da223060d4a629dc97591",
+            "size": 35716958,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.136.parquet",
+          "size": 35346037,
+          "lfs": {
+            "oid": "403302fd8f24c01e088e610aee4c1fc61143433f8691d7d1dd623297359bc0fe",
+            "size": 35346037,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.137.parquet",
+          "size": 36461880,
+          "lfs": {
+            "oid": "3aad70c5fa4bc0d4c02957d5371577ebf5828471bbdb68c2638b66cf814991dc",
+            "size": 36461880,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.138.parquet",
+          "size": 35738641,
+          "lfs": {
+            "oid": "084163c7addd5c83288f80e4856fe97c7d15fbb53dc01a0c7f234dbceb99926a",
+            "size": 35738641,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.139.parquet",
+          "size": 36349064,
+          "lfs": {
+            "oid": "12ba14361937272100b2236d5397a0bd145a0c7114acb9fdde9bdb6a982569d8",
+            "size": 36349064,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.14.parquet",
+          "size": 36485453,
+          "lfs": {
+            "oid": "9ff2ba55d6a95a4adc9c4b81272f120631d0b69226b9be0201ae98fda69dbc14",
+            "size": 36485453,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.140.parquet",
+          "size": 36676352,
+          "lfs": {
+            "oid": "7b621345b8ff842101468301df33e4837730e1e544e3f3d7b7d363d249572e12",
+            "size": 36676352,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.141.parquet",
+          "size": 33531271,
+          "lfs": {
+            "oid": "59be9069dc3c19dc65a818a542dfdc96a41217777053c1a1f62714f4694c8093",
+            "size": 33531271,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.142.parquet",
+          "size": 36501052,
+          "lfs": {
+            "oid": "5fc32fe87a0d2aaa7627d178e608eb4e5dd6edaf83f67cfb874b48bcd57a11a8",
+            "size": 36501052,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.143.parquet",
+          "size": 35850442,
+          "lfs": {
+            "oid": "7efcaa7a09eaa511366ee49d9dd491a5f327667506fb91a2258eab4fae5f1174",
+            "size": 35850442,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.144.parquet",
+          "size": 36495761,
+          "lfs": {
+            "oid": "18ed36b56c0132df96cd107093c12e036e8abb0af8b64747572f5c75b6761c7a",
+            "size": 36495761,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.145.parquet",
+          "size": 35200149,
+          "lfs": {
+            "oid": "bd9ee5747258d8fabd24b6c7c06f6a97745581e93b3c89340c2780ec5d3fd961",
+            "size": 35200149,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.146.parquet",
+          "size": 36785904,
+          "lfs": {
+            "oid": "50a565d57c9ca1f209b4697175becfc3a876152f2ae98f7ffcef30b03b5c6b97",
+            "size": 36785904,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.147.parquet",
+          "size": 35237187,
+          "lfs": {
+            "oid": "4071b04f0f633dc686673419707904300eb69218b50900e39ea4ed7f2b79881f",
+            "size": 35237187,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.148.parquet",
+          "size": 37589131,
+          "lfs": {
+            "oid": "f2f44dc4e251f8fe38f24cfe60f72d5beeb9f49657cd547da0104272efed0e57",
+            "size": 37589131,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.149.parquet",
+          "size": 37059128,
+          "lfs": {
+            "oid": "502ba481f2b0b1fbac3083aac23fa1682fe9b73af47538c18eabe54196dc3835",
+            "size": 37059128,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.15.parquet",
+          "size": 35203738,
+          "lfs": {
+            "oid": "207e9567c5ba0aaaec13fc3510f7922f9e453705fbc28721b5edcc73b720462f",
+            "size": 35203738,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.150.parquet",
+          "size": 35779516,
+          "lfs": {
+            "oid": "f631f44bf220fe478084f8ab3c38943f8d5813822048366db39fa4a359f1d141",
+            "size": 35779516,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.151.parquet",
+          "size": 37336029,
+          "lfs": {
+            "oid": "c6d0f1bf98f44dc30e21df54ad03b65e4437c60d080d42a9cceb56c4e1ec4237",
+            "size": 37336029,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.152.parquet",
+          "size": 36069344,
+          "lfs": {
+            "oid": "41c934c30b325622d5a8ff939d3cc39fe33a01a838b849cb3d4e5e8103de6bd2",
+            "size": 36069344,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.153.parquet",
+          "size": 33905085,
+          "lfs": {
+            "oid": "0bf916a3c0494ba16dc425497c558d976d8f33be42fce0d06fd6802b50c95f0d",
+            "size": 33905085,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.154.parquet",
+          "size": 33576948,
+          "lfs": {
+            "oid": "429bf9d76d8db0395a41cd9f585390a168214e2d8819d1b4b853030c3b10c45a",
+            "size": 33576948,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.155.parquet",
+          "size": 33174295,
+          "lfs": {
+            "oid": "9f3227c5562526a750a5b7b04d97e344d0fcbb3f439b65219b658a5e641b2d90",
+            "size": 33174295,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.156.parquet",
+          "size": 34343161,
+          "lfs": {
+            "oid": "20b5fe53e3825a367b8d82dc6ae03cd0226d78c6be23916ae37cdb3ab1d082c4",
+            "size": 34343161,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.157.parquet",
+          "size": 34175792,
+          "lfs": {
+            "oid": "bf71f9f8d71c3ce2f0333f39d31c687e92703ca6cdda12829dec805794464945",
+            "size": 34175792,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.158.parquet",
+          "size": 35390657,
+          "lfs": {
+            "oid": "bde9612d90555a8833691488bbf7e96f6a70136f39121afc4388c5b20de7cfa1",
+            "size": 35390657,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.159.parquet",
+          "size": 31487904,
+          "lfs": {
+            "oid": "fb831d035c2a4c04038e6b324cf6bab3ceefd5b80b7646c90456c99bc497c7fb",
+            "size": 31487904,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.16.parquet",
+          "size": 36515526,
+          "lfs": {
+            "oid": "e1b619ace6a0d989a16f732eba1a8ee624b5fd3bb9d079bd9291fa1f1fbe3122",
+            "size": 36515526,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.160.parquet",
+          "size": 36743843,
+          "lfs": {
+            "oid": "8b33dc041eb73507e8fd9dbf4f11461164d74ec9638a19c606b93a9a4116f211",
+            "size": 36743843,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.161.parquet",
+          "size": 35697802,
+          "lfs": {
+            "oid": "15c0bebb191c0322c8eca04f427c339d98bbd08cc65d52abe16fbcd17932d194",
+            "size": 35697802,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.162.parquet",
+          "size": 36784575,
+          "lfs": {
+            "oid": "55b10451397b5e943621a5bab9e63d9468508b9910bef00e0cea33573b7235b5",
+            "size": 36784575,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.163.parquet",
+          "size": 36262569,
+          "lfs": {
+            "oid": "7f46607b0ac0966753aae73b871b13c169ec381f7b7bbe9f2ed8ff00b4a4a05d",
+            "size": 36262569,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.164.parquet",
+          "size": 34100871,
+          "lfs": {
+            "oid": "69be683680eeb6929ebdf2bd6fa194914fccdf69dce2e0b69c20a9e11b1db286",
+            "size": 34100871,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.165.parquet",
+          "size": 35890158,
+          "lfs": {
+            "oid": "440409ea029ef782754bba6cfb26f7978e3d5986a6f85a79b53925ace9316b74",
+            "size": 35890158,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.166.parquet",
+          "size": 32292408,
+          "lfs": {
+            "oid": "0ac4385ec66e25033d42bd950dcea5affee9f69dba2fbd4afe79192826084d5e",
+            "size": 32292408,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.167.parquet",
+          "size": 34916252,
+          "lfs": {
+            "oid": "0d28eaf9c757dd6553981c4955946648bcb9a22fc5595984c425c431b220dad2",
+            "size": 34916252,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.168.parquet",
+          "size": 34130254,
+          "lfs": {
+            "oid": "5ffa5f37496cc2016ee23a0a2cfaa23511bfd25d8571899e7ea2a1419e71c41a",
+            "size": 34130254,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.169.parquet",
+          "size": 35479902,
+          "lfs": {
+            "oid": "96441a0216dfb28c923f7137f38d5cb333b275c8a90cf5698fc760296729dd28",
+            "size": 35479902,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.17.parquet",
+          "size": 36750000,
+          "lfs": {
+            "oid": "dfb84eba2e1df92679a6156256bde6d87b37b3046f5307e84eec56495880ad08",
+            "size": 36750000,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.170.parquet",
+          "size": 36533201,
+          "lfs": {
+            "oid": "4e7b5d2bcacb02039e4a1973c7f0af3181b0a572ce12d52e472d41286ac8069f",
+            "size": 36533201,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.171.parquet",
+          "size": 35330475,
+          "lfs": {
+            "oid": "ad9de9eac18206332310e9d07fc8df3974df29592bf740ad7bfa17eead691eb8",
+            "size": 35330475,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.172.parquet",
+          "size": 34967474,
+          "lfs": {
+            "oid": "ae178d27d3012654a12dd8da2770c20615d3d358dfee8c6138f9d91e0a005839",
+            "size": 34967474,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.173.parquet",
+          "size": 36838189,
+          "lfs": {
+            "oid": "6e3f4d8c7c8b7d4864e2f5e8a41f0df6efc90a7d008ec775745cbc64485a70c8",
+            "size": 36838189,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.174.parquet",
+          "size": 36991198,
+          "lfs": {
+            "oid": "170798bdab4c58300ae375cb70fd5ec69964866372bf6dd90ef1021879ef76f0",
+            "size": 36991198,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.175.parquet",
+          "size": 36999936,
+          "lfs": {
+            "oid": "a74d360b285ed9e19b32b71ecf87bc1e0a738f0ec81c62a29b2a54fb4db8d7c8",
+            "size": 36999936,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.176.parquet",
+          "size": 35200611,
+          "lfs": {
+            "oid": "e37a45af7cbec935e09c3348d049ea2b2578d83124607e6f22199b68ce7b0820",
+            "size": 35200611,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.177.parquet",
+          "size": 37920478,
+          "lfs": {
+            "oid": "c012da439b3459c4a4fe720254387408176a3d89c2e898003e5a7a2cd80617ac",
+            "size": 37920478,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.178.parquet",
+          "size": 37743524,
+          "lfs": {
+            "oid": "3cbf2cd632946fee929b5f32d365adfb3f9fcef1dcf3321a541c941e351a59f4",
+            "size": 37743524,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.179.parquet",
+          "size": 35046814,
+          "lfs": {
+            "oid": "9af2004796d086d12462cf507b7f5fde2975493785524dfd2eb7967e9213ae9a",
+            "size": 35046814,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.18.parquet",
+          "size": 37437224,
+          "lfs": {
+            "oid": "d05462261c0f64bf6c2a3380a441f0b36300cf7bc5185e1c1e4c7f28ab6f1713",
+            "size": 37437224,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.180.parquet",
+          "size": 35880365,
+          "lfs": {
+            "oid": "c1ba22f46e8b8d2705d92504fb3236548868986540fb8f222e9db87edb13b1d2",
+            "size": 35880365,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.181.parquet",
+          "size": 37611087,
+          "lfs": {
+            "oid": "d86d70344791909a0c7cf403a351b43c4a577ed64fa97fab8c219d81a4f93895",
+            "size": 37611087,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.182.parquet",
+          "size": 37514694,
+          "lfs": {
+            "oid": "6deda9e42011e1c733ce16b09998e00978a0507c1b09377f354d2dccdda30544",
+            "size": 37514694,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.183.parquet",
+          "size": 36449758,
+          "lfs": {
+            "oid": "74028eacb259f607151ece3b4db017f85dc6de7ed876ab36612b175a2b73cc13",
+            "size": 36449758,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.184.parquet",
+          "size": 36434448,
+          "lfs": {
+            "oid": "ddf3378d8931c9e55755e35adbdb0d52f0be1f061c2755ef781530baee70ca18",
+            "size": 36434448,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.185.parquet",
+          "size": 35845898,
+          "lfs": {
+            "oid": "8eacadfd378aa2e04dedb912f5e75b331f8e9965d5439549509aaf421eecc40a",
+            "size": 35845898,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.186.parquet",
+          "size": 37476968,
+          "lfs": {
+            "oid": "0d3ed6e1cdf4e5fcb05995a71da1d5da882d1beb9747c8bd1a142be26a5a25c5",
+            "size": 37476968,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.187.parquet",
+          "size": 37057230,
+          "lfs": {
+            "oid": "738240e74a0ece89a1f2132b9bde2a8e725b59295c4f510b439bcc0443510220",
+            "size": 37057230,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.188.parquet",
+          "size": 36662734,
+          "lfs": {
+            "oid": "9079555430da5418ee9432565ebd53cedf6eed22af18bd0490c58e5ae2e3d503",
+            "size": 36662734,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.189.parquet",
+          "size": 36436575,
+          "lfs": {
+            "oid": "1831a9a1d5ceef87a8847fa67f34af2f750e82f48d0887f3739b83985d311706",
+            "size": 36436575,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.19.parquet",
+          "size": 37325779,
+          "lfs": {
+            "oid": "5ac6977499b5956c933c74f816a40d4701ae158215b17103dc08624b291ab350",
+            "size": 37325779,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.190.parquet",
+          "size": 37723874,
+          "lfs": {
+            "oid": "16a1e83f158ac06a87a1a0b2b4d82264e97a61843a44f19e278d54310a0e0ea4",
+            "size": 37723874,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.191.parquet",
+          "size": 37061436,
+          "lfs": {
+            "oid": "2af340d6a24974e5a6035ff6a9b7015bce86fa82cbf82de8242799824935079e",
+            "size": 37061436,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.192.parquet",
+          "size": 35080682,
+          "lfs": {
+            "oid": "a6a80b857011317a0bddc79d2d71a173e3807a63ca3d20ec4605c93a720fd887",
+            "size": 35080682,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.193.parquet",
+          "size": 35250815,
+          "lfs": {
+            "oid": "77ff5579a21c5f19ac567c20189904309a142311d3f181b5acbd024095b841a4",
+            "size": 35250815,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.194.parquet",
+          "size": 38153067,
+          "lfs": {
+            "oid": "97c7636fa248b2ad7c72c2c34ab6e6d0513394bac0e5b124ed55166a11b04df3",
+            "size": 38153067,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.195.parquet",
+          "size": 36540109,
+          "lfs": {
+            "oid": "abb3293f368abb00b1d0a2d9ef07dafb0ab3b4d448a01ad06890c30a00c57607",
+            "size": 36540109,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.196.parquet",
+          "size": 36797672,
+          "lfs": {
+            "oid": "9fa1db3842dff5712a305a262241bbfb0bb6289ce0d6d16381063a501fc00e3e",
+            "size": 36797672,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.197.parquet",
+          "size": 36213549,
+          "lfs": {
+            "oid": "f00e376855625e70cb3dbe360fb2c51a7c386cba9d2f23856f6cf685d7a9a9e3",
+            "size": 36213549,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.198.parquet",
+          "size": 33141935,
+          "lfs": {
+            "oid": "220e9791aef00bb2852482b39b619a9267166aea74398bd6f1ea67c796c958d0",
+            "size": 33141935,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.199.parquet",
+          "size": 32990486,
+          "lfs": {
+            "oid": "533a1744c3fa2c691ef5411a0795000e5228f3f3f065cb230a8e17694da75c95",
+            "size": 32990486,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.2.parquet",
+          "size": 37382849,
+          "lfs": {
+            "oid": "539daac960d10f3f81e42b5f36868b00d2e5ac224e4980c2fec8e39d0bda9d94",
+            "size": 37382849,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.20.parquet",
+          "size": 36513786,
+          "lfs": {
+            "oid": "9cd4691b47a3d624e0bc5fda1cb306e02637d7e9feacd5991f85b22262d975d3",
+            "size": 36513786,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.200.parquet",
+          "size": 30991809,
+          "lfs": {
+            "oid": "2d95cc3bbcc0bb6256151a6da09b5155d03d01af49764177c876c0c23341b25a",
+            "size": 30991809,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.201.parquet",
+          "size": 33612058,
+          "lfs": {
+            "oid": "1776be55e20d30e044a1da8f19bc02afaef6f832f1fb4ed9b5a420338329a1e9",
+            "size": 33612058,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.202.parquet",
+          "size": 35345570,
+          "lfs": {
+            "oid": "dd6e9010aa443249f30b4e9eb8b5a1cc08c843f7c5d125c788495024efbcd222",
+            "size": 35345570,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.203.parquet",
+          "size": 36965361,
+          "lfs": {
+            "oid": "8669856a1ca75958ecdcbe4b22901c157cd6b5e0328a6f57b2a96d19d5325e00",
+            "size": 36965361,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.204.parquet",
+          "size": 35557834,
+          "lfs": {
+            "oid": "d9ebcce0f0fc0ddd6f9f34a8ffd345deeec8d55a25ce811530076c548c50cf8a",
+            "size": 35557834,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.205.parquet",
+          "size": 34995339,
+          "lfs": {
+            "oid": "460fe8045320cde72ab1ebbb1cbffc3ccb8e4deec942b1b1f2bcd1a5e8caf242",
+            "size": 34995339,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.206.parquet",
+          "size": 37960284,
+          "lfs": {
+            "oid": "bf574d994ba317cb48b3f402d1eae1942c1fef6dab4e5dd506c2b7228392c354",
+            "size": 37960284,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.207.parquet",
+          "size": 36523490,
+          "lfs": {
+            "oid": "eeb2377676b73d37a6241c2cd5ef45c45b73d7b8923229248a437da6d4666737",
+            "size": 36523490,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.208.parquet",
+          "size": 38523860,
+          "lfs": {
+            "oid": "fdc05522785836de40e34680cc5e7f47c75e3c6c9ea0feca5ab7b55cef1dda8f",
+            "size": 38523860,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.209.parquet",
+          "size": 31216297,
+          "lfs": {
+            "oid": "b099f236a208ec626a672c79e3b5de9333ce7ed33ebd13f6edf8927ee73171eb",
+            "size": 31216297,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.21.parquet",
+          "size": 32769859,
+          "lfs": {
+            "oid": "dd071fee0483d7e7a91503b356866ea7f156f5b03be24baff8f78e4b635cc21b",
+            "size": 32769859,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.210.parquet",
+          "size": 35453512,
+          "lfs": {
+            "oid": "2d9d0df121df76aa7ca2493f16fdbb59da5b70b567f1b5a4543dcc49ff656f2c",
+            "size": 35453512,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.211.parquet",
+          "size": 36789382,
+          "lfs": {
+            "oid": "c56dd8b4828b633cfc81bcdf2640a6565dd5085305241d02277386e6a1274952",
+            "size": 36789382,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.212.parquet",
+          "size": 36072938,
+          "lfs": {
+            "oid": "ba236d938ce0a481fb6341c884651aba1075f910c0b89cd6fd22c5d8f203af5f",
+            "size": 36072938,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.213.parquet",
+          "size": 35343920,
+          "lfs": {
+            "oid": "dee7ed259cba511d7efe4a52081286be045e7ecc8853f48cca3d3eca0f5ba10b",
+            "size": 35343920,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.214.parquet",
+          "size": 35791171,
+          "lfs": {
+            "oid": "58f0c381595437775a74e1a9aa1abab8a35a16e7b61480f830afe80d720cc3b3",
+            "size": 35791171,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.215.parquet",
+          "size": 34479934,
+          "lfs": {
+            "oid": "1da951d0099346375bf89de8d96b30293aaa42ea4f072f8cfb36babdc3b7b97f",
+            "size": 34479934,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.216.parquet",
+          "size": 36225312,
+          "lfs": {
+            "oid": "2c14e58cdbf9beed11ae00d6ba1e048d4c35c2f8a16ef99e620e081e2600e227",
+            "size": 36225312,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.217.parquet",
+          "size": 37125082,
+          "lfs": {
+            "oid": "92290a69d27205db75a285fa09dd44e052b222c3d7733f77221d2e6e51cddb67",
+            "size": 37125082,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.218.parquet",
+          "size": 36039213,
+          "lfs": {
+            "oid": "70f5db49359bf44b711007060f383c24096d52140576a40abb750233a8dba71e",
+            "size": 36039213,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.219.parquet",
+          "size": 36489081,
+          "lfs": {
+            "oid": "a5b4b17187706f6ee2d39543f36844322c7bf4709ebb40b65d23aaaa16c67443",
+            "size": 36489081,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.22.parquet",
+          "size": 36045059,
+          "lfs": {
+            "oid": "8dca6a1fa1aac45d8ff422ed1537ece5651d7cb054353f5d2476f6f16d6b33c4",
+            "size": 36045059,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.220.parquet",
+          "size": 29895155,
+          "lfs": {
+            "oid": "a3b0885cdf02d1a9ec89e2b62b62771159de15a9a2dc181762366ec5ed4b6cb0",
+            "size": 29895155,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.221.parquet",
+          "size": 32266280,
+          "lfs": {
+            "oid": "c1bf13ce7445f37eb7834279bab692d9641ecd0e0da7eadd49056b512481465b",
+            "size": 32266280,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.222.parquet",
+          "size": 36539477,
+          "lfs": {
+            "oid": "6baf8d2952392786244761fff7cc6eb4678649166aa8f7e3af88a9fa2daa456c",
+            "size": 36539477,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.223.parquet",
+          "size": 37555477,
+          "lfs": {
+            "oid": "c6f00bcf45c41c3a0feeaa4f7b44511c705d1b905262a410d0ef2ade989a3f1e",
+            "size": 37555477,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.224.parquet",
+          "size": 36105566,
+          "lfs": {
+            "oid": "95ddc5af222f74880156c5450c6d93a13dd7effd34514c605a13c41198e69f01",
+            "size": 36105566,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.225.parquet",
+          "size": 35392436,
+          "lfs": {
+            "oid": "4bc9d2122709a0e7c7f933196387f363f84594014d324b44e7cc81bcc646c1f7",
+            "size": 35392436,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.226.parquet",
+          "size": 36085990,
+          "lfs": {
+            "oid": "e100df1e5e1be376cc7dc50200aef15d98e5869de1a0125b3b4910098c3a6194",
+            "size": 36085990,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.227.parquet",
+          "size": 37790113,
+          "lfs": {
+            "oid": "dfa53d7c835cd4bac675b4d21d2a5626063d47b1c39fd205df8138d5acee4f03",
+            "size": 37790113,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.228.parquet",
+          "size": 35858837,
+          "lfs": {
+            "oid": "ac4753680cb88dc7eee28e1cf1f4a95d19a57f788f5ce4a4d060b61c5b8d4ab5",
+            "size": 35858837,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.229.parquet",
+          "size": 36477992,
+          "lfs": {
+            "oid": "39176d4d5a2f9afa2b4685568b83072c9b99a0c7fa618c005d597a119a85a390",
+            "size": 36477992,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.23.parquet",
+          "size": 34366199,
+          "lfs": {
+            "oid": "369da83c82b6e4ecc5b25f9766eee2e838567fa49d8eb29ce049aac70cf4003a",
+            "size": 34366199,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.230.parquet",
+          "size": 37628691,
+          "lfs": {
+            "oid": "7188b433b0918103be4cb221f017acb8075e199212b1fcf724ed0edd758930c6",
+            "size": 37628691,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.231.parquet",
+          "size": 37321640,
+          "lfs": {
+            "oid": "8b9541af4bcc6e06062ee700c8ccb35ffc0d980c49f2932b80f4df44b58fc96b",
+            "size": 37321640,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.232.parquet",
+          "size": 38607388,
+          "lfs": {
+            "oid": "c1c8f9ea9c86306431432f621b36874b215122347c0aadd480fb1afc7523dda8",
+            "size": 38607388,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.233.parquet",
+          "size": 37816624,
+          "lfs": {
+            "oid": "18551ea036c850d862afbf3192b3169cc46ef41fa49eaff24ae794b1af064589",
+            "size": 37816624,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.234.parquet",
+          "size": 34464784,
+          "lfs": {
+            "oid": "33f1105c419cf157a4173b2217bb832878dae164e83e92be3bf673ca0ec809bc",
+            "size": 34464784,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.235.parquet",
+          "size": 31634485,
+          "lfs": {
+            "oid": "18e606d4594e23d7edc55d28852c5cda751d2eb38a4c8df98928cbfcf770fe38",
+            "size": 31634485,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.236.parquet",
+          "size": 34763702,
+          "lfs": {
+            "oid": "d99eed081903eb92e9ff6864cf85d465a7de6247c972343abb747a7b36b2edbd",
+            "size": 34763702,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.237.parquet",
+          "size": 33718681,
+          "lfs": {
+            "oid": "e9aa10d694a1a28584bafbfd8cdf2f0cc74d7d757572ed2c90a0ca2bdc724a50",
+            "size": 33718681,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.238.parquet",
+          "size": 37075723,
+          "lfs": {
+            "oid": "41f3582fdbdf4262b8ecd0f882d0d834a57fa33aaafbf635c2015348372e7052",
+            "size": 37075723,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.239.parquet",
+          "size": 36437488,
+          "lfs": {
+            "oid": "df1ec86a9c525a24e2bc998725e06566b34f8aa19710b56acaec4db8ffb58061",
+            "size": 36437488,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.24.parquet",
+          "size": 34544122,
+          "lfs": {
+            "oid": "c397266758ed5fb8f028acd92d3b12e1c86938d906f3a33083712abb3675a1a3",
+            "size": 34544122,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.240.parquet",
+          "size": 37979788,
+          "lfs": {
+            "oid": "3a46d22d6b9f9bfca0d7493a955093e5521545bf3d3d1bb18af813ab540c35ee",
+            "size": 37979788,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.241.parquet",
+          "size": 36976079,
+          "lfs": {
+            "oid": "a6114ce60d31debe7ccefffe79228448b8ff164e265c677493d302081d0129d4",
+            "size": 36976079,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.242.parquet",
+          "size": 36209151,
+          "lfs": {
+            "oid": "2703f7be4de66c70ba57126a83f9e0080e205c3d8bb1b910af1cafdc62b7268f",
+            "size": 36209151,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.243.parquet",
+          "size": 35750644,
+          "lfs": {
+            "oid": "5bc3736994d20be9886c4ae1c10677c2b4ec3cbef8b447c23adcbd227806960c",
+            "size": 35750644,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.244.parquet",
+          "size": 37373837,
+          "lfs": {
+            "oid": "189bd520115fc8e3d2c42c310b561b0cd5a82b6eb640bc5f78bc2f5b3a23e998",
+            "size": 37373837,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.245.parquet",
+          "size": 32892490,
+          "lfs": {
+            "oid": "8174f8f7668e33b64f831b5a57f98da0b428cd7e9ade67c52f610427c1b9ec20",
+            "size": 32892490,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.246.parquet",
+          "size": 35835159,
+          "lfs": {
+            "oid": "5140e991c667207a42d79d63d9ab9705708957bda6c2cfb80353c4450035d45d",
+            "size": 35835159,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.247.parquet",
+          "size": 37405521,
+          "lfs": {
+            "oid": "f9bafcc29adb6c826dd0fc74652f2ba57e7a25b3cc3fbe209c8def7f5c8c77da",
+            "size": 37405521,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.248.parquet",
+          "size": 35383650,
+          "lfs": {
+            "oid": "438bd8efddc74cc059a152ce155ff49137b8b9b1e11b30b82102345c411f0a16",
+            "size": 35383650,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.249.parquet",
+          "size": 33414401,
+          "lfs": {
+            "oid": "5111ac7ab49d6293e5b8d3e9452780b4f52c3d3c0a11c845142b11f5796664a8",
+            "size": 33414401,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.25.parquet",
+          "size": 34509779,
+          "lfs": {
+            "oid": "3843e972fe7983a63a6f8a1eb3b110b5097915bd2a8fecedfcb3cbcabb111f14",
+            "size": 34509779,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.250.parquet",
+          "size": 32843258,
+          "lfs": {
+            "oid": "d2237d4cfff6cc1de17fbbf8e25aba0cec6d5e76f4dfc0f42881ce7a83b6f77c",
+            "size": 32843258,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.251.parquet",
+          "size": 38285078,
+          "lfs": {
+            "oid": "20ff7524dcda84e9fe10c41a912fc13b94363aa853099bfd798f325289f4fc62",
+            "size": 38285078,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.252.parquet",
+          "size": 38318236,
+          "lfs": {
+            "oid": "070b36b2b96a2366092c9d0a7f69856a864f13f4829d760de6dce434610a54dd",
+            "size": 38318236,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.253.parquet",
+          "size": 35355753,
+          "lfs": {
+            "oid": "86b2ea020da2a1e3d36e45aeba80a858c710af363ee31840ac7ae8983b123334",
+            "size": 35355753,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.254.parquet",
+          "size": 36469554,
+          "lfs": {
+            "oid": "e890cc7063a7b1cbb1d8e629745874f673bc93e09b685b1bd0525484570d94d6",
+            "size": 36469554,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.255.parquet",
+          "size": 36643907,
+          "lfs": {
+            "oid": "1d52e574794b2122fe56620793ec7fb92a84c03f0bd98d1b45e6e549274b2b8d",
+            "size": 36643907,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.256.parquet",
+          "size": 36513797,
+          "lfs": {
+            "oid": "5167cb5bb9a43e73f802a312ac09f62bd20616b77c91cd51a0ee5172f3d26f98",
+            "size": 36513797,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.257.parquet",
+          "size": 37027469,
+          "lfs": {
+            "oid": "6203e5350b0b79baddf9d22282a6e5cd8a54317c5a2ad8c8bd57ed48e4645293",
+            "size": 37027469,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.258.parquet",
+          "size": 37524231,
+          "lfs": {
+            "oid": "22d412ed801fe91191e6d923f1e673040378afa37fb2aa8fcd8251c49d438f92",
+            "size": 37524231,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.259.parquet",
+          "size": 36464427,
+          "lfs": {
+            "oid": "ca2e4b778df06ec6e3200272d92494627ab7d36a236963df37b42cf51f076849",
+            "size": 36464427,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.26.parquet",
+          "size": 35966165,
+          "lfs": {
+            "oid": "5d19f49c630fa5e85c64de1d5c5c5d7cd664e4d17f1175021a41ded2a4242688",
+            "size": 35966165,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.260.parquet",
+          "size": 35022722,
+          "lfs": {
+            "oid": "c2d30c1f520ea63fcbb00a953a3419ac03a77a2750dffd38da2e7dba25fa963d",
+            "size": 35022722,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.261.parquet",
+          "size": 38035075,
+          "lfs": {
+            "oid": "c72357ef782e2d528537ae72acbbf7ec1667f877ba7dcefb9c6a0fb11cd0afda",
+            "size": 38035075,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.262.parquet",
+          "size": 32837014,
+          "lfs": {
+            "oid": "d68ad7a99e749239bbd79e7de36923d5cf062770cb21cf0efd96cfc4b0b36c73",
+            "size": 32837014,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.263.parquet",
+          "size": 32129525,
+          "lfs": {
+            "oid": "a14d67d193ef9209ea4ad1cfe88d50bd5421202f43f1f86cfd8adff348487917",
+            "size": 32129525,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.264.parquet",
+          "size": 34391405,
+          "lfs": {
+            "oid": "fdef56febc500a95aca87dd6af047f26a8df4147ce2f87044bd4faa3edf13820",
+            "size": 34391405,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.265.parquet",
+          "size": 36180898,
+          "lfs": {
+            "oid": "60d87f3a5d42b2e2ca840e915cdf2757ac3cf199464cb8e01c3d0febf39347b1",
+            "size": 36180898,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.266.parquet",
+          "size": 33405122,
+          "lfs": {
+            "oid": "aa1f039de46d374e94941d0abe7213b23e5946550b6d394f8ae398448f18cfc3",
+            "size": 33405122,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.267.parquet",
+          "size": 29303172,
+          "lfs": {
+            "oid": "b982242f5d618f3241af50360b72cb1bc3b2f2b7422da93b01e789af21c0f211",
+            "size": 29303172,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.268.parquet",
+          "size": 31807865,
+          "lfs": {
+            "oid": "dc7bb112e223fe98a91f3c43dd0311d69e16ac59a39caf5048087327ab823720",
+            "size": 31807865,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.269.parquet",
+          "size": 36155232,
+          "lfs": {
+            "oid": "43a9334c7cb072d5379494120e17c1ccf103b9820e152dc0201b85dc651666b0",
+            "size": 36155232,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.27.parquet",
+          "size": 34710022,
+          "lfs": {
+            "oid": "c492581b3bf56b9768ec2c559be5be5a0c9531afaab511834e2ea7ef4a5a6f8d",
+            "size": 34710022,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.270.parquet",
+          "size": 35888367,
+          "lfs": {
+            "oid": "29d46cfeca0733e7f44c0083bb7c41418a1959ae269e8d67414923dc89206fc2",
+            "size": 35888367,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.271.parquet",
+          "size": 36046967,
+          "lfs": {
+            "oid": "324541b1f6672631283f8a9ebb0c975fd3885d59ef8ef12dcadf8eebc8525b0b",
+            "size": 36046967,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.272.parquet",
+          "size": 37862892,
+          "lfs": {
+            "oid": "f543b658335630ae7435781f14a62ff79e29b4dda3e07d55845a54785c8fa464",
+            "size": 37862892,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.273.parquet",
+          "size": 37331204,
+          "lfs": {
+            "oid": "65e6714e1856c5bbc844569aa3ead1675cca1ea8aebc713e7aafe5989f0c2940",
+            "size": 37331204,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.274.parquet",
+          "size": 36485941,
+          "lfs": {
+            "oid": "c722133f63068f53b860bc77b3127cb2a2774f1a3e43b6d9cf1b02b451aa4eb4",
+            "size": 36485941,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.275.parquet",
+          "size": 35736770,
+          "lfs": {
+            "oid": "8cd2039363cfb42a5f1ac5d563e4fe86610b838c1dbe55cbe49ff36bd3ceec91",
+            "size": 35736770,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.276.parquet",
+          "size": 36826855,
+          "lfs": {
+            "oid": "0936b6a8a36c8c240098b5e6e703cf2a51f14cf1c7ddad60f75491fdb6187d71",
+            "size": 36826855,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.277.parquet",
+          "size": 37708572,
+          "lfs": {
+            "oid": "303edcff7378de47dd29f1be1ff1d6b8ff9f48983a74be66236790a414200293",
+            "size": 37708572,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.278.parquet",
+          "size": 36835692,
+          "lfs": {
+            "oid": "4983e71e888657121bd247e1f0874af1f3d587ee7be63c62f428d5fa425c9db1",
+            "size": 36835692,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.279.parquet",
+          "size": 36010833,
+          "lfs": {
+            "oid": "466ceabdbc36ce7dcb18105e0230d7060676319bfe4b4135bafa8fdc0925a109",
+            "size": 36010833,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.28.parquet",
+          "size": 37259475,
+          "lfs": {
+            "oid": "f5eeba70c8f3c50cfa746f287043795b1e410623a6fc43890ff9dad384d69142",
+            "size": 37259475,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.280.parquet",
+          "size": 37939919,
+          "lfs": {
+            "oid": "cd10078e9c3b5265ce6f7e39a2673a9214ebe59e9c90ad6e4a57883ee4779bb1",
+            "size": 37939919,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.281.parquet",
+          "size": 35807604,
+          "lfs": {
+            "oid": "e5f9021c38a7694422b3eb460aff298d0d8a752b6148e3edfb0fb5d957aa4670",
+            "size": 35807604,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.282.parquet",
+          "size": 39216839,
+          "lfs": {
+            "oid": "b413afcb4427cb6896d8f1c6e2001fcf66c9bebee519711965de8b2d41776573",
+            "size": 39216839,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.283.parquet",
+          "size": 35999717,
+          "lfs": {
+            "oid": "fef59a41cbdf4ebceee0aaa1ecbb1e53b7b7b2e4fd458bb15caaca183ecdff3d",
+            "size": 35999717,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.284.parquet",
+          "size": 37706532,
+          "lfs": {
+            "oid": "cb94817c72725a97f1bc5f2c7d5edf7b976981fc09ccd1ddaef197271315dba1",
+            "size": 37706532,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.285.parquet",
+          "size": 33723440,
+          "lfs": {
+            "oid": "6aac45024737c88eac9af2252ac133354be603931282a256c5fe89f72ef442c0",
+            "size": 33723440,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.286.parquet",
+          "size": 28842254,
+          "lfs": {
+            "oid": "31db3a3350f7f5167804903adb67012962960fe2de5796dcc9f2edee56397684",
+            "size": 28842254,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.287.parquet",
+          "size": 28895175,
+          "lfs": {
+            "oid": "6351714f6ea4f2a6faaab401448ec0704d1d6c396f9251d22c888195c4b91cbf",
+            "size": 28895175,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.288.parquet",
+          "size": 30084878,
+          "lfs": {
+            "oid": "f1f7a3fad53e03f1b4e8c4852a8f7c4375fd618d06ece13320179675f817751d",
+            "size": 30084878,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.289.parquet",
+          "size": 30130359,
+          "lfs": {
+            "oid": "f8d7b7c72c99045c2c6d2c92a12518df2ac07fedf0b8b6fad2ec7d0f00a0b6d4",
+            "size": 30130359,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.29.parquet",
+          "size": 35397031,
+          "lfs": {
+            "oid": "76a654abe35b17b4123f8ac66f66bd7f39d62e2341692a41f91d8924aac2c7ea",
+            "size": 35397031,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.290.parquet",
+          "size": 34378778,
+          "lfs": {
+            "oid": "61f1c5a304de270ed1831a3a982174c66c8a58eb193424a67376ad916b553281",
+            "size": 34378778,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.291.parquet",
+          "size": 35538848,
+          "lfs": {
+            "oid": "7eccd2cac2e50c49ade08946cf5c49de811297ee72774a6e5b55cb4a7baa9cd0",
+            "size": 35538848,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.292.parquet",
+          "size": 36700001,
+          "lfs": {
+            "oid": "6c335c23871aa2dfdf53f6d8d287664ff4f2be42978b248d4e1a608dcd92cb2d",
+            "size": 36700001,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.293.parquet",
+          "size": 35637704,
+          "lfs": {
+            "oid": "7ff8521a6affbfc46207cc66835fc36530c0c8228aebc7bddc5a1becaf8c2aab",
+            "size": 35637704,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.294.parquet",
+          "size": 37585932,
+          "lfs": {
+            "oid": "b19604a3d27a6a8a73bb01ce6c25804d933a5899c6bb8b50435ef10468a213af",
+            "size": 37585932,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.295.parquet",
+          "size": 36661336,
+          "lfs": {
+            "oid": "c25f056c825f341784cefcd7cfc82fd00dede64ef88b7539051f82960d440ee5",
+            "size": 36661336,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.296.parquet",
+          "size": 38885763,
+          "lfs": {
+            "oid": "79a153e9cb4df3da1a19a0889d80eefa44e188be4f870f935941a7bcdd79b471",
+            "size": 38885763,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.297.parquet",
+          "size": 36792379,
+          "lfs": {
+            "oid": "2803811491acef7c11d453e41e7e0ac1ae1991be895efa23052fe9e07c54c44b",
+            "size": 36792379,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.298.parquet",
+          "size": 37692344,
+          "lfs": {
+            "oid": "683c77f3658f3fc2ccff865e7f4f77fc91730b656bdd4347e20f63dc6c5312a4",
+            "size": 37692344,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.299.parquet",
+          "size": 38397820,
+          "lfs": {
+            "oid": "d4559d862c11efd3a15f28c576f1fca4862e2da734ede09d05ce113f5a324aaf",
+            "size": 38397820,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.3.parquet",
+          "size": 34932282,
+          "lfs": {
+            "oid": "e2aa4829b3e41b3c1c6f9b8c0ea2993ddca8edcd0454e6683b00cb06d7468d06",
+            "size": 34932282,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.30.parquet",
+          "size": 36200658,
+          "lfs": {
+            "oid": "c1924124869a3eeb841a326161a101ac2221c624ce53fa3986608d81069e5df3",
+            "size": 36200658,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.300.parquet",
+          "size": 38867160,
+          "lfs": {
+            "oid": "069d22b8dbe440451cce0b730d86aba2f394292c971086d1942f872dd93a67f7",
+            "size": 38867160,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.301.parquet",
+          "size": 34938316,
+          "lfs": {
+            "oid": "29128c217eff4566bbe1cff48f516a7f9850a2bdec78343c51e658aeda6e0e88",
+            "size": 34938316,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.302.parquet",
+          "size": 36252519,
+          "lfs": {
+            "oid": "a39d20d14cb6f4871ef14954e6d00a375c425ecd252af591a4a715ee95bbad0c",
+            "size": 36252519,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.303.parquet",
+          "size": 35162944,
+          "lfs": {
+            "oid": "be5ea201bb3184f22ee32620e78a9ed1d7f0aca7f6b64911176ac72474207cff",
+            "size": 35162944,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.304.parquet",
+          "size": 37036048,
+          "lfs": {
+            "oid": "6978cf5d7ccaeb26caecf2f51cc2f51c8e041dae12fbb3ce7ed719a6fa691bb5",
+            "size": 37036048,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.305.parquet",
+          "size": 36188685,
+          "lfs": {
+            "oid": "22f62a5a6ec97debaadf97103cae880898c950788cea404655d8ad921ba45cec",
+            "size": 36188685,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.306.parquet",
+          "size": 34932988,
+          "lfs": {
+            "oid": "44f5df3053cb4f14d3f19487293a5153d1e363adaf501ebd8e9ea1aae893c448",
+            "size": 34932988,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.307.parquet",
+          "size": 35157534,
+          "lfs": {
+            "oid": "8e2d92d6c17dde7f6c9d48a4b1f956475b9eca7843f040677b902d1e0b32c30f",
+            "size": 35157534,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.308.parquet",
+          "size": 37988680,
+          "lfs": {
+            "oid": "d01c9460fc1677f4f4b96a9d61df0bc1dc6bcca693ca1ad4f5ef513e6d07062f",
+            "size": 37988680,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.309.parquet",
+          "size": 37273322,
+          "lfs": {
+            "oid": "00a793822aa367a67ff93d2b691206f4c54e545c284d03ddbcee975b46d76876",
+            "size": 37273322,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.31.parquet",
+          "size": 37476783,
+          "lfs": {
+            "oid": "792ee547d89e2fc55b9714fe834b6dbed35d3aae09f34f52b6284764368d0b8f",
+            "size": 37476783,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.310.parquet",
+          "size": 32336115,
+          "lfs": {
+            "oid": "917a52eb9698c6b58e0fbbbe8283cfa7486084213650684084594a21f6640ec3",
+            "size": 32336115,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.311.parquet",
+          "size": 35768409,
+          "lfs": {
+            "oid": "159ab872028edb73344665b9352e6661713b88df78ddf76c2a18330908907238",
+            "size": 35768409,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.312.parquet",
+          "size": 32674270,
+          "lfs": {
+            "oid": "e0efef5c4d37030b4794cbd150029552ffde518b1bc18f22a2df6f629ed276dd",
+            "size": 32674270,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.313.parquet",
+          "size": 33272176,
+          "lfs": {
+            "oid": "8122821edb201572798774a43df1184546c5f921a4458eff11466e64e373cbf2",
+            "size": 33272176,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.314.parquet",
+          "size": 36860008,
+          "lfs": {
+            "oid": "17d7a86db8948a14ba6a0a6133b4b8278ad89ab76e755af71e9654fa64cee7d5",
+            "size": 36860008,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.315.parquet",
+          "size": 38283462,
+          "lfs": {
+            "oid": "e462be4f06b77968b149027c4f715a039754be4a20233ea2550b6c20aea29d15",
+            "size": 38283462,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.316.parquet",
+          "size": 36512951,
+          "lfs": {
+            "oid": "deca3990073e87cf221621c26dd1689a734e0770c91ea9fcd27ae73addc7d270",
+            "size": 36512951,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.317.parquet",
+          "size": 38325091,
+          "lfs": {
+            "oid": "3cc34db22751336ea88098b77f54be3ddb225b4c83a3ae0638baec78173d1a8c",
+            "size": 38325091,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.318.parquet",
+          "size": 37837040,
+          "lfs": {
+            "oid": "b5277b45c49505c3bcaa7e49b62d71770805551c011650f7f6cb6187dfbbc570",
+            "size": 37837040,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.319.parquet",
+          "size": 37942911,
+          "lfs": {
+            "oid": "9277df7fcb5c0a7e0a9e62a723da3ec8442bbeff14d4eee5626301a6ce9bebbf",
+            "size": 37942911,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.32.parquet",
+          "size": 38752050,
+          "lfs": {
+            "oid": "3ee6d8b5d992d9baec07963c6ad936608524fee02fe3a041b5ae69547714322a",
+            "size": 38752050,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.320.parquet",
+          "size": 37013356,
+          "lfs": {
+            "oid": "b88cc91c08a5ca14acc6f1ca9056213a43e0f812ab6b0078ebf9f023ed15db2e",
+            "size": 37013356,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.321.parquet",
+          "size": 37934057,
+          "lfs": {
+            "oid": "7d66017957557375357d7cc23fd8c64ef2f67828c9771b1a300eaceb56eec4a9",
+            "size": 37934057,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.322.parquet",
+          "size": 36703830,
+          "lfs": {
+            "oid": "cc8dffc6b1671e1e6013676a516d3e776bef057461c9722429108fddcd1bb439",
+            "size": 36703830,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.323.parquet",
+          "size": 35108198,
+          "lfs": {
+            "oid": "62ef2c6325d212d6aafbc173ea40386afd6ca492432f7e16a009d04ccb7e0bd8",
+            "size": 35108198,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.324.parquet",
+          "size": 34322075,
+          "lfs": {
+            "oid": "657da29710dadb98ea4ceed417496d0e4a81b96d63e09b9ec0f98b26f66530e6",
+            "size": 34322075,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.325.parquet",
+          "size": 32995459,
+          "lfs": {
+            "oid": "18f7252ebd897ca90104fe1aed400b110824cbf564c5fa5781ff1b66e3d43fa5",
+            "size": 32995459,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.326.parquet",
+          "size": 36716594,
+          "lfs": {
+            "oid": "22f339962e2f98bfb7939d4e3f3c0c09fffabe95bebaa259928a0b07f27c9082",
+            "size": 36716594,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.327.parquet",
+          "size": 36995871,
+          "lfs": {
+            "oid": "b9638acbf6852c742811b57d0a8c8875880db18f2893576471be550bcf1863af",
+            "size": 36995871,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.328.parquet",
+          "size": 37025430,
+          "lfs": {
+            "oid": "60f2175f6a045d23810a933db377b9627dc4ef8de2c2bbba37b5f5184dd321f0",
+            "size": 37025430,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.329.parquet",
+          "size": 36929624,
+          "lfs": {
+            "oid": "53d2f5c35cc626d84e5bdea1537c6b4e333515f9cd85b66f8200dfc82a61aedf",
+            "size": 36929624,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.33.parquet",
+          "size": 38633315,
+          "lfs": {
+            "oid": "6884583e05efae2477f0d34653e418da76567f88980914371e7345a4442351b8",
+            "size": 38633315,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.330.parquet",
+          "size": 32880797,
+          "lfs": {
+            "oid": "24ccaea82ebc5f30c4a90e30b87b970c17d4c4552e4a6abfd6e8684bf7bb37cd",
+            "size": 32880797,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.331.parquet",
+          "size": 37482110,
+          "lfs": {
+            "oid": "cad3908b2f3c13d438f5563a51fe2dec576c6f7e8faff142394784e7bf1e7a00",
+            "size": 37482110,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.332.parquet",
+          "size": 36305910,
+          "lfs": {
+            "oid": "bdf20aa6688dd21e739ba30fa29693cdbf43ff0663d721c78f3c9ad10a31126c",
+            "size": 36305910,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.333.parquet",
+          "size": 37390034,
+          "lfs": {
+            "oid": "6674689c3a1a0ce5f91e3841f310fe794b4bc7e7b863898cde8487a01900e67f",
+            "size": 37390034,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.334.parquet",
+          "size": 37834085,
+          "lfs": {
+            "oid": "51a7c96f3b865e11f1e1258a6f291ef12c7ecdb4ceda8439c5dab2f5b3611cea",
+            "size": 37834085,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.335.parquet",
+          "size": 37339504,
+          "lfs": {
+            "oid": "3790500c1f3f70c5830166426b3de629eb90697a356a4b72408b59a4913cb650",
+            "size": 37339504,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.336.parquet",
+          "size": 36940512,
+          "lfs": {
+            "oid": "b5b901242406d64a950a3c74c0ea44c014b38aaaee62c86e8ac8ef780acf9345",
+            "size": 36940512,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.337.parquet",
+          "size": 38000409,
+          "lfs": {
+            "oid": "bb420c08278dc4095a4f01d5ede48e90e21c00fc440fb3aa2674d9819a3f1754",
+            "size": 38000409,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.338.parquet",
+          "size": 33453817,
+          "lfs": {
+            "oid": "7bb035f1694b44e64ee9440883fe769d8f08875821c253e604ac4ffe16e50ea7",
+            "size": 33453817,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.339.parquet",
+          "size": 31320615,
+          "lfs": {
+            "oid": "949db8e71556dbb05b2eeca86b4d74955b61906fe68b0825632db8ae42c7229a",
+            "size": 31320615,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.34.parquet",
+          "size": 37879083,
+          "lfs": {
+            "oid": "96628da1ae4df6498c417d718204cd1506940f434a6a87be406a8141c9e93009",
+            "size": 37879083,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.340.parquet",
+          "size": 31271174,
+          "lfs": {
+            "oid": "91aa52134d8cb76851a87df43a9cc102d3faed0ba2616e649d82db254c385401",
+            "size": 31271174,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.341.parquet",
+          "size": 35354718,
+          "lfs": {
+            "oid": "3faf0e5231127c034fb41045143580d087124bf2a294b3b05b9504bc38244b73",
+            "size": 35354718,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.342.parquet",
+          "size": 37793420,
+          "lfs": {
+            "oid": "af98e3e9fa5a27705631749b4d3e89f6c46d7f0d488a659bb73111025fa9cebf",
+            "size": 37793420,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.343.parquet",
+          "size": 35271040,
+          "lfs": {
+            "oid": "29af2803551520255c48d69781ba2273ae80c143068b8ed6c4eca14ba56f90f0",
+            "size": 35271040,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.344.parquet",
+          "size": 37088412,
+          "lfs": {
+            "oid": "73c257de4572d022eee40d852f6a48eb74f70fcc0cbff84bd7f27af817490db0",
+            "size": 37088412,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.345.parquet",
+          "size": 38222338,
+          "lfs": {
+            "oid": "b909e50a726171d4a600b5577399f338135364615d697844af488e0fdec4841a",
+            "size": 38222338,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.346.parquet",
+          "size": 35183556,
+          "lfs": {
+            "oid": "9db1e1e99a71356671da5676b09f28cb080caeb3c310a15b6ed0cc05ff40b0d9",
+            "size": 35183556,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.347.parquet",
+          "size": 37123096,
+          "lfs": {
+            "oid": "19c3698f2c005e192b5837f25eff4c055c81007c980756fd05fbac30748b0dd0",
+            "size": 37123096,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.348.parquet",
+          "size": 35914739,
+          "lfs": {
+            "oid": "87002df841d7cf1f66947cc500677b5759c8ab7162056f60362a8caa3a8b8103",
+            "size": 35914739,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.349.parquet",
+          "size": 36056977,
+          "lfs": {
+            "oid": "db5491c1f26a1972a1cdac42263c13463d336fc1ac57b626df0eb0134a2edd53",
+            "size": 36056977,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.35.parquet",
+          "size": 35808905,
+          "lfs": {
+            "oid": "09e8448d1782428ef47214eb0b1a636cafb5e03d5eeff87152057e43bbb009b4",
+            "size": 35808905,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.350.parquet",
+          "size": 37804615,
+          "lfs": {
+            "oid": "938c90c2ac1ed8a7d4d9a9dc37e9931a4957ab740e33200b22653e9e29a74c35",
+            "size": 37804615,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.351.parquet",
+          "size": 37381503,
+          "lfs": {
+            "oid": "94977df749a2435219e91dc704e1cca8f9ced2cc9de0bf51d28a852f859d34e9",
+            "size": 37381503,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.352.parquet",
+          "size": 36947175,
+          "lfs": {
+            "oid": "01f58c9c2b3b0d6a2ebb2d93ca2a803042a682c2ae07f75be7fdc24a446bf257",
+            "size": 36947175,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.353.parquet",
+          "size": 36940978,
+          "lfs": {
+            "oid": "ecc63cd6c740e4d7e71b10db84b0936ae5b4b5f067d333812b7b103fcceca57d",
+            "size": 36940978,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.354.parquet",
+          "size": 37765474,
+          "lfs": {
+            "oid": "c48a3c00457adaafccc939fb17aad04a31d3e1976534ea331b922f0c5a77f9a7",
+            "size": 37765474,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.355.parquet",
+          "size": 31213413,
+          "lfs": {
+            "oid": "6198d5285d968515f52285225eaa4020a34470dbd8741462f1939610119c7f10",
+            "size": 31213413,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.356.parquet",
+          "size": 32930029,
+          "lfs": {
+            "oid": "a65560a859f1ba95bbec47908d65b634b661282f1b97e0e44fce70130b18954b",
+            "size": 32930029,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.357.parquet",
+          "size": 37969782,
+          "lfs": {
+            "oid": "a096a45505b571a29103c0814fe94506b7f2968c54a2495ed9b563ac5e063f43",
+            "size": 37969782,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.358.parquet",
+          "size": 32426631,
+          "lfs": {
+            "oid": "d260234fb54f5780500d9961d2ce6cccf7faab5752d55716c4c46776d4216bf2",
+            "size": 32426631,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.359.parquet",
+          "size": 34606754,
+          "lfs": {
+            "oid": "71b8693596147d17a08fb1bea809a9ff3dcbee42c67a98382ed98675f3800411",
+            "size": 34606754,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.36.parquet",
+          "size": 34508569,
+          "lfs": {
+            "oid": "0e42af67da71aa3fa510835832a6dc23d3a1770fcb52b62390962845597ac5ae",
+            "size": 34508569,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.360.parquet",
+          "size": 37182062,
+          "lfs": {
+            "oid": "6fe8d2499239a93e04bb442a9a961f81e47fbf20d9f9881b1fbaefbfd0c868ec",
+            "size": 37182062,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.361.parquet",
+          "size": 32466888,
+          "lfs": {
+            "oid": "9ed5fa63d7f9c2775b75ffa0559eb8f6c872c446c4a265bb41d68c6b83ff2fd5",
+            "size": 32466888,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.362.parquet",
+          "size": 36746217,
+          "lfs": {
+            "oid": "7d8640395146643e4cf9bf113109f638e34805a1470841d6fe4f1e4269018f75",
+            "size": 36746217,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.363.parquet",
+          "size": 36962132,
+          "lfs": {
+            "oid": "3d6e65160d0f6a1d23370f3c8fe2301519be6b1e6e6f68b17cf91a5d493229b0",
+            "size": 36962132,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.364.parquet",
+          "size": 36281265,
+          "lfs": {
+            "oid": "227dec1f9320828fc3308dac5b1129250d6128a329c0e0ba3b65dc876f115525",
+            "size": 36281265,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.365.parquet",
+          "size": 35171143,
+          "lfs": {
+            "oid": "88609ace3951ab2ad2e3569fe017698e536561cb13ba92c55a57fc0fde9a26a7",
+            "size": 35171143,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.366.parquet",
+          "size": 33523088,
+          "lfs": {
+            "oid": "c57d625c288b002a417d9b3607551d174a5966c69a1fa2484ca951c0fc73003f",
+            "size": 33523088,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.367.parquet",
+          "size": 28968086,
+          "lfs": {
+            "oid": "a9a07c5814338d3527a4ba968f2e9b8468e2c6c7e29dc47b38d1fdec886e688d",
+            "size": 28968086,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.368.parquet",
+          "size": 29104504,
+          "lfs": {
+            "oid": "38b8765bf27852e451f4bbae5e4bea0e1fc7c7bfda410a3a545d5b7eb4665120",
+            "size": 29104504,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.369.parquet",
+          "size": 29971191,
+          "lfs": {
+            "oid": "7d32d745a34db9ff523cd47b9db942955984da17aeb771c1d137aa4625d26b07",
+            "size": 29971191,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.37.parquet",
+          "size": 31000900,
+          "lfs": {
+            "oid": "d7dbdd4e69cad04ec430a39f4d94667301cfb3a3fc26af3f859a02ecb9ef15ce",
+            "size": 31000900,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.370.parquet",
+          "size": 34822131,
+          "lfs": {
+            "oid": "5c3363e4641796136564020e9f2ef35c3888fca164faccc5e71d517fb498f361",
+            "size": 34822131,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.371.parquet",
+          "size": 37528776,
+          "lfs": {
+            "oid": "af9738cf1138f811ef4bbc5347d6559cd7eda21f3b11e79e6893809d6b4d9690",
+            "size": 37528776,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.372.parquet",
+          "size": 38056959,
+          "lfs": {
+            "oid": "5aa23954b766aadd05261c20f06542ed57845c4b7d6e6c4abd0a642dee25daf6",
+            "size": 38056959,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.373.parquet",
+          "size": 37397264,
+          "lfs": {
+            "oid": "b340290cab8f2453263ca5a32bce1538afd495e83182719d645a6cdc458cc507",
+            "size": 37397264,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.374.parquet",
+          "size": 37695303,
+          "lfs": {
+            "oid": "46ca43ea3299f8406c41875b1eb1e74d17767d6cff9797d3cae391567b1df3b1",
+            "size": 37695303,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.375.parquet",
+          "size": 36938316,
+          "lfs": {
+            "oid": "f461870c9f6c7739e6277773e90400fe2edd44ada0c3ae39d6436187fe2dc6cb",
+            "size": 36938316,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.376.parquet",
+          "size": 38264982,
+          "lfs": {
+            "oid": "cc298cd4367816152a7852edf0667ed4fb3b3f3f63f320804273120be1067778",
+            "size": 38264982,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.377.parquet",
+          "size": 37182334,
+          "lfs": {
+            "oid": "09bead05eb3dcb38ad3e1fc62be737905beb86ecedb539e617bf78f39fa50d82",
+            "size": 37182334,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.378.parquet",
+          "size": 34089873,
+          "lfs": {
+            "oid": "aa7d3c543a3075a1ee6dbb95e80b62101cbc2b7a2c5622052bbbb7cc4b1a536b",
+            "size": 34089873,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.379.parquet",
+          "size": 37687797,
+          "lfs": {
+            "oid": "872af8f181bd49654aab698cf3f0ffe03c4344167f61c31877fc6237d5c788bb",
+            "size": 37687797,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.38.parquet",
+          "size": 36411165,
+          "lfs": {
+            "oid": "c71e742bba534795b8577f63dce275001d78bc95d7c4e0765a8d33c2494d4b2a",
+            "size": 36411165,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.380.parquet",
+          "size": 38504938,
+          "lfs": {
+            "oid": "b982cb2e12ceac5b07929d5f81ea87013d3d6480ccb7a86e833d57af48e68c59",
+            "size": 38504938,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.381.parquet",
+          "size": 38129249,
+          "lfs": {
+            "oid": "70cbf960937a5de57a368846a75f04885b781ca00cfe4e21feef714e3c2e8462",
+            "size": 38129249,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.382.parquet",
+          "size": 37933596,
+          "lfs": {
+            "oid": "742e5e86aa1f4053e5c38520017f1e32da2067df66fcb148a37c87304bf5037a",
+            "size": 37933596,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.383.parquet",
+          "size": 37025622,
+          "lfs": {
+            "oid": "f1935f122ab7224c16dbd15216a635e9f4438562ff256a1d4c3dd75a05731a6b",
+            "size": 37025622,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.384.parquet",
+          "size": 36454498,
+          "lfs": {
+            "oid": "6096c2c1b13ab0bf0a1b1d4240779346aa1bf9ac49f9f59ee6601169bb4c120a",
+            "size": 36454498,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.385.parquet",
+          "size": 38778630,
+          "lfs": {
+            "oid": "29573c749a55f3bdc6996ace1b414cd1fc1c5060d77b877bb26380fd46ba2864",
+            "size": 38778630,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.386.parquet",
+          "size": 38146911,
+          "lfs": {
+            "oid": "56a6e8a38017c955d91db50ba56720eae8450d87ebd41235c345a9beb1b8f929",
+            "size": 38146911,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.387.parquet",
+          "size": 39160796,
+          "lfs": {
+            "oid": "e1d2607dd0f022c3f30e4b3d3732f5ae321621e629bd2abb006a5945890683fb",
+            "size": 39160796,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.388.parquet",
+          "size": 36894242,
+          "lfs": {
+            "oid": "5ec78edfe8e2f70ecda2633055f86e87713e98c2cbd29d41f57f07ed606426e8",
+            "size": 36894242,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.389.parquet",
+          "size": 35477788,
+          "lfs": {
+            "oid": "a95de05f5fba3d654ee46d518c3a6e102f11ef5c8a68706641662e67cba8a849",
+            "size": 35477788,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.39.parquet",
+          "size": 36588277,
+          "lfs": {
+            "oid": "fe6d31981c09b8ea25d919ead9deed1a0701019ac7b75b368704f047db43df76",
+            "size": 36588277,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.390.parquet",
+          "size": 33772799,
+          "lfs": {
+            "oid": "88387d67ef150a9a4b9f310c8bbbf9e50151f5cef073533c887b291a8b7aa27c",
+            "size": 33772799,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.391.parquet",
+          "size": 34327297,
+          "lfs": {
+            "oid": "7d33993fc7f60c850332738b026df6d128e82987f1465b96f92dc6e9b0f77749",
+            "size": 34327297,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.392.parquet",
+          "size": 37082653,
+          "lfs": {
+            "oid": "1cb47bfe7cc52c5ba8dd177a23574ede57ad28aa168b04e511914952b45d2fa0",
+            "size": 37082653,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.393.parquet",
+          "size": 37464562,
+          "lfs": {
+            "oid": "b3b70c6a5bebc5cc07576771686a24ea15cff2c6805acff6274ae5a29bf5c023",
+            "size": 37464562,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.394.parquet",
+          "size": 37823450,
+          "lfs": {
+            "oid": "8cf43a2bfd55076538898ada50f88024cc275e755fa4dc9c82cba4bb3e8b0f74",
+            "size": 37823450,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.395.parquet",
+          "size": 37571257,
+          "lfs": {
+            "oid": "34834acaba52d4ec86e2b8ca8c9ceeaad5bdea8ceff884b8ba77ca7c90936733",
+            "size": 37571257,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.396.parquet",
+          "size": 35864335,
+          "lfs": {
+            "oid": "a08d87bb1d4f8d68329a4f15da1755d0a5d1584cd96b01e09034b5ecf1a5761d",
+            "size": 35864335,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.397.parquet",
+          "size": 35485853,
+          "lfs": {
+            "oid": "a058fd80ac0b5ac590d889f775beae4155e89db80e024ac4424099cc89591090",
+            "size": 35485853,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.398.parquet",
+          "size": 35176419,
+          "lfs": {
+            "oid": "aab4257171fa4b0dbdaabbf2749ed2d8a50cc41494b650bcc57f5e4aeb203e56",
+            "size": 35176419,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.399.parquet",
+          "size": 35466753,
+          "lfs": {
+            "oid": "8f84e3c87b3fa3eea22b97cb0c7c92737f9fb9f3e2fda53b389e6214e2ba99e2",
+            "size": 35466753,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.4.parquet",
+          "size": 37009384,
+          "lfs": {
+            "oid": "d7df4831b943fba536d9210de71b22c7b653fe3e93298df90f34a3c5eb0fa46d",
+            "size": 37009384,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.40.parquet",
+          "size": 38255191,
+          "lfs": {
+            "oid": "26bd28ec66e84d5ff1bed8114a5d239b2a39ad3f37d665a4d394dae89535981f",
+            "size": 38255191,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.400.parquet",
+          "size": 37058915,
+          "lfs": {
+            "oid": "70e41ccc0319ae81dc8734238a29f165e869c7bda69793e823d1c5eb6a0e5762",
+            "size": 37058915,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.401.parquet",
+          "size": 35171809,
+          "lfs": {
+            "oid": "435b532f65fb511200f970ed566b0379441f71fd205bc0057bbb219a0bf2f990",
+            "size": 35171809,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.402.parquet",
+          "size": 36724523,
+          "lfs": {
+            "oid": "f799aa028525d50094a8cb3c64c7a6351ff86d4f2a2fc5bb36882ee79d8f3960",
+            "size": 36724523,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.403.parquet",
+          "size": 37906904,
+          "lfs": {
+            "oid": "23dd05e5806af8ecf096b1c03832a44a70b9da55e5d80c77a7e217492a1efa2d",
+            "size": 37906904,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.404.parquet",
+          "size": 37451440,
+          "lfs": {
+            "oid": "319c59d7774a5b3ab44806eca6d6bc0e9901343d286fa1fa1373719ed55918fd",
+            "size": 37451440,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.405.parquet",
+          "size": 33825691,
+          "lfs": {
+            "oid": "12101f8739a9b41c611954f01e545eef2ca695faf3e063f305a262ef871c1199",
+            "size": 33825691,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.406.parquet",
+          "size": 38096257,
+          "lfs": {
+            "oid": "48f45e6857ce42cff2200430f73d778e57a1d661a0131942cd85fed45382ea8f",
+            "size": 38096257,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.407.parquet",
+          "size": 37191490,
+          "lfs": {
+            "oid": "cd705b0c9ef015af870a7da935237304bc8fee2bbc53ac53f18f7f2e97be01f2",
+            "size": 37191490,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.408.parquet",
+          "size": 34838532,
+          "lfs": {
+            "oid": "7116d684903dabf8ebc8945b9510d36017aec302dbf581a3700a339cb1d8f994",
+            "size": 34838532,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.409.parquet",
+          "size": 32745609,
+          "lfs": {
+            "oid": "77e5e18c9cfd8a3a7898a2f835cbabd90207894a099381d4ee844eff0288b335",
+            "size": 32745609,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.41.parquet",
+          "size": 37353149,
+          "lfs": {
+            "oid": "78350361c7aa8b1c442ca79b1cecc0bc9ce833aa1d12300656e2f77817347f2a",
+            "size": 37353149,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.410.parquet",
+          "size": 29349533,
+          "lfs": {
+            "oid": "bc8493866c6f00169b636c32a28df84533796728de745d207603870da6d40e3b",
+            "size": 29349533,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.411.parquet",
+          "size": 30489631,
+          "lfs": {
+            "oid": "0929bfe523155278371388eb9b8601f230a9315160d3dddcdd0b6e771281d625",
+            "size": 30489631,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.412.parquet",
+          "size": 29191115,
+          "lfs": {
+            "oid": "e0023e1dbe016fb2cbd00e778f4b6680c965831d7afe636a96a5751dab54984e",
+            "size": 29191115,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.413.parquet",
+          "size": 35412327,
+          "lfs": {
+            "oid": "2caebb8a350ac72d2afb91790c1be84eaa29eeb3325087c079e124b9b1056a63",
+            "size": 35412327,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.414.parquet",
+          "size": 38511069,
+          "lfs": {
+            "oid": "cb9a02a3cf1d7e8f30c7c61a8f5a4a1ba10396eeea6644e49a83445f8e58d5db",
+            "size": 38511069,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.415.parquet",
+          "size": 38027958,
+          "lfs": {
+            "oid": "21beb1b97e92bb75b72cf812dfb995a8a4c154d8c7a4025573785286c710884a",
+            "size": 38027958,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.416.parquet",
+          "size": 36580024,
+          "lfs": {
+            "oid": "b3cab107197674debec9799fa09c97ee0a2812c869a526720ee50f64a8a06ec1",
+            "size": 36580024,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.417.parquet",
+          "size": 36998882,
+          "lfs": {
+            "oid": "b804c59681b02b2a42784aa487d72a0fa513f17493bea2a22a580ef59c7824ae",
+            "size": 36998882,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.418.parquet",
+          "size": 37630664,
+          "lfs": {
+            "oid": "f57e026ce8f39182076d00f6002cb6288eefd83c8ddf3b08393e7a4727137725",
+            "size": 37630664,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.419.parquet",
+          "size": 36922940,
+          "lfs": {
+            "oid": "64e555777ec0d7429da1a2695521ea9a88089d5bcb87ea8f37433fd55d657a83",
+            "size": 36922940,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.42.parquet",
+          "size": 29819733,
+          "lfs": {
+            "oid": "aa3032d89ac7e743bdfeec47ce3135c82384177d38495e9dcec6fdfc23c8b3a2",
+            "size": 29819733,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.420.parquet",
+          "size": 31886594,
+          "lfs": {
+            "oid": "63090cac480d560a22cda058accc1969ee9e634fab909d219749ce75e953eb86",
+            "size": 31886594,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.421.parquet",
+          "size": 33352752,
+          "lfs": {
+            "oid": "3728ac935df6d03f6c65718e5fefacd4d226b1253cacbf204a92d973c78ed562",
+            "size": 33352752,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.422.parquet",
+          "size": 36512484,
+          "lfs": {
+            "oid": "f41ce03a40d5633c571f3ba48bd5537bd0b74917eab42e84ccb4c0ebe527d96c",
+            "size": 36512484,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.423.parquet",
+          "size": 38366356,
+          "lfs": {
+            "oid": "80665bfd447342e916efb7eb7bc7a83c2939e0bbb3b88731e4dc5d9ac2eea11b",
+            "size": 38366356,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.424.parquet",
+          "size": 36954965,
+          "lfs": {
+            "oid": "f541b9a2fbd0e6d12dcf507d799dd0c6ccdbc757378ded524e7b178ba3bfe753",
+            "size": 36954965,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.425.parquet",
+          "size": 36876200,
+          "lfs": {
+            "oid": "98d65a7c17e467581d935b2ef348c818d9241696f1bcf2742ed2ffdd8bab23ab",
+            "size": 36876200,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.426.parquet",
+          "size": 36006636,
+          "lfs": {
+            "oid": "1a85434f2b39b90dda77cf028ba3ffb6abbd24151b0ee83b0d859b134ac8bed7",
+            "size": 36006636,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.427.parquet",
+          "size": 37968374,
+          "lfs": {
+            "oid": "9d18b971050a2ebada31a65c8a6540cad4189b5fc4d4cc1e3885867dca785f34",
+            "size": 37968374,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.428.parquet",
+          "size": 36730956,
+          "lfs": {
+            "oid": "621174f4ab6476ae724b4ba1393f1df2389252f7a35b84c75dc96d9bd954d01f",
+            "size": 36730956,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.429.parquet",
+          "size": 36297790,
+          "lfs": {
+            "oid": "f22439289c2499c92a7da0aeb25f74a77285eb2c266211b5d0c5dad14b7277e6",
+            "size": 36297790,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.43.parquet",
+          "size": 37090267,
+          "lfs": {
+            "oid": "4aaa5a813f9f8f85c59cdd06752671c92488749cd6a2ce0c0772c368bb988064",
+            "size": 37090267,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.430.parquet",
+          "size": 36494359,
+          "lfs": {
+            "oid": "830b9331b178db0afca44d24d3da9e4cae1ef622c772cb74df3cf9af452ea3f0",
+            "size": 36494359,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.431.parquet",
+          "size": 36667199,
+          "lfs": {
+            "oid": "2959e4c52d34f9deac55c5bacd315d80bdb98b94daf64366b527fee5f68afcfb",
+            "size": 36667199,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.432.parquet",
+          "size": 35840645,
+          "lfs": {
+            "oid": "40ea88dd1978f8bd9314f4b8f6505eb8023a4ed6d42e96dcd402d1009fa126fa",
+            "size": 35840645,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.433.parquet",
+          "size": 26555258,
+          "lfs": {
+            "oid": "39732bf0a5bf4e433f292bdb177350b453dc7dcf60be05cecb915704f50816c0",
+            "size": 26555258,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.434.parquet",
+          "size": 26931322,
+          "lfs": {
+            "oid": "275bcbba811ce0c2f7c2a5388f419e5a279646dec9e2028e645d1f742796c9fe",
+            "size": 26931322,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.435.parquet",
+          "size": 33030950,
+          "lfs": {
+            "oid": "544fb6914d91f644bd0036a0fe6230c24e5a4a9bc1f3467f83ec0e9b4bfc4c4d",
+            "size": 33030950,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.436.parquet",
+          "size": 33510425,
+          "lfs": {
+            "oid": "cdd531196c7346d9dae58d2dbaaaf721632512e6158462094a028c6f16fdab00",
+            "size": 33510425,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.437.parquet",
+          "size": 33693140,
+          "lfs": {
+            "oid": "7493abcf9328ea494d03cc08f95eb7c4806019ad4655e45b6cb8eb717734d50a",
+            "size": 33693140,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.438.parquet",
+          "size": 36486896,
+          "lfs": {
+            "oid": "5aec9362cd7043d8b3e9df5024854cc607fc40a275e5d479ba45c0c84257ce05",
+            "size": 36486896,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.439.parquet",
+          "size": 35906788,
+          "lfs": {
+            "oid": "15594ed2b58985f47752d2317297675e7d81820804c5e4581b81f5b67cfc49f1",
+            "size": 35906788,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.44.parquet",
+          "size": 36869234,
+          "lfs": {
+            "oid": "ee34c7198774aaf144c908c8fced62568bba3dc82cd71545ac63c6cfc9bf0270",
+            "size": 36869234,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.440.parquet",
+          "size": 33810528,
+          "lfs": {
+            "oid": "a127220012a3c6427d71f337df1481011a45bf401ed6b36e413dcc0e655296ec",
+            "size": 33810528,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.441.parquet",
+          "size": 31989519,
+          "lfs": {
+            "oid": "7f53e1c1930e6dbada06c8fc7d1f9572c934e9e06a00ed8a2dda0cd018df29c7",
+            "size": 31989519,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.442.parquet",
+          "size": 30581409,
+          "lfs": {
+            "oid": "108dd61a98e0f767345b96c0578b2357d2c3cfac5ae1ae2b6ccfd3bb49f267fe",
+            "size": 30581409,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.443.parquet",
+          "size": 32607243,
+          "lfs": {
+            "oid": "24305e593d1325c31da7043b6fa052282350f04f880dd7251e88309bbca4321d",
+            "size": 32607243,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.444.parquet",
+          "size": 32852119,
+          "lfs": {
+            "oid": "f666b2d7df64ec3a072101ae72b01a46a07ae59e58e14fcd78e68732dc7c54a4",
+            "size": 32852119,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.445.parquet",
+          "size": 36094422,
+          "lfs": {
+            "oid": "ea29565c12d8c016adb24a735ba2677f15bc1bf499d067fe0f3ef9d745fad56a",
+            "size": 36094422,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.446.parquet",
+          "size": 38266072,
+          "lfs": {
+            "oid": "642852b43e05b42ad0ae9458e21f9f5dca6c9b4f59030bca639800984bc58a0f",
+            "size": 38266072,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.447.parquet",
+          "size": 34373894,
+          "lfs": {
+            "oid": "c8d9309f3c37c873bec3234244318a2a190d27613e179705719acf3987d28759",
+            "size": 34373894,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.448.parquet",
+          "size": 33832527,
+          "lfs": {
+            "oid": "3f6012edfcdb6883fc55e011598351776bc089fa5cf8d1d49fdafa3c012a30ac",
+            "size": 33832527,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.449.parquet",
+          "size": 33028910,
+          "lfs": {
+            "oid": "0363102738869d5efca610e9e3861e30465af087a3d12714ea5536eaf648a36b",
+            "size": 33028910,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.45.parquet",
+          "size": 36550866,
+          "lfs": {
+            "oid": "6a365defe407d64a1ba2b4be1d6d43a1a0221b50dc399017e4076bb138e3c1ba",
+            "size": 36550866,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.450.parquet",
+          "size": 37375826,
+          "lfs": {
+            "oid": "4b1fb11f9c42a31e1e881ce5d49810457f06138bd87c1ab82595d380f219e357",
+            "size": 37375826,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.451.parquet",
+          "size": 36163793,
+          "lfs": {
+            "oid": "26f8b2b05b6c366d2b69d8163b4b9ba607ded90f297e5c3721c73c83785e8f98",
+            "size": 36163793,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.452.parquet",
+          "size": 37434795,
+          "lfs": {
+            "oid": "dde4c3532394f21d5b22583603bb79cb6c6ce882df0d2da09d6997f6ef94c82e",
+            "size": 37434795,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.453.parquet",
+          "size": 35933624,
+          "lfs": {
+            "oid": "54373c910f421ee3844957c60c3d1ac010587940cc012cc790f8992e2540deb2",
+            "size": 35933624,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.454.parquet",
+          "size": 37038919,
+          "lfs": {
+            "oid": "c21759294cc17f37382f46c08cd1e4ef5219d6fae9fb1902276c8d8871af6b8d",
+            "size": 37038919,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.455.parquet",
+          "size": 36290724,
+          "lfs": {
+            "oid": "051a4ed92698ae9b7d2d97e74da7f7bfe517094496fbce3681754c2b1cf546af",
+            "size": 36290724,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.456.parquet",
+          "size": 38180544,
+          "lfs": {
+            "oid": "2aeecd6c1d0031ae85a38f3b25bbb808e3270a7668892176a185fe0ae2633e88",
+            "size": 38180544,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.457.parquet",
+          "size": 36731940,
+          "lfs": {
+            "oid": "334ddb21dc6dd47ef0e2a58c042a273dca4724014f3026e7a3eba40d86cdb136",
+            "size": 36731940,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.458.parquet",
+          "size": 36612323,
+          "lfs": {
+            "oid": "6a7dd4839fdeabb86285a205e18789627cdc9f321bb298025c994c1c42cafba3",
+            "size": 36612323,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.459.parquet",
+          "size": 36154692,
+          "lfs": {
+            "oid": "fc100972306adc5bd2ca1e82d300cbfbf5d582b25e0c36dfd8528a4344887821",
+            "size": 36154692,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.46.parquet",
+          "size": 37207166,
+          "lfs": {
+            "oid": "5e604feb9940aaac285c7452023af955ea4104d9cd2407618dd6a2dce87d49c6",
+            "size": 37207166,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.460.parquet",
+          "size": 38197906,
+          "lfs": {
+            "oid": "1f860909a8a3e6763e684b6ab9056c1e35507e2e69df9f4483b3d6f64e2deba7",
+            "size": 38197906,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.461.parquet",
+          "size": 32695341,
+          "lfs": {
+            "oid": "fe35e74e4c20c361be28533d5261e9cc57b90cb21c76d728253c9b55980e0f5b",
+            "size": 32695341,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.462.parquet",
+          "size": 37244542,
+          "lfs": {
+            "oid": "76181a58cd60df8042b500dc5fbdaf0f6a14b27b4c6c51759c9afc9c9e2c7331",
+            "size": 37244542,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.463.parquet",
+          "size": 38416972,
+          "lfs": {
+            "oid": "dbfa039e72099ed20b7354a14870bad4165cd7998c722a7dc8f1adc8b18e730b",
+            "size": 38416972,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.464.parquet",
+          "size": 34560163,
+          "lfs": {
+            "oid": "6010010c8574ac3fc5d0df0ccc2901c6cf9eba223e8ba34ec19c94ce147a73e2",
+            "size": 34560163,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.465.parquet",
+          "size": 35555143,
+          "lfs": {
+            "oid": "f5ffcc14da6afc5aac1b56ce25d95f382a4ac235e9932aa652dbbd78b5821ba2",
+            "size": 35555143,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.466.parquet",
+          "size": 30941599,
+          "lfs": {
+            "oid": "85696ed479d59260b3800f93180f1845b0da94e3d89545d99f6f790cf7ce4e29",
+            "size": 30941599,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.467.parquet",
+          "size": 30547616,
+          "lfs": {
+            "oid": "b0b6c17019c1830ef8506792d70ebd6056bb413c8c87749e8f4e472eade59677",
+            "size": 30547616,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.468.parquet",
+          "size": 36785017,
+          "lfs": {
+            "oid": "e865090066d99622fee27b5d37d23116af7995ea73b330972e3ed66f5f2b2ebd",
+            "size": 36785017,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.469.parquet",
+          "size": 36951214,
+          "lfs": {
+            "oid": "15bbfd9cc38fd2bcc29aa0269426c635824ed9e88151a4a198705e54291c9046",
+            "size": 36951214,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.47.parquet",
+          "size": 36617574,
+          "lfs": {
+            "oid": "4eabf73c64430a80f7306e65c5ba188f2f7dfd5085a328e2a56cc21a1883a1e1",
+            "size": 36617574,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.470.parquet",
+          "size": 36128031,
+          "lfs": {
+            "oid": "21eb2091d3e15297582a6a6cc7e0c417b6daedc8f7c1fed102dcf169e2829c21",
+            "size": 36128031,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.471.parquet",
+          "size": 36205971,
+          "lfs": {
+            "oid": "c5f8a760ff4039a52415b79bd9b78e947aa4e25af234d0ecfaebef63bdc8d0c2",
+            "size": 36205971,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.472.parquet",
+          "size": 37514989,
+          "lfs": {
+            "oid": "dea0d029a80292f199de8e4a4b0ebe77bdcd5679dff44d55e982059f4b7d1bc5",
+            "size": 37514989,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.473.parquet",
+          "size": 36478373,
+          "lfs": {
+            "oid": "2330ebcf1a0505fc3807a735cc111d43e70f2f4cbffb8437172feaea6920cd65",
+            "size": 36478373,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.474.parquet",
+          "size": 37878710,
+          "lfs": {
+            "oid": "229772ab2bfb6bdb6c685ad5e3a109de867ccce0e56100d4eb9251d84a5cbc9d",
+            "size": 37878710,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.475.parquet",
+          "size": 37899129,
+          "lfs": {
+            "oid": "81292cf4c9131b6dc8c17956fb025a107bb79c904d31c255ed686e28d984b75c",
+            "size": 37899129,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.476.parquet",
+          "size": 38135875,
+          "lfs": {
+            "oid": "ce096f8d9c907254096a58596db4ba3fe514aa51c46dbb75ca9f8e7641e4adb0",
+            "size": 38135875,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.477.parquet",
+          "size": 32220779,
+          "lfs": {
+            "oid": "5e6beccd4767eea46a52452606d2d2c458e6dc1b940270bae1f83cc9a2bd2637",
+            "size": 32220779,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.478.parquet",
+          "size": 36907437,
+          "lfs": {
+            "oid": "5536bd194bde1cbf040dadd3b5fdeacdc641e8c32c52325cfe6de802624dc617",
+            "size": 36907437,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.479.parquet",
+          "size": 37637006,
+          "lfs": {
+            "oid": "ea3dab1fe0dae329297a73d8c527c4422cb4b72542ca1068a6d6fcb065da5811",
+            "size": 37637006,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.48.parquet",
+          "size": 35863810,
+          "lfs": {
+            "oid": "405704a895a8110b53cf1e4a2d4a64681bcd18092ed939afc20ae9faf4d1e44f",
+            "size": 35863810,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.480.parquet",
+          "size": 35553774,
+          "lfs": {
+            "oid": "d783ef3ff04a4d543166694371b1c8e3f5c732af6dedd4fd51260490cd23c0b7",
+            "size": 35553774,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.481.parquet",
+          "size": 36730681,
+          "lfs": {
+            "oid": "b94d8dd986a8aa1ed5e07ab909358c7e31f10effaf740268c40c49cd618a388d",
+            "size": 36730681,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.482.parquet",
+          "size": 37938372,
+          "lfs": {
+            "oid": "fd9f711b653ff686611b0d6b0b253242fca7154de23a7ec3280f2f707c4eb5dd",
+            "size": 37938372,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.483.parquet",
+          "size": 35160836,
+          "lfs": {
+            "oid": "da791fda759e9188a5266da42f406781b6cf063e50720dd4072aeff42f7f2801",
+            "size": 35160836,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.484.parquet",
+          "size": 38465569,
+          "lfs": {
+            "oid": "3bc2fc473e950d255b649c72c666f2697c276deb74bd570aa272b4475c64e9a4",
+            "size": 38465569,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.485.parquet",
+          "size": 37596127,
+          "lfs": {
+            "oid": "c6e258730e68d30928fa2b59d9491cd02e0a462c06c35fa838e13f0fe37d298c",
+            "size": 37596127,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.486.parquet",
+          "size": 37747114,
+          "lfs": {
+            "oid": "60d1eb60852c4f6190ad18d559d42dddb536b9a4552e44bfb894acc18e8f338b",
+            "size": 37747114,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.487.parquet",
+          "size": 37945768,
+          "lfs": {
+            "oid": "1e46a3a3c0726833212cf6ae3e7224924317e9c4b7628f3bf8e6e3a527426c9d",
+            "size": 37945768,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.488.parquet",
+          "size": 37533462,
+          "lfs": {
+            "oid": "1dd219e3bb7443cc95d0c934e3a403842c0b9a819f02c2b38755cb2e5a3b0f29",
+            "size": 37533462,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.489.parquet",
+          "size": 36287126,
+          "lfs": {
+            "oid": "2ccb864c19c888b76d32cd1d4173948ffe8adf8c98af1616d95144898d828f26",
+            "size": 36287126,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.49.parquet",
+          "size": 35748269,
+          "lfs": {
+            "oid": "0f696bb6d8af292d0110f7b8379c2f965e000f985628a813cf23b04c909a036c",
+            "size": 35748269,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.490.parquet",
+          "size": 32328142,
+          "lfs": {
+            "oid": "e48cc4ccf076d1e5fd8a2782e795fdc7db49cf2179069771ac4227ede1a30d6f",
+            "size": 32328142,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.491.parquet",
+          "size": 33906397,
+          "lfs": {
+            "oid": "c2270bb5ad0ce0c796a376ab41a5131d7179e6051e1b18507b6a55df6ea8657e",
+            "size": 33906397,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.492.parquet",
+          "size": 30154884,
+          "lfs": {
+            "oid": "dcb229e1037dbaf964ce213246426f3d9122aade003df01473fdd58b6860d14e",
+            "size": 30154884,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.493.parquet",
+          "size": 33022321,
+          "lfs": {
+            "oid": "c01942ce3d1bb538c1af206b20c9dea93f186bc0d46e3e2307279dc07ea608ab",
+            "size": 33022321,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.494.parquet",
+          "size": 35316356,
+          "lfs": {
+            "oid": "2f744ddc5f0417952a774f892974257ee72e5e220954534ac8f2f2cdb2f92beb",
+            "size": 35316356,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.495.parquet",
+          "size": 35598677,
+          "lfs": {
+            "oid": "8351a27f1e44f3fee715e6217aaa2919ce7e8391268087b3f5efba3beb947bea",
+            "size": 35598677,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.496.parquet",
+          "size": 35893004,
+          "lfs": {
+            "oid": "51358fdf295f2d5ae1c0edb278cce0a0e5329d825bf3986c0a3eec9393b3ef8c",
+            "size": 35893004,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.497.parquet",
+          "size": 37982596,
+          "lfs": {
+            "oid": "de6731a2520d90647abe61b343d8ae4c1ef33d2fc1b198a87c14b201a7271f21",
+            "size": 37982596,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.498.parquet",
+          "size": 37107048,
+          "lfs": {
+            "oid": "544110ecde946883f585ba52461b237c450940d32ad0fe96313b814ab07c493b",
+            "size": 37107048,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.499.parquet",
+          "size": 36990489,
+          "lfs": {
+            "oid": "91fb789f75cd5dd5146b1567c955ab59d9b39fc510a900a8865ec95fe3a4b959",
+            "size": 36990489,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.5.parquet",
+          "size": 38045463,
+          "lfs": {
+            "oid": "9c040dd50315fc4ac9d1d53388c0e99e921e250a7a6a38e84c555e6f9146d378",
+            "size": 38045463,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.50.parquet",
+          "size": 36186822,
+          "lfs": {
+            "oid": "16fdef4a3ff5651dccc9c81173cce889524214a5fd4860ddc4f1330c95238725",
+            "size": 36186822,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.500.parquet",
+          "size": 37611999,
+          "lfs": {
+            "oid": "30b27e69fa366d82cca5b6bfccd61e437845de129b6293f07887ab52ae56ea1a",
+            "size": 37611999,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.501.parquet",
+          "size": 35927806,
+          "lfs": {
+            "oid": "f35d0f68f3421a9e515c33eca76e60858bdf88352b551606619a16a2b849e613",
+            "size": 35927806,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.502.parquet",
+          "size": 37118182,
+          "lfs": {
+            "oid": "5a3ec11649fcf55d447a0173ef6e40e5244e9baa2957e0904d9304b1e3b5e574",
+            "size": 37118182,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.503.parquet",
+          "size": 36042200,
+          "lfs": {
+            "oid": "01d715bf6ac8aa17e8e9615a69180561c9cb7f2ca364ebe882c11b83442a0ec3",
+            "size": 36042200,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.504.parquet",
+          "size": 36537850,
+          "lfs": {
+            "oid": "18225d86a0803a4e8cc700c4c85571882b32fe2370018871cf2b2b214d385236",
+            "size": 36537850,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.505.parquet",
+          "size": 31489035,
+          "lfs": {
+            "oid": "100a423f41f9c2c9b4ba3cf3bd4d2d609d5544f85e9a583e9b5711b7912d32b3",
+            "size": 31489035,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.506.parquet",
+          "size": 28952912,
+          "lfs": {
+            "oid": "3ec2d053397eb445b4d6e28e365898e7c88869579836c0639c7d0002984766f2",
+            "size": 28952912,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.507.parquet",
+          "size": 29277277,
+          "lfs": {
+            "oid": "9df00fb999a2ae57e98367994e3891b2d7fe53bcf8b5339675704742b2620839",
+            "size": 29277277,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.508.parquet",
+          "size": 28684188,
+          "lfs": {
+            "oid": "87acba8f4cad2438b306223f8f3bb7d9306c17747c6b2e9e46a014af0844ee91",
+            "size": 28684188,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.509.parquet",
+          "size": 31104879,
+          "lfs": {
+            "oid": "1e6d8096b71dd15d67051ed339d61a294fe809f450d3e5f7a0c25d92b1369a58",
+            "size": 31104879,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.51.parquet",
+          "size": 37702663,
+          "lfs": {
+            "oid": "f14414560ad04d7f29b8ae02e26f9e91cee4c2a69b6554567dc32861742cc9ab",
+            "size": 37702663,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.510.parquet",
+          "size": 34732357,
+          "lfs": {
+            "oid": "07099cce26749b252a4611391ec4ff55d37582b5cedef91f7ba95466aab5c86e",
+            "size": 34732357,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.511.parquet",
+          "size": 34308610,
+          "lfs": {
+            "oid": "639b914cd8a64dd175d4482f145929c8f5ab5835a6a5caf207df98948037e97e",
+            "size": 34308610,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.512.parquet",
+          "size": 32827061,
+          "lfs": {
+            "oid": "05e2add05d9197622d2948557ddebde85123689155cddca0d38b078d44a7961c",
+            "size": 32827061,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.513.parquet",
+          "size": 34497256,
+          "lfs": {
+            "oid": "71e2d73de5bd9d829b5b9a8877c99f81e5cee70a5ca38833a71c203009636224",
+            "size": 34497256,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.514.parquet",
+          "size": 37978891,
+          "lfs": {
+            "oid": "12c1e8d65ee62e9f4f50fdecd410ffccc02dfd321fc849f5e0091913146a2b8a",
+            "size": 37978891,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.515.parquet",
+          "size": 36298731,
+          "lfs": {
+            "oid": "74c874048b59646bb60e476f3c3f86daf885162d3d8fe3c3f2e15da72acd07d6",
+            "size": 36298731,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.516.parquet",
+          "size": 36952650,
+          "lfs": {
+            "oid": "1e25c6a848d762e9dcb895b28dfc990a75037e487de053e14a15f6dacf73c6e2",
+            "size": 36952650,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.517.parquet",
+          "size": 37316108,
+          "lfs": {
+            "oid": "fb5605dbc6074054125e160d33b48d305bc67139df95acaf7c41a72e61d71b26",
+            "size": 37316108,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.518.parquet",
+          "size": 36850091,
+          "lfs": {
+            "oid": "65df38d953f8231abc40a47805c53d965280e2f5c125c03f596c34e7a90c4f24",
+            "size": 36850091,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.519.parquet",
+          "size": 35870243,
+          "lfs": {
+            "oid": "d53f8885328dfecd278a8e02e9261471fc88e7bf0b748fb763698db03e0517e4",
+            "size": 35870243,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.52.parquet",
+          "size": 37125334,
+          "lfs": {
+            "oid": "518c197b1a39ab0a144beeaea30967cfaffad9f7df03f70cd13f27b302f8c8a8",
+            "size": 37125334,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.520.parquet",
+          "size": 37662877,
+          "lfs": {
+            "oid": "6b3a614b35edd41ecab52a4e23218cb2e8ca9cb1fe0b7a80a930334d00d89a76",
+            "size": 37662877,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.521.parquet",
+          "size": 35914846,
+          "lfs": {
+            "oid": "c0391bcb4c4eeaba0b9626d05f2f2b93e83d0a6ed1ef0e0460740082459a49a3",
+            "size": 35914846,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.522.parquet",
+          "size": 38518552,
+          "lfs": {
+            "oid": "93ff39e54de07d692f485362bbbdec670200adbc25e4ec0306ea4542034e46cc",
+            "size": 38518552,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.523.parquet",
+          "size": 37839609,
+          "lfs": {
+            "oid": "1af2173bc4b0e24f3ab9c163a0958bef52521f29f4298ce2ad1617114cc8272c",
+            "size": 37839609,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.524.parquet",
+          "size": 36111751,
+          "lfs": {
+            "oid": "e650942c95954a68f0342f03a670b91200b779dfeacad24064a816b8a88ad4af",
+            "size": 36111751,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.525.parquet",
+          "size": 36519462,
+          "lfs": {
+            "oid": "699f7c275d956f0a038344926b205e3b46ef0e376de02c387765bb9c7de7cabd",
+            "size": 36519462,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.526.parquet",
+          "size": 35420945,
+          "lfs": {
+            "oid": "418fdad34ed6c209f850e224afc7b425a2ffb43178ba22dec5e1d1fc78870b5f",
+            "size": 35420945,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.527.parquet",
+          "size": 38761339,
+          "lfs": {
+            "oid": "02f8ee71b88b4c0822773eab934e2da4206b503e1cae8c5869e4dbccddb43bef",
+            "size": 38761339,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.528.parquet",
+          "size": 37442615,
+          "lfs": {
+            "oid": "645563592141ed94745e7d02e75c897daafd2825502d8316f9e032fd48956457",
+            "size": 37442615,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.529.parquet",
+          "size": 37049910,
+          "lfs": {
+            "oid": "a509b78669b8d695aee6d5ea1f77d5645edb45d10ce29f5c532afea80e7ee564",
+            "size": 37049910,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.53.parquet",
+          "size": 37086814,
+          "lfs": {
+            "oid": "94bc831366ddb306998b8c15ee087f387dc3fa7fb265470f88d5c1ea592e0e5a",
+            "size": 37086814,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.530.parquet",
+          "size": 36084513,
+          "lfs": {
+            "oid": "f649d5f2dee201fe9a4e3c7395d13952b304400313313ce61a1b91bfd9d74fe1",
+            "size": 36084513,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.531.parquet",
+          "size": 33715543,
+          "lfs": {
+            "oid": "1647e6c8aa12ecd6b1130994c661e50cff8713a676886ae75c6f8a54ae98f06c",
+            "size": 33715543,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.532.parquet",
+          "size": 35241722,
+          "lfs": {
+            "oid": "349f2a441f87b820e90b2beb1a00a14f9b9ee35dfbcb6f761cf16b9a88e3aa13",
+            "size": 35241722,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.533.parquet",
+          "size": 36122244,
+          "lfs": {
+            "oid": "8804b8445acd5986713a7388ded96a81308e21c4526e5a71078c1141ffa5ba44",
+            "size": 36122244,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.534.parquet",
+          "size": 38049495,
+          "lfs": {
+            "oid": "283f87bfbdf83b495e0dd743500e2c8f3516dc1f777830adb73bb161f0b5db7a",
+            "size": 38049495,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.535.parquet",
+          "size": 34381402,
+          "lfs": {
+            "oid": "0e198d8d712a359d5d7f4433f8b5b411f2d6c0c59902ad34d31e3eff6ade49f2",
+            "size": 34381402,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.536.parquet",
+          "size": 34821073,
+          "lfs": {
+            "oid": "317502425cc953f16b3df34bef9df74d62f131f32985ce648f7b55890811624f",
+            "size": 34821073,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.537.parquet",
+          "size": 34846293,
+          "lfs": {
+            "oid": "b41b6219e56ef2f52ef8425eeeb2e6af46d07e9c62c7d95f084c5ea3c6fa34eb",
+            "size": 34846293,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.538.parquet",
+          "size": 36220543,
+          "lfs": {
+            "oid": "3525a7a20a4974af47ea9fb344e5aefb1538afb3e655c42081642d7966f7ee25",
+            "size": 36220543,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.539.parquet",
+          "size": 35195350,
+          "lfs": {
+            "oid": "68299654e8bbaa0b3a81611a9ef7adee0311cd7c8f00522fae415fdddf769be6",
+            "size": 35195350,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.54.parquet",
+          "size": 37023147,
+          "lfs": {
+            "oid": "ae0fdd9aae123d348d0a829e6bc6ac28408f1a3d0c856c38a517cbdb395009ba",
+            "size": 37023147,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.540.parquet",
+          "size": 38671597,
+          "lfs": {
+            "oid": "84c7653a2e115b9d9d7dd9f9e2dc959337382a7e6b884fddd3941df5a3697535",
+            "size": 38671597,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.541.parquet",
+          "size": 37924963,
+          "lfs": {
+            "oid": "f8b3df288e25f64bee231956db6b5d7d4cf87754def87ddf70aabef626dd8249",
+            "size": 37924963,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.542.parquet",
+          "size": 34934680,
+          "lfs": {
+            "oid": "30eaf332b00134a186ee6acbaeacf04596cf223f0ae26f0f793dcfb6b6d21523",
+            "size": 34934680,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.543.parquet",
+          "size": 34915368,
+          "lfs": {
+            "oid": "cf720d6efc7b53b2de5e9076d2be3f10f4fe9890c28d683c4e719717975e0da8",
+            "size": 34915368,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.544.parquet",
+          "size": 36739121,
+          "lfs": {
+            "oid": "33c2b9c5082883769f6969137046da1fddca0e09b585d91b8f27c506888d8a2b",
+            "size": 36739121,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.545.parquet",
+          "size": 33364198,
+          "lfs": {
+            "oid": "9f791b6df41e3ddb4ae02a0a1c5274c1a7610b7780f9b3f93a3098e73a7bac8e",
+            "size": 33364198,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.546.parquet",
+          "size": 37227622,
+          "lfs": {
+            "oid": "b8243a59b7442d425c8754b451a9a75924c3e301a4acda4447da40df117c796d",
+            "size": 37227622,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.547.parquet",
+          "size": 36339552,
+          "lfs": {
+            "oid": "eff4b331f61d124f706dbaaa57ec2bf332f8c9ea134b43ba9d75c3a390e5756b",
+            "size": 36339552,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.548.parquet",
+          "size": 37646172,
+          "lfs": {
+            "oid": "26a395251e7f6d93d3fad20dc7f60589c3ae6243d6c302d6066bcc0745c625b2",
+            "size": 37646172,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.549.parquet",
+          "size": 37535642,
+          "lfs": {
+            "oid": "6c3bf3ca479af6340ff3fd72db45b04206e71d4754b37f091075702981c54741",
+            "size": 37535642,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.55.parquet",
+          "size": 36941154,
+          "lfs": {
+            "oid": "e671235ee4904d200cd1623ca3859294db77e59c12111a71bc7861809b4036bf",
+            "size": 36941154,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.550.parquet",
+          "size": 35651942,
+          "lfs": {
+            "oid": "6d8fd1bc36d3122f051db10a6dfc32a61341489de221df4e986a3e98c02ded04",
+            "size": 35651942,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.551.parquet",
+          "size": 37621604,
+          "lfs": {
+            "oid": "14209799c5ac8910f7a8f5a4b87f9c4cf868308c3a07c28ba798312fe0feaaae",
+            "size": 37621604,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.552.parquet",
+          "size": 33406498,
+          "lfs": {
+            "oid": "ef1c25f64234d5342241cde2278fdcc6049c89619354a69444e066d7e3d43867",
+            "size": 33406498,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.553.parquet",
+          "size": 34559868,
+          "lfs": {
+            "oid": "e29e27dcc88a1c68b84eb9bc2aaca5562814df82e895d52b789cc1887b250a1c",
+            "size": 34559868,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.554.parquet",
+          "size": 38474308,
+          "lfs": {
+            "oid": "c59b5025b0b289fad26e67ad7921f4bbfde863de254efa41876c78cb4fd65b90",
+            "size": 38474308,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.555.parquet",
+          "size": 37681804,
+          "lfs": {
+            "oid": "49dea80feba779b9ba3c2d04359a7042ba9e1c261f837f1b660fedb3040ae3fc",
+            "size": 37681804,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.556.parquet",
+          "size": 37151615,
+          "lfs": {
+            "oid": "fc40c59cc7280839fa69faf3c0f86f4afcefcd8784168e7e1e005fb86b35cfcf",
+            "size": 37151615,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.557.parquet",
+          "size": 37270691,
+          "lfs": {
+            "oid": "b53141f429c982e2061b59b1c39eb48d8e38f8a432b3683d335e3f86a5d8cb61",
+            "size": 37270691,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.558.parquet",
+          "size": 37763132,
+          "lfs": {
+            "oid": "56babecc5d0ef1d2a29bfc73679f459bf6c22e7d20bd1ba19fd14c093b3b79f8",
+            "size": 37763132,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.559.parquet",
+          "size": 32450366,
+          "lfs": {
+            "oid": "839a0a9211b55238124a384970ec3e42152624f99f3fc2b778764918ccd96960",
+            "size": 32450366,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.56.parquet",
+          "size": 35755428,
+          "lfs": {
+            "oid": "60b337b2aec4c89202e10564cdbcd191187760392680fe2500d5dc16f1d6cc55",
+            "size": 35755428,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.560.parquet",
+          "size": 36025910,
+          "lfs": {
+            "oid": "3657d63a3a7d2a75a813bd9b88b986b3796053b2b5f1e80e5bc408a44be5bd0b",
+            "size": 36025910,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.561.parquet",
+          "size": 32695206,
+          "lfs": {
+            "oid": "46cab8f4533226069cdd9f7f5b06b4daf07a5deb4f0fc81329bfe3340faa1457",
+            "size": 32695206,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.562.parquet",
+          "size": 37187634,
+          "lfs": {
+            "oid": "463ef3a34a333d80fe6c1a140c67e40a812ed641771a6778cd534c2b53368235",
+            "size": 37187634,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.563.parquet",
+          "size": 37127980,
+          "lfs": {
+            "oid": "560fb87c217ac6eb3385cb52ae01302c99e1a178b484aa82edecc4cceac76738",
+            "size": 37127980,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.564.parquet",
+          "size": 35739981,
+          "lfs": {
+            "oid": "e31bae32a88ff4f9af62b454f7398a7c562aba6e2b10d33d0daf49d18d9b38db",
+            "size": 35739981,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.565.parquet",
+          "size": 37734205,
+          "lfs": {
+            "oid": "24ee5684a4611e97a5b2c62ace66ddea20c6dc7c3f3cf00c6659479dd4ec5d85",
+            "size": 37734205,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.566.parquet",
+          "size": 37273210,
+          "lfs": {
+            "oid": "c4b94c96a9571380221b9b97fdfa59b2193a7a7410974998bec03467bca13ff1",
+            "size": 37273210,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.567.parquet",
+          "size": 34072228,
+          "lfs": {
+            "oid": "3f15d674a479f52177e3c9e59933dc1cf4a49f7862e7b0b8b2c80392e43e3cdd",
+            "size": 34072228,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.568.parquet",
+          "size": 34833531,
+          "lfs": {
+            "oid": "7d53952e9a6e9ae617e4d63f9ad70caf4e7d8a7b3ac5339129e2f538e7b85ea5",
+            "size": 34833531,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.569.parquet",
+          "size": 31809745,
+          "lfs": {
+            "oid": "4de2e706c37ceb0c2092b0c62cc8aa4b7c767868bd274b2942086ec0f029f360",
+            "size": 31809745,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.57.parquet",
+          "size": 36214405,
+          "lfs": {
+            "oid": "6e4fb365243b7389d9fa667cc7269bbd544be3c35b4cab8671ae0c8c814c683d",
+            "size": 36214405,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.570.parquet",
+          "size": 27685772,
+          "lfs": {
+            "oid": "40af30307ae2954eb04199233c49a93fa199a58eb05c3d4dd1c18864e0959b4c",
+            "size": 27685772,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.571.parquet",
+          "size": 28050837,
+          "lfs": {
+            "oid": "91e7898d62a2c7783fda0c8cb7e27dd03d55ed63c29801eb1b1476d7e91165cb",
+            "size": 28050837,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.572.parquet",
+          "size": 28446292,
+          "lfs": {
+            "oid": "586e5725394bb8c16f0366e0edbd7062b78ab89614c59123c2d21832f2638cd9",
+            "size": 28446292,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.573.parquet",
+          "size": 28511527,
+          "lfs": {
+            "oid": "5009184fbe207aa504bb2430062b6376fdac9567ccd32662461f748c32e59197",
+            "size": 28511527,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.574.parquet",
+          "size": 28445927,
+          "lfs": {
+            "oid": "ddc477a5d2a8c234bd373cbbbc5ac53a59451810f356eebb0988b312c00115f8",
+            "size": 28445927,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.575.parquet",
+          "size": 28599857,
+          "lfs": {
+            "oid": "e846b569960760136671b31fdff1cde38632d4ff8a0ee569c35032dffbd2ae22",
+            "size": 28599857,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.576.parquet",
+          "size": 29065906,
+          "lfs": {
+            "oid": "8f4979d2acbf3ba111a7bd6ccb86c700ae344c6ffd27415d6d5976a965027ebf",
+            "size": 29065906,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.577.parquet",
+          "size": 28598449,
+          "lfs": {
+            "oid": "7fcd0d4e1772ddb2469f184e57b6c468a9c14e6c814e67ebb7226fc102be245e",
+            "size": 28598449,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.578.parquet",
+          "size": 28601216,
+          "lfs": {
+            "oid": "edd2d8d111fda4401591cbbfed3cc710328232741851dedf8527367f24e44452",
+            "size": 28601216,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.579.parquet",
+          "size": 28734188,
+          "lfs": {
+            "oid": "f93d4f8f2d9561195978f3c3b034a7bd399e3cb8160c01086cdda55587c2694c",
+            "size": 28734188,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.58.parquet",
+          "size": 33869800,
+          "lfs": {
+            "oid": "3c2c7a010b62e6208960b5e26cd17b073b8dd8d6bca666d1cb103ac7b8e87ccc",
+            "size": 33869800,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.580.parquet",
+          "size": 28860541,
+          "lfs": {
+            "oid": "ae2ef6cd1f3d56cb99f06e0abb84815b103bd9be8efc0e62bd7beda05899ed43",
+            "size": 28860541,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.581.parquet",
+          "size": 28685895,
+          "lfs": {
+            "oid": "ba8312bd301235b979793ab0264d814069301d81976345604393d366b00038e4",
+            "size": 28685895,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.582.parquet",
+          "size": 28729518,
+          "lfs": {
+            "oid": "72ae3cc8905f13818f0778ef83b703adbf11f0d2cffe0885f3496788d27180d3",
+            "size": 28729518,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.583.parquet",
+          "size": 29548012,
+          "lfs": {
+            "oid": "ed0e1f37161a17dd117102682fccbbed05dbd4c62b4b6bc6d7dff9f58334e186",
+            "size": 29548012,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.584.parquet",
+          "size": 30093597,
+          "lfs": {
+            "oid": "99e5ccb431fb5cecd8bd47b0d60fd47a19f44dc28529e77c4f954705a5eb25b7",
+            "size": 30093597,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.585.parquet",
+          "size": 31968018,
+          "lfs": {
+            "oid": "82bea9624c19cb734ebc636ef1b4583d64b0ce0c279295dafd2ac29af5ecbc9d",
+            "size": 31968018,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.586.parquet",
+          "size": 31339518,
+          "lfs": {
+            "oid": "a02a6f566d16a3094f0c982e4e5430bbe49de9b76df71ff247021c4da3540951",
+            "size": 31339518,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.587.parquet",
+          "size": 26758209,
+          "lfs": {
+            "oid": "57f576eefc5bff2e22dfce14453b02b78e5cf5066a7e596532e342291d204998",
+            "size": 26758209,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.588.parquet",
+          "size": 19320954,
+          "lfs": {
+            "oid": "59a793e08bc8503cb9984adaddc0e4d290b960cc27286f9c657a8717cf0d5e62",
+            "size": 19320954,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.589.parquet",
+          "size": 14217717,
+          "lfs": {
+            "oid": "7f57a7969b4ea923060eee59b73d69c2431dfc7479840bc37767dbf13d08c3db",
+            "size": 14217717,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.59.parquet",
+          "size": 30143810,
+          "lfs": {
+            "oid": "c601d4020845d5aea2528d1db63396011dd45cd9aa62ddeb5cc486f9190ef053",
+            "size": 30143810,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.590.parquet",
+          "size": 25519530,
+          "lfs": {
+            "oid": "9322efe0c3c78f5424685185710e825eebdc8137d0f7e522d3b7d312baba589a",
+            "size": 25519530,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.591.parquet",
+          "size": 26256206,
+          "lfs": {
+            "oid": "71123b36ce3abfad8f616d0950aa043275383497324b00cc710279ac3db120cd",
+            "size": 26256206,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.592.parquet",
+          "size": 32057899,
+          "lfs": {
+            "oid": "c9c9f33697edf83c4d44bbc3234107d87e626c05b0c0fc70cd63a0f43f28ea93",
+            "size": 32057899,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.593.parquet",
+          "size": 30036225,
+          "lfs": {
+            "oid": "dc971047b8a93848ea127ccda3fe3ff75155638c17dc6bc701520ef1c1bc8906",
+            "size": 30036225,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.594.parquet",
+          "size": 29500805,
+          "lfs": {
+            "oid": "70f058bdea1fbce39be17ae7456c193ae6729b87558aba4dbea35dfe99ede4bd",
+            "size": 29500805,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.595.parquet",
+          "size": 26401206,
+          "lfs": {
+            "oid": "44654b511b58422338b2fa9def79fa66731bcd665fc4391abb6a86c6aeba5e04",
+            "size": 26401206,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.596.parquet",
+          "size": 31774880,
+          "lfs": {
+            "oid": "8b025be8228c9287eb406f6220a851bcf2abd7f7c73f19699d3a543988c305d3",
+            "size": 31774880,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.597.parquet",
+          "size": 29649739,
+          "lfs": {
+            "oid": "ffa9e2a10c16b8350ec700f833d8911ad122761fa49ca0a67b9af00591128d07",
+            "size": 29649739,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.598.parquet",
+          "size": 36925471,
+          "lfs": {
+            "oid": "6cc46c1f0ca8c1b5f7c526ed0f289acd9d4ade3d7d3957a51fb094e24755923f",
+            "size": 36925471,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.599.parquet",
+          "size": 34096797,
+          "lfs": {
+            "oid": "d0c5e4702f287e9e51866fe8d6557864d0a6c5b965fde596628a36bce4b7f0b6",
+            "size": 34096797,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.6.parquet",
+          "size": 37939811,
+          "lfs": {
+            "oid": "c15279a3679276e6b85ac2d980f75a5f40353957d4d04daf57ccf3ffba6f1978",
+            "size": 37939811,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.60.parquet",
+          "size": 30728886,
+          "lfs": {
+            "oid": "745df3d10b45aa4d62d58979af9e806db9603b96696f84ce67e0f50b59c114cd",
+            "size": 30728886,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.600.parquet",
+          "size": 31131751,
+          "lfs": {
+            "oid": "0b9557377adb19bba2e66c74ab60693c25f144b6b866485b27b03499c08eb129",
+            "size": 31131751,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.601.parquet",
+          "size": 32576906,
+          "lfs": {
+            "oid": "908b0b947408e010abe31ccc38bb4268be2c88fac44d392faa27d136cb195f3d",
+            "size": 32576906,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.602.parquet",
+          "size": 38146536,
+          "lfs": {
+            "oid": "45d219c4a3146d2c230d44d7a97cde4d4a846d46c9993641acd90d163800277d",
+            "size": 38146536,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.603.parquet",
+          "size": 36498727,
+          "lfs": {
+            "oid": "f572d424ed669f9e0f3ab53586a3f6f097e28d5e8f7aa36461cfa12eadf8baa7",
+            "size": 36498727,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.604.parquet",
+          "size": 38104931,
+          "lfs": {
+            "oid": "76b907bf3cbfc3421d77de223d381a8429b838b68f8c07fcf3cf01e6ba2cc66f",
+            "size": 38104931,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.605.parquet",
+          "size": 38138430,
+          "lfs": {
+            "oid": "3505798524838f34035e2521338a51015a4fde9535d4fa49cdaba0544858ee3f",
+            "size": 38138430,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.606.parquet",
+          "size": 37686002,
+          "lfs": {
+            "oid": "b41879d28d63c1538484e4ed3d8ddbf520bca09862545a55ea043a3a7ce6a035",
+            "size": 37686002,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.607.parquet",
+          "size": 36112805,
+          "lfs": {
+            "oid": "49f2b99b569fe053250d5364be6103b645d326edccf1cec7f55b669409b1cdc2",
+            "size": 36112805,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.608.parquet",
+          "size": 37530772,
+          "lfs": {
+            "oid": "bd41c3d09552f1a398c93a8ac0e76d5d630127efdc5d6de2094677de36117d5a",
+            "size": 37530772,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.609.parquet",
+          "size": 35177011,
+          "lfs": {
+            "oid": "44e7ccd1099dc0b858305abef90e8d6e615de43ae48509e57733fd6f83353e4c",
+            "size": 35177011,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.61.parquet",
+          "size": 32569548,
+          "lfs": {
+            "oid": "264596606ef2e3dfb27809e1a9579feb42d67dbe58729c6658fa60e28f89fb13",
+            "size": 32569548,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.610.parquet",
+          "size": 37431550,
+          "lfs": {
+            "oid": "ae8499a385c86ec329548e7f593e3c71b644aee873892f6fad440fd6ec5a9dc2",
+            "size": 37431550,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.611.parquet",
+          "size": 36913149,
+          "lfs": {
+            "oid": "b0a37f9ba744a78c95c404df75fad303d198fc02094174b5b1a1f575735864d9",
+            "size": 36913149,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.612.parquet",
+          "size": 35579221,
+          "lfs": {
+            "oid": "eeabed5776c74b4283de3fc8c8a355fc720c83c327bcc5ef9a90b995108dca9b",
+            "size": 35579221,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.613.parquet",
+          "size": 37127057,
+          "lfs": {
+            "oid": "bbc656b3a5a5573e42db36d8ad3453931ffa2500655b96b9f39d8f02346dd776",
+            "size": 37127057,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.614.parquet",
+          "size": 36249446,
+          "lfs": {
+            "oid": "6b96e4b4adb4751f630e20debfb7aeae535c89db0eca564b874a53fbe2294e9f",
+            "size": 36249446,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.615.parquet",
+          "size": 37416178,
+          "lfs": {
+            "oid": "34266ed816964a1ae556490628cf2538d32bf49c2ec45ed6a847ffa1953e6543",
+            "size": 37416178,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.616.parquet",
+          "size": 36316786,
+          "lfs": {
+            "oid": "7776edb5c658245d63c96b9ac00029cc0abe16fe941bbc3f84751a3c8a45dbce",
+            "size": 36316786,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.617.parquet",
+          "size": 37245558,
+          "lfs": {
+            "oid": "9f6fddcf988ddf4bd20e0f1fd62cdffd73f151fcd1d0939bbff1ef2bc7ca883e",
+            "size": 37245558,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.618.parquet",
+          "size": 34711426,
+          "lfs": {
+            "oid": "55b561ccdae38219369a82bdd985bd1a3f4b5bddcc6b74041c3097316323df45",
+            "size": 34711426,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.619.parquet",
+          "size": 33795467,
+          "lfs": {
+            "oid": "9aed997dfda6d41189c779066c2efb25c097d4f955009b03836ab9ba5bfb9429",
+            "size": 33795467,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.62.parquet",
+          "size": 35083516,
+          "lfs": {
+            "oid": "2ab3d69377f971cad2cdf1bb4c514771c4e60a6479054f512a23cb2d4e3fa7d1",
+            "size": 35083516,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.620.parquet",
+          "size": 34795256,
+          "lfs": {
+            "oid": "4d103820490baf94523fa0c55e2f7829bf3a3286d68daad0f77e0e257d2f9ac0",
+            "size": 34795256,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.621.parquet",
+          "size": 37321609,
+          "lfs": {
+            "oid": "bb7114408272b380c9e84720463be29cd52dd6cf0aa123e76060f4bb71b480bc",
+            "size": 37321609,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.622.parquet",
+          "size": 34303000,
+          "lfs": {
+            "oid": "82925a20bbc0356005fd83e714c792b18d5db3091805debe79effe54ed92c6c2",
+            "size": 34303000,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.623.parquet",
+          "size": 37978400,
+          "lfs": {
+            "oid": "f7e473c6aed2e49e17f6eeef05dd17f5cd78517d4d47a22c4b4833e2bc82fc45",
+            "size": 37978400,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.624.parquet",
+          "size": 37102288,
+          "lfs": {
+            "oid": "2a1a135e71d388072f001e60d2ef044c5a1616e3f1333a544d60e909dfef50f4",
+            "size": 37102288,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.625.parquet",
+          "size": 37607373,
+          "lfs": {
+            "oid": "1f29ceeb040efb3bd51eaba8014b72d739126bfc91de23a38d05a29927c6e233",
+            "size": 37607373,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.626.parquet",
+          "size": 37259599,
+          "lfs": {
+            "oid": "8b75a554b430d9beed4a65f1e84f3aa477af6030ea5467c20f4e9b5335557345",
+            "size": 37259599,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.627.parquet",
+          "size": 36778545,
+          "lfs": {
+            "oid": "cb559f5d7211cee117a6b0aef7d5e5d816600a105eaa63ff148b2bf2c549e707",
+            "size": 36778545,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.628.parquet",
+          "size": 37664271,
+          "lfs": {
+            "oid": "60ea639bde871de167afec27e59f2712eaabf56f70fd683dc7de3a93569b950e",
+            "size": 37664271,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.629.parquet",
+          "size": 37141658,
+          "lfs": {
+            "oid": "996331c1834404bbb72e2b998f065a31604b7a02f2f7d2e75561ff18ce748fc7",
+            "size": 37141658,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.63.parquet",
+          "size": 33116693,
+          "lfs": {
+            "oid": "00ef279ce1580856793f0c95e67e01ba854e325601b4046b436506ddba9e14e7",
+            "size": 33116693,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.630.parquet",
+          "size": 36846154,
+          "lfs": {
+            "oid": "ec49c7d46e3ca648cd2743252192da2df4568031448e03b0c4ed859ae5e10162",
+            "size": 36846154,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.631.parquet",
+          "size": 36747559,
+          "lfs": {
+            "oid": "e7857ef00466d8b203580c784c89f0b6d6d1febe73653addbab710c7a508b025",
+            "size": 36747559,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.632.parquet",
+          "size": 35941971,
+          "lfs": {
+            "oid": "c7e251199e649bed3c9a947353964645dc3d3cd426c82065dcbc8e10a6ad33b7",
+            "size": 35941971,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.633.parquet",
+          "size": 36745601,
+          "lfs": {
+            "oid": "f020389fad5598956a5bdca1063660e951c457c2ef20c45012a78f84b9b9fed3",
+            "size": 36745601,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.634.parquet",
+          "size": 37506370,
+          "lfs": {
+            "oid": "c66df2ae8676fde884dd85c0116165ad38109070f02a02f8a7e14321e014c76a",
+            "size": 37506370,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.635.parquet",
+          "size": 37331362,
+          "lfs": {
+            "oid": "3dd4797709da6f5379fc03b51b2f2552b2ee318be5d2bb0d84037db400e321c1",
+            "size": 37331362,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.636.parquet",
+          "size": 34218025,
+          "lfs": {
+            "oid": "1e459df1f983398d35b05bad0f3d74afc63b177fa4c8d091a8c6a73bc58b7ae1",
+            "size": 34218025,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.637.parquet",
+          "size": 37894521,
+          "lfs": {
+            "oid": "32aa6f971795ad28be50526d1607367d52460d57375d5acadaf205d79e3b2a1a",
+            "size": 37894521,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.638.parquet",
+          "size": 36422109,
+          "lfs": {
+            "oid": "4a838a0b29ba26f7829392a64f2be66d303bdea14c0dc4d4bda8d469384f27e4",
+            "size": 36422109,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.639.parquet",
+          "size": 38141735,
+          "lfs": {
+            "oid": "151ee882e3155a2f7ea9bddb72ed141f1967596efa9c446d77b83aa280c35b07",
+            "size": 38141735,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.64.parquet",
+          "size": 34493534,
+          "lfs": {
+            "oid": "e72d8c3c6425952371ab30d8272c4694ee0bd4a2dad8c08f9947b5b3b284efc6",
+            "size": 34493534,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.640.parquet",
+          "size": 37433806,
+          "lfs": {
+            "oid": "d88dd1cac678e2f15155e028910fa4b1c6babe3df4f8af66af27ca1edefdb447",
+            "size": 37433806,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.641.parquet",
+          "size": 36819876,
+          "lfs": {
+            "oid": "c5844b4ae880ed50a4b9856ff9daba390bdb8744a04d32fc32037c7ffa0b09c9",
+            "size": 36819876,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.642.parquet",
+          "size": 38316022,
+          "lfs": {
+            "oid": "7242059b1cc8d4e7b6f1b8c359a273a25d8d73cfe60eca27f759c87c99cc0808",
+            "size": 38316022,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.643.parquet",
+          "size": 36531879,
+          "lfs": {
+            "oid": "de1d13d00086c310bbe6d1ed8b753a8a6477ff2c6f72bb3a3195cdb69ea04438",
+            "size": 36531879,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.644.parquet",
+          "size": 37716084,
+          "lfs": {
+            "oid": "d5e3b7de78556c3cdecaefc3521b9e4c62285db60ffd31a698bd0fb1f375d6d9",
+            "size": 37716084,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.645.parquet",
+          "size": 36670701,
+          "lfs": {
+            "oid": "bcc8ee5ef9517967fe52403333661a1987520a703d910f71eb46316ba5663dfa",
+            "size": 36670701,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.646.parquet",
+          "size": 29816250,
+          "lfs": {
+            "oid": "fa1378ff9c2e85ded6eac13018972aeecab26287cdeadbc5b9dcf3b31dfe1875",
+            "size": 29816250,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.647.parquet",
+          "size": 29058058,
+          "lfs": {
+            "oid": "e6b8e4364ba67df913ea838915bbcb4590a49fd59fe698ec97cb735c55aebf6f",
+            "size": 29058058,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.648.parquet",
+          "size": 33225448,
+          "lfs": {
+            "oid": "085a51cd8aa724f6d5159f98197dfc1ccec05a66e8cabd4abd4ca497e425e3b1",
+            "size": 33225448,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.649.parquet",
+          "size": 38275300,
+          "lfs": {
+            "oid": "30850ae3681e3d659d8ac588bd3b70315e8fecfc8d432e04a8d93e91db981a44",
+            "size": 38275300,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.65.parquet",
+          "size": 36570557,
+          "lfs": {
+            "oid": "b46c707c3a13b5a2f0b42486cc094bdc1f26a04a30fca470092ec68e33b9e5ad",
+            "size": 36570557,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.650.parquet",
+          "size": 38199871,
+          "lfs": {
+            "oid": "363a94508bc41a0675838eb301d673411f62191b86eeab761fb169a03df12410",
+            "size": 38199871,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.651.parquet",
+          "size": 36336158,
+          "lfs": {
+            "oid": "c428e4cba473a46b3e59c5a053ad9a73c70fba6dab9612d5cd9ff94af450b768",
+            "size": 36336158,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.652.parquet",
+          "size": 29452697,
+          "lfs": {
+            "oid": "d50dc17c4b8c675562e9d10fd4080ab395ac399e0304d278012099a16efd60db",
+            "size": 29452697,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.653.parquet",
+          "size": 37238318,
+          "lfs": {
+            "oid": "1c738e75bdb400449a0600f94ba86e6a30694f317fc836b562069203fa653504",
+            "size": 37238318,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.654.parquet",
+          "size": 36211647,
+          "lfs": {
+            "oid": "813ac6cbe0c9dd22416cccfb2000edf6625872957560c2bc7e683493690e0a9b",
+            "size": 36211647,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.655.parquet",
+          "size": 37115400,
+          "lfs": {
+            "oid": "353ad1d30a4756476a9dd07e606247dfff4ebb1585dd146ef38fe4287d1682c4",
+            "size": 37115400,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.656.parquet",
+          "size": 33835549,
+          "lfs": {
+            "oid": "47b898fa6000094379d9ae95c2768803624757f4a06e9e5360705d78d792fb8b",
+            "size": 33835549,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.657.parquet",
+          "size": 33424725,
+          "lfs": {
+            "oid": "8cc6df53e3ec33444905c2d6dd744d359edcc2c5f62c9363720c444732da7405",
+            "size": 33424725,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.658.parquet",
+          "size": 34808186,
+          "lfs": {
+            "oid": "4b344c0c89aea30442b3f01e49ae439cd417c41834bdb143fdf0f07f5d481004",
+            "size": 34808186,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.659.parquet",
+          "size": 35419918,
+          "lfs": {
+            "oid": "4d2796b8ab6c18368078bbf7557e3c7cb00da73ab22cd7d810865e88e3dda5ff",
+            "size": 35419918,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.66.parquet",
+          "size": 36157361,
+          "lfs": {
+            "oid": "5c94da2cec99a40dba9467b906b968d056e4ee2c5fbbe58838e7f99969f40582",
+            "size": 36157361,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.660.parquet",
+          "size": 37183562,
+          "lfs": {
+            "oid": "158b4536b625a934760e6d08145284573b5d6ca04307ac84094edfb6cbc62d3e",
+            "size": 37183562,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.661.parquet",
+          "size": 35453146,
+          "lfs": {
+            "oid": "5e1e471eaca554019e3b2ba3f5eda8a8526a0751a5a71707e878b9b3606de55f",
+            "size": 35453146,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.662.parquet",
+          "size": 37394357,
+          "lfs": {
+            "oid": "d57e36eb2382985a637b89cc50765ddd91ab6b0d2615997a78f3d0f5c1072ace",
+            "size": 37394357,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.67.parquet",
+          "size": 37428243,
+          "lfs": {
+            "oid": "cca67c9e6cca03c40f6c88d625c5564b54d1b7b4f39325591129f1b6e0c26c39",
+            "size": 37428243,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.68.parquet",
+          "size": 36519557,
+          "lfs": {
+            "oid": "2987db076c9faa7441c527f2cf8f16101d30118901f1c3ec54f067ac87be7d9f",
+            "size": 36519557,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.69.parquet",
+          "size": 36940648,
+          "lfs": {
+            "oid": "ab3d58ca5144e37876bcf8c9b6e6d5380f5b324813d6913176bce617ad56f1b0",
+            "size": 36940648,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.7.parquet",
+          "size": 36224529,
+          "lfs": {
+            "oid": "6ace9753142cbacadfa81b14d5ff063fdbbd51fb4c6b6d3df2efe2df1baf506d",
+            "size": 36224529,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.70.parquet",
+          "size": 32778299,
+          "lfs": {
+            "oid": "92baa6c7fe47ef4faf0ca5fd2c232159cee69b5292ce71e3bbcf75e6b2618936",
+            "size": 32778299,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.71.parquet",
+          "size": 35355695,
+          "lfs": {
+            "oid": "6d0256712fe9c7cc5651ecdd355284666935fb088824ae3c9dc0b24347d4e28c",
+            "size": 35355695,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.72.parquet",
+          "size": 35771321,
+          "lfs": {
+            "oid": "896c8a3aca474336467a222c5232168b457c806ea97953e6c549976db6953fc9",
+            "size": 35771321,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.73.parquet",
+          "size": 34807310,
+          "lfs": {
+            "oid": "8fee09091ff166cc0116b961ea8b4151ff32cf6257e144ce0a38d89b6601ca80",
+            "size": 34807310,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.74.parquet",
+          "size": 35237302,
+          "lfs": {
+            "oid": "56d9d2729030348e58f8e21a8d52c355b12aecf4fcf9099fe679843e3506e3b7",
+            "size": 35237302,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.75.parquet",
+          "size": 34222623,
+          "lfs": {
+            "oid": "e7a8229c601e32de9cfaadadbceb7ee433b64c551cec3fb428270368ab634592",
+            "size": 34222623,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.76.parquet",
+          "size": 36705364,
+          "lfs": {
+            "oid": "a7ca49df58afb399b7a2d60ce3e435c0e10cc0c1d92bd16b8f1329b3110eabec",
+            "size": 36705364,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.77.parquet",
+          "size": 35335597,
+          "lfs": {
+            "oid": "2d5f894908b6275d81fa9af2ff0316bc4f68f546386527a376e96954c84d75cf",
+            "size": 35335597,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.78.parquet",
+          "size": 37008416,
+          "lfs": {
+            "oid": "cbdf8279b055263689a16787c298883bbddff9ed2e5c37fc9fb3df3139ab5e27",
+            "size": 37008416,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.79.parquet",
+          "size": 32672674,
+          "lfs": {
+            "oid": "d9780b1c0c89be575064c8c389586f69c191fe46a74e5f080cdd39c862da5ba2",
+            "size": 32672674,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.8.parquet",
+          "size": 35515311,
+          "lfs": {
+            "oid": "2f987471c3024f64eacd21e9216a4916b8eb5faeb6297751b5769ab65095f39b",
+            "size": 35515311,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.80.parquet",
+          "size": 33950136,
+          "lfs": {
+            "oid": "6ae4c57d37fd7013cc20243dfa7f61be96f394d138e992d500e26b47a393d441",
+            "size": 33950136,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.81.parquet",
+          "size": 33266974,
+          "lfs": {
+            "oid": "36c7aa66805d7aa4914ae523c665a356cd60854ff6f0d465cb75552cea9da7a2",
+            "size": 33266974,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.82.parquet",
+          "size": 34670292,
+          "lfs": {
+            "oid": "8a677e4edd42ec789a36758d41d6eef5f677d0756e058faf493f664c1306fec6",
+            "size": 34670292,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.83.parquet",
+          "size": 35462666,
+          "lfs": {
+            "oid": "75c27ea65d57afb3e337ec57f8ddccb1439d17896f434cf1520f1d8c78fa5ef7",
+            "size": 35462666,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.84.parquet",
+          "size": 33906133,
+          "lfs": {
+            "oid": "2cc1695ed5a8c67e8bd36ea6c47af99bd6569412dd4d44733c8748e1b34256e9",
+            "size": 33906133,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.85.parquet",
+          "size": 35262240,
+          "lfs": {
+            "oid": "07d021739db5d901d4325f430a03a94b714755d964b66136007c189822f636a3",
+            "size": 35262240,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.86.parquet",
+          "size": 35182201,
+          "lfs": {
+            "oid": "c2300985fb2322e79f048a61393b47796c36a0529028e8b958364b5869e532ae",
+            "size": 35182201,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.87.parquet",
+          "size": 35742490,
+          "lfs": {
+            "oid": "b2b4f46faa969e85d47e70f8b4deaa0a48813b6bb99f79593f0ff168f641da28",
+            "size": 35742490,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.88.parquet",
+          "size": 36238524,
+          "lfs": {
+            "oid": "8c8eb0af6a78b012970f23a27d0a2115288437ec24d070c0fc40089df39fd5e1",
+            "size": 36238524,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.89.parquet",
+          "size": 37568607,
+          "lfs": {
+            "oid": "571d319f3bc454a4acdaa5c2364e3de34f5af569bc1d4a6750582569078ad280",
+            "size": 37568607,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.9.parquet",
+          "size": 35593192,
+          "lfs": {
+            "oid": "6fce7cc79e8e527786b8e688e7dc6b6353d452d403dceadd9a33cbec5c9a53c4",
+            "size": 35593192,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.90.parquet",
+          "size": 37378902,
+          "lfs": {
+            "oid": "0e3d518232d879b4c4089b97b4f9b16a0ce46235ae005e4ed1ef0743f7760f00",
+            "size": 37378902,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.91.parquet",
+          "size": 36911268,
+          "lfs": {
+            "oid": "a2aee80afbae380508d9b537259c1eda19aef3bb556a02a073668831793f6c34",
+            "size": 36911268,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.92.parquet",
+          "size": 36194059,
+          "lfs": {
+            "oid": "d7de4763154d9358cbef47346a94186fbe7d362c47357d9ca075358d37e2dd42",
+            "size": 36194059,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.93.parquet",
+          "size": 36589727,
+          "lfs": {
+            "oid": "073516d11ded7f9f1aea4e8726c5f5d74dd424e5a913fe898f906c6e7501e1d2",
+            "size": 36589727,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.94.parquet",
+          "size": 34724050,
+          "lfs": {
+            "oid": "4d73c0306b2ec4aa7097504a95993e533159a5c8fcfed49d2120fe559d4e626d",
+            "size": 34724050,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.95.parquet",
+          "size": 31400316,
+          "lfs": {
+            "oid": "66e333986f7fdc342c824ff6cda306583eb39fa0507daf43d294c30265e0c602",
+            "size": 31400316,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.96.parquet",
+          "size": 37013480,
+          "lfs": {
+            "oid": "01a594d4844bbe597674ff2fcc242cf045bb8a602f91098ad64d564e0e3c0a9e",
+            "size": 37013480,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.97.parquet",
+          "size": 35564391,
+          "lfs": {
+            "oid": "f9d3d5e5f67213dd970125dc11e818007c28be8ab911b059165bdf5c54bf1fb1",
+            "size": 35564391,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.98.parquet",
+          "size": 34010440,
+          "lfs": {
+            "oid": "1fcefab05aa1f9cf86f1963d0aa123fd213ec4afe9473ce97662175f27b899de",
+            "size": 34010440,
+            "pointerSize": 133
+          }
+        },
+        {
+          "path": "part.99.parquet",
+          "size": 33150191,
+          "lfs": {
+            "oid": "aa5b704bb516879576c705e10434d2ad9b7a20879c3e55fa5f461f9b17855eb5",
+            "size": 33150191,
+            "pointerSize": 133
+          }
+        }
+      ]
+    }
+  },
+  "kaggle": {
+    "fronkongames/steam-games-dataset": {
+      "metadata_url": "https://www.kaggle.com/api/v1/datasets/view/fronkongames/steam-games-dataset",
+      "status": "retrieved",
+      "title": "Steam Games Dataset",
+      "lastUpdated": "2026-10-02T18:39:57.79Z",
+      "downloadCount": 38655,
+      "licenseName": "MIT",
+      "currentVersionNumber": 52
+    },
+    "artermiloff/steam-games-dataset": {
+      "metadata_url": "https://www.kaggle.com/api/v1/datasets/view/artermiloff/steam-games-dataset",
+      "status": "retrieved",
+      "title": "Steam Games Dataset 2025",
+      "lastUpdated": "2025-03-13T09:49:14.387Z",
+      "downloadCount": 10848,
+      "licenseName": "MIT",
+      "currentVersionNumber": 2
+    },
+    "gauthamp10/google-playstore-apps": {
+      "metadata_url": "https://www.kaggle.com/api/v1/datasets/view/gauthamp10/google-playstore-apps",
+      "status": "retrieved",
+      "title": "Google Play Store Apps",
+      "lastUpdated": "2021-06-17T12:04:06.523Z",
+      "downloadCount": 35957,
+      "licenseName": "Database: Open Database, Contents: Database Contents",
+      "currentVersionNumber": 7
+    },
+    "nikdavis/steam-store-games": {
+      "metadata_url": "https://www.kaggle.com/api/v1/datasets/view/nikdavis/steam-store-games",
+      "status": "retrieved",
+      "title": "Steam Store Games (Clean dataset)",
+      "lastUpdated": "2019-06-12T15:47:47.93Z",
+      "downloadCount": 39621,
+      "licenseName": "Attribution 4.0 International (CC BY 4.0)",
+      "currentVersionNumber": 3
+    },
+    "antonkozyriev/game-recommendations-on-steam": {
+      "metadata_url": "https://www.kaggle.com/api/v1/datasets/view/antonkozyriev/game-recommendations-on-steam",
+      "status": "retrieved",
+      "title": "Game Recommendations on Steam",
+      "lastUpdated": "2024-08-14T13:15:03.88Z",
+      "downloadCount": 21740,
+      "licenseName": "CC0: Public Domain",
+      "currentVersionNumber": 28
+    }
+  }
+}

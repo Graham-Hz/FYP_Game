@@ -1,0 +1,8 @@
+﻿platform,target_tier,rows
+pc,O1_source_interval_up_to_20k,59301
+pc,O2_source_intervals_20k_to_100k,14215
+pc,O3_source_intervals_100k_plus,7642
+pc,UNLABELLED,8295
+mobile,M1_under_1k,150745
+mobile,M2_1k_to_under_100k,116584
+mobile,M3_100k_plus,50971

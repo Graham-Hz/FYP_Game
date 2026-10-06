@@ -1,0 +1,6 @@
+﻿platform,app_id,title,eligible_base,eligible_labelled,first_exclusion_reason
+pc,339860,none,True,False,retained
+pc,385020,none,True,True,retained
+pc,398970,none,True,True,retained
+mobile,com.DN.None,None,True,True,retained
+mobile,com.Tomkii.NULl,NULL,True,True,retained

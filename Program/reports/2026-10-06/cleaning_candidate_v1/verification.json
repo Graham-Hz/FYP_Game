@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "manifest_sha256": "625fcd068b0e3795634baea1b28886148f1cd84780ec42a6946c12b093cc95cd",
+  "verifier_sha256": "11f4dfcbf5b314cee4519f9104e53a8fe69a537ff4abe298121c41ebe1bf173d",
+  "counts": {
+    "pc": {
+      "base_rows": 89453,
+      "labelled_rows": 81158
+    },
+    "mobile": {
+      "base_rows": 318300,
+      "labelled_rows": 318300
+    }
+  },
+  "checks": [
+    "all input/output/config/generator hashes",
+    "unique IDs and complete ledger coverage",
+    "independent SQL eligibility for every source row",
+    "independent SQL labels and ages for every candidate",
+    "unknown targets excluded from labelled eligibility",
+    "USD-only Mobile prices",
+    "literal Mobile titles retained"
+  ],
+  "limitation": "Mechanical consistency, not validation of target meaning or supervisor approval."
+}

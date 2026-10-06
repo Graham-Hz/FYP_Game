@@ -1,0 +1,116 @@
+{
+  "audit_date": "2026-10-05",
+  "policy": "Existing user Dataset directory stays unchanged and is read-only input. No relocation or duplication. Newly downloaded sources live under Program/data/raw.",
+  "files": [
+    {
+      "path": "Game Recommendations on Steam\\games.csv",
+      "bytes": 4863790,
+      "sha256": "8886585fefd521f43a92d1018cd944a7265e82c0c509f0abb6103d38ae10072a"
+    },
+    {
+      "path": "Game Recommendations on Steam\\games_metadata.json",
+      "bytes": 17548605,
+      "sha256": "35145f380dac78173aa8f5eca578db5614f28d5e869c33457b11e7f23d42e21d"
+    },
+    {
+      "path": "Game Recommendations on Steam\\recommendations.csv",
+      "bytes": 2023223067,
+      "sha256": "18731b9e253b63ad8642dde48c212620621c33080d7609fa092a308caaffbb34"
+    },
+    {
+      "path": "Game Recommendations on Steam\\users.csv",
+      "bytes": 193068018,
+      "sha256": "91b7fc59f266b75fb8972eb891be32aefce20f75c379dbbb0b3022d87c2d4dfc"
+    },
+    {
+      "path": "Game Recommendations on Steam.zip",
+      "bytes": 692315526,
+      "sha256": "7620a48dbff9fdb53e08c06640fae6060189f458784df646835eff4f69c7995a"
+    },
+    {
+      "path": "Google Play Store Apps\\Google-Playstore.csv",
+      "bytes": 676464870,
+      "sha256": "f8830426d88687801d5874dfd1e1dfc209a1324e56eb837ab46e942dc4d328e1"
+    },
+    {
+      "path": "Google Play Store Apps.zip",
+      "bytes": 216781487,
+      "sha256": "e3901aa9f73bfe2ee1e0bed1e6656d5fe06eca2fd0f897eb2296ef96ae7d2229"
+    },
+    {
+      "path": "Steam Games Dataset\\games.csv",
+      "bytes": 401140503,
+      "sha256": "1b48008b01a799d82385d6e66ba0cb65dd477b6aa4b6c2ec8c443025ab6880ad"
+    },
+    {
+      "path": "Steam Games Dataset\\games.json",
+      "bytes": 945398913,
+      "sha256": "556cac918f1d549b62d79293ba58515c8512326ce40dd300b8d287bb444099b4"
+    },
+    {
+      "path": "Steam Games Dataset 2025\\games_march2025_cleaned.csv",
+      "bytes": 468641107,
+      "sha256": "04d8df2778aaa8f8b575934b7072d55224d37a2ded23e8261583f0fcf668dfab"
+    },
+    {
+      "path": "Steam Games Dataset 2025\\games_march2025_full.csv",
+      "bytes": 471492150,
+      "sha256": "1ff3b4fa2eeeb7faf1d9c37abb63b9522813532fbf68f4c4a236d5a466688db7"
+    },
+    {
+      "path": "Steam Games Dataset 2025\\games_may2024_cleaned.csv",
+      "bytes": 422316484,
+      "sha256": "1a1c1a32d1bc307331bc48ed82df6364e542b95c1c6e803fae18b0824e0fb204"
+    },
+    {
+      "path": "Steam Games Dataset 2025\\games_may2024_full.csv",
+      "bytes": 424919226,
+      "sha256": "b82219610da8e594b0390123a8f2cf8238bcf03820c30b15cd5248a33603c072"
+    },
+    {
+      "path": "Steam Games Dataset 2025.zip",
+      "bytes": 438274255,
+      "sha256": "2402e052d14c434598dee39ee0ee5a16f7a72db6c663550aadc20d53adff9b2b"
+    },
+    {
+      "path": "Steam Games Dataset.zip",
+      "bytes": 315124775,
+      "sha256": "286da3d90738a02819b234fb33328e4c91d318e5cae257c69ba4d91343d251a9"
+    },
+    {
+      "path": "Steam Store Games (Clean dataset)\\steam.csv",
+      "bytes": 5815053,
+      "sha256": "783087562c9bab27faf7c4c1c8040269489ab2fc2054549971be01eb6c007f99"
+    },
+    {
+      "path": "Steam Store Games (Clean dataset)\\steam_description_data.csv",
+      "bytes": 94737038,
+      "sha256": "560fcef21b52dfbb387c9e9d3a4ffd4505472b835e0bca8f3bf03206b09bbd28"
+    },
+    {
+      "path": "Steam Store Games (Clean dataset)\\steam_media_data.csv",
+      "bytes": 91602127,
+      "sha256": "ba754cdf6589b2134b7f104f7ab95aa51ffdb466d020b81fd29d47196108d41f"
+    },
+    {
+      "path": "Steam Store Games (Clean dataset)\\steam_requirements_data.csv",
+      "bytes": 35956986,
+      "sha256": "5909e55018adb52436a8700366eb58dbfe53b8dc2876437bd85901c7fe760637"
+    },
+    {
+      "path": "Steam Store Games (Clean dataset)\\steam_support_info.csv",
+      "bytes": 1941506,
+      "sha256": "f271c3fd19011ed1566960a0f5f18eefbbe872c88282a5d3f93085ef57baa33f"
+    },
+    {
+      "path": "Steam Store Games (Clean dataset)\\steamspy_tag_data.csv",
+      "bytes": 21985070,
+      "sha256": "98b8fb0120177f7292755119bccbdde6387a9c0c90979593dd0d6c0dc791b183"
+    },
+    {
+      "path": "Steam Store Games (Clean dataset).zip",
+      "bytes": 36916941,
+      "sha256": "ffcaf8ec3c58d61305bac07b03c257fa2aed7d9a14a61370e109bebd69707be3"
+    }
+  ]
+}

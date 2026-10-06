@@ -1,0 +1,9 @@
+{
+  "rows": 50872,
+  "fields": [
+    "app_id",
+    "description",
+    "tags"
+  ],
+  "duplicate_app_ids": 0
+}

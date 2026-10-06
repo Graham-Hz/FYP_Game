@@ -1,0 +1,74 @@
+[
+  {
+    "type": "directory",
+    "oid": "8455376d30290457a1f97e08892534e500ffc1ab",
+    "size": 0,
+    "path": "data"
+  },
+  {
+    "type": "directory",
+    "oid": "040427edafba8800585ff2b20980690bcfaf899c",
+    "size": 0,
+    "path": "images"
+  },
+  {
+    "type": "file",
+    "oid": "35729feea45f2b859d14c0d36f35260dd3103281",
+    "size": 2358,
+    "path": ".gitattributes"
+  },
+  {
+    "type": "file",
+    "oid": "2f591194f9161ed3388d2d901285e6216c3c5de5",
+    "size": 596,
+    "path": "README.md"
+  },
+  {
+    "type": "file",
+    "oid": "bde4fc45a6ef3de564662c94a50d8324787a7587",
+    "size": 191983414,
+    "lfs": {
+      "oid": "775b17f2a5a52b96a8441739cd0dd4939916335b6edeebbfc4a1b238388c5a77",
+      "size": 191983414,
+      "pointerSize": 134
+    },
+    "xetHash": "6ea038dc25a69bf49160fc982d471e974679b1562263efcd73f47359ff9488eb",
+    "path": "data/train-00000-of-00001.parquet"
+  },
+  {
+    "type": "file",
+    "oid": "56660b3296b8fe76cf5971e87d9eff72119218c8",
+    "size": 401140503,
+    "lfs": {
+      "oid": "1b48008b01a799d82385d6e66ba0cb65dd477b6aa4b6c2ec8c443025ab6880ad",
+      "size": 401140503,
+      "pointerSize": 134
+    },
+    "xetHash": "dddbee9405f6008b15e2bedfb33a7f0aa61a880af2edde7407a4231567495712",
+    "path": "games.csv"
+  },
+  {
+    "type": "file",
+    "oid": "b914038edde6669db147081817d5ee7bd9036684",
+    "size": 961591282,
+    "lfs": {
+      "oid": "4d759e57661a948bd1e302659bfd38443a736e5aa7e05e4587033ce53049b4ad",
+      "size": 961591282,
+      "pointerSize": 134
+    },
+    "xetHash": "3dd187a0cacee49bbc67321985d2332647363c31f7dc0adbe55ff69d326761f3",
+    "path": "games.json"
+  },
+  {
+    "type": "file",
+    "oid": "1fd48d3d42448280e9eca93e1b1c47eb821150e4",
+    "size": 121791,
+    "lfs": {
+      "oid": "afa4988c6264c6eb751d09ec763f266297321f8e0fd259b60ea0935e4d30c928",
+      "size": 121791,
+      "pointerSize": 131
+    },
+    "xetHash": "06784f0350ac0c3df422615981dcc7ff7f1b97b10fadd534d9d9e074c56f5c6b",
+    "path": "images/banner.png"
+  }
+]

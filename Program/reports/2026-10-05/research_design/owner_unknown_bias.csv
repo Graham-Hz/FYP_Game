@@ -1,0 +1,7 @@
+﻿group_by,group,rows,owners_unknown,unknown_fraction
+price_state,positive_observed_price,75433,1187,0.015735818540956875
+price_state,zero_or_unavailable_observed_price,14017,7107,0.5070271812798745
+age_group,0_to_180_days,9773,1840,0.18827381561444798
+age_group,181_to_365_days,8954,1774,0.19812374357828905
+age_group,366_to_1095_days,23284,3744,0.16079711389795567
+age_group,over_1095_days,47439,936,0.019730601403908178

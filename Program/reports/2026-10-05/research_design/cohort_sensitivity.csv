@@ -1,0 +1,8 @@
+﻿platform,rule,cohort_rows,valid_owner_labels,note
+PC,age_at_least_0_days_at_reference_date,89450,81156,"reference date is dataset publication proxy, not per-record collection timestamp"
+PC,age_at_least_180_days_at_reference_date,79689,73232,"reference date is dataset publication proxy, not per-record collection timestamp"
+PC,age_at_least_365_days_at_reference_date,70766,66080,"reference date is dataset publication proxy, not per-record collection timestamp"
+PC,exclude_only_documented_software_genre_labels_heuristic,88417,80190,Mixed genres remain; not a verified product-type classification
+Mobile,age_at_least_0_days_at_row_scraped_time,318298,,Valid install labels available for all rows in this cohort
+Mobile,age_at_least_180_days_at_row_scraped_time,282460,,Valid install labels available for all rows in this cohort
+Mobile,age_at_least_365_days_at_row_scraped_time,241452,,Valid install labels available for all rows in this cohort

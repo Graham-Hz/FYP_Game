@@ -1,0 +1,6 @@
+FronkonGames Steam
+https://huggingface.co/datasets/FronkonGames/steam-games-dataset
+Video games dataset (RAWG)
+https://huggingface.co/datasets/atalaydenknalbant/video-games-dataset
+Steam Reviews
+https://huggingface.co/datasets/adde023/steam-reviews

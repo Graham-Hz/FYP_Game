@@ -1,0 +1,19 @@
+{
+  "version": "cleaning_candidate_v1",
+  "status": "provisional_not_training_ready",
+  "report_date": "2026-10-06",
+  "pc_reference_date_proxy": "2025-03-13",
+  "inputs": {
+    "pc": {"file": "artem_games_march2025_full.parquet", "sha256": "a7860d744d5f8326288ab353ef9b2bbe1f3f330ff69262d119b8c5e6f7f00160"},
+    "mobile": {"file": "google_games.parquet", "sha256": "14d09252a87a8d07f8823b520caf188e1b58fa6b0c1158043f818f6cb637a017"}
+  },
+  "title_policy": "Only actual null or whitespace-only is missing; retain literal null-like names and flag for review.",
+  "pc_demo_title_pattern": "(^|[^a-z])(playtest|demo)([^a-z]|$)",
+  "software_only_genres": ["Animation & Modeling", "Audio Production", "Design & Illustration", "Education", "Photo Editing", "Software Training", "Utilities", "Video Production", "Web Publishing", "Accounting", "Game Development"],
+  "software_only_policy": "flag_and_retain_in_base_candidate",
+  "owner_target": "source_interval_3_tiers_20k_100k; 0 - 0 unknown; straddling intervals unlabelled",
+  "mobile_target": "minimum_install_lower_bound_3_tiers_1k_100k",
+  "mobile_currency_policy": "USD-only numeric price; retain other currencies with missing usable price",
+  "unknown_target_policy": "retain in base cohort, exclude from labelled candidate",
+  "notes": ["PC date is a publication proxy, not an observation timestamp.", "PC numeric price preserves source units; currency is not independently established here.", "Mobile input already excludes ambiguous Sports.", "No data-driven imputation, fitting, split or model training."]
+}

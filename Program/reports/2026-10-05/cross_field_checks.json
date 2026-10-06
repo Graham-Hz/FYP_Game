@@ -1,0 +1,184 @@
+[
+  {
+    "dataset": "fronkon_local",
+    "check": "review_support_thresholds",
+    "no_reviews": 42899,
+    "at_least_10_reviews": 56662,
+    "at_least_50_reviews": 30624,
+    "at_least_100_reviews": 22804
+  },
+  {
+    "dataset": "fronkon_local",
+    "check": "owner_intervals",
+    "malformed_or_reversed": 0,
+    "zero_zero_unknown": 24579,
+    "nonzero_intervals": 101276,
+    "lower_bound_at_least_20000": 25571
+  },
+  {
+    "dataset": "fronkon_local",
+    "check": "title_duplicates",
+    "duplicate_title_excess": 1210
+  },
+  {
+    "dataset": "fronkon_hf",
+    "check": "review_support_thresholds",
+    "no_reviews": 41195,
+    "at_least_10_reviews": 56657,
+    "at_least_50_reviews": 30621,
+    "at_least_100_reviews": 22801
+  },
+  {
+    "dataset": "fronkon_hf",
+    "check": "owner_intervals",
+    "malformed_or_reversed": 0,
+    "zero_zero_unknown": 23033,
+    "nonzero_intervals": 101113,
+    "lower_bound_at_least_20000": 25568
+  },
+  {
+    "dataset": "fronkon_hf",
+    "check": "title_duplicates",
+    "duplicate_title_excess": 1172
+  },
+  {
+    "dataset": "fronkon_json",
+    "check": "review_support_thresholds",
+    "no_reviews": 58353,
+    "at_least_10_reviews": 56683,
+    "at_least_50_reviews": 30637,
+    "at_least_100_reviews": 22816
+  },
+  {
+    "dataset": "fronkon_json",
+    "check": "owner_intervals",
+    "malformed_or_reversed": 0,
+    "zero_zero_unknown": 38445,
+    "nonzero_intervals": 102890,
+    "lower_bound_at_least_20000": 25582
+  },
+  {
+    "dataset": "fronkon_json",
+    "check": "title_duplicates",
+    "duplicate_title_excess": 1423
+  },
+  {
+    "dataset": "artem_games_march2025_full",
+    "check": "review_support_thresholds",
+    "no_reviews": 22300,
+    "at_least_10_reviews": 49773,
+    "at_least_50_reviews": 27141,
+    "at_least_100_reviews": 20218
+  },
+  {
+    "dataset": "artem_games_march2025_full",
+    "check": "owner_intervals",
+    "malformed_or_reversed": 0,
+    "zero_zero_unknown": 13656,
+    "nonzero_intervals": 81292,
+    "lower_bound_at_least_20000": 21913
+  },
+  {
+    "dataset": "artem_games_march2025_full",
+    "check": "title_duplicates",
+    "duplicate_title_excess": 755
+  },
+  {
+    "dataset": "artem_games_march2025_cleaned",
+    "check": "review_support_thresholds",
+    "no_reviews": 17055,
+    "at_least_10_reviews": 49692,
+    "at_least_50_reviews": 27078,
+    "at_least_100_reviews": 20162
+  },
+  {
+    "dataset": "artem_games_march2025_cleaned",
+    "check": "owner_intervals",
+    "malformed_or_reversed": 0,
+    "zero_zero_unknown": 8418,
+    "nonzero_intervals": 81200,
+    "lower_bound_at_least_20000": 21880
+  },
+  {
+    "dataset": "artem_games_march2025_cleaned",
+    "check": "title_duplicates",
+    "duplicate_title_excess": 719
+  },
+  {
+    "dataset": "artem_games_may2024_full",
+    "check": "review_support_thresholds",
+    "no_reviews": 17974,
+    "at_least_10_reviews": 48387,
+    "at_least_50_reviews": 26450,
+    "at_least_100_reviews": 19857
+  },
+  {
+    "dataset": "artem_games_may2024_full",
+    "check": "owner_intervals",
+    "malformed_or_reversed": 0,
+    "zero_zero_unknown": 10575,
+    "nonzero_intervals": 77231,
+    "lower_bound_at_least_20000": 22115
+  },
+  {
+    "dataset": "artem_games_may2024_full",
+    "check": "title_duplicates",
+    "duplicate_title_excess": 688
+  },
+  {
+    "dataset": "artem_games_may2024_cleaned",
+    "check": "review_support_thresholds",
+    "no_reviews": 13963,
+    "at_least_10_reviews": 48266,
+    "at_least_50_reviews": 26366,
+    "at_least_100_reviews": 19780
+  },
+  {
+    "dataset": "artem_games_may2024_cleaned",
+    "check": "owner_intervals",
+    "malformed_or_reversed": 0,
+    "zero_zero_unknown": 6573,
+    "nonzero_intervals": 77073,
+    "lower_bound_at_least_20000": 22063
+  },
+  {
+    "dataset": "artem_games_may2024_cleaned",
+    "check": "title_duplicates",
+    "duplicate_title_excess": 636
+  },
+  {
+    "dataset": "google_games",
+    "check": "mobile_cross_field",
+    "zero_rating_with_zero_count": 110027,
+    "positive_rating_with_zero_count": 0,
+    "maximum_less_than_minimum": 0,
+    "install_label_minimum_mismatch": 0,
+    "release_after_scrape": 0,
+    "update_after_scrape": 0,
+    "free_with_positive_price": 0
+  },
+  {
+    "dataset": "google_sports_ambiguous",
+    "check": "mobile_cross_field",
+    "zero_rating_with_zero_count": 20259,
+    "positive_rating_with_zero_count": 0,
+    "maximum_less_than_minimum": 0,
+    "install_label_minimum_mismatch": 0,
+    "release_after_scrape": 0,
+    "update_after_scrape": 0,
+    "free_with_positive_price": 0
+  },
+  {
+    "dataset": "nik_steam",
+    "check": "owner_intervals",
+    "malformed_or_reversed": 0,
+    "zero_zero_unknown": 0,
+    "nonzero_intervals": 27075,
+    "lower_bound_at_least_20000": 8479
+  },
+  {
+    "dataset": "nik_steam",
+    "check": "title_duplicates",
+    "duplicate_title_excess": 42
+  }
+]

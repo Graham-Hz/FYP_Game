@@ -1,0 +1,99 @@
+{
+  "table": {
+    "dataset": "nik_steam_support_info",
+    "rows": 27136,
+    "columns": 4,
+    "duplicate_rows": 0,
+    "key_column": null,
+    "duplicate_key_excess": null,
+    "missing_key_count": null,
+    "original_columns": [
+      "steam_appid",
+      "website",
+      "support_url",
+      "support_email"
+    ],
+    "canonical_columns": [
+      "steam_appid",
+      "website",
+      "support_url",
+      "support_email"
+    ]
+  },
+  "columns": [
+    {
+      "missing_count": 0,
+      "unique_nonmissing": 27136,
+      "empty_collection_count": 0,
+      "finite_numeric_count": 27136,
+      "dataset": "nik_steam_support_info",
+      "column": "steam_appid",
+      "source_column": "steam_appid",
+      "rows": 27136,
+      "stored_type": "VARCHAR audit view",
+      "missing_fraction": 0.0,
+      "invalid_count": 0,
+      "invalid_rule": "finite numeric >=0",
+      "observed_type": "numeric",
+      "numeric_parse_invalid": 0,
+      "negative_count": 0,
+      "zero_count": 0,
+      "minimum": 10.0,
+      "maximum": 1069460.0,
+      "quantiles": "[406287.5, 603855.0, 802100.0, 932170.0, 1039363.0]",
+      "duplicate_rows": 0,
+      "duplicate_key_excess": null
+    },
+    {
+      "missing_count": 9121,
+      "unique_nonmissing": 15320,
+      "empty_collection_count": 0,
+      "finite_numeric_count": 0,
+      "dataset": "nik_steam_support_info",
+      "column": "website",
+      "source_column": "website",
+      "rows": 27136,
+      "stored_type": "VARCHAR audit view",
+      "missing_fraction": 0.3361217570754717,
+      "invalid_count": null,
+      "invalid_rule": "not assessed",
+      "observed_type": "text_or_serialized_collection",
+      "duplicate_rows": 0,
+      "duplicate_key_excess": null
+    },
+    {
+      "missing_count": 10657,
+      "unique_nonmissing": 11100,
+      "empty_collection_count": 0,
+      "finite_numeric_count": 0,
+      "dataset": "nik_steam_support_info",
+      "column": "support_url",
+      "source_column": "support_url",
+      "rows": 27136,
+      "stored_type": "VARCHAR audit view",
+      "missing_fraction": 0.39272553066037735,
+      "invalid_count": null,
+      "invalid_rule": "not assessed",
+      "observed_type": "text_or_serialized_collection",
+      "duplicate_rows": 0,
+      "duplicate_key_excess": null
+    },
+    {
+      "missing_count": 3636,
+      "unique_nonmissing": 14174,
+      "empty_collection_count": 0,
+      "finite_numeric_count": 0,
+      "dataset": "nik_steam_support_info",
+      "column": "support_email",
+      "source_column": "support_email",
+      "rows": 27136,
+      "stored_type": "VARCHAR audit view",
+      "missing_fraction": 0.13399174528301888,
+      "invalid_count": null,
+      "invalid_rule": "not assessed",
+      "observed_type": "text_or_serialized_collection",
+      "duplicate_rows": 0,
+      "duplicate_key_excess": null
+    }
+  ]
+}

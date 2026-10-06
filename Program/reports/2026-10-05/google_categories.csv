@@ -1,0 +1,49 @@
+﻿category,rows,included_as_game,ambiguous,rule
+Action,27555,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Adventure,23203,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Arcade,53792,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Art & Design,18539,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Auto & Vehicles,18280,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Beauty,11772,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Board,10588,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Books & Reference,116728,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Business,143771,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Card,8179,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Casino,5076,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Casual,50813,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Comics,2862,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Communication,48167,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Dating,6524,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Education,241090,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Educational,21308,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Entertainment,138276,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Events,12841,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Finance,65466,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Food & Drink,73927,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Health & Fitness,83510,False,False,16 exclusive game labels; Sports held out because app/game category collision
+House & Home,14369,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Libraries & Demo,5198,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Lifestyle,118331,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Maps & Navigation,26722,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Medical,32065,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Music,4202,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Music & Audio,154906,False,False,16 exclusive game labels; Sports held out because app/game category collision
+News & Magazines,42807,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Parenting,3810,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Personalization,89210,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Photography,35552,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Productivity,79698,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Puzzle,51168,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Racing,10362,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Role Playing,10034,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Shopping,75256,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Simulation,23282,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Social,44734,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Sports,47483,False,True,16 exclusive game labels; Sports held out because app/game category collision
+Strategy,8526,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Tools,143988,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Travel & Local,67288,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Trivia,11795,True,False,16 exclusive game labels; Sports held out because app/game category collision
+Video Players & Editors,14015,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Weather,7246,False,False,16 exclusive game labels; Sports held out because app/game category collision
+Word,8630,True,False,16 exclusive game labels; Sports held out because app/game category collision

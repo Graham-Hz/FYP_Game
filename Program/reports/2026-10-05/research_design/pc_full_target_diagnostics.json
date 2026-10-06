@@ -1,0 +1,21 @@
+{
+  "rows": 94948,
+  "owner_labels_available": 81292,
+  "owners_0_0": 13656,
+  "review_components_nonnegative": 94948,
+  "review_sum_zero": 22300,
+  "review_sum_zero_but_num_reviews_total_positive": 11248,
+  "num_reviews_total_nonnegative": 55373,
+  "positive_both_but_counts_differ": 37903,
+  "both_positive_count_comparisons": 44125,
+  "review_volume_quantiles": {
+    "0": 0.0,
+    "0.25": 1.0,
+    "0.5": 11.0,
+    "0.75": 69.0,
+    "0.9": 479.0,
+    "0.99": 18454.359999999986,
+    "1": 8615921.0
+  },
+  "review_sum_zero_and_owners_unknown": 13656
+}

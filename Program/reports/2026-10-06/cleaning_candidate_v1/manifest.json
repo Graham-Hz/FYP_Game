@@ -1,0 +1,43 @@
+{
+  "version": "cleaning_candidate_v1",
+  "status": "provisional_not_training_ready",
+  "model_training": false,
+  "split_created": false,
+  "config_sha256": "5f3299c21710e093494600cc470b5d23bbaa6845ec2985334d6c4fc1a4253b9a",
+  "input_sha256": {
+    "data\\interim\\artem_games_march2025_full.parquet": "a7860d744d5f8326288ab353ef9b2bbe1f3f330ff69262d119b8c5e6f7f00160",
+    "data\\interim\\google_games.parquet": "14d09252a87a8d07f8823b520caf188e1b58fa6b0c1158043f818f6cb637a017"
+  },
+  "output_sha256": {
+    "data\\interim\\cleaning_candidate_v1\\pc_candidates.parquet": "491332865dc583a72658501428f1526fe712c49ead719a61e4ff620b326db644",
+    "data\\interim\\cleaning_candidate_v1\\pc_row_ledger.parquet": "ad03172b7d32ee906785cec8c8aae1f8f171acee9511b4e6a61f99a1a63e5b10",
+    "data\\interim\\cleaning_candidate_v1\\mobile_candidates.parquet": "972ac98371f0f107b165f2652d6d707d8e8749c2babbbfda401a28e3a4b9a060",
+    "data\\interim\\cleaning_candidate_v1\\mobile_row_ledger.parquet": "27b859281237836aff9f675cceced3a935767e873713944502b25a7342a14ce8",
+    "reports\\2026-10-06\\cleaning_candidate_v1\\mobile_free_price_review.csv": "ba1b3d24444db2e1d05ce73a667448b3f2b19c9a419b46dd2ff3fa714ecc4618",
+    "reports\\2026-10-06\\cleaning_candidate_v1\\rule_counts.csv": "946776b0b557ddf235065e605e8038cc974298019d2d603a6d237624d8feccc7",
+    "reports\\2026-10-06\\cleaning_candidate_v1\\target_balance.csv": "5ad31df5f577e94f6cc9be1a49a630f0e84ec198c81694a68b8b7ab024473960",
+    "reports\\2026-10-06\\cleaning_candidate_v1\\literal_title_review.csv": "83ea89d856211f8f9289c60bdd78310bc030cd82fbbe5949fd154d412c7baa11"
+  },
+  "platforms": {
+    "pc": {
+      "input_rows": 94948,
+      "base_candidate_rows": 89453,
+      "labelled_candidate_rows": 81158,
+      "unlabelled_candidate_rows": 8295,
+      "excluded_rows": 5495
+    },
+    "mobile": {
+      "input_rows": 328513,
+      "base_candidate_rows": 318300,
+      "labelled_candidate_rows": 318300,
+      "unlabelled_candidate_rows": 0,
+      "excluded_rows": 10213
+    }
+  },
+  "code_sha256": {
+    "src\\data\\clean_candidates.py": "9fbb052b596665004a7681641353842e9e0414c311c3f6c18e4245a7dc9f2c01",
+    "src\\data\\cleaning_rules.py": "43f680e1fbff8d466bbd9cfb992085795d7c0ff476217015b3195079b9e742fd"
+  },
+  "generation_complete": true,
+  "independent_verification": "pending; run verify_clean_candidates.py"
+}

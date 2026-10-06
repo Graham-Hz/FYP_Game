@@ -1,0 +1,18 @@
+{
+  "date": "2026-10-05",
+  "input_sha256": {
+    "F:\\HKBU_Y4\\FYP\\Program\\data\\interim\\artem_games_march2025_full.parquet": "a7860d744d5f8326288ab353ef9b2bbe1f3f330ff69262d119b8c5e6f7f00160",
+    "F:\\HKBU_Y4\\FYP\\Program\\data\\interim\\google_games.parquet": "14d09252a87a8d07f8823b520caf188e1b58fa6b0c1158043f818f6cb637a017",
+    "F:\\HKBU_Y4\\FYP\\Program\\data\\interim\\artem_games_may2024_full.parquet": "303b4594d58172e613b4d88e0db662348aedbbf0be191e568490239e031ae5fa"
+  },
+  "status": "passed",
+  "checks": [
+    "unique AppIDs",
+    "cohort counts reconcile with previous audit",
+    "owners interval boundary mapping",
+    "independent SQL owners eligibility",
+    "all class totals and proportions reconcile"
+  ],
+  "model_training": false,
+  "scope": "All target distributions explored before a locked evaluation split; these are design-stage diagnostics, not held-out performance."
+}

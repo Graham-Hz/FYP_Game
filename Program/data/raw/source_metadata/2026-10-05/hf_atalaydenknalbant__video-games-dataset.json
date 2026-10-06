@@ -1,0 +1,62 @@
+{
+  "_id": "67bc84052cedbdaed9ee5c82",
+  "id": "atalaydenknalbant/video-games-dataset",
+  "author": "atalaydenknalbant",
+  "sha": "d9f5c486875b6309255b5fb10709480ace0eede7",
+  "lastModified": "2026-07-03T00:21:40.000Z",
+  "private": false,
+  "gated": false,
+  "disabled": false,
+  "tags": [
+    "task_categories:sentence-similarity",
+    "task_categories:summarization",
+    "task_categories:feature-extraction",
+    "license:cc0-1.0",
+    "size_categories:100K<n<1M",
+    "format:parquet",
+    "modality:image",
+    "modality:tabular",
+    "modality:text",
+    "library:datasets",
+    "library:pandas",
+    "library:polars",
+    "library:mlcroissant",
+    "region:us",
+    "games",
+    "video-games"
+  ],
+  "description": "\n  \n\n\n\n\n\n  \n  \n\n\nDescription\n\n  Video Games Dataset video game records data gathered directly from the RAWG API.\n  It includes essential fields such as game id, title, release date, rating, genres, platforms, descriptive tags, \n  Metacritic score, developers, publishers, playtime, and a detailed description. The data was collected to support \n  studies, trend analysis, and insights into the gaming industry. Each field is aligned with the specifications provided in the RAWG API documentation.\u2026 See the full description on the dataset page: https://huggingface.co/datasets/atalaydenknalbant/video-games-dataset.",
+  "downloads": 305,
+  "likes": 31,
+  "cardData": {
+    "license": "cc0-1.0",
+    "task_categories": [
+      "sentence-similarity",
+      "summarization",
+      "feature-extraction"
+    ],
+    "tags": [
+      "games",
+      "video-games"
+    ]
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "jsonl/videogames_data.jsonl"
+    },
+    {
+      "rfilename": "videogames_data.csv"
+    },
+    {
+      "rfilename": "videogames_data.parquet"
+    }
+  ],
+  "createdAt": "2025-02-24T14:36:53.000Z",
+  "usedStorage": 17629335433
+}

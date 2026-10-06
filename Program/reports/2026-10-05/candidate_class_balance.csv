@@ -1,0 +1,9 @@
+﻿dataset,candidate,class,rows,fraction
+google_games,illustrative_install_bands_not_final,1k-<100k,119905,0.3649931661760722
+google_games,illustrative_install_bands_not_final,<1k,156155,0.47533887547829157
+google_games,illustrative_install_bands_not_final,>=100k,52372,0.15942139276071265
+google_games,illustrative_install_bands_not_final,missing,81,0.00024656558492357986
+google_sports_ambiguous,illustrative_install_bands_not_final,1k-<100k,19175,0.40382873870648445
+google_sports_ambiguous,illustrative_install_bands_not_final,<1k,24108,0.5077185519027863
+google_sports_ambiguous,illustrative_install_bands_not_final,>=100k,4196,0.0883684687151191
+google_sports_ambiguous,illustrative_install_bands_not_final,missing,4,8.42406756102184e-05

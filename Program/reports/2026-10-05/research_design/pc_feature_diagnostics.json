@@ -1,0 +1,10 @@
+{
+  "developer_unique_names": 60057,
+  "largest_developer_game_count": 196,
+  "rows_with_multiple_developers": 6092,
+  "rows_without_developer": 121,
+  "unique_genre_tokens": 33,
+  "software_only_genre_rows": 1033,
+  "required_age_zero": 88396,
+  "required_age_negative": 1
+}

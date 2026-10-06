@@ -1,0 +1,36 @@
+{
+  "rows": 318298,
+  "free_count": 309987,
+  "paid_count": 8311,
+  "ad_supported": {
+    "True": 249872,
+    "False": 68426
+  },
+  "iap": {
+    "False": 239143,
+    "True": 79155
+  },
+  "currency": {
+    "USD": 318084,
+    "XXX": 199,
+    "NaN": 5,
+    "EUR": 3,
+    "CAD": 2,
+    "VND": 1,
+    "GBP": 1,
+    "BRL": 1,
+    "INR": 1,
+    "AUD": 1
+  },
+  "content_ratings": {
+    "Everyone": 257619,
+    "Teen": 39942,
+    "Everyone 10+": 14992,
+    "Mature 17+": 5695,
+    "Unrated": 32,
+    "Adults only 18+": 18
+  },
+  "developer_unique_ids": 131443,
+  "largest_developer_count": 1333,
+  "missing_developer_id": 0
+}

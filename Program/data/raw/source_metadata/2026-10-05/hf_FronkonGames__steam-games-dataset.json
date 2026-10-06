@@ -1,0 +1,77 @@
+{
+  "_id": "642e1dbbbaf943d5db483e51",
+  "id": "FronkonGames/steam-games-dataset",
+  "author": "FronkonGames",
+  "sha": "ba4e26785af33bee500e96597068c6e77f4edea9",
+  "lastModified": "2026-10-02T18:40:25.000Z",
+  "private": false,
+  "gated": false,
+  "disabled": false,
+  "tags": [
+    "task_categories:tabular-classification",
+    "language:en",
+    "license:mit",
+    "size_categories:100K<n<1M",
+    "format:parquet",
+    "format:optimized-parquet",
+    "modality:image",
+    "modality:tabular",
+    "modality:text",
+    "library:datasets",
+    "library:pandas",
+    "library:polars",
+    "library:mlcroissant",
+    "doi:10.57967/hf/0511",
+    "region:us",
+    "steam",
+    "video-games",
+    "game-analytics",
+    "game-development",
+    "gamedev",
+    "dataset",
+    "csv"
+  ],
+  "description": "\n\t\n\t\t\n\t\n\t\n\t\tSteam Games Dataset\n\t\n\nInformation of 143,395 games published on Steam.\nThis dataset has been created with this code (MIT) and use the API provided by Steam, the largest gaming platform on PC. Data is also collected from Steam Spy. Only published games, no DLCs, episodes, music, videos, etc.\nMaintained by Fronkon Games.\n",
+  "downloads": 2076,
+  "likes": 91,
+  "cardData": {
+    "license": "mit",
+    "task_categories": [
+      "tabular-classification"
+    ],
+    "language": [
+      "en"
+    ],
+    "tags": [
+      "steam",
+      "video-games",
+      "game-analytics",
+      "game-development",
+      "gamedev",
+      "dataset",
+      "csv"
+    ]
+  },
+  "siblings": [
+    {
+      "rfilename": ".gitattributes"
+    },
+    {
+      "rfilename": "README.md"
+    },
+    {
+      "rfilename": "data/train-00000-of-00001.parquet"
+    },
+    {
+      "rfilename": "games.csv"
+    },
+    {
+      "rfilename": "games.json"
+    },
+    {
+      "rfilename": "images/banner.png"
+    }
+  ],
+  "createdAt": "2023-04-06T01:17:47.000Z",
+  "usedStorage": 25577352030
+}

@@ -1,0 +1,33 @@
+# Keep source instructions, not downloaded datasets, in Git.
+/Dataset/*
+!/Dataset/README.md
+!/Dataset/HuggingFace.txt
+
+# Local environments and generated data (also covered by Program/.gitignore).
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+/Program/data/raw/huggingface/
+/Program/data/interim/
+/Program/data/processed/
+*.duckdb*
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Local credentials and machine settings.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+kaggle.json
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
