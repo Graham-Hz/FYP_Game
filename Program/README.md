@@ -2,7 +2,9 @@
 
 此目錄包含資料可行性審核、研究設計、候選清理、文獻對照及已固定的分析特徵／群組切分，沒有模型訓練或最終應用程式。結果是工作筆記，應由學生理解與核對後再作研究決定。
 
-最新階段：[analysis_v1 分析 protocol](reports/2026-10-06/analysis_v1/analysis_protocol.md)、[文獻對照](reports/2026-10-06/analysis_v1/literature_review_notes.md)、[資料疑點處理](reports/2026-10-06/analysis_v1/data_questions.md)。主要分析 cohort 為 PC 73,527 筆（觀察價格 >0 等限定）及 Mobile 318,300 筆；約 70/15/15 的 developer group split 和 train 內 3-fold CV 已產生，特徵與標籤分檔保存。這是工作版本，不表示導師已批准或模型性能已驗證。
+2026-10-07：已加入可操作的本機歷史比較原型。雙擊 [START_DEMO.cmd](START_DEMO.cmd) 啟動；見 [操作指引](DEMO_GUIDE.md) 及 [原型驗證與階段紀錄](reports/2026-10-07/demo_v1/verification_notes.md)。只使用 train 分區，不含預測模型；這不是最終應用程式。Chapter 1 與導師討論準備見 [寫作工作紙](reports/planning/supervisor_discussion_2026-10-06.md)。
+
+分析設計：[analysis_v1 分析 protocol](reports/2026-10-06/analysis_v1/analysis_protocol.md)、[文獻對照](reports/2026-10-06/analysis_v1/literature_review_notes.md)、[資料疑點處理](reports/2026-10-06/analysis_v1/data_questions.md)。主要分析 cohort 為 PC 73,527 筆（觀察價格 >0 等限定）及 Mobile 318,300 筆；約 70/15/15 的 developer group split 和 train 內 3-fold CV 已產生，特徵與標籤分檔保存。這是工作版本，不表示導師已批准或模型性能已驗證。
 
 ```powershell
 uv run --locked python src/data/freeze_analysis.py
