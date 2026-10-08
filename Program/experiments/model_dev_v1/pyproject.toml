@@ -1,0 +1,9 @@
+[project]
+name = "fyp-model-development-v1"
+version = "0.1.0"
+description = "Isolated training-only development experiments on frozen analysis_v1"
+requires-python = ">=3.14,<3.15"
+dependencies = ["scikit-learn==1.9.1", "pandas", "pyarrow", "duckdb", "joblib", "threadpoolctl"]
+
+[tool.uv]
+package = false

@@ -1,0 +1,65 @@
+[
+  {
+    "platform": "mobile",
+    "features": "P",
+    "configuration": "P_C0.1_none",
+    "mean_fold_macro_f1": 0.4757857336086442,
+    "fold_sd": 0.005794472460448427
+  },
+  {
+    "platform": "mobile",
+    "features": "P+A",
+    "configuration": "P_plus_A_C0.1_none",
+    "mean_fold_macro_f1": 0.5321935342540328,
+    "fold_sd": 0.004669453692709945
+  },
+  {
+    "platform": "mobile",
+    "features": "age_only",
+    "configuration": "age_only_C1_balanced",
+    "mean_fold_macro_f1": 0.36971578982421477,
+    "fold_sd": 0.0034280626461493536
+  },
+  {
+    "platform": "mobile",
+    "features": "none",
+    "configuration": "class_prior",
+    "mean_fold_macro_f1": 0.21267957939558213,
+    "fold_sd": 0.0009722795170424071
+  },
+  {
+    "platform": "pc",
+    "features": "P",
+    "configuration": "P_C1.0_balanced",
+    "mean_fold_macro_f1": 0.44005930055651826,
+    "fold_sd": 0.007216057501500923
+  },
+  {
+    "platform": "pc",
+    "features": "P+A",
+    "configuration": "P_plus_A_C0.1_balanced",
+    "mean_fold_macro_f1": 0.4845212765769502,
+    "fold_sd": 0.004748631704513587
+  },
+  {
+    "platform": "pc",
+    "features": "P_without_price",
+    "configuration": "P_without_price_C1.0_balanced",
+    "mean_fold_macro_f1": 0.43626092509270603,
+    "fold_sd": 0.007372817015900053
+  },
+  {
+    "platform": "pc",
+    "features": "age_only",
+    "configuration": "age_only_C1_balanced",
+    "mean_fold_macro_f1": 0.3528483469863039,
+    "fold_sd": 0.005165842964779426
+  },
+  {
+    "platform": "pc",
+    "features": "none",
+    "configuration": "class_prior",
+    "mean_fold_macro_f1": 0.2860091587322815,
+    "fold_sd": 0.001940784577240763
+  }
+]

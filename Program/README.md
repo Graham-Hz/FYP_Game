@@ -1,6 +1,10 @@
 # FYP game planning dataset audit
 
-此目錄包含資料可行性審核、研究設計、候選清理、文獻對照及已固定的分析特徵／群組切分，沒有模型訓練或最終應用程式。結果是工作筆記，應由學生理解與核對後再作研究決定。
+最新方向：[產品範圍及驗收規格](reports/planning/product_scope_v1.md)。已確認支援指定格式 CSV 的資料更新，匯入功能尚未實作；目前原型仍使用固定資料。[第一輪 train EDA](reports/2026-10-07/train_eda_v1/eda_notes.md) 可用 `uv run --locked python.exe src/analysis/profile_training.py` 重現，再用 `uv run --locked python.exe src/analysis/verify_training_eda.py` 獨立核對。
+
+2026-10-08 恢復檢查完成：[首輪模型比較結果](reports/2026-10-07/model_dev_v1/results_notes.md)。26 組設定／78 次 train-group-CV 擬合已完成並獨立驗證；沒有評估 calibration／最終 test。模型工具使用 `experiments/model_dev_v1/` 的獨立鎖定環境，指令见 [實驗 protocol](reports/planning/model_dev_v1_protocol.md)。下一步是樹模型／穩健性比較與 CSV 更新流程。Word 初稿保留原樣，另見 [Chapter 1 修改重點](reports/planning/chapter1_review_2026-10-07.md)。
+
+此目錄包含資料可行性審核、研究設計、候選清理、文獻對照、已固定的分析特徵／群組切分，以及首輪開發模型比較。已有描述比較原型，尚未完成最終應用程式。結果是工作筆記，應由學生理解與核對後再作研究決定。
 
 2026-10-07：已加入可操作的本機歷史比較原型。雙擊 [START_DEMO.cmd](START_DEMO.cmd) 啟動；見 [操作指引](DEMO_GUIDE.md) 及 [原型驗證與階段紀錄](reports/2026-10-07/demo_v1/verification_notes.md)。只使用 train 分區，不含預測模型；這不是最終應用程式。Chapter 1 與導師討論準備見 [寫作工作紙](reports/planning/supervisor_discussion_2026-10-06.md)。
 

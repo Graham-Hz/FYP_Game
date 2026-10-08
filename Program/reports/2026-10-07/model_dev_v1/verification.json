@@ -1,0 +1,23 @@
+{
+  "status": "passed",
+  "configurations": 26,
+  "folds_checked": 78,
+  "prediction_rows_checked": 3207146,
+  "model_replay_rows": 936,
+  "checks": [
+    "artifact/input/code hashes",
+    "train-only complete OOF membership",
+    "fold group isolation",
+    "numeric statistics fitted within fold",
+    "predictor allowlist",
+    "independent confusion/precision/recall/F1/accuracy/log-loss/Brier",
+    "fold mean and SD",
+    "Mobile subgroups",
+    "saved model replay",
+    "development choices"
+  ],
+  "calibration_evaluated": false,
+  "test_evaluated": false,
+  "run_manifest_sha256": "e7384e173bbac967183d4e332ced50158021fd454dc1e5c760e49847edf3af16",
+  "verifier_sha256": "8a4d65fe216c03914e0b4e1dc62627352d38d6362cc2b2e8cc0c55809ff4f7b3"
+}

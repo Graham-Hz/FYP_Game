@@ -1,0 +1,259 @@
+﻿platform,dimension,feature_value,target_tier,count,group_n,percent,train_n,small_sample
+pc,overall,all,O1_source_interval_up_to_20k,38428,51152,75.12511729746637,51152,False
+pc,overall,all,O2_source_intervals_20k_to_100k,8527,51152,16.66992492962152,51152,False
+pc,overall,all,O3_source_intervals_100k_plus,4197,51152,8.204957772912104,51152,False
+pc,age_band,0-179 days,O1_source_interval_up_to_20k,5077,5418,93.70616463639719,51152,False
+pc,age_band,0-179 days,O2_source_intervals_20k_to_100k,242,5418,4.4665928386858615,51152,False
+pc,age_band,0-179 days,O3_source_intervals_100k_plus,99,5418,1.8272425249169435,51152,False
+pc,age_band,1095+ days,O1_source_interval_up_to_20k,18327,27701,66.16006642359481,51152,False
+pc,age_band,1095+ days,O2_source_intervals_20k_to_100k,6055,27701,21.858416663658353,51152,False
+pc,age_band,1095+ days,O3_source_intervals_100k_plus,3319,27701,11.981516912746832,51152,False
+pc,age_band,180-364 days,O1_source_interval_up_to_20k,4329,4920,87.98780487804878,51152,False
+pc,age_band,180-364 days,O2_source_intervals_20k_to_100k,428,4920,8.699186991869919,51152,False
+pc,age_band,180-364 days,O3_source_intervals_100k_plus,163,4920,3.313008130081301,51152,False
+pc,age_band,365-1094 days,O1_source_interval_up_to_20k,10695,13113,81.56028368794327,51152,False
+pc,age_band,365-1094 days,O2_source_intervals_20k_to_100k,1802,13113,13.74208800427057,51152,False
+pc,age_band,365-1094 days,O3_source_intervals_100k_plus,616,13113,4.697628307786166,51152,False
+pc,genres,360 Video,O1_source_interval_up_to_20k,1,1,100.0,51152,True
+pc,genres,360 Video,O2_source_intervals_20k_to_100k,0,1,0.0,51152,True
+pc,genres,360 Video,O3_source_intervals_100k_plus,0,1,0.0,51152,True
+pc,genres,Accounting,O1_source_interval_up_to_20k,2,3,66.66666666666667,51152,True
+pc,genres,Accounting,O2_source_intervals_20k_to_100k,1,3,33.333333333333336,51152,True
+pc,genres,Accounting,O3_source_intervals_100k_plus,0,3,0.0,51152,True
+pc,genres,Action,O1_source_interval_up_to_20k,15708,21424,73.31964152352502,51152,False
+pc,genres,Action,O2_source_intervals_20k_to_100k,3628,21424,16.93427931292009,51152,False
+pc,genres,Action,O3_source_intervals_100k_plus,2088,21424,9.746079163554892,51152,False
+pc,genres,Adventure,O1_source_interval_up_to_20k,15302,21063,72.64872050515122,51152,False
+pc,genres,Adventure,O2_source_intervals_20k_to_100k,3888,21063,18.458908987323742,51152,False
+pc,genres,Adventure,O3_source_intervals_100k_plus,1873,21063,8.892370507525044,51152,False
+pc,genres,Animation & Modeling,O1_source_interval_up_to_20k,60,70,85.71428571428571,51152,False
+pc,genres,Animation & Modeling,O2_source_intervals_20k_to_100k,8,70,11.428571428571429,51152,False
+pc,genres,Animation & Modeling,O3_source_intervals_100k_plus,2,70,2.857142857142857,51152,False
+pc,genres,Audio Production,O1_source_interval_up_to_20k,22,23,95.65217391304348,51152,True
+pc,genres,Audio Production,O2_source_intervals_20k_to_100k,1,23,4.3478260869565215,51152,True
+pc,genres,Audio Production,O3_source_intervals_100k_plus,0,23,0.0,51152,True
+pc,genres,Casual,O1_source_interval_up_to_20k,18362,22550,81.42793791574279,51152,False
+pc,genres,Casual,O2_source_intervals_20k_to_100k,3133,22550,13.893569844789358,51152,False
+pc,genres,Casual,O3_source_intervals_100k_plus,1055,22550,4.678492239467849,51152,False
+pc,genres,Design & Illustration,O1_source_interval_up_to_20k,63,76,82.89473684210526,51152,False
+pc,genres,Design & Illustration,O2_source_intervals_20k_to_100k,6,76,7.894736842105263,51152,False
+pc,genres,Design & Illustration,O3_source_intervals_100k_plus,7,76,9.210526315789474,51152,False
+pc,genres,Documentary,O1_source_interval_up_to_20k,1,1,100.0,51152,True
+pc,genres,Documentary,O2_source_intervals_20k_to_100k,0,1,0.0,51152,True
+pc,genres,Documentary,O3_source_intervals_100k_plus,0,1,0.0,51152,True
+pc,genres,Early Access,O1_source_interval_up_to_20k,4312,5252,82.1020563594821,51152,False
+pc,genres,Early Access,O2_source_intervals_20k_to_100k,658,5252,12.52856054836253,51152,False
+pc,genres,Early Access,O3_source_intervals_100k_plus,282,5252,5.36938309215537,51152,False
+pc,genres,Education,O1_source_interval_up_to_20k,48,57,84.21052631578948,51152,False
+pc,genres,Education,O2_source_intervals_20k_to_100k,4,57,7.017543859649122,51152,False
+pc,genres,Education,O3_source_intervals_100k_plus,5,57,8.771929824561404,51152,False
+pc,genres,Episodic,O1_source_interval_up_to_20k,1,1,100.0,51152,True
+pc,genres,Episodic,O2_source_intervals_20k_to_100k,0,1,0.0,51152,True
+pc,genres,Episodic,O3_source_intervals_100k_plus,0,1,0.0,51152,True
+pc,genres,Free To Play,O1_source_interval_up_to_20k,42,53,79.24528301886792,51152,False
+pc,genres,Free To Play,O2_source_intervals_20k_to_100k,8,53,15.09433962264151,51152,False
+pc,genres,Free To Play,O3_source_intervals_100k_plus,3,53,5.660377358490566,51152,False
+pc,genres,Game Development,O1_source_interval_up_to_20k,47,55,85.45454545454545,51152,False
+pc,genres,Game Development,O2_source_intervals_20k_to_100k,2,55,3.6363636363636362,51152,False
+pc,genres,Game Development,O3_source_intervals_100k_plus,6,55,10.909090909090908,51152,False
+pc,genres,Gore,O1_source_interval_up_to_20k,125,153,81.69934640522875,51152,False
+pc,genres,Gore,O2_source_intervals_20k_to_100k,17,153,11.11111111111111,51152,False
+pc,genres,Gore,O3_source_intervals_100k_plus,11,153,7.189542483660131,51152,False
+pc,genres,Indie,O1_source_interval_up_to_20k,28146,37033,76.00248427078552,51152,False
+pc,genres,Indie,O2_source_intervals_20k_to_100k,6180,37033,16.687818972267976,51152,False
+pc,genres,Indie,O3_source_intervals_100k_plus,2707,37033,7.309696756946507,51152,False
+pc,genres,Massively Multiplayer,O1_source_interval_up_to_20k,440,648,67.90123456790124,51152,False
+pc,genres,Massively Multiplayer,O2_source_intervals_20k_to_100k,116,648,17.901234567901234,51152,False
+pc,genres,Massively Multiplayer,O3_source_intervals_100k_plus,92,648,14.197530864197532,51152,False
+pc,genres,Movie,O1_source_interval_up_to_20k,1,1,100.0,51152,True
+pc,genres,Movie,O2_source_intervals_20k_to_100k,0,1,0.0,51152,True
+pc,genres,Movie,O3_source_intervals_100k_plus,0,1,0.0,51152,True
+pc,genres,Nudity,O1_source_interval_up_to_20k,49,60,81.66666666666667,51152,False
+pc,genres,Nudity,O2_source_intervals_20k_to_100k,8,60,13.333333333333334,51152,False
+pc,genres,Nudity,O3_source_intervals_100k_plus,3,60,5.0,51152,False
+pc,genres,Photo Editing,O1_source_interval_up_to_20k,13,17,76.47058823529412,51152,True
+pc,genres,Photo Editing,O2_source_intervals_20k_to_100k,2,17,11.764705882352942,51152,True
+pc,genres,Photo Editing,O3_source_intervals_100k_plus,2,17,11.764705882352942,51152,True
+pc,genres,RPG,O1_source_interval_up_to_20k,6242,9366,66.64531283365363,51152,False
+pc,genres,RPG,O2_source_intervals_20k_to_100k,1982,9366,21.161648515908606,51152,False
+pc,genres,RPG,O3_source_intervals_100k_plus,1142,9366,12.193038650437753,51152,False
+pc,genres,Racing,O1_source_interval_up_to_20k,1512,1916,78.91440501043841,51152,False
+pc,genres,Racing,O2_source_intervals_20k_to_100k,258,1916,13.465553235908143,51152,False
+pc,genres,Racing,O3_source_intervals_100k_plus,146,1916,7.620041753653445,51152,False
+pc,genres,Sexual Content,O1_source_interval_up_to_20k,54,61,88.52459016393442,51152,False
+pc,genres,Sexual Content,O2_source_intervals_20k_to_100k,4,61,6.557377049180328,51152,False
+pc,genres,Sexual Content,O3_source_intervals_100k_plus,3,61,4.918032786885246,51152,False
+pc,genres,Short,O1_source_interval_up_to_20k,1,1,100.0,51152,True
+pc,genres,Short,O2_source_intervals_20k_to_100k,0,1,0.0,51152,True
+pc,genres,Short,O3_source_intervals_100k_plus,0,1,0.0,51152,True
+pc,genres,Simulation,O1_source_interval_up_to_20k,8130,10818,75.15252357182473,51152,False
+pc,genres,Simulation,O2_source_intervals_20k_to_100k,1664,10818,15.381771122203734,51152,False
+pc,genres,Simulation,O3_source_intervals_100k_plus,1024,10818,9.465705305971529,51152,False
+pc,genres,Software Training,O1_source_interval_up_to_20k,14,18,77.77777777777777,51152,True
+pc,genres,Software Training,O2_source_intervals_20k_to_100k,3,18,16.666666666666668,51152,True
+pc,genres,Software Training,O3_source_intervals_100k_plus,1,18,5.555555555555555,51152,True
+pc,genres,Sports,O1_source_interval_up_to_20k,1781,2246,79.29652715939447,51152,False
+pc,genres,Sports,O2_source_intervals_20k_to_100k,319,2246,14.203027604630455,51152,False
+pc,genres,Sports,O3_source_intervals_100k_plus,146,2246,6.500445235975067,51152,False
+pc,genres,Strategy,O1_source_interval_up_to_20k,7087,10108,70.11278195488721,51152,False
+pc,genres,Strategy,O2_source_intervals_20k_to_100k,1977,10108,19.558765334388603,51152,False
+pc,genres,Strategy,O3_source_intervals_100k_plus,1044,10108,10.328452710724179,51152,False
+pc,genres,Tutorial,O1_source_interval_up_to_20k,1,1,100.0,51152,True
+pc,genres,Tutorial,O2_source_intervals_20k_to_100k,0,1,0.0,51152,True
+pc,genres,Tutorial,O3_source_intervals_100k_plus,0,1,0.0,51152,True
+pc,genres,Utilities,O1_source_interval_up_to_20k,95,113,84.070796460177,51152,False
+pc,genres,Utilities,O2_source_intervals_20k_to_100k,11,113,9.734513274336283,51152,False
+pc,genres,Utilities,O3_source_intervals_100k_plus,7,113,6.1946902654867255,51152,False
+pc,genres,Video Production,O1_source_interval_up_to_20k,23,26,88.46153846153847,51152,True
+pc,genres,Video Production,O2_source_intervals_20k_to_100k,3,26,11.538461538461538,51152,True
+pc,genres,Video Production,O3_source_intervals_100k_plus,0,26,0.0,51152,True
+pc,genres,Violent,O1_source_interval_up_to_20k,209,244,85.65573770491804,51152,False
+pc,genres,Violent,O2_source_intervals_20k_to_100k,25,244,10.245901639344263,51152,False
+pc,genres,Violent,O3_source_intervals_100k_plus,10,244,4.098360655737705,51152,False
+pc,genres,Web Publishing,O1_source_interval_up_to_20k,6,13,46.15384615384615,51152,True
+pc,genres,Web Publishing,O2_source_intervals_20k_to_100k,2,13,15.384615384615385,51152,True
+pc,genres,Web Publishing,O3_source_intervals_100k_plus,5,13,38.46153846153846,51152,True
+pc,planning_categories,<empty_or_missing>,O1_source_interval_up_to_20k,121,149,81.20805369127517,51152,False
+pc,planning_categories,<empty_or_missing>,O2_source_intervals_20k_to_100k,18,149,12.080536912751677,51152,False
+pc,planning_categories,<empty_or_missing>,O3_source_intervals_100k_plus,10,149,6.7114093959731544,51152,False
+pc,planning_categories,Co-op,O1_source_interval_up_to_20k,3020,4801,62.90356175796709,51152,False
+pc,planning_categories,Co-op,O2_source_intervals_20k_to_100k,904,4801,18.829410539470942,51152,False
+pc,planning_categories,Co-op,O3_source_intervals_100k_plus,877,4801,18.267027702561965,51152,False
+pc,planning_categories,Cross-Platform Multiplayer,O1_source_interval_up_to_20k,631,1065,59.248826291079816,51152,False
+pc,planning_categories,Cross-Platform Multiplayer,O2_source_intervals_20k_to_100k,198,1065,18.591549295774648,51152,False
+pc,planning_categories,Cross-Platform Multiplayer,O3_source_intervals_100k_plus,236,1065,22.15962441314554,51152,False
+pc,planning_categories,Full controller support,O1_source_interval_up_to_20k,7934,11907,66.63307298227933,51152,False
+pc,planning_categories,Full controller support,O2_source_intervals_20k_to_100k,2273,11907,19.089611153103217,51152,False
+pc,planning_categories,Full controller support,O3_source_intervals_100k_plus,1700,11907,14.277315864617451,51152,False
+pc,planning_categories,LAN Co-op,O1_source_interval_up_to_20k,281,432,65.04629629629629,51152,False
+pc,planning_categories,LAN Co-op,O2_source_intervals_20k_to_100k,87,432,20.13888888888889,51152,False
+pc,planning_categories,LAN Co-op,O3_source_intervals_100k_plus,64,432,14.814814814814815,51152,False
+pc,planning_categories,LAN PvP,O1_source_interval_up_to_20k,307,413,74.33414043583535,51152,False
+pc,planning_categories,LAN PvP,O2_source_intervals_20k_to_100k,55,413,13.317191283292978,51152,False
+pc,planning_categories,LAN PvP,O3_source_intervals_100k_plus,51,413,12.34866828087167,51152,False
+pc,planning_categories,MMO,O1_source_interval_up_to_20k,126,218,57.79816513761468,51152,False
+pc,planning_categories,MMO,O2_source_intervals_20k_to_100k,48,218,22.01834862385321,51152,False
+pc,planning_categories,MMO,O3_source_intervals_100k_plus,44,218,20.18348623853211,51152,False
+pc,planning_categories,Multi-player,O1_source_interval_up_to_20k,5614,8565,65.54582603619382,51152,False
+pc,planning_categories,Multi-player,O2_source_intervals_20k_to_100k,1574,8565,18.37711617046118,51152,False
+pc,planning_categories,Multi-player,O3_source_intervals_100k_plus,1377,8565,16.07705779334501,51152,False
+pc,planning_categories,Online Co-op,O1_source_interval_up_to_20k,1488,2570,57.8988326848249,51152,False
+pc,planning_categories,Online Co-op,O2_source_intervals_20k_to_100k,497,2570,19.33852140077821,51152,False
+pc,planning_categories,Online Co-op,O3_source_intervals_100k_plus,585,2570,22.762645914396888,51152,False
+pc,planning_categories,Online PvP,O1_source_interval_up_to_20k,2125,3216,66.07587064676616,51152,False
+pc,planning_categories,Online PvP,O2_source_intervals_20k_to_100k,533,3216,16.573383084577113,51152,False
+pc,planning_categories,Online PvP,O3_source_intervals_100k_plus,558,3216,17.350746268656717,51152,False
+pc,planning_categories,Partial Controller Support,O1_source_interval_up_to_20k,4775,6875,69.45454545454545,51152,False
+pc,planning_categories,Partial Controller Support,O2_source_intervals_20k_to_100k,1293,6875,18.80727272727273,51152,False
+pc,planning_categories,Partial Controller Support,O3_source_intervals_100k_plus,807,6875,11.738181818181818,51152,False
+pc,planning_categories,PvP,O1_source_interval_up_to_20k,3634,5090,71.39489194499018,51152,False
+pc,planning_categories,PvP,O2_source_intervals_20k_to_100k,793,5090,15.579567779960707,51152,False
+pc,planning_categories,PvP,O3_source_intervals_100k_plus,663,5090,13.025540275049115,51152,False
+pc,planning_categories,Shared/Split Screen,O1_source_interval_up_to_20k,2606,3723,69.99731399409079,51152,False
+pc,planning_categories,Shared/Split Screen,O2_source_intervals_20k_to_100k,669,3723,17.96937953263497,51152,False
+pc,planning_categories,Shared/Split Screen,O3_source_intervals_100k_plus,448,3723,12.03330647327424,51152,False
+pc,planning_categories,Shared/Split Screen Co-op,O1_source_interval_up_to_20k,1568,2249,69.71987550022232,51152,False
+pc,planning_categories,Shared/Split Screen Co-op,O2_source_intervals_20k_to_100k,396,2249,17.60782570031125,51152,False
+pc,planning_categories,Shared/Split Screen Co-op,O3_source_intervals_100k_plus,285,2249,12.672298799466429,51152,False
+pc,planning_categories,Shared/Split Screen PvP,O1_source_interval_up_to_20k,1905,2560,74.4140625,51152,False
+pc,planning_categories,Shared/Split Screen PvP,O2_source_intervals_20k_to_100k,400,2560,15.625,51152,False
+pc,planning_categories,Shared/Split Screen PvP,O3_source_intervals_100k_plus,255,2560,9.9609375,51152,False
+pc,planning_categories,Single-player,O1_source_interval_up_to_20k,37361,49765,75.07485180347634,51152,False
+pc,planning_categories,Single-player,O2_source_intervals_20k_to_100k,8338,49765,16.75474731236813,51152,False
+pc,planning_categories,Single-player,O3_source_intervals_100k_plus,4066,49765,8.170400884155532,51152,False
+pc,planning_categories,Tracked Controller Support,O1_source_interval_up_to_20k,2428,2829,85.82537999293037,51152,False
+pc,planning_categories,Tracked Controller Support,O2_source_intervals_20k_to_100k,288,2829,10.180275715800637,51152,False
+pc,planning_categories,Tracked Controller Support,O3_source_intervals_100k_plus,113,2829,3.9943442912689995,51152,False
+pc,planning_categories,VR Only,O1_source_interval_up_to_20k,2390,2707,88.28961950498707,51152,False
+pc,planning_categories,VR Only,O2_source_intervals_20k_to_100k,242,2707,8.939785740672331,51152,False
+pc,planning_categories,VR Only,O3_source_intervals_100k_plus,75,2707,2.7705947543405984,51152,False
+pc,planning_categories,VR Support,O1_source_interval_up_to_20k,59,116,50.86206896551724,51152,False
+pc,planning_categories,VR Support,O2_source_intervals_20k_to_100k,31,116,26.724137931034484,51152,False
+pc,planning_categories,VR Support,O3_source_intervals_100k_plus,26,116,22.413793103448278,51152,False
+pc,planning_categories,VR Supported,O1_source_interval_up_to_20k,390,535,72.89719626168224,51152,False
+pc,planning_categories,VR Supported,O2_source_intervals_20k_to_100k,86,535,16.074766355140188,51152,False
+pc,planning_categories,VR Supported,O3_source_intervals_100k_plus,59,535,11.02803738317757,51152,False
+mobile,overall,all,M1_under_1k,103908,221806,46.84634320081513,221806,False
+mobile,overall,all,M2_1k_to_under_100k,81403,221806,36.70008926719746,221806,False
+mobile,overall,all,M3_100k_plus,36495,221806,16.453567531987414,221806,False
+mobile,age_band,0-179 days,M1_under_1k,15636,24889,62.822933826188276,221806,False
+mobile,age_band,0-179 days,M2_1k_to_under_100k,8081,24889,32.46815862429185,221806,False
+mobile,age_band,0-179 days,M3_100k_plus,1172,24889,4.708907549519868,221806,False
+mobile,age_band,1095+ days,M1_under_1k,28203,85521,32.97786508576841,221806,False
+mobile,age_band,1095+ days,M2_1k_to_under_100k,34845,85521,40.744378573683655,221806,False
+mobile,age_band,1095+ days,M3_100k_plus,22473,85521,26.277756340547935,221806,False
+mobile,age_band,180-364 days,M1_under_1k,16070,28834,55.73281542623292,221806,False
+mobile,age_band,180-364 days,M2_1k_to_under_100k,10126,28834,35.1182631615454,221806,False
+mobile,age_band,180-364 days,M3_100k_plus,2638,28834,9.148921412221682,221806,False
+mobile,age_band,365-1094 days,M1_under_1k,43999,82562,53.292071412998716,221806,False
+mobile,age_band,365-1094 days,M2_1k_to_under_100k,28351,82562,34.33904217436593,221806,False
+mobile,age_band,365-1094 days,M3_100k_plus,10212,82562,12.368886412635353,221806,False
+mobile,category,Action,M1_under_1k,8237,18683,44.08820853182037,221806,False
+mobile,category,Action,M2_1k_to_under_100k,6585,18683,35.245945511962745,221806,False
+mobile,category,Action,M3_100k_plus,3861,18683,20.66584595621688,221806,False
+mobile,category,Adventure,M1_under_1k,6695,15795,42.38683127572016,221806,False
+mobile,category,Adventure,M2_1k_to_under_100k,6613,15795,41.86767964545742,221806,False
+mobile,category,Adventure,M3_100k_plus,2487,15795,15.745489078822413,221806,False
+mobile,category,Arcade,M1_under_1k,23814,36739,64.8194017256866,221806,False
+mobile,category,Arcade,M2_1k_to_under_100k,10091,36739,27.466724733933965,221806,False
+mobile,category,Arcade,M3_100k_plus,2834,36739,7.713873540379433,221806,False
+mobile,category,Board,M1_under_1k,2971,7271,40.860954476688214,221806,False
+mobile,category,Board,M2_1k_to_under_100k,3164,7271,43.51533489203686,221806,False
+mobile,category,Board,M3_100k_plus,1136,7271,15.623710631274928,221806,False
+mobile,category,Card,M1_under_1k,1591,5445,29.219467401285584,221806,False
+mobile,category,Card,M2_1k_to_under_100k,2597,5445,47.695133149678604,221806,False
+mobile,category,Card,M3_100k_plus,1257,5445,23.085399449035812,221806,False
+mobile,category,Casino,M1_under_1k,818,3440,23.77906976744186,221806,False
+mobile,category,Casino,M2_1k_to_under_100k,1803,3440,52.41279069767442,221806,False
+mobile,category,Casino,M3_100k_plus,819,3440,23.808139534883722,221806,False
+mobile,category,Casual,M1_under_1k,18993,33768,56.2455579246624,221806,False
+mobile,category,Casual,M2_1k_to_under_100k,10175,33768,30.13207770670457,221806,False
+mobile,category,Casual,M3_100k_plus,4600,33768,13.622364368633026,221806,False
+mobile,category,Educational,M1_under_1k,7137,14592,48.91036184210526,221806,False
+mobile,category,Educational,M2_1k_to_under_100k,5486,14592,37.59594298245614,221806,False
+mobile,category,Educational,M3_100k_plus,1969,14592,13.493695175438596,221806,False
+mobile,category,Music,M1_under_1k,870,2650,32.83018867924528,221806,False
+mobile,category,Music,M2_1k_to_under_100k,1293,2650,48.79245283018868,221806,False
+mobile,category,Music,M3_100k_plus,487,2650,18.37735849056604,221806,False
+mobile,category,Puzzle,M1_under_1k,17108,34175,50.059985369422094,221806,False
+mobile,category,Puzzle,M2_1k_to_under_100k,13077,34175,38.26481346013168,221806,False
+mobile,category,Puzzle,M3_100k_plus,3990,34175,11.675201170446233,221806,False
+mobile,category,Racing,M1_under_1k,2457,7218,34.03990024937656,221806,False
+mobile,category,Racing,M2_1k_to_under_100k,2746,7218,38.04377944028817,221806,False
+mobile,category,Racing,M3_100k_plus,2015,7218,27.916320310335273,221806,False
+mobile,category,Role Playing,M1_under_1k,1414,6606,21.404783530124128,221806,False
+mobile,category,Role Playing,M2_1k_to_under_100k,3016,6606,45.655464729034215,221806,False
+mobile,category,Role Playing,M3_100k_plus,2176,6606,32.93975174084166,221806,False
+mobile,category,Simulation,M1_under_1k,3137,16046,19.550043624579335,221806,False
+mobile,category,Simulation,M2_1k_to_under_100k,7039,16046,43.86763056213387,221806,False
+mobile,category,Simulation,M3_100k_plus,5870,16046,36.5823258132868,221806,False
+mobile,category,Strategy,M1_under_1k,2452,5779,42.42948607025437,221806,False
+mobile,category,Strategy,M2_1k_to_under_100k,2078,5779,35.95777816231182,221806,False
+mobile,category,Strategy,M3_100k_plus,1249,5779,21.61273576743381,221806,False
+mobile,category,Trivia,M1_under_1k,3824,7733,49.450407345144185,221806,False
+mobile,category,Trivia,M2_1k_to_under_100k,3113,7733,40.25604551920341,221806,False
+mobile,category,Trivia,M3_100k_plus,796,7733,10.293547135652398,221806,False
+mobile,category,Word,M1_under_1k,2390,5866,40.74326628025912,221806,False
+mobile,category,Word,M2_1k_to_under_100k,2527,5866,43.078758949880665,221806,False
+mobile,category,Word,M3_100k_plus,949,5866,16.17797476986021,221806,False
+mobile,free,false,M1_under_1k,2746,5850,46.94017094017094,221806,False
+mobile,free,false,M2_1k_to_under_100k,2680,5850,45.81196581196581,221806,False
+mobile,free,false,M3_100k_plus,424,5850,7.247863247863248,221806,False
+mobile,free,true,M1_under_1k,101160,215952,46.843743054012,221806,False
+mobile,free,true,M2_1k_to_under_100k,78722,215952,36.4534711417352,221806,False
+mobile,free,true,M3_100k_plus,36070,215952,16.702785804252798,221806,False
+mobile,free,unknown,M1_under_1k,2,4,50.0,221806,True
+mobile,free,unknown,M2_1k_to_under_100k,1,4,25.0,221806,True
+mobile,free,unknown,M3_100k_plus,1,4,25.0,221806,True
+mobile,ad_supported,false,M1_under_1k,30144,47931,62.89040495712587,221806,False
+mobile,ad_supported,false,M2_1k_to_under_100k,14087,47931,29.390165028895705,221806,False
+mobile,ad_supported,false,M3_100k_plus,3700,47931,7.719430013978427,221806,False
+mobile,ad_supported,true,M1_under_1k,73764,173875,42.423580158159595,221806,False
+mobile,ad_supported,true,M2_1k_to_under_100k,67316,173875,38.71516894320633,221806,False
+mobile,ad_supported,true,M3_100k_plus,32795,173875,18.861250898634076,221806,False
+mobile,in_app_purchases,false,M1_under_1k,90413,165713,54.55999227580214,221806,False
+mobile,in_app_purchases,false,M2_1k_to_under_100k,58276,165713,35.16682457019063,221806,False
+mobile,in_app_purchases,false,M3_100k_plus,17024,165713,10.27318315400723,221806,False
+mobile,in_app_purchases,true,M1_under_1k,13495,56093,24.058260388996846,221806,False
+mobile,in_app_purchases,true,M2_1k_to_under_100k,23127,56093,41.22974346175102,221806,False
+mobile,in_app_purchases,true,M3_100k_plus,19471,56093,34.71199614925214,221806,False

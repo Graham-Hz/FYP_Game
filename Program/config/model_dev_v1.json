@@ -1,0 +1,23 @@
+{
+  "version": "model_dev_v1",
+  "analysis_manifest_sha256": "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6",
+  "partition": "train",
+  "folds": [0, 1, 2],
+  "seed": 42,
+  "threads": 2,
+  "baseline": "training-fold class-prior probabilities with majority argmax",
+  "age_only_C": 1.0,
+  "C_grid": [0.1, 1.0],
+  "class_weight_grid": [null, "balanced"],
+  "feature_sets": {"pc": ["P", "P+A", "P_without_price"], "mobile": ["P", "P+A"]},
+  "solver": "lbfgs",
+  "l1_ratio": 0.0,
+  "max_iter": 1000,
+  "tol": 0.0001,
+  "convergence_retry_max_iter": 3000,
+  "selection": "Mean fold macro-F1, equal fold weights; ties within 1e-6 prefer lower C, then unweighted. Within each prespecified feature set only. Development estimates, not final performance.",
+  "numeric": "Nonnegative age/price: log1p, fit-fold median imputation (0 if all missing), fit-fold mean/std scaling (std=1 if constant), explicit missing indicator.",
+  "categorical": "String and boolean one-hot; boolean unknown distinct from false. Multi-valued strings use binary presence. Vocabulary learned only from fit-fold, unknown keys ignored and coverage reported.",
+  "probabilities": "Uncalibrated OOF probabilities retained for development log loss/Brier; no probability deployed to app.",
+  "scope": "E0, age-only and first E2 linear family; E3 tree, full sensitivity, calibration and final test remain future work. No imported application data used."
+}

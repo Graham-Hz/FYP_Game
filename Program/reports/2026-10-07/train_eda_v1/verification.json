@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "independent_engine": "pandas",
+  "distribution_rows_checked": 258,
+  "age_quantiles_checked": 18,
+  "missingness_rows_checked": 19,
+  "checks": [
+    {
+      "platform": "pc",
+      "dimension": "age_band",
+      "checked_rows": 12
+    },
+    {
+      "platform": "pc",
+      "dimension": "genres",
+      "checked_rows": 99
+    },
+    {
+      "platform": "pc",
+      "dimension": "overall",
+      "checked_rows": 3
+    },
+    {
+      "platform": "pc",
+      "dimension": "planning_categories",
+      "checked_rows": 60
+    },
+    {
+      "platform": "mobile",
+      "dimension": "ad_supported",
+      "checked_rows": 6
+    },
+    {
+      "platform": "mobile",
+      "dimension": "age_band",
+      "checked_rows": 12
+    },
+    {
+      "platform": "mobile",
+      "dimension": "category",
+      "checked_rows": 48
+    },
+    {
+      "platform": "mobile",
+      "dimension": "free",
+      "checked_rows": 9
+    },
+    {
+      "platform": "mobile",
+      "dimension": "in_app_purchases",
+      "checked_rows": 6
+    },
+    {
+      "platform": "mobile",
+      "dimension": "overall",
+      "checked_rows": 3
+    }
+  ],
+  "manifest_sha256": "11d0b26fd9af890bbb35d6670e043b1ecb068a7f8dd0aa5f99ec4a0f4d0d44a7",
+  "verifier_sha256": "28b397050eca8c41d09ae287ffde839d0abdfec0fb3d3dfb3a0b84ab37dd0ff7"
+}

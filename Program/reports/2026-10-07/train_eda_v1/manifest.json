@@ -1,0 +1,55 @@
+{
+  "version": "train_eda_v1",
+  "partition": "train",
+  "model_training": false,
+  "analysis_manifest_sha256": "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6",
+  "inputs": {
+    "data/processed/analysis_v1/pc_features.parquet": "5ce92fb1df2eccb18c2b0e0633565d69eb571ab39ceb41808aa5af166a775139",
+    "data/processed/analysis_v1/pc_labels_splits.parquet": "9ef6a994a3cfbe9458e8e3358d458708384d8738c1633f84a52d5d5968a83ae9",
+    "data/processed/analysis_v1/mobile_features.parquet": "bcb0182c681f68caf4eefb512ae560655fc5392b58d302a1c140ae3e505a2597",
+    "data/processed/analysis_v1/mobile_labels_splits.parquet": "49a2eb7523f92decbdf41caa9e61d9e01bddea92eefec3974e06f5a89ad207c0"
+  },
+  "script_sha256": "6a51c8f2223c934d900cba37f7d2f3bc6fb50504ef6a18ba0190a8e1335b082f",
+  "summary": {
+    "pc": {
+      "train_n": 51152,
+      "tier_counts": [
+        {
+          "target_tier": "O1_source_interval_up_to_20k",
+          "n": 38428
+        },
+        {
+          "target_tier": "O2_source_intervals_20k_to_100k",
+          "n": 8527
+        },
+        {
+          "target_tier": "O3_source_intervals_100k_plus",
+          "n": 4197
+        }
+      ]
+    },
+    "mobile": {
+      "train_n": 221806,
+      "tier_counts": [
+        {
+          "target_tier": "M1_under_1k",
+          "n": 103908
+        },
+        {
+          "target_tier": "M2_1k_to_under_100k",
+          "n": 81403
+        },
+        {
+          "target_tier": "M3_100k_plus",
+          "n": 36495
+        }
+      ]
+    }
+  },
+  "outputs": {
+    "distributions.csv": "ab42a38ad0f196aa1e62490f44ffdc56d51e301daf0252d19b1b99d08065a174",
+    "missingness.csv": "7f753166023b67685d1342420f668dddd7fe3a48b09f8630748b8d0337cdaa6a",
+    "age_by_tier.csv": "3207b9b1c53e5c5f59f56fc0b50b878a710d22905539c6aa7c03a189c9b7817e",
+    "eda_notes.md": "a18f59281448e64eea3351f8e8bcee211335ea353e5f902aabc4ba8b40c9bb46"
+  }
+}

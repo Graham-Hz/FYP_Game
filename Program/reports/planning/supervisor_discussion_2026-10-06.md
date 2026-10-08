@@ -2,7 +2,7 @@
 
 Working notes and writing prompts, not text for submission in the Project Report.
 
-Progress update (2026-10-07): the proposed descriptive demonstration is now implemented in `src/demo/`; see [DEMO_GUIDE.md](../../DEMO_GUIDE.md) and the verification notes under `reports/2026-10-07/demo_v1/`. The sections below retain the original 2026-10-06 planning context. No model has been fitted and the two-platform scope remains unapproved. Keep the original approximate 2026-10-20 horizon.
+Progress update (2026-10-08): the descriptive demonstration is implemented in `src/demo/`; see [DEMO_GUIDE.md](../../DEMO_GUIDE.md). The first training-only linear-model comparison is now complete and independently verified; see [model results](../2026-10-07/model_dev_v1/results_notes.md). No final test or model deployment has occurred; the two-platform scope remains unapproved. The sections below retain the original planning context where dated. Keep the original approximate 2026-10-20 horizon.
 
 ## Confirmed by the student
 
@@ -30,9 +30,9 @@ The AI rule is stricter than the original context file's suggestion that generat
 
 Prepare a feasibility demonstration and a student-written Chapter 1 discussion draft. The demonstration should show that both audited sources can support useful historical comparisons through a shared interaction pattern. It does not need to be the final app, a revenue predictor or a validated pre-release forecasting service.
 
-Current proof already exists: source audit, reproducible cleaning, feature allowlist, 73,527 PC and 318,300 Mobile analysis rows, developer-group partitions, and successful independent verification. There is currently no user-facing application or fitted model.
+Current proof includes source audit, reproducible cleaning, feature allowlist, 73,527 PC and 318,300 Mobile analysis rows, developer-group partitions, descriptive prototype, initial train EDA and the first baseline/Logistic Regression group-CV results. The latter were verified on 2026-10-08; they are development results, not final performance. The student has also confirmed specified-format CSV updates as a product requirement; see [product scope v1](product_scope_v1.md). Import/version-switching functions remain to be implemented.
 
-### Small demonstration acceptance criteria — proposed, not implemented
+### Small demonstration acceptance criteria — descriptive version implemented 2026-10-07
 
 1. One interface with Steam and Android selection, showing the source date and the applicable cohort.
 2. Steam genre/function or Android category/monetization filters, with matched sample counts and historical outcome-tier distributions.
@@ -79,9 +79,9 @@ Keep this at problem-and-purpose level. Claims that small studios lack particula
 | Objective component | Evidence of completion | Current position |
 |---|---|---|
 | Prepare and validate platform-specific data | Source records, cleaning rules, dictionary and validation | Working version complete |
-| Analyse historical attribute/outcome relationships | Clearly scoped EDA, sample support and limitations | Diagnostics complete; substantive EDA pending |
-| Evaluate historical tier classification | Group-CV/baseline comparisons and eventual locked test evaluation | Features/splits ready; no model fitted |
-| Build an integrated planning-support program | Shared platform selection, comparison and evidence export | Proposed; not implemented |
+| Analyse historical attribute/outcome relationships | Clearly scoped EDA, sample support and limitations | Initial train EDA complete; deeper sensitivity/model analysis pending |
+| Evaluate historical tier classification | Group-CV/baseline comparisons and eventual locked test evaluation | Initial linear-model development comparison complete; broader experiments and final test pending |
+| Build an integrated planning-support program | Shared platform selection, comparison, evidence export and versioned specified-format CSV updates | Fixed-data prototype implemented; import/versioning and final integration pending |
 | Assess reliability and usefulness | Sensitivity checks, functional cases and user-task evaluation if recruitment permits | Design only; no user study performed |
 
 Objectives describe what the project intends to deliver, not claims that the results already exist. Model evaluation can be completed even if complex models do not outperform a baseline; predictive outputs should only enter the app when justified by evaluation.

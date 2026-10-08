@@ -1,0 +1,188 @@
+{
+  "checked_date": "2026-10-08",
+  "timezone": "Asia/Hong_Kong",
+  "records": {
+    "10.1145/3716394": {
+      "source": "https://api.crossref.org/works/10.1145/3716394",
+      "metadata": {
+        "DOI": "10.1145/3716394",
+        "title": [
+          "Whom do Explanations Serve? A Systematic Literature Survey of User Characteristics in Explainable Recommender Systems Evaluation"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0002-7043-7326",
+            "authenticated-orcid": false,
+            "given": "Kathrin",
+            "family": "Wardatzky",
+            "sequence": "first",
+            "affiliation": [
+              {
+                "name": "Department of Informatics, University of Zurich, Zurich, Switzerland"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0003-4691-6586",
+            "authenticated-orcid": false,
+            "given": "Oana",
+            "family": "Inel",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Department of Informatics, University of Zurich, Zurich, Switzerland"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-5389-9465",
+            "authenticated-orcid": false,
+            "given": "Luca",
+            "family": "Rossetto",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Dublin City University, Dublin, Ireland"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "ORCID": "https://orcid.org/0000-0002-0128-4602",
+            "authenticated-orcid": false,
+            "given": "Abraham",
+            "family": "Bernstein",
+            "sequence": "additional",
+            "affiliation": [
+              {
+                "name": "Department of Informatics, University of Zurich, Zurich, Switzerland"
+              }
+            ],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "ACM Transactions on Recommender Systems"
+        ],
+        "volume": "3",
+        "issue": "4",
+        "page": "1-35",
+        "article-number": null,
+        "published": {
+          "date-parts": [
+            [
+              2025,
+              4,
+              10
+            ]
+          ]
+        },
+        "published-online": {
+          "date-parts": [
+            [
+              2025,
+              4,
+              10
+            ]
+          ]
+        },
+        "published-print": {
+          "date-parts": [
+            [
+              2025,
+              12,
+              31
+            ]
+          ]
+        },
+        "publisher": "Association for Computing Machinery (ACM)",
+        "URL": "https://doi.org/10.1145/3716394"
+      }
+    },
+    "10.1016/j.patter.2023.100804": {
+      "source": "https://api.crossref.org/works/10.1016/j.patter.2023.100804",
+      "metadata": {
+        "DOI": "10.1016/j.patter.2023.100804",
+        "title": [
+          "Leakage and the reproducibility crisis in machine-learning-based science"
+        ],
+        "author": [
+          {
+            "ORCID": "https://orcid.org/0000-0001-5695-280X",
+            "authenticated-orcid": false,
+            "given": "Sayash",
+            "family": "Kapoor",
+            "sequence": "first",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          },
+          {
+            "given": "Arvind",
+            "family": "Narayanan",
+            "sequence": "additional",
+            "affiliation": [],
+            "role": [
+              {
+                "vocabulary": "crossref",
+                "role": "author"
+              }
+            ]
+          }
+        ],
+        "container-title": [
+          "Patterns"
+        ],
+        "volume": "4",
+        "issue": "9",
+        "page": "100804",
+        "article-number": "100804",
+        "published": {
+          "date-parts": [
+            [
+              2023,
+              9
+            ]
+          ]
+        },
+        "published-online": null,
+        "published-print": {
+          "date-parts": [
+            [
+              2023,
+              9
+            ]
+          ]
+        },
+        "publisher": "Elsevier BV",
+        "URL": "https://doi.org/10.1016/j.patter.2023.100804"
+      }
+    }
+  }
+}

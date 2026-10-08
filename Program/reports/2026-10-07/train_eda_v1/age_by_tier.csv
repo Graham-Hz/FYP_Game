@@ -1,0 +1,7 @@
+﻿platform,target_tier,n,age_available_n,age_days_p25,age_days_median,age_days_p75
+pc,O1_source_interval_up_to_20k,38428,38428,374.75,1022.0,1972.25
+pc,O2_source_intervals_20k_to_100k,8527,8527,945.0,1808.0,2900.0
+pc,O3_source_intervals_100k_plus,4197,4197,1283.0,2492.0,3433.0
+mobile,M1_under_1k,103908,103908,305.0,598.0,1164.0
+mobile,M2_1k_to_under_100k,81403,81403,402.0,900.0,1622.0
+mobile,M3_100k_plus,36495,36495,733.0,1373.0,2096.0
