@@ -1,6 +1,8 @@
 # Project status
 
-Updated: 2026-10-08, Asia/Hong_Kong.
+Updated: 2026-10-10, Asia/Hong_Kong.
+
+Workspace maintenance (2026-10-10): verified all 17 extracted raw files against both the five download ZIPs and the original source hashes, then removed only the redundant ZIPs (1,699,412,984 bytes). All extracted raw data, frozen research artifacts, model outputs and the student's current DOCX remain in place. Bytecode-cache batch removal was rejected by automatic tool policy, so those caches remain. Updated the repository/report indexes and added Word temporary-file ignore rules. See `reports/maintenance/cleanup_2026-10-10.json` for verification and retained-file hashes. This maintenance does not advance CSV import or model experiments.
 
 Read the workspace `FYP_PROJECT_CONTEXT_FOR_CODEX.md` for the user's original context. This status supplements it; it does not imply supervisor approval or replace unknown decisions with facts.
 

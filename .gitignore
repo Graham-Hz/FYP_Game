@@ -29,5 +29,8 @@ credentials.json
 kaggle.json
 .DS_Store
 Thumbs.db
+# Word owner/lock files and temporary save files are not report deliverables.
+~$*
+~WRL*.tmp
 .idea/
 .vscode/

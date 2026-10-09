@@ -1,8 +1,10 @@
 # FYP game planning dataset audit
 
+快速入口：[報告與研究紀錄索引](reports/README.md)、[目前進度](PROJECT_STATUS.md)。2026-10-10 已清除核對為重複的 5 個下載 ZIP；原始資料與研究產物保持原位。詳見 repository [檔案保留說明](../README.md#檔案保留與清理)。
+
 最新方向：[產品範圍及驗收規格](reports/planning/product_scope_v1.md)。已確認支援指定格式 CSV 的資料更新，匯入功能尚未實作；目前原型仍使用固定資料。[第一輪 train EDA](reports/2026-10-07/train_eda_v1/eda_notes.md) 可用 `uv run --locked python.exe src/analysis/profile_training.py` 重現，再用 `uv run --locked python.exe src/analysis/verify_training_eda.py` 獨立核對。
 
-2026-10-08 恢復檢查完成：[首輪模型比較結果](reports/2026-10-07/model_dev_v1/results_notes.md)。26 組設定／78 次 train-group-CV 擬合已完成並獨立驗證；沒有評估 calibration／最終 test。模型工具使用 `experiments/model_dev_v1/` 的獨立鎖定環境，指令见 [實驗 protocol](reports/planning/model_dev_v1_protocol.md)。下一步是樹模型／穩健性比較與 CSV 更新流程。Word 初稿保留原樣，另見 [Chapter 1 修改重點](reports/planning/chapter1_review_2026-10-07.md)。
+2026-10-08 恢復檢查完成：[首輪模型比較結果](reports/2026-10-07/model_dev_v1/results_notes.md)。26 組設定／78 次 train-group-CV 擬合已完成並獨立驗證；沒有評估 calibration／最終 test。模型工具使用 `experiments/model_dev_v1/` 的獨立鎖定環境，指令见 [實驗 protocol](reports/planning/model_dev_v1_protocol.md)。下一步是樹模型／穩健性比較與 CSV 更新流程。最新工作報告為 [FYP_v1.docx](reports/FYP_v1.docx)，另見 [2026-10-08 Chapter 1 核對](reports/planning/fyp_v1_review_2026-10-08.md)；學生後續修改不等於已再次審閱。
 
 此目錄包含資料可行性審核、研究設計、候選清理、文獻對照、已固定的分析特徵／群組切分，以及首輪開發模型比較。已有描述比較原型，尚未完成最終應用程式。結果是工作筆記，應由學生理解與核對後再作研究決定。
 
