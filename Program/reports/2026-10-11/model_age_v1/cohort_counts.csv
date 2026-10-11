@@ -1,0 +1,5 @@
+﻿platform,minimum_age_days,primary_train_n,eligible_n,excluded_n,missing_age_n,below_cutoff_n,eligible_groups
+pc,180,51152,45734,5418,0,5418,26894
+pc,365,51152,40814,10338,0,10338,23859
+mobile,180,221806,196917,24889,0,24889,82378
+mobile,365,221806,168083,53723,0,53723,69946

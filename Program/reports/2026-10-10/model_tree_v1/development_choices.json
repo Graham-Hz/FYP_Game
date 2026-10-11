@@ -1,0 +1,37 @@
+[
+  {
+    "platform": "mobile",
+    "features": "P",
+    "configuration": "RF_P_leaves256_none",
+    "mean_fold_macro_f1": 0.4785454475607655,
+    "fold_sd": 0.002283581522786692
+  },
+  {
+    "platform": "mobile",
+    "features": "P+A",
+    "configuration": "RF_P_plus_A_leaves1024_none",
+    "mean_fold_macro_f1": 0.5376078392320411,
+    "fold_sd": 0.006446360266553478
+  },
+  {
+    "platform": "pc",
+    "features": "P",
+    "configuration": "RF_P_leaves256_balanced",
+    "mean_fold_macro_f1": 0.4458444583241395,
+    "fold_sd": 0.0030307709725019318
+  },
+  {
+    "platform": "pc",
+    "features": "P+A",
+    "configuration": "RF_P_plus_A_leaves256_balanced",
+    "mean_fold_macro_f1": 0.5061919350500254,
+    "fold_sd": 0.002836281070217162
+  },
+  {
+    "platform": "pc",
+    "features": "P_without_price",
+    "configuration": "RF_P_without_price_leaves256_balanced",
+    "mean_fold_macro_f1": 0.4368173092077204,
+    "fold_sd": 0.002628415023746022
+  }
+]

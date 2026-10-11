@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "configurations": 28,
+  "folds_checked": 84,
+  "refit_prediction_rows_checked": 2882384,
+  "matched_primary_rows_checked": 2882384,
+  "model_replay_rows": 1008,
+  "mobile_subgroup_rows_checked": 72,
+  "checks": [
+    "frozen hashes",
+    "age eligibility and unchanged fold assignments",
+    "age-fit-only numeric statistics/vocabulary/priors",
+    "original selected configurations and fixed estimator settings",
+    "train-only group isolation",
+    "matched validation membership",
+    "independent fold/pooled/class/confusion/subgroup metric arithmetic",
+    "matched and family deltas",
+    "saved-model replay"
+  ],
+  "calibration_evaluated": false,
+  "test_evaluated": false,
+  "run_manifest_sha256": "fac2ddd0e337c61e711c3288efa6320666c880c0a7a03d6cba36d9b6fc7511f2",
+  "verifier_sha256": "e4e8f213973fe66779141ae5c7d7f14a80565787f60279fad047c57f8c85b3be",
+  "arithmetic_helper_sha256": "8a4d65fe216c03914e0b4e1dc62627352d38d6362cc2b2e8cc0c55809ff4f7b3"
+}

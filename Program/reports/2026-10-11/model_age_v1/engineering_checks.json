@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-11",
+  "unit_tests": {
+    "status": "passed",
+    "count": 42,
+    "command": "uv run --project experiments/model_dev_v1 --locked python.exe -B -m unittest discover -s tests -p test_*.py -v"
+  },
+  "reference_hashes": {
+    "reports/FYP_v1.docx": "810de1ab30de209627c33ba8dc979a1a8f0daba11038aa308758afefd5f9cb3c",
+    "src/models/verify_development.py": "8a4d65fe216c03914e0b4e1dc62627352d38d6362cc2b2e8cc0c55809ff4f7b3",
+    "tests/test_age_sensitivity.py": "0989d5ac31a4aabb7e78e59cbb767b6ceaef2fc4ab3a134fd1b19fc51ce23d90"
+  },
+  "research_verification": "passed",
+  "resume_verification": {
+    "status": "passed",
+    "skipped_fits": 84,
+    "new_fits": 0,
+    "unchanged_artifacts": 252,
+    "unchanged_aggregate_files": 11,
+    "unchanged_run_manifest_sha256": "fac2ddd0e337c61e711c3288efa6320666c880c0a7a03d6cba36d9b6fc7511f2"
+  },
+  "research_verification_sha256": "25aa37f7199cab1f7c56c150638c07d2b0f10aa5d180cf8db70d715a9a966c6b",
+  "report_docx_unchanged": true,
+  "csv_implementation_hashes_unchanged": 10,
+  "navigation_links": "passed"
+}

@@ -1,0 +1,25 @@
+{
+  "version": "model_tree_v1",
+  "date": "2026-10-10",
+  "partition": "train",
+  "folds": [0, 1, 2],
+  "seed": 42,
+  "threads": 2,
+  "feature_sets": {"pc": ["P", "P+A", "P_without_price"], "mobile": ["P", "P+A"]},
+  "max_leaf_nodes_grid": [256, 1024],
+  "class_weight_grid": [null, "balanced"],
+  "estimator": {
+    "n_estimators": 100,
+    "criterion": "gini",
+    "max_depth": 20,
+    "min_samples_leaf": 20,
+    "max_features": "sqrt",
+    "bootstrap": true,
+    "oob_score": false
+  },
+  "selection": "equal-weight mean fold macro-F1; ties within 1e-6 prefer fewer maximum leaves then unweighted",
+  "diagnostics": {
+    "age_minimum_days": [180, 365],
+    "purpose": "OOF subgroup diagnostics on primary-cohort fits; no age-restricted refitting or retuning; not the full cohort sensitivity experiment"
+  }
+}

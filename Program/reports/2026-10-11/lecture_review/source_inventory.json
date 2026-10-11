@@ -1,0 +1,575 @@
+{
+  "source_root": "FYP/Lecture Notes",
+  "date": "2026-10-11",
+  "scope": "Text/section inventory across supplied documents; targeted close reading and selected visual checks. Videos not reviewed; software distributions excluded. Not every exercise or image verified.",
+  "sources": [
+    {
+      "path": "COMP1016/COMP1016 - L00 - Overview and Introduction.pdf",
+      "sha256": "887c95570a4e030100ba1c962ff0224a8397e1edd6db8282ac60172169bd3b93",
+      "empty_pages": [
+        39
+      ],
+      "text_units": 41,
+      "text_characters": 23087
+    },
+    {
+      "path": "COMP1016/COMP1016 - L01 - Review of Probability Distribution.pdf",
+      "sha256": "2fa99fe9552fec37c6bbcb69af94aae4e7fdf7982dd74198ca115640f4f6528b",
+      "empty_pages": [
+        47
+      ],
+      "text_units": 86,
+      "text_characters": 36088
+    },
+    {
+      "path": "COMP1016/COMP1016 - L02 - Sampling and Central Limit Theorem.pdf",
+      "sha256": "8a0b679533b59ac1a866db4b51d4ad832e06a9f2a69c0cf44e21c19ab9ffdff5",
+      "empty_pages": [],
+      "text_units": 47,
+      "text_characters": 25638
+    },
+    {
+      "path": "COMP1016/COMP1016 - L03 - Confidence Interval and t Distribution.pdf",
+      "sha256": "22d71d2c257272b4c83b35487ecae35d068d3a93fb7ff3d4cfac8575cbf3f52c",
+      "empty_pages": [],
+      "text_units": 49,
+      "text_characters": 28934
+    },
+    {
+      "path": "COMP1016/COMP1016 - L04 - Hypothesis Testing - one sample test.pdf",
+      "sha256": "3ef9742dc167ca2578a7961c91aae7432e1c7f00c943a1cabb96ecd4d6bcd96e",
+      "empty_pages": [],
+      "text_units": 55,
+      "text_characters": 45963
+    },
+    {
+      "path": "COMP1016/COMP1016 - L05 - Hypothesis Testing - two sample test.pdf",
+      "sha256": "a6136085e0f1ffb5a7182582777bbc0f7033c443baf02cb846e07b105e566fb3",
+      "empty_pages": [
+        43
+      ],
+      "text_units": 49,
+      "text_characters": 34291
+    },
+    {
+      "path": "COMP1016/COMP1016 - L06 - ANOVA.pdf",
+      "sha256": "9772971609952dbf3c72699fe1727139e0608ea868176b3c13b985da1cdcc1d8",
+      "empty_pages": [
+        7,
+        34
+      ],
+      "text_units": 50,
+      "text_characters": 27647
+    },
+    {
+      "path": "COMP1016/COMP1016 - L07 - Independence Test.pdf",
+      "sha256": "473296f758d6cf1b5b0061c843a6230f00c0f8faf4d2ad13c12fc55434f1d249",
+      "empty_pages": [
+        3,
+        14
+      ],
+      "text_units": 36,
+      "text_characters": 24482
+    },
+    {
+      "path": "COMP1016/COMP1016 - L08 - Non parametric methods.pdf",
+      "sha256": "c1e2b9c0f401a5db0fc4695c37417a292741fa15004c7b48e4190fceadf60423",
+      "empty_pages": [],
+      "text_units": 33,
+      "text_characters": 23458
+    },
+    {
+      "path": "COMP1016/COMP1016 - L09 - Linear Regression.pdf",
+      "sha256": "f8d45a3184dd9810cdacd68b74961eb2e8f6b4b5528ca84a4b872d9cd3793a26",
+      "empty_pages": [
+        17
+      ],
+      "text_units": 44,
+      "text_characters": 28967
+    },
+    {
+      "path": "COMP1016/COMP1016 - L10 - Systems of Linear Equations.pdf",
+      "sha256": "b741414193f8dd8abe3e350902adb6a69132b19077fd0baaadf91876b986c38e",
+      "empty_pages": [],
+      "text_units": 49,
+      "text_characters": 55534
+    },
+    {
+      "path": "COMP1016/COMP1016 - L11 - Matrix Operation.pdf",
+      "sha256": "996a70ab0769e0159a2782346401a742351cc902a5e652fc0fc6ca09c7b671da",
+      "empty_pages": [],
+      "text_units": 61,
+      "text_characters": 48429
+    },
+    {
+      "path": "COMP1016/COMP1016 - L12 - Vectors and Linear Transformation solution.pdf",
+      "sha256": "ecb90d7cec9e2e03ef980f90618dc100e53178c20d5a67744745d2f7309956da",
+      "empty_pages": [
+        31
+      ],
+      "text_units": 45,
+      "text_characters": 25815
+    },
+    {
+      "path": "COMP1016/COMP1016 - L13 - Applications of Linear Algebra.pdf",
+      "sha256": "27307abb581d5a8a86a45d95a0225e3f2360216f99d152fd3775a0bc6596bd4c",
+      "empty_pages": [
+        24,
+        35,
+        37
+      ],
+      "text_units": 37,
+      "text_characters": 14722
+    },
+    {
+      "path": "COMP1016/Copilot_Roshow_individual_2026.pptx",
+      "sha256": "0e61242aaad7ec41a80afabb764679d43329b1992dc0f40cbda8de4d7da9328b",
+      "empty_pages": [],
+      "text_units": 7,
+      "text_characters": 1280
+    },
+    {
+      "path": "COMP1016/Lab/Lab 1/Lab 1.zip",
+      "sha256": "fbe94621bf5a9ee1f44c8856f001041d28a5b854d0fb2a90070fbf4b7ad8221e",
+      "empty_pages": [],
+      "text_units": 4,
+      "text_characters": 1497,
+      "archive_members": 4
+    },
+    {
+      "path": "COMP1016/Lab/Lab 1/lab1.docx",
+      "sha256": "4f1862e51cfd545602ab5d92d4317587c2d632ffcabd9cdd1ce27226cccbb122",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 12113
+    },
+    {
+      "path": "COMP1016/Lab/Lab 1/lab1.pdf",
+      "sha256": "71112abf5e2d74f1beeac8af08455720c02bb49d34abd9cec57e0b276dc74c60",
+      "empty_pages": [],
+      "text_units": 13,
+      "text_characters": 13264
+    },
+    {
+      "path": "COMP1016/Lab/Lab2/lab2.docx",
+      "sha256": "6d7e083f40401c670bd7a0f78b86266f08f0cf27f91370dfc5585b18ba25b5d0",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 18602
+    },
+    {
+      "path": "COMP1016/Lab/Lab3/lab3.docx",
+      "sha256": "ea9e222bc735b2d80782368bbf53084850871ad47aa4adca7cad104a941e5587",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 17866
+    },
+    {
+      "path": "COMP1016/Lab/Lab3/Lab3.zip",
+      "sha256": "dc449f342ec1a75b9b63404f7c664736cf44fc2abc696217ac2f750b3fdf18dd",
+      "empty_pages": [],
+      "text_units": 4,
+      "text_characters": 3100,
+      "archive_members": 9
+    },
+    {
+      "path": "COMP1016/Lab/Lab4/lab4/lab4.docx",
+      "sha256": "7bb6db871cb325a1cd2a00409c75975a458152d380389e9a439ad61aecfcde70",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 27321
+    },
+    {
+      "path": "COMP1016/Lab/Lab4/Lab4_24221546/Lab4/lab4.docx",
+      "sha256": "400851e41b274994c3325631481554caeb8b6442e6dab2b7438bb83f68a94414",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 28084
+    },
+    {
+      "path": "COMP1016/Lab/Lab4/Lab4_24221546.zip",
+      "sha256": "8058d98c8a5588f5080edac76c2a71df3d419247bbff2fffb57e73e255548b4d",
+      "empty_pages": [],
+      "text_units": 26,
+      "text_characters": 40035,
+      "archive_members": 39
+    },
+    {
+      "path": "COMP1016/Lab/Lab5/lab5.docx",
+      "sha256": "43dce22d1792c03d6f92d7b8bd5a0ad7b1e50d28b4024f33c00a5d7aee5f521b",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 26553
+    },
+    {
+      "path": "COMP1016/Lab/Lab5.zip",
+      "sha256": "4b4833cee795e3555db4451d0f8ee588ac23baad9d2dcd6bc4b74f73a87ae9aa",
+      "empty_pages": [],
+      "text_units": 17,
+      "text_characters": 38551,
+      "archive_members": 52
+    },
+    {
+      "path": "COMP1016/Lab/Lab6/lab6.docx",
+      "sha256": "526907bc7ad77855f14f0d54bd185d46760f704f3f79ec8731e0f89cc12166b4",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 18822
+    },
+    {
+      "path": "COMP1016/Lab/Lab6/Lab6.zip",
+      "sha256": "fcd5a9b3073a3c15a57fba5070d4334ff3e5d2899c48b2592c5ce63efa4f7f2d",
+      "empty_pages": [],
+      "text_units": 0,
+      "text_characters": 0,
+      "archive_members": 2
+    },
+    {
+      "path": "COMP1016/Lab/Lab6/Lab6_Linear_Regression.ipynb",
+      "sha256": "4ad6d83694ae797ef20217c42ccb2aa1d62e2617a61940feb0367c3abee09ff2",
+      "empty_pages": [
+        4
+      ],
+      "text_units": 4,
+      "text_characters": 679
+    },
+    {
+      "path": "COMP1016/Lab/Lab6/Lab6_py_24221546.ipynb",
+      "sha256": "f2bab0010876cbb697bea4912e112d82e88d95589c6289d7c28694076d6c9774",
+      "empty_pages": [],
+      "text_units": 4,
+      "text_characters": 766
+    },
+    {
+      "path": "COMP1016/Lab/Lab6.zip",
+      "sha256": "0e9758b61d6ecbc78d4eb87935e455136f2d60f6e3e568f4b2cd7abce02d13c8",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 18837,
+      "archive_members": 4
+    },
+    {
+      "path": "COMP1016/Lab/Lab7.zip",
+      "sha256": "396992a2b9d59e22152a04ce1a947a6b17fd329d1ca473bd7133dffcdb3699bf",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 10929,
+      "archive_members": 2
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L01 - Probability Distribution Tutorial.docx",
+      "sha256": "f1b61328b33f7cb873e99924dff375aa4149c6890af4df4aef03e3408e5edd04",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 2409
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L01 - Probability distribution tutorial_answer.pptx",
+      "sha256": "f6d1e1ca6a03d263dffc9015c00fbcf5bd0f0423e12881101be627911f55a9dd",
+      "empty_pages": [
+        5,
+        6
+      ],
+      "text_units": 6,
+      "text_characters": 2380
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L02 - Sampling and CLT - tutorial solution.pptx",
+      "sha256": "1a81747aa93cfbcda25490153ab098581c654cbb4b653d9462ad8d7318b421dd",
+      "empty_pages": [],
+      "text_units": 5,
+      "text_characters": 3048
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L02 - Sampling Distribution and CLT Tutorial.docx",
+      "sha256": "61573fda7d44030984ef144bcbda44a2234688a493b1d3dea75c697f98f67abd",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 2160
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L03 - Confidence Interval Estimation and t Dist Tutorial.docx",
+      "sha256": "b45fd870b7e6f6f9453cc52cefb3248c23ab8dbd41a90862d89e351122a48df4",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 1537
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L03 - Confidence Interval Estimation and t Distribution - solution.pptx",
+      "sha256": "fab9cdb42cb44b09d443d18d77d1d4fc0ae4d3c7333a6fe9a5c3ef7121c9fe98",
+      "empty_pages": [],
+      "text_units": 6,
+      "text_characters": 1962
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L04 - Hypothesis Testing - one sample test.docx",
+      "sha256": "54c5e0cb713d07a1c92d8a115cfc64b407f6e755884d32d151d28d9375a09251",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 2759
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L05 - Hypothesis Testing - two sample test solution.pdf",
+      "sha256": "67767ea8db62a17c954281b469ea993dd1111a6e2a11ebbb6e3794169c21a62c",
+      "empty_pages": [
+        2
+      ],
+      "text_units": 6,
+      "text_characters": 2556
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L06 - ANOVA solution.pdf",
+      "sha256": "1d298b13d5be8a000954eb9ac3d4e1c1e6f49e76703cc564bb8e179dfbaa6244",
+      "empty_pages": [],
+      "text_units": 7,
+      "text_characters": 4650
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L07 - Independent Test Tutorial.docx",
+      "sha256": "ed6caeef99387316dddedcfa27ed458dc737beee27c5cf60c7fc4dd6968e6e90",
+      "empty_pages": [],
+      "text_units": 1,
+      "text_characters": 921
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L08 - Non parametric methods_solution.pdf",
+      "sha256": "0bb1490921907d326c0c934b797b85a29ad9edf7c1513f6f4c55bdee3e64bc19",
+      "empty_pages": [],
+      "text_units": 33,
+      "text_characters": 23315
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L09 - Linear Regression solution.pdf",
+      "sha256": "249758c6149dc880053b8b08da727c1f3eefdec74a239e3a47cb19c2e3d64715",
+      "empty_pages": [
+        17
+      ],
+      "text_units": 44,
+      "text_characters": 28710
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L10 - Systems of Linear Equations Solution.pdf",
+      "sha256": "f9060f621f1526221b728634763ca5840206e9e764458bc875ee8f26c40bfd96",
+      "empty_pages": [],
+      "text_units": 49,
+      "text_characters": 54161
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L11 - Matrix Operation Tutorial solution.pdf",
+      "sha256": "f45d3a4e220a38d30ddf660a08d20807d40f68f96d9e555c8dab96eaf2bc83c9",
+      "empty_pages": [
+        9
+      ],
+      "text_units": 11,
+      "text_characters": 4531
+    },
+    {
+      "path": "COMP1016/Tutorial/COMP1016 - L12 - Vectors and Linear Transformation solution.pptx",
+      "sha256": "29f079f73b8b8b639aca3acd67c61f9c5ea5e8af302545aceaaf1dca4116c9dd",
+      "empty_pages": [],
+      "text_units": 6,
+      "text_characters": 1425
+    },
+    {
+      "path": "COMP3115/About_COMP3115.pdf",
+      "sha256": "d4931a375100804f7b84f790c4065444dea51161b37c6a9cc46068b5d856e60c",
+      "empty_pages": [],
+      "text_units": 11,
+      "text_characters": 5962
+    },
+    {
+      "path": "COMP3115/Lecture 10.pdf",
+      "sha256": "f1d3871b89db97d97ca9562d7035ea983b9517eb3bf58abf5e7f01b7d79a718e",
+      "empty_pages": [],
+      "text_units": 63,
+      "text_characters": 26775
+    },
+    {
+      "path": "COMP3115/Lecture 11 Dimensionality_Reduction.pdf",
+      "sha256": "c5dc43560393fddd9339698f576c20702e3548701ab84a01f77f252069f31a1d",
+      "empty_pages": [
+        38
+      ],
+      "text_units": 73,
+      "text_characters": 45481
+    },
+    {
+      "path": "COMP3115/Lecture 1_Introduction.pdf",
+      "sha256": "2de477583006e0054aaf948720a32204655de0edabe8d3eef6718ccfaf35b2d6",
+      "empty_pages": [],
+      "text_units": 72,
+      "text_characters": 30929
+    },
+    {
+      "path": "COMP3115/Lecture 2_IntroductionToPythonProgramming.pdf",
+      "sha256": "0c76edae2bb17b9f7b40850646157969aca25a52cdfe1c21ca04b5c7b1a75f10",
+      "empty_pages": [
+        6,
+        11,
+        12,
+        16,
+        17,
+        19,
+        31,
+        32,
+        59
+      ],
+      "text_units": 60,
+      "text_characters": 12663
+    },
+    {
+      "path": "COMP3115/Lecture 3_PythonLibrariesForDataAnalytics.pdf",
+      "sha256": "58d65fe9134d63eaac7da54e6d0dab9e0fe9b688e848f9afdd0d301987bbc749",
+      "empty_pages": [
+        31,
+        46
+      ],
+      "text_units": 58,
+      "text_characters": 15254
+    },
+    {
+      "path": "COMP3115/Lecture 4_DataPreprocess.pdf",
+      "sha256": "63a46611ad0453d1757dc51cf05f03ecbcd339648a09c429d031fbca7d6fab24",
+      "empty_pages": [
+        30,
+        47,
+        53,
+        54
+      ],
+      "text_units": 54,
+      "text_characters": 21015
+    },
+    {
+      "path": "COMP3115/Lecture 5_BasicDataVisualization.pdf",
+      "sha256": "c7ca90885fd6f2e02a0e9c28c3ea3d3b28b900da74022d009f343a0d07dff63f",
+      "empty_pages": [
+        6,
+        10,
+        12,
+        20,
+        34,
+        43,
+        50
+      ],
+      "text_units": 58,
+      "text_characters": 16813
+    },
+    {
+      "path": "COMP3115/Lecture 6_Advanced_Data_Visualization.pdf",
+      "sha256": "3fc5175bedbe83c83a71ed6ca73c0bc60d6ba731add8d9ff59b3d4b741f3bce5",
+      "empty_pages": [
+        83
+      ],
+      "text_units": 89,
+      "text_characters": 28005
+    },
+    {
+      "path": "COMP3115/Lecture 7.pdf",
+      "sha256": "c8b54af3141ba398c6933925ccab13281617fe61892617850d2fa89eccbc6bd5",
+      "empty_pages": [
+        17,
+        46
+      ],
+      "text_units": 55,
+      "text_characters": 16210
+    },
+    {
+      "path": "COMP3115/Lecture 8.pdf",
+      "sha256": "4edaabb4553090148a0ebeb1f64bd76b183d4d2b1b522308aa5e5701b14508f1",
+      "empty_pages": [
+        16,
+        29,
+        34
+      ],
+      "text_units": 65,
+      "text_characters": 45304
+    },
+    {
+      "path": "COMP3115/Lecture 9.pdf",
+      "sha256": "aff91414460e94992c059906d8eb5b3a2978d3e51f20bddd4f730ec9386c2c00",
+      "empty_pages": [
+        46
+      ],
+      "text_units": 47,
+      "text_characters": 24575
+    },
+    {
+      "path": "COMP3925/COMP3925 Topic 1.pdf",
+      "sha256": "785f8bd4e064b9c93cf10f7e0f7bcbbee4a9e9d69d48b2f77e026947bb099018",
+      "empty_pages": [
+        20,
+        23
+      ],
+      "text_units": 41,
+      "text_characters": 8780
+    },
+    {
+      "path": "COMP3925/COMP3925 Topic 2 V2.pdf",
+      "sha256": "edf83c0b3993c724ea562dd0b6c7c45fb41c44a3d6a85fb4ce8aa397ab5d937f",
+      "empty_pages": [
+        15
+      ],
+      "text_units": 34,
+      "text_characters": 8706
+    },
+    {
+      "path": "COMP3925/COMP3925 Topic 3.pdf",
+      "sha256": "a0ae7d9bd87cc55d8ad63efd8e095c9cfa53c9faa932c672fc55fb8662527786",
+      "empty_pages": [
+        5,
+        11,
+        12,
+        13,
+        14,
+        17
+      ],
+      "text_units": 19,
+      "text_characters": 3012
+    },
+    {
+      "path": "COMP3925/COMP3925 Topic 4.pdf",
+      "sha256": "c4949f46b553e99a706727ab2afe54b31fea34da02239ac5ad1c579306bc7e75",
+      "empty_pages": [
+        4,
+        24
+      ],
+      "text_units": 34,
+      "text_characters": 5198
+    },
+    {
+      "path": "COMP3925/Topic2_LoadData.pdf",
+      "sha256": "33a3d4fe8cc0fb82f41d7b666ea9333aa6cbd58768c2c6ffb8773fde4ba4cf8f",
+      "empty_pages": [],
+      "text_units": 12,
+      "text_characters": 19799
+    },
+    {
+      "path": "COMP3925/Topic2_PrepareData.pdf",
+      "sha256": "9c1251e7f5da7e4fda3410be1ca94bcee6e29526a89fd78837f703850c5870c9",
+      "empty_pages": [],
+      "text_units": 6,
+      "text_characters": 11604
+    },
+    {
+      "path": "COMP3925/Topic3_DAXCalculation.pdf",
+      "sha256": "9f907540f3eb6be9930c9f07f7b275c34e3ecbd2d5a700416ad9d502719c8a93",
+      "empty_pages": [],
+      "text_units": 14,
+      "text_characters": 20105
+    },
+    {
+      "path": "COMP3925/Topic3_DesignDataModel.pdf",
+      "sha256": "2e834406a2f08d4448375c98097c3791281e2515bca8cebc42b91e1375275f50",
+      "empty_pages": [],
+      "text_units": 16,
+      "text_characters": 23173
+    },
+    {
+      "path": "COMP3925/Topic4_DesignReport.pdf",
+      "sha256": "688b7d1c4b4c4dc2141b3e9af5f6acf288f73768655281e5730d6522b8c0f5ae",
+      "empty_pages": [],
+      "text_units": 15,
+      "text_characters": 15055
+    }
+  ]
+}

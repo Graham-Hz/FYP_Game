@@ -1,0 +1,212 @@
+{
+  "version": "powerbi_v1",
+  "partition": "train",
+  "analysis_manifest_sha256": "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6",
+  "inputs": {
+    "data/processed/analysis_v1/pc_features.parquet": "5ce92fb1df2eccb18c2b0e0633565d69eb571ab39ceb41808aa5af166a775139",
+    "data/processed/analysis_v1/pc_labels_splits.parquet": "9ef6a994a3cfbe9458e8e3358d458708384d8738c1633f84a52d5d5968a83ae9",
+    "data/processed/analysis_v1/mobile_features.parquet": "bcb0182c681f68caf4eefb512ae560655fc5392b58d302a1c140ae3e505a2597",
+    "data/processed/analysis_v1/mobile_labels_splits.parquet": "49a2eb7523f92decbdf41caa9e61d9e01bddea92eefec3974e06f5a89ad207c0"
+  },
+  "outputs": {
+    "data/processed/powerbi_v1/pc_games.csv": {
+      "sha256": "d969351175bb96a0558c80f61b31540f6a8b2d0618a2ca8f5caa49f3b023d7b5",
+      "rows": 51152,
+      "columns": {
+        "app_id": "VARCHAR",
+        "target_tier": "VARCHAR",
+        "tier_order": "INTEGER",
+        "age_days": "BIGINT",
+        "age_band": "VARCHAR",
+        "age_band_order": "INTEGER",
+        "price_observed": "DOUBLE",
+        "windows": "VARCHAR",
+        "mac": "VARCHAR",
+        "linux": "VARCHAR",
+        "categories_unavailable": "VARCHAR",
+        "languages_unavailable": "VARCHAR"
+      }
+    },
+    "data/processed/powerbi_v1/mobile_games.csv": {
+      "sha256": "52e61a0087f26d7773b36db19650d55e19d55634da297009e9523c2fe5bdd3cc",
+      "rows": 221806,
+      "columns": {
+        "app_id": "VARCHAR",
+        "target_tier": "VARCHAR",
+        "tier_order": "INTEGER",
+        "age_days": "BIGINT",
+        "age_band": "VARCHAR",
+        "age_band_order": "INTEGER",
+        "category": "VARCHAR",
+        "content_rating": "VARCHAR",
+        "price_usd": "DOUBLE",
+        "free": "VARCHAR",
+        "ad_supported": "VARCHAR",
+        "in_app_purchases": "VARCHAR",
+        "price_usd_unavailable": "VARCHAR",
+        "free_unavailable": "VARCHAR"
+      }
+    },
+    "data/processed/powerbi_v1/pc_genres.csv": {
+      "sha256": "1b7a19ed6a48f393516cd971e2303e66b4fdecbdfaa5a63905c9b485f1f7c0e2",
+      "rows": 143472,
+      "columns": {
+        "app_id": "VARCHAR",
+        "genre": "VARCHAR"
+      }
+    },
+    "data/processed/powerbi_v1/genre.csv": {
+      "sha256": "5a5ebb4df489a40f36c88e752bf8b5b7412dbd2964651abc0932455336750827",
+      "rows": 33,
+      "columns": {
+        "genre": "VARCHAR"
+      }
+    }
+  },
+  "script_sha256": "41b1e514e51aa507c896e9685f9a9fe43d65dd33cccd8363d0407290d32ccf66",
+  "checks": {
+    "pc": {
+      "rows": 51152,
+      "tiers": [
+        {
+          "target_tier": "O1_source_interval_up_to_20k",
+          "n": 38428
+        },
+        {
+          "target_tier": "O2_source_intervals_20k_to_100k",
+          "n": 8527
+        },
+        {
+          "target_tier": "O3_source_intervals_100k_plus",
+          "n": 4197
+        }
+      ],
+      "age_bands": [
+        {
+          "age_band": "0-179 days",
+          "n": 5418
+        },
+        {
+          "age_band": "1095+ days",
+          "n": 27701
+        },
+        {
+          "age_band": "180-364 days",
+          "n": 4920
+        },
+        {
+          "age_band": "365-1094 days",
+          "n": 13113
+        }
+      ],
+      "genre_union_action_indie": [
+        {
+          "target_tier": "O1_source_interval_up_to_20k",
+          "n": 31522
+        },
+        {
+          "target_tier": "O2_source_intervals_20k_to_100k",
+          "n": 6953
+        },
+        {
+          "target_tier": "O3_source_intervals_100k_plus",
+          "n": 3451
+        }
+      ],
+      "action_age_365_plus": [
+        {
+          "target_tier": "O1_source_interval_up_to_20k",
+          "n": 12126
+        },
+        {
+          "target_tier": "O2_source_intervals_20k_to_100k",
+          "n": 3315
+        },
+        {
+          "target_tier": "O3_source_intervals_100k_plus",
+          "n": 1965
+        }
+      ]
+    },
+    "mobile": {
+      "rows": 221806,
+      "tiers": [
+        {
+          "target_tier": "M1_under_1k",
+          "n": 103908
+        },
+        {
+          "target_tier": "M2_1k_to_under_100k",
+          "n": 81403
+        },
+        {
+          "target_tier": "M3_100k_plus",
+          "n": 36495
+        }
+      ],
+      "age_bands": [
+        {
+          "age_band": "0-179 days",
+          "n": 24889
+        },
+        {
+          "age_band": "1095+ days",
+          "n": 85521
+        },
+        {
+          "age_band": "180-364 days",
+          "n": 28834
+        },
+        {
+          "age_band": "365-1094 days",
+          "n": 82562
+        }
+      ],
+      "free": [
+        {
+          "free": "No",
+          "n": 5850
+        },
+        {
+          "free": "Unknown",
+          "n": 4
+        },
+        {
+          "free": "Yes",
+          "n": 215952
+        }
+      ],
+      "paid_age_365_plus": [
+        {
+          "target_tier": "M1_under_1k",
+          "n": 2406
+        },
+        {
+          "target_tier": "M2_1k_to_under_100k",
+          "n": 2546
+        },
+        {
+          "target_tier": "M3_100k_plus",
+          "n": 420
+        }
+      ],
+      "category_puzzle": [
+        {
+          "target_tier": "M1_under_1k",
+          "n": 17108
+        },
+        {
+          "target_tier": "M2_1k_to_under_100k",
+          "n": 13077
+        },
+        {
+          "target_tier": "M3_100k_plus",
+          "n": 3990
+        }
+      ]
+    }
+  },
+  "csv_roundtrip_differences": 0,
+  "power_bi_ui_tested": false,
+  "scope": "Research-train descriptive export only; no application snapshot refresh or held-out evaluation."
+}

@@ -2,12 +2,13 @@
 
 HKBU BCDA FYP：**A Data-Driven Decision Support System for Early-Stage Game Development Planning**（工作題目；Steam＋Android 方向仍待導師確認）。
 
-目前已有資料審核、清理、固定特徵與群組切分、初步分析、歷史比較原型，以及首輪模型比較（26 組設定／78 次擬合）。CSV 匯入與應用資料版本切換、後續模型比較及最終評估尚未完成。研究筆記和開發 CV 結果不等於最後研究結論。
+目前已有資料審核、清理、固定特徵與群組切分、初步分析、歷史比較原型、指定格式 CSV 匯入與版本切換。首輪模型比較（26 組／78 次擬合）、樹模型比較（20 組／60 次）及年齡限制重訓（28 組／84 次）均已完成並獨立核對。其他 cohort／target 敏感度、群組／random 對照、最終評估及相似遊戲參考仍待完成；研究筆記和開發 CV 結果不等於最後研究結論。
 
 ## 專案入口
 
 - [目前進度](Program/PROJECT_STATUS.md)
 - [啟動比較原型](Program/START_DEMO.cmd)／[操作指引](Program/DEMO_GUIDE.md)
+- [CSV 匯入、欄位字典及資料版本](Program/CSV_IMPORT_GUIDE.md)
 - [目前報告 FYP_v1](Program/reports/FYP_v1.docx)
 - [報告與研究紀錄索引](Program/reports/README.md)
 - [產品範圍與待辦](Program/reports/planning/product_scope_v1.md)
@@ -16,6 +17,9 @@ HKBU BCDA FYP：**A Data-Driven Decision Support System for Early-Stage Game Dev
 - [候選清理報告](Program/reports/2026-10-06/cleaning_candidate_v1/cleaning_report.md)
 - [資料字典](Program/reports/2026-10-06/cleaning_candidate_v1/data_dictionary.md)
 - [首輪模型結果](Program/reports/2026-10-07/model_dev_v1/results_notes.md)
+- [樹模型比較與子組診斷](Program/reports/2026-10-10/model_tree_v1/results_notes.md)
+- [年齡限制重新訓練](Program/reports/2026-10-11/model_age_v1/results_notes.md)
+- [Chapter 2 七項素材索引](Program/reports/planning/chapter2_evidence_map.md)
 
 原始 `FYP_PROJECT_CONTEXT_FOR_CODEX.md` 目前放在此 repository 外的上一層 FYP 工作目錄。這裡不建立重複副本；最新進度以 `Program/PROJECT_STATUS.md` 為準。舊入口中不存在的 `GITHUB_SETUP.md` 連結已移除。
 

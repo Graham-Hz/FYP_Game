@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-10",
+  "status": "passed",
+  "unit_and_integration_tests": 33,
+  "research_hashes_verified": 33,
+  "report_docx_unchanged": true,
+  "application_active_versions_unchanged": true,
+  "browser_import": {
+    "status": "passed",
+    "checks": [
+      "Duplicate upload blocked; active research data unchanged",
+      "Preview/save/activate/filter/export use the imported version and correct denominators",
+      "Reload preserves selection; rollback restores research counts and invalidates stale output",
+      "390px view has no horizontal overflow; no page JavaScript errors"
+    ],
+    "page_errors": []
+  },
+  "implementation_sha256": {
+    "src/imports/cli.py": "0ccc8ef66ec147f403b677a6d781930bba52c0e144f55ebfc83d4ba3729b6863",
+    "src/imports/contracts.py": "bff4e7c0ef4755ecc54a76a1bc5b8ac1baad4c9994cdfd85190e55ad8019a0f6",
+    "src/imports/convert_sources.py": "bcd0b91a3b2bc1162fca39e2e143e4f34cd53719de770379b7c49db58821eadc",
+    "src/imports/repository.py": "869b39322f87cef2c784d0cec9f975a770511e3d7ef4e96cd6c43bb10c3dab1d",
+    "src/imports/__init__.py": "3076c23184934f54b965a96ea1588a054ae6350ee8ce4d8c32654595d8b41d5b",
+    "src/demo/server.py": "36c5f20637cabb9660a72828e25fe6a6494c1637872c6f7680c70ce2ae5b758f",
+    "src/demo/static/app.js": "94a759305d87dc86c75082f123f0ac9cb7d9710cee5d313fac4181967b8667c0",
+    "src/demo/static/index.html": "461c8df176ceee0f4fbad9547aa4bd83c0117adaf77204561d95c3fd5704940e",
+    "src/demo/static/style.css": "a90e3bb38368668e72171499dd47807c4a5688c41b742a6ab1ad4f7f813c0e6d"
+  },
+  "frozen_manifest_sha256": "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6",
+  "limits": [
+    "Single local application process",
+    "Specified CSV schema only",
+    "No model integration, automatic retraining or user study"
+  ],
+  "original_comparison_browser_regression": "Passed: 8 checks including stale-response handling and JSON export; used explicit python.exe after Windows python launch alias returned OS error 32."
+}

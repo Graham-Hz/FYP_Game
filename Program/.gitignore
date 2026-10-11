@@ -3,4 +3,5 @@ __pycache__/
 data/raw/huggingface/
 data/interim/
 data/processed/
+data/application/
 *.duckdb*

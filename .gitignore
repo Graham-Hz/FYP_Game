@@ -13,6 +13,7 @@ __pycache__/
 /Program/data/raw/huggingface/
 /Program/data/interim/
 /Program/data/processed/
+/Program/data/application/
 *.duckdb*
 *.zip
 *.7z

@@ -1,0 +1,34 @@
+{
+  "version": "model_age_v1",
+  "date": "2026-10-11",
+  "partition": "train",
+  "folds": [0, 1, 2],
+  "minimum_age_days": [180, 365],
+  "seed": 42,
+  "threads": 2,
+  "retune": false,
+  "linear_settings_from": "config/model_dev_v1.json",
+  "forest_settings_from": "config/model_tree_v1.json",
+  "candidates": {
+    "pc": [
+      {"family": "prior", "features": "none", "source_configuration": "class_prior"},
+      {"family": "linear", "features": "age_only", "source_configuration": "age_only_C1_balanced", "C": 1.0, "weight": "balanced"},
+      {"family": "linear", "features": "P", "source_configuration": "P_C1.0_balanced", "C": 1.0, "weight": "balanced"},
+      {"family": "linear", "features": "P+A", "source_configuration": "P_plus_A_C0.1_balanced", "C": 0.1, "weight": "balanced"},
+      {"family": "linear", "features": "P_without_price", "source_configuration": "P_without_price_C1.0_balanced", "C": 1.0, "weight": "balanced"},
+      {"family": "forest", "features": "P", "source_configuration": "RF_P_leaves256_balanced", "max_leaf_nodes": 256, "weight": "balanced"},
+      {"family": "forest", "features": "P+A", "source_configuration": "RF_P_plus_A_leaves256_balanced", "max_leaf_nodes": 256, "weight": "balanced"},
+      {"family": "forest", "features": "P_without_price", "source_configuration": "RF_P_without_price_leaves256_balanced", "max_leaf_nodes": 256, "weight": "balanced"}
+    ],
+    "mobile": [
+      {"family": "prior", "features": "none", "source_configuration": "class_prior"},
+      {"family": "linear", "features": "age_only", "source_configuration": "age_only_C1_balanced", "C": 1.0, "weight": "balanced"},
+      {"family": "linear", "features": "P", "source_configuration": "P_C0.1_none", "C": 0.1, "weight": null},
+      {"family": "linear", "features": "P+A", "source_configuration": "P_plus_A_C0.1_none", "C": 0.1, "weight": null},
+      {"family": "forest", "features": "P", "source_configuration": "RF_P_leaves256_none", "max_leaf_nodes": 256, "weight": null},
+      {"family": "forest", "features": "P+A", "source_configuration": "RF_P_plus_A_leaves1024_none", "max_leaf_nodes": 1024, "weight": null}
+    ]
+  },
+  "comparison": "Refit and original primary-cohort models scored on exactly the same age-eligible validation IDs in each existing fold; no hyperparameter or family selection in this experiment",
+  "metrics": ["macro_f1", "balanced_accuracy", "accuracy", "log_loss", "brier"]
+}

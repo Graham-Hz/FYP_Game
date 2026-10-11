@@ -1,0 +1,11 @@
+{
+  "all_exported_game_cells_match_frozen_train": true,
+  "pc_genre_pairs_match": true,
+  "genre_dimension_matches": true,
+  "games_checked": 272958,
+  "bridge_pairs_checked": 143472,
+  "numeric_tolerance": 1e-12,
+  "power_bi_ui_tested": false,
+  "export_record_sha256": "197d120a3671a617a31e678e3c77a7aedb4361cd5cd41d728ba79f42a00f7902",
+  "verifier_sha256": "2e22a7e7eb3860d198ea00deab37cdd6d95dae8fd1083f3d342a1aea7b0cdc3f"
+}

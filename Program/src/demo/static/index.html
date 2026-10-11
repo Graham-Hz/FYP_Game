@@ -6,10 +6,32 @@
 <main>
   <section class="intro"><p class="eyebrow">EARLY GAME PLANNING</p><h1>讓遊戲構想，有歷史資料作參考。</h1><p>為獨立開發者與小型工作室，探索不同遊戲條件對應的歷史分布。</p></section>
   <section class="source-panel" aria-label="資料來源"><div class="platform-switch" role="group" aria-label="選擇平台"><button type="button" data-platform="pc" aria-pressed="true">Steam</button><button type="button" data-platform="mobile" aria-pressed="false">Android</button></div><div class="source-meta"><span id="snapshot">載入資料中…</span><strong id="denominator"></strong></div><p id="scope"></p></section>
+  <details id="data-manager" class="data-manager"><summary>資料版本與 CSV 匯入</summary>
+    <p>各平台獨立保存完整快照。先驗證及預覽，再儲存版本；儲存後仍需另行啟用。可隨時切回原有研究資料。</p>
+    <div class="version-controls"><label>此平台的資料版本<select id="version-select" disabled></select></label><button id="activate-version" type="button" class="outline" disabled>啟用所選版本</button></div>
+    <p id="version-status" role="status" aria-live="polite"></p>
+    <form id="import-form">
+      <h2>匯入 <span id="import-platform-name">Steam</span> CSV</h2>
+      <p class="fine">只接受指定格式的 UTF-8 CSV，最多 64 MiB／500,000 筆。下載的 Kaggle 原始 CSV 需先轉換；每次匯入不會合併舊版本或重新訓練模型。</p>
+      <a id="template-link" href="/api/template?platform=pc" download="pc_template_v1.csv">下載空白 CSV 範本</a>
+      <div class="import-fields">
+        <label>CSV 檔案<input id="csv-file" type="file" accept=".csv,text/csv" required></label>
+        <label>資料來源名稱<input id="source-name" maxlength="200" required placeholder="例如：Google Play June 2021"></label>
+        <label>來源網址（可留空）<input id="source-url" type="url" maxlength="2000" placeholder="https://…"></label>
+        <label>快照截至日期<input id="snapshot-date" type="date" required></label>
+        <label>資料性質<select id="data-kind"><option value="historical">歷史資料</option><option value="synthetic">人工示例（不代表市場）</option></select></label>
+        <label id="currency-label">Steam 價格幣別<input id="price-currency" value="unknown" maxlength="7" placeholder="未核實填 unknown"></label>
+      </div>
+      <p id="import-outcome" class="fine"></p>
+      <button id="preview-import" class="outline" type="submit">驗證及預覽</button>
+    </form>
+    <p id="import-status" role="status" aria-live="polite"></p>
+    <div id="import-preview" hidden><div id="validation-summary"></div><ul id="validation-details"></ul><button id="save-import" type="button" class="outline" disabled>儲存已驗證版本</button><button id="export-validation" type="button" class="outline">下載驗證報告 JSON</button></div>
+  </details>
   <div class="notice"><strong>歷史比較 ≠ 成功預測</strong><span>顯示的是已收集遊戲的歷史分級比例，並非新遊戲的成功機率或收益。資料不代表目前市場；兩平台年份、範圍及分級定義不同，不能直接排名。</span></div>
   <form id="compare-form"><div class="scenario-grid"><section class="scenario"><div class="card-heading"><span class="letter">A</span><h2>比較條件 A</h2><button class="reset" type="button" data-reset="a">重設</button></div><div id="filters-a" class="filters"></div></section><section class="scenario"><div class="card-heading"><span class="letter secondary">B</span><h2>比較條件 B</h2><button class="reset" type="button" data-reset="b">重設</button></div><div id="filters-b" class="filters"></div></section></div><div class="actions"><p>同組條件以「同時符合」篩選；留空代表全部。</p><button id="compare" type="submit" disabled>比較歷史分布 →</button></div></form>
   <p id="status" role="status" aria-live="polite">正在核對資料…</p>
   <section id="results" hidden aria-label="歷史分布結果"><div class="result-heading"><div><p class="eyebrow">HISTORICAL DISTRIBUTION</p><h2 id="outcome"></h2></div><button id="export" type="button" class="outline">匯出結果 JSON ↓</button></div><div id="result-cards" class="scenario-grid"></div><p id="overlap" class="fine"></p><p class="fine">少於 30 筆會提示小樣本；這是介面提示門檻，超過門檻也不代表統計可靠。分級並非收入或利潤。</p></section>
-  <details><summary>如何解讀與使用</summary><p id="caveat"></p><p>遊戲年齡、選樣、資料缺漏及開發者差異都可能影響分布。本頁沒有控制這些因素，也不能證明改變類型、廣告或內購會造成結果改變。</p><p>僅查詢固定的訓練分區，保留其他分區供後續模型評估。此展示版只提供歷史分布，尚未接入預測模型；雙平台方向待導師確認。匯出檔包含篩選條件、樣本數、分級定義、資料時間與版本，可用於核對。</p></details>
-  <footer>FYP · Proof of feasibility <span>Steam 2025 / Android 2021 · local & read-only</span></footer>
+  <details><summary>如何解讀與使用</summary><p id="caveat"></p><p>遊戲年齡、選樣、資料缺漏及開發者差異都可能影響分布。本頁沒有控制這些因素，也不能證明改變類型、廣告或內購會造成結果改變。</p><p>原有研究版本僅查詢 train 分區；匯入版本使用各自的合資格歷史樣本，與固定研究資料分開保存。此展示版尚未接入預測模型；双平台方向待導師確認。匯出檔包含條件、樣本數、分級定義、資料時間與版本。</p></details>
+  <footer>FYP · Proof of feasibility <span>Local historical comparison · versioned data</span></footer>
 </main></body></html>

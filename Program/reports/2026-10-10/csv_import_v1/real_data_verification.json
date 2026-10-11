@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-10",
+  "status": "passed",
+  "rule_sha256": "75c92556ff439855dc59662190ec64a1087f626aa8acd59a301f7282b1e29768",
+  "platforms": {
+    "pc": {
+      "rows": 51152,
+      "csv_bytes": 8432091,
+      "csv_sha256": "b87d9a7d112f99b8b85f3b762f61fe19cea4c63c5ae4948954ba0ee47938ab36",
+      "all_row_comparison_differences": 0,
+      "warnings": {
+        "observation_uses_snapshot_proxy": 51152
+      },
+      "tiers": {
+        "O1_source_interval_up_to_20k": 38428,
+        "O3_source_intervals_100k_plus": 4197,
+        "O2_source_intervals_20k_to_100k": 8527
+      },
+      "validation_and_save_seconds": 3.1
+    },
+    "mobile": {
+      "rows": 221806,
+      "csv_bytes": 27640794,
+      "csv_sha256": "1057e0befda61093e78440cac79d83ffbcfb257e4ea901b29f74a6f8fda48762",
+      "all_row_comparison_differences": 0,
+      "warnings": {
+        "usd_price_unavailable": 156,
+        "free_price_conflict_masked": 4,
+        "unknown_free": 4
+      },
+      "tiers": {
+        "M1_under_1k": 103908,
+        "M2_1k_to_under_100k": 81403,
+        "M3_100k_plus": 36495
+      },
+      "validation_and_save_seconds": 3.917
+    }
+  },
+  "application_restart_verified": true,
+  "research_manifest_sha256": "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6",
+  "validator_sha256": "bff4e7c0ef4755ecc54a76a1bc5b8ac1baad4c9994cdfd85190e55ad8019a0f6",
+  "verifier_sha256": "df69103e3f211b60f0f6b725fbedbf3095d84601b1de904b48be7c7531ab1a29",
+  "note": "Existing train rows only; no new training, calibration/test scoring, or independent external-data validity claim."
+}
