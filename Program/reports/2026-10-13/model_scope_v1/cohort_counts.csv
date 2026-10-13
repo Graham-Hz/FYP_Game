@@ -1,0 +1,5 @@
+﻿platform,scenario,ledger_train_n,ledger_unknown_target_n,ledger_unknown_developer_n,primary_train_n,eligible_n,eligible_groups,common_n,added_n,removed_n,class_count
+pc,all_price,62289,5854,133,51152,55775,32954,51152,4623,0,3
+pc,include_software,62289,5854,133,51152,51621,30391,51152,469,0,3
+pc,no_demo_exception,62289,5854,133,51152,51151,30136,51151,0,1,3
+mobile,four_tiers,221806,0,0,221806,221806,91721,221806,0,0,4

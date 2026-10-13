@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "checked": {
+    "protected_files": 29,
+    "analysis_dependencies": 11,
+    "analysis_outputs": 10,
+    "model_dev_v1": {
+      "artifacts": 234,
+      "outputs": 8,
+      "dependencies": 8,
+      "inputs": 4
+    },
+    "model_tree_v1": {
+      "artifacts": 180,
+      "outputs": 10,
+      "dependencies": 12,
+      "inputs": 4
+    },
+    "model_age_v1": {
+      "artifacts": 252,
+      "outputs": 11,
+      "dependencies": 18,
+      "inputs": 4
+    }
+  },
+  "protected_manifest_sha256": "294a0edbde54a924bc2a3cc7bcac32796badfc0fae17272d00f53449a30a270a"
+}

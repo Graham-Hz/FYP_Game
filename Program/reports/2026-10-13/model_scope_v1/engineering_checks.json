@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "unit_tests": {
+    "tests": 48,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "successful": true
+  },
+  "resume_stdout": "Verified completed run: skipped 90 fits; no files rewritten.",
+  "skipped_fits": 90,
+  "artifacts_unchanged": 274,
+  "aggregate_outputs_unchanged": 12,
+  "run_manifest_unchanged": true,
+  "sha256_and_mtime_preserved": true,
+  "protected_files_unchanged": 29,
+  "run_manifest_sha256": "65649107c4cda5d091e5d993be17a664cbeca729bd20fc16bf4b662f477949c5",
+  "frozen_integrity_sha256": "c2279281c396ec8f95bd71a8c26587e9e69957b50c7e6c55d3a07a9dbc56f4d9",
+  "unit_tests_log_sha256": "c898a2ddf59486e50eacfec414efa63e87752f6bf2359b0393ada27a372f35ac",
+  "test_code_sha256": "090b0284b1649ffc10cda53c6ee81c70b697e7fba8b86860bccfda8faa42f72c"
+}

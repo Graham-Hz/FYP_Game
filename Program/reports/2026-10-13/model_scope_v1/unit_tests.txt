@@ -1,0 +1,66 @@
+test_age_boundary_missing_and_assignments (test_age_sensitivity.AgeSensitivityTests.test_age_boundary_missing_and_assignments) ... ok
+test_atomic_completion_preserves_previous_file_on_failure (test_age_sensitivity.AgeSensitivityTests.test_atomic_completion_preserves_previous_file_on_failure) ... ok
+test_completed_run_checks_identity_and_output_hashes (test_age_sensitivity.AgeSensitivityTests.test_completed_run_checks_identity_and_output_hashes) ... ok
+test_fixed_candidates_and_fit_budget (test_age_sensitivity.AgeSensitivityTests.test_fixed_candidates_and_fit_budget) ... ok
+test_reference_matching_rejects_missing_duplicate_wrong_target_or_fold (test_age_sensitivity.AgeSensitivityTests.test_reference_matching_rejects_missing_duplicate_wrong_target_or_fold) ... ok
+test_excluded_game_still_bridges_developers (test_analysis_design.AnalysisDesignTests.test_excluded_game_still_bridges_developers) ... ok
+test_feature_selection_excludes_target_identity_and_age_from_P (test_analysis_design.AnalysisDesignTests.test_feature_selection_excludes_target_identity_and_age_from_P) ... ok
+test_normalization_retains_punctuation (test_analysis_design.AnalysisDesignTests.test_normalization_retains_punctuation) ... ok
+test_placeholder_not_shared_studio (test_analysis_design.AnalysisDesignTests.test_placeholder_not_shared_studio) ... ok
+test_split_is_group_deterministic_and_cv_train_only (test_analysis_design.AnalysisDesignTests.test_split_is_group_deterministic_and_cv_train_only) ... ok
+test_boolean_unknown_is_not_false (test_cleaning_rules.CleaningRulesTests.test_boolean_unknown_is_not_false) ... ok
+test_developer_names_are_not_split_on_commas (test_cleaning_rules.CleaningRulesTests.test_developer_names_are_not_split_on_commas) ... ok
+test_installs_require_finite_nonnegative_integers (test_cleaning_rules.CleaningRulesTests.test_installs_require_finite_nonnegative_integers) ... ok
+test_literal_titles_are_preserved (test_cleaning_rules.CleaningRulesTests.test_literal_titles_are_preserved) ... ok
+test_unknown_owners_and_straddling_intervals_stay_unlabelled (test_cleaning_rules.CleaningRulesTests.test_unknown_owners_and_straddling_intervals_stay_unlabelled) ... ok
+test_activation_restart_stale_requests_and_rollback (test_csv_import.ApplicationTests.test_activation_restart_stale_requests_and_rollback) ... ok
+test_http_write_token_origin_and_actual_upload (test_csv_import.ApplicationTests.test_http_write_token_origin_and_actual_upload) ... 127.0.0.1 - - [13/Oct/2026 05:17:35] "GET /api/options HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 05:17:35] "POST /api/import/preview HTTP/1.1" 403 -
+127.0.0.1 - - [13/Oct/2026 05:17:35] "POST /api/import/preview HTTP/1.1" 403 -
+127.0.0.1 - - [13/Oct/2026 05:17:35] "POST /api/import/preview HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 05:17:35] "POST /api/import/commit HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 05:17:35] "POST /api/activate HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 05:17:35] "POST /api/compare HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 05:17:35] "GET /api/template?platform=pc HTTP/1.1" 200 -
+ok
+test_invalid_preview_expiry_and_version_paths (test_csv_import.ApplicationTests.test_invalid_preview_expiry_and_version_paths) ... ok
+test_boundary_tiers_and_unknown_booleans (test_csv_import.ContractTests.test_boundary_tiers_and_unknown_booleans) ... ok
+test_conflicts_are_masked_not_paid (test_csv_import.ContractTests.test_conflicts_are_masked_not_paid) ... ok
+test_duplicate_invalid_values_and_empty_snapshot_block (test_csv_import.ContractTests.test_duplicate_invalid_values_and_empty_snapshot_block) ... ok
+test_invalid_headers_encoding_and_metadata (test_csv_import.ContractTests.test_invalid_headers_encoding_and_metadata) ... ok
+test_no_eligible_rows_and_date_proxy (test_csv_import.ContractTests.test_no_eligible_rows_and_date_proxy) ... ok
+test_pc_intervals_exclusions_and_literal_title (test_csv_import.ContractTests.test_pc_intervals_exclusions_and_literal_title) ... ok
+test_duplicate_import_and_tampering (test_csv_import.RepositoryTests.test_duplicate_import_and_tampering) ... ok
+test_failed_write_and_invalid_data_leave_no_version (test_csv_import.RepositoryTests.test_failed_write_and_invalid_data_leave_no_version) ... ok
+test_filtered_counts_against_independent_query (test_demo.DemoTests.test_filtered_counts_against_independent_query) ... ok
+test_http_contract_and_static_allowlist (test_demo.DemoTests.test_http_contract_and_static_allowlist) ... 127.0.0.1 - - [13/Oct/2026 05:17:36] "GET /api/options HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 05:17:36] "POST /api/compare HTTP/1.1" 200 -
+127.0.0.1 - - [13/Oct/2026 05:17:36] "GET /PROJECT_STATUS.md HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 05:17:36] "GET /../../config/analysis_v1.json HTTP/1.1" 404 -
+127.0.0.1 - - [13/Oct/2026 05:17:36] "POST /api/compare HTTP/1.1" 400 -
+ok
+test_invalid_filters_and_split_requests_rejected (test_demo.DemoTests.test_invalid_filters_and_split_requests_rejected) ... ok
+test_membership_and_baseline_counts (test_demo.DemoTests.test_membership_and_baseline_counts) ... ok
+test_no_matches_does_not_invent_percentages (test_demo.DemoTests.test_no_matches_does_not_invent_percentages) ... ok
+test_unknown_is_not_paid_and_small_samples (test_demo.DemoTests.test_unknown_is_not_paid_and_small_samples) ... ok
+test_all_missing_age_stays_finite_and_negative_rejected (test_model_preprocessing.EncodingTests.test_all_missing_age_stays_finite_and_negative_rejected) ... ok
+test_missing_numeric_imputed_from_fit_and_flagged (test_model_preprocessing.EncodingTests.test_missing_numeric_imputed_from_fit_and_flagged) ... ok
+test_multilabel_presence_and_unknown_tokens (test_model_preprocessing.EncodingTests.test_multilabel_presence_and_unknown_tokens) ... ok
+test_outcomes_and_ids_never_enter_predictors (test_model_preprocessing.EncodingTests.test_outcomes_and_ids_never_enter_predictors) ... ok
+test_unknown_free_is_distinct_from_false (test_model_preprocessing.EncodingTests.test_unknown_free_is_distinct_from_false) ... ok
+test_validation_does_not_change_vocabulary_or_numeric_statistics (test_model_preprocessing.EncodingTests.test_validation_does_not_change_vocabulary_or_numeric_statistics) ... ok
+test_collapse_recomputes_winner (test_scope_sensitivity.ScopeTests.test_collapse_recomputes_winner) ... ok
+test_four_class_arithmetic_keeps_absent_class (test_scope_sensitivity.ScopeTests.test_four_class_arithmetic_keeps_absent_class) ... ok
+test_install_boundaries (test_scope_sensitivity.ScopeTests.test_install_boundaries) ... ok
+test_invalid_install_bounds (test_scope_sensitivity.ScopeTests.test_invalid_install_bounds) ... ok
+test_pc_comparison_uses_exact_intersection (test_scope_sensitivity.ScopeTests.test_pc_comparison_uses_exact_intersection) ... ok
+test_pc_scope_filters_and_inherited_folds (test_scope_sensitivity.ScopeTests.test_pc_scope_filters_and_inherited_folds) ... ok
+test_age_boundary_and_unknown_free_remain_separate (test_tree_development.TreeDevelopmentTests.test_age_boundary_and_unknown_free_remain_separate) ... ok
+test_complete_prespecified_grid (test_tree_development.TreeDevelopmentTests.test_complete_prespecified_grid) ... ok
+test_reject_holdout_duplicate_ids_and_group_leakage (test_tree_development.TreeDevelopmentTests.test_reject_holdout_duplicate_ids_and_group_leakage) ... ok
+test_tie_prefers_simpler_then_unweighted_and_rejects_missing_folds (test_tree_development.TreeDevelopmentTests.test_tie_prefers_simpler_then_unweighted_and_rejects_missing_folds) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 4.461s
+
+OK

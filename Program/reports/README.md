@@ -1,6 +1,6 @@
 # 報告與研究紀錄索引
 
-更新：2026-10-11。這個索引用來區分目前入口和歷史證據；保留原本日期及路徑，避免破壞引用或固定 manifest。
+更新：2026-10-13。這個索引用來區分目前入口和歷史證據；保留原本日期及路徑，避免破壞引用或固定 manifest。
 
 ## 平日優先打開
 
@@ -14,6 +14,7 @@
 | [首輪模型結果](2026-10-07/model_dev_v1/results_notes.md) | 現有開發 CV 比較，並非最終 test |
 | [樹模型比較及子組診斷](2026-10-10/model_tree_v1/results_notes.md) | 20 組／60 次擬合與獨立核對；未作 calibration／test 性能評估 |
 | [年齡限制重訓](2026-10-11/model_age_v1/results_notes.md) | 28 組／84 次擬合；新舊模型在同一批合資格遊戲上比較，並非只篩選既有預測 |
+| [樣本範圍及分級敏感度](2026-10-13/model_scope_v1/results_notes.md) | 30 組／90 次擬合；Steam 價格／軟件／例外、Android 四級及合併三級，已獨立驗證 |
 | [Chapter 2 七項素材索引](planning/chapter2_evidence_map.md) | 按學生指定章節要求連結實作證據；不是提交正文 |
 | [CSV 匯入及版本驗證](2026-10-10/csv_import_v1/verification_notes.md) | 新功能證據及 Chapter 2 素材對應；操作見 [匯入指引](../CSV_IMPORT_GUIDE.md) |
 | [Chapter 1 最新核對](planning/fyp_v1_review_2026-10-08.md) | 對 10 月 8 日版本的修改清單，不代表已審閱學生之後的改稿 |
@@ -33,6 +34,7 @@
 | [模型實驗規格](planning/model_dev_v1_protocol.md) | 首輪模型設定、前處理與執行方式 |
 | [樹模型實驗規格](planning/model_tree_v1_protocol.md) | 小型 forest 搜尋、原分組比較、OOF 年齡診斷與限制 |
 | [年齡重訓實驗規格](planning/model_age_v1_protocol.md) | 固定參數、保留群組、匹配評估、前處理重訓及原子寫入檢查點 |
+| [Cohort／target 實驗規格](planning/model_scope_v1_protocol.md) | 共同樣本比較、四級機率合併及 90 次固定設定擬合 |
 | [AI 協助紀錄](planning/ai_assistance_log.md) | 實際協助範圍；供學生核對披露 |
 
 ## 歷史檔案與快取的區別

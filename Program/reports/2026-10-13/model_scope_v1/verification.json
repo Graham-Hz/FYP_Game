@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "configurations": 30,
+  "folds_checked": 90,
+  "reconstructed_data_cells": 6180936,
+  "refit_prediction_rows_checked": 2599212,
+  "matched_primary_rows_checked": 2558476,
+  "model_replay_rows": 1080,
+  "subgroup_rows_checked": 342,
+  "checks": [
+    "frozen source/dependency/artifact hashes",
+    "independent complete cohort/feature/target reconstruction",
+    "inherited train/group/fold membership and no heldout leakage",
+    "fixed selected hyperparameters and fit-only preprocessing",
+    "independent NumPy fold/pooled/class/confusion/subgroup arithmetic",
+    "matched PC and collapsed Mobile comparisons",
+    "family deltas, unchanged-fit control and saved pipeline replay"
+  ],
+  "calibration_evaluated": false,
+  "test_evaluated": false,
+  "run_manifest_sha256": "65649107c4cda5d091e5d993be17a664cbeca729bd20fc16bf4b662f477949c5",
+  "verifier_sha256": "4feef4e4ea28e3e609b47bc7e4fcb5cdb1dd454460079d55d8d072944bc0de7f",
+  "model_check_helper_sha256": "e4e8f213973fe66779141ae5c7d7f14a80565787f60279fad047c57f8c85b3be"
+}
