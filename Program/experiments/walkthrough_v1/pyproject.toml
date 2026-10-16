@@ -1,0 +1,14 @@
+[project]
+name = "fyp-student-walkthrough-v1"
+version = "0.1.0"
+description = "Student-operated notebook; isolated from frozen research environments"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+  "numpy==2.5.3", "pandas==3.0.6", "pyarrow==25.0.1",
+  "scipy==1.18.1", "scikit-learn==1.9.1", "joblib==1.6.0",
+  "threadpoolctl==3.7.0", "matplotlib", "jupyterlab", "ipykernel",
+  "nbformat", "nbclient"
+]
+
+[tool.uv]
+package = false

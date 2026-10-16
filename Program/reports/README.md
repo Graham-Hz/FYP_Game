@@ -1,6 +1,6 @@
 # 報告與研究紀錄索引
 
-更新：2026-10-13。這個索引用來區分目前入口和歷史證據；保留原本日期及路徑，避免破壞引用或固定 manifest。
+更新：2026-10-16。這個索引用來區分目前入口和歷史證據；保留原本日期及路徑，避免破壞引用或固定 manifest。
 
 ## 平日優先打開
 
@@ -8,6 +8,7 @@
 |---|---|
 | [FYP_v1.docx](FYP_v1.docx) | 學生目前的報告；本輪清理不修改正文 |
 | [PROJECT_STATUS](../PROJECT_STATUS.md) | 已完成／待完成工作及未知事項 |
+| [親手執行 FYP 程式](../notebooks/README.md) | CSV、Pandas、Matplotlib、一次既有模型訓練；教學 Notebook 及啟動方法 |
 | [課堂方法與 FYP 對照](planning/course_to_fyp_review_2026-10-11.md) | 三科課程內容、來源頁碼、已用／適合新增／暫不採用的方法 |
 | [Power BI 教學交接](planning/powerbi_handoff_v1.md) | 可交給 ChatGPT 的兩頁 report 規格、已備 CSV、DAX 起點及驗收數字；PBIX 未完成 |
 | [產品範圍](planning/product_scope_v1.md) | 可更新資料、CSV 匯入與功能验收 |

@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "date": "2026-10-16",
+  "executed_code_cells": 13,
+  "inline_plots": 3,
+  "protected_files_unchanged": 1068,
+  "sha256_and_mtime_preserved": true,
+  "notebook_sha256": "591358614a48b7bed7cf592b909b4565d6d8cacd3f208d0e36c51fab32adfce9",
+  "environment_lock_sha256": "2137cb6171e6994c2405c5f76aea4e3fd12d1854b5cbeac74b8e4decbf0f75e9",
+  "execution_summary_sha256": "58079637f33a81f8a82f7065838cbef2c9eab5f1aea042ed9bf59349f997b35e",
+  "verifier_sha256": "367716a45ca498ee3f62c5cd9510c381cc154a012d5d6406b0613f9be74b1f29",
+  "calibration_evaluated": false,
+  "test_evaluated": false,
+  "ui_launch_tested": false,
+  "checks": [
+    "fresh-kernel sequential execution",
+    "three inline and exported figures",
+    "CSV counts and labels agree with frozen train",
+    "developer groups are disjoint",
+    "new predictions reproduce existing fold OOF",
+    "existing research/app/DOCX/Power BI files unchanged"
+  ],
+  "post_execution_review": {
+    "markdown_exercise_category_corrected_to": "Puzzle",
+    "exercise_matching_rows": 34175,
+    "executed_code_cells_unchanged": true,
+    "code_sources_sha256": "b8df79f95e8977c3cb5c6d3d99c94224a5083675a48d1e1c48f7a9adae61a9c2",
+    "exported_figures_visually_checked": 3,
+    "launcher_arguments_checked_via_show_config": true
+  }
+}

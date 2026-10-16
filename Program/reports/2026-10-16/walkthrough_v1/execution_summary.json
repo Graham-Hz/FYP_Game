@@ -1,0 +1,30 @@
+{
+  "purpose": "student walkthrough; one existing development fold reproduced",
+  "csv_rows": 221806,
+  "fit_rows": 147902,
+  "validation_rows": 73904,
+  "developer_group_overlap": 0,
+  "max_probability_difference": 0.0,
+  "scores": [
+    {
+      "model": "Class-prior baseline",
+      "accuracy": 0.46565815111495995,
+      "balanced_accuracy": 0.3333333333333333,
+      "macro_f1": 0.21180844057928197
+    },
+    {
+      "model": "Logistic Regression P",
+      "accuracy": 0.5564245507685647,
+      "balanced_accuracy": 0.4744300478578167,
+      "macro_f1": 0.47746742023959166
+    }
+  ],
+  "calibration_evaluated": false,
+  "test_evaluated": false,
+  "guarded_inputs_unchanged": 23,
+  "figures": {
+    "01_install_tiers.png": "7cd1fb851cd67989b8e263fb486c941d0adf578d112ff193ac962da8939f6e5e",
+    "02_free_paid_tiers.png": "5b2e2c54f0bbfc5fd712be88d9a00da22c9b361e25dd82b68c0a0037f921de2c",
+    "03_confusion_matrix.png": "a80e0582b4b37b425b2239f5d0a2b8f4050816a1337e9f86ef8430ca46379424"
+  }
+}
