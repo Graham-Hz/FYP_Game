@@ -6,6 +6,7 @@ HKBU BCDA FYP：**A Data-Driven Decision Support System for Early-Stage Game Dev
 
 ## 專案入口
 
+- [先理解資料夾、啟動方式及資料流程](Program/PROJECT_GUIDE_ZH.md)
 - [目前進度](Program/PROJECT_STATUS.md)
 - [啟動比較原型](Program/START_DEMO.cmd)／[操作指引](Program/DEMO_GUIDE.md)
 - [CSV 匯入、欄位字典及資料版本](Program/CSV_IMPORT_GUIDE.md)

@@ -1,5 +1,7 @@
 # FYP game planning dataset audit
 
+先讀 [FYP 資料夾與程式導覽](PROJECT_GUIDE_ZH.md)：按實際檔案解釋如何啟動、哪些程式清理資料、模型與網站的關係，以及老師可能追問的要點。日常示範不需要重跑下面所有研究指令。
+
 2026-10-16 程式導讀：雙擊 [START_WALKTHROUGH.cmd](START_WALKTHROUGH.cmd)，按 [操作說明](notebooks/README.md) 使用可逐格執行的 Notebook，親手讀 CSV、統計、畫圖及重現一次既有模型訓練。獨立教學環境；不更改正式研究分組或啟動下一輪模型搜尋。
 
 2026-10-11 課堂應用：[COMP1016／COMP3115／COMP3925 對照](reports/planning/course_to_fyp_review_2026-10-11.md) 及 [Power BI 教學交接](reports/planning/powerbi_handoff_v1.md)。兩平台 train CSV、Steam genre bridge 及核對數字已準備；學生下一步在 Power BI Desktop 製作並驗收兩頁 report，PBIX 尚未完成。
