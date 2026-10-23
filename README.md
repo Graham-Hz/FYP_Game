@@ -14,12 +14,15 @@ The system combines a reproducible Python analysis pipeline with an interactive 
 
 The implemented application runs locally in a browser.
 
+A separate Steam revenue explorer presents source-provided gross revenue estimates for 1,500 selected games, with price/genre filters, revenue distributions, concentration, searchable tables and export. It defaults to positive-price games and keeps zero-price games separately selectable. The source is a high-revenue selection rather than a representative market sample; the figures are descriptive estimates, not predictions or profit. See the [revenue preparation and execution guide](Program/README.md#audit-supplementary-revenue-data).
+
 | Capability | Current behaviour |
 |---|---|
 | Platform selection | Separate Steam and Android analysis with platform-specific attributes and outcome tiers |
 | Planning-condition comparison | Compare two sets of conditions within a platform using sample counts, outcome distributions and sample overlap |
 | Interpretation support | Display data provenance and feedback for small or empty samples |
 | Result export | Export comparison results and their conditions as JSON |
+| Comparable Steam games | Retrieve historical references by shared gameplay genres and observed-price proximity, with matching reasons and export; revenue is not a ranking input |
 | CSV data updates | Validate a specified schema, preview accepted/excluded records, save an application version, activate it and return to the original research version |
 
 For example, a user can compare two Android category and monetisation configurations, inspect the historical install-tier distributions, and export the evidence behind that comparison.
@@ -56,7 +59,7 @@ Planning attributes are observed snapshot properties, not verified pre-release m
 
 Data preparation, fixed partitions, descriptive analysis, development model comparisons, sensitivity checks and the local comparison/import application are implemented. The latest recorded research verification includes 48 passing unit and integration tests.
 
-The integrated overview, searchable data explorer, similar-game references, group-versus-random diagnostic, final model selection and reserved-set evaluation remain to be completed. Public deployment and user-task evaluation are also pending. Power BI files provide supporting visual material; the main application does not require Power BI.
+The integrated cross-platform overview and general data explorer, Android reference retrieval, group-versus-random diagnostic, final model selection and reserved-set evaluation remain to be completed. The supplementary Steam revenue module has its own searchable table and comparable-game references. Public deployment and user-task evaluation are also pending. Power BI files provide supporting visual material; the main application does not require Power BI.
 
 The project supports historical comparison. Owner intervals and install lower bounds do not measure revenue or profit, and observed associations do not establish causal effects or guarantee future commercial success.
 

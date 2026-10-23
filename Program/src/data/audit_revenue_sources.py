@@ -115,6 +115,17 @@ def run(workspace, output):
                 summary[c + "_invalid_integer"] = int((n.isna() | ~np.isfinite(n) | (n % 1 != 0) | (n < (1 if c == "steamId" else 0))).sum())
             scores = pd.to_numeric(frame["reviewScore"], errors="coerce")
             summary["review_scores_outside_0_100"] = int((~scores.between(0, 100)).sum())
+            prices = pd.to_numeric(frame["price"], errors="coerce")
+            revenue = pd.to_numeric(frame["revenue"], errors="coerce")
+            zero_price_revenue = prices.eq(0) & revenue.gt(0)
+            summary["zero_price_positive_revenue_rows"] = int(zero_price_revenue.sum())
+            summary["zero_price_positive_revenue_examples"] = frame.loc[zero_price_revenue, ["steamId", "name", "price", "revenue"]].head(10).to_dict("records")
+            summary["interpretation_flags"] = [
+                "Zero price with positive revenue requires source-method verification; do not impute revenue as price times copies or treat these as errors automatically.",
+                "publisherClass is a provider label, not a verified measure of independent ownership or studio size.",
+                "September 2024 outcomes joined to March 2025 metadata support descriptive comparisons only; later metadata is not evidence of launch-time features.",
+                "Review score zero is preserved; its missing/unrated semantics need verification before score analysis.",
+            ]
         if name == "steam_launch_panel_2026":
             cents = pd.to_numeric(frame["y_week1_cents"], errors="coerce")
             logs = pd.to_numeric(frame["y_log_week1"], errors="coerce")
@@ -164,9 +175,9 @@ def run(workspace, output):
         "audit_version": 1, "generated_utc": datetime.now(timezone.utc).isoformat(),
         "scope": "Supplementary source quality and identifier overlap only. No cleaning, model fitting, outcome inspection or activation.",
         "reference_inputs": {
-            "steam_raw": {"file": str(steam_raw), "unique_ids": len(raw_ids)},
+            "steam_raw": {"file": str(steam_raw), "bytes": steam_raw.stat().st_size, "mtime_ns": steam_raw.stat().st_mtime_ns, "unique_ids": len(raw_ids)},
             "steam_cohort": {"file": str(cohort_path), "sha256": sha256(cohort_path), "unique_ids": len(cohort_ids)},
-            "mobile_raw": {"file": str(mobile_raw)},
+            "mobile_raw": {"file": str(mobile_raw), "bytes": mobile_raw.stat().st_size, "mtime_ns": mobile_raw.stat().st_mtime_ns},
         },
         "sources": summaries,
     }
@@ -175,7 +186,7 @@ def run(workspace, output):
     for name, s in summaries.items():
         print(name, json.dumps({k: s[k] for k in ["rows", "exact_duplicate_rows", "release_date_min", "release_date_max"]}))
         if "id_overlap" in s:
-            print("ID overlap:", json.dumps(s["id_overlap"]))
+            print("ID overlap:", json.dumps({k: v for k, v in s["id_overlap"].items() if k != "unmatched_raw_ids"}))
     print("Report:", output)
     return report
 

@@ -1,0 +1,893 @@
+{
+  "metadata": {
+    "version": "steam_revenue_v1",
+    "created_utc": "2026-10-23T05:57:36.101258+00:00",
+    "source_url": "https://www.kaggle.com/datasets/alicemtopcu/top-1500-games-on-steam-by-revenue-09-09-2024",
+    "source_sha256": "83a29d8034b6136588df1c0149f1ec3d870cdcd227a7e60c643c64a56676e8b8",
+    "source_rows": 1500,
+    "source_snapshot": "2024-09-09 (dataset title; per-row capture times unavailable)",
+    "metadata_snapshot": "2025-03",
+    "metadata_sha256": "1ff3b4fa2eeeb7faf1d9c37abb63b9522813532fbf68f4c4a236d5a466688db7",
+    "currency": "USD",
+    "currency_basis": "Interpreted using Gamalytic provider conventions; the CSV has no explicit currency column.",
+    "methodology_url": "https://gamalytic.com/about",
+    "api_definitions_url": "https://api.gamalytic.com/reference/",
+    "definitions_checked": "2026-10-23",
+    "definition_version_limit": "Current provider definitions checked in 2026; exact 2024 methodology version is not archived in this download.",
+    "scope": "Selected top-revenue 2024 releases, not all Steam games. No existing research outcomes or partitions are used.",
+    "limitations": [
+      "Estimated cumulative gross revenue, not profit or verified developer receipts; does not describe a common first-week window.",
+      "Provider release dates can mean full release after Early Access. A 2024 release-date label does not establish that all revenue was earned in 2024.",
+      "Current provider documentation separates paid base-game receipts from broader free-to-play revenue; zero observed price does not prove launch-time F2P status.",
+      "Default subset is positive observed price; zero-price games remain available separately. No revenue values are imputed or reconstructed from price times copies.",
+      "Publisher classes use provider revenue thresholds; Indie does not establish independent ownership or a small studio. These classes are not causal predictors.",
+      "Genres come from later March 2025 metadata. Multi-genre groups overlap, unmatched genres are not imputed, and comparisons are descriptive rather than launch-time prediction.",
+      "Revenue selection, observation-age differences and estimation error prevent market success probabilities or causal pricing advice."
+    ]
+  },
+  "artifact": "data/processed/revenue_v1/explorer.json",
+  "artifact_sha256": "967ac59870651b8bc9b215f5077882e40fa702054fc453fe2456b5c998fed83e",
+  "preparation": {
+    "rows_retained": 1500,
+    "metadata_id_matches": 1406,
+    "valid_genre_rows": 1401,
+    "excluded_rows": 0,
+    "imputed_revenue_values": 0
+  },
+  "subsets": {
+    "positive": {
+      "filters": {
+        "mode": "positive",
+        "genre": "",
+        "publisher": "",
+        "q": ""
+      },
+      "summary": {
+        "count": 1415,
+        "total_revenue": 3708871032.0,
+        "median_revenue": 105087.0,
+        "q25": 45183.5,
+        "q75": 404971.0,
+        "mean_revenue": 2621110.2699646642,
+        "top_decile_count": 142,
+        "top_decile_share": 0.9204547204649202,
+        "genre_matched_count": 1327,
+        "small_sample": false
+      },
+      "distribution": [
+        {
+          "label": "< 100,000",
+          "count": 688
+        },
+        {
+          "label": "100,000 to < 1 million",
+          "count": 521
+        },
+        {
+          "label": "1 to < 10 million",
+          "count": 171
+        },
+        {
+          "label": ">= 10 million",
+          "count": 35
+        }
+      ],
+      "by_price": [
+        {
+          "label": "0 < price < 10",
+          "count": 417,
+          "total_revenue": 107314266.0,
+          "median_revenue": 59326.0,
+          "q25": 36165.0,
+          "q75": 132078.0,
+          "mean_revenue": 257348.35971223022,
+          "top_decile_count": 42,
+          "top_decile_share": 0.7173035037112401,
+          "genre_matched_count": 397,
+          "small_sample": false
+        },
+        {
+          "label": "10 <= price < 20",
+          "count": 629,
+          "total_revenue": 299959633.0,
+          "median_revenue": 105087.0,
+          "q25": 45463.0,
+          "q75": 309785.0,
+          "mean_revenue": 476883.35930047696,
+          "top_decile_count": 63,
+          "top_decile_share": 0.6846298181729006,
+          "genre_matched_count": 585,
+          "small_sample": false
+        },
+        {
+          "label": "20 <= price < 30",
+          "count": 226,
+          "total_revenue": 1017409409.0,
+          "median_revenue": 336346.0,
+          "q25": 72572.25,
+          "q75": 1320636.0,
+          "mean_revenue": 4501811.544247787,
+          "top_decile_count": 23,
+          "top_decile_share": 0.8713529825435298,
+          "genre_matched_count": 214,
+          "small_sample": false
+        },
+        {
+          "label": "price >= 30",
+          "count": 143,
+          "total_revenue": 2284187724.0,
+          "median_revenue": 787339.0,
+          "q25": 176111.5,
+          "q75": 3602890.0,
+          "mean_revenue": 15973340.727272727,
+          "top_decile_count": 15,
+          "top_decile_share": 0.8787060760860651,
+          "genre_matched_count": 131,
+          "small_sample": false
+        }
+      ],
+      "by_genre": [
+        {
+          "label": "Action",
+          "count": 485,
+          "total_revenue": 3036466754.0,
+          "median_revenue": 129987.0,
+          "q25": 44908.0,
+          "q75": 720375.0,
+          "mean_revenue": 6260756.193814433,
+          "top_decile_count": 49,
+          "top_decile_share": 0.9466564895575998,
+          "genre_matched_count": 485,
+          "small_sample": false
+        },
+        {
+          "label": "Adventure",
+          "count": 603,
+          "total_revenue": 2451707999.0,
+          "median_revenue": 108802.0,
+          "q25": 45620.5,
+          "q75": 505345.0,
+          "mean_revenue": 4065850.744610282,
+          "top_decile_count": 61,
+          "top_decile_share": 0.938792094710623,
+          "genre_matched_count": 603,
+          "small_sample": false
+        },
+        {
+          "label": "Animation & Modeling",
+          "count": 2,
+          "total_revenue": 73384.0,
+          "median_revenue": 36692.0,
+          "q25": 29490.0,
+          "q75": 43894.0,
+          "mean_revenue": 36692.0,
+          "top_decile_count": 1,
+          "top_decile_share": 0.6962825684072822,
+          "genre_matched_count": 2,
+          "small_sample": true
+        },
+        {
+          "label": "Casual",
+          "count": 453,
+          "total_revenue": 223461530.0,
+          "median_revenue": 73464.0,
+          "q25": 42253.0,
+          "q75": 262728.0,
+          "mean_revenue": 493292.56070640177,
+          "top_decile_count": 46,
+          "top_decile_share": 0.746992052726033,
+          "genre_matched_count": 453,
+          "small_sample": false
+        },
+        {
+          "label": "Design & Illustration",
+          "count": 2,
+          "total_revenue": 73384.0,
+          "median_revenue": 36692.0,
+          "q25": 29490.0,
+          "q75": 43894.0,
+          "mean_revenue": 36692.0,
+          "top_decile_count": 1,
+          "top_decile_share": 0.6962825684072822,
+          "genre_matched_count": 2,
+          "small_sample": true
+        },
+        {
+          "label": "Early Access",
+          "count": 217,
+          "total_revenue": 804900110.0,
+          "median_revenue": 144011.0,
+          "q25": 53847.0,
+          "q75": 605601.0,
+          "mean_revenue": 3709217.0967741935,
+          "top_decile_count": 22,
+          "top_decile_share": 0.9147496029041418,
+          "genre_matched_count": 217,
+          "small_sample": false
+        },
+        {
+          "label": "Education",
+          "count": 1,
+          "total_revenue": 51096.0,
+          "median_revenue": 51096.0,
+          "q25": 51096.0,
+          "q75": 51096.0,
+          "mean_revenue": 51096.0,
+          "top_decile_count": 1,
+          "top_decile_share": 1.0,
+          "genre_matched_count": 1,
+          "small_sample": true
+        },
+        {
+          "label": "Free To Play",
+          "count": 10,
+          "total_revenue": 5502572.0,
+          "median_revenue": 248555.5,
+          "q25": 82085.25,
+          "q75": 469216.25,
+          "mean_revenue": 550257.2,
+          "top_decile_count": 1,
+          "top_decile_share": 0.5418337097633615,
+          "genre_matched_count": 10,
+          "small_sample": true
+        },
+        {
+          "label": "Game Development",
+          "count": 1,
+          "total_revenue": 51096.0,
+          "median_revenue": 51096.0,
+          "q25": 51096.0,
+          "q75": 51096.0,
+          "mean_revenue": 51096.0,
+          "top_decile_count": 1,
+          "top_decile_share": 1.0,
+          "genre_matched_count": 1,
+          "small_sample": true
+        },
+        {
+          "label": "Indie",
+          "count": 864,
+          "total_revenue": 1409599570.0,
+          "median_revenue": 94757.5,
+          "q25": 42553.0,
+          "q75": 339741.75,
+          "mean_revenue": 1631480.9837962964,
+          "top_decile_count": 87,
+          "top_decile_share": 0.8991283056364724,
+          "genre_matched_count": 864,
+          "small_sample": false
+        },
+        {
+          "label": "Massively Multiplayer",
+          "count": 25,
+          "total_revenue": 156440515.0,
+          "median_revenue": 312155.0,
+          "q25": 97203.0,
+          "q75": 2449168.0,
+          "mean_revenue": 6257620.6,
+          "top_decile_count": 3,
+          "top_decile_share": 0.8653612269174644,
+          "genre_matched_count": 25,
+          "small_sample": true
+        },
+        {
+          "label": "RPG",
+          "count": 459,
+          "total_revenue": 2081373773.0,
+          "median_revenue": 108603.0,
+          "q25": 47804.0,
+          "q75": 468536.0,
+          "mean_revenue": 4534583.383442266,
+          "top_decile_count": 46,
+          "top_decile_share": 0.9478884410829943,
+          "genre_matched_count": 459,
+          "small_sample": false
+        },
+        {
+          "label": "Racing",
+          "count": 28,
+          "total_revenue": 35174244.0,
+          "median_revenue": 139657.0,
+          "q25": 39342.0,
+          "q75": 822782.75,
+          "mean_revenue": 1256223.0,
+          "top_decile_count": 3,
+          "top_decile_share": 0.6895734845075846,
+          "genre_matched_count": 28,
+          "small_sample": true
+        },
+        {
+          "label": "Simulation",
+          "count": 499,
+          "total_revenue": 800012686.0,
+          "median_revenue": 116257.0,
+          "q25": 49876.5,
+          "q75": 455825.5,
+          "mean_revenue": 1603231.8356713427,
+          "top_decile_count": 50,
+          "top_decile_share": 0.8500128934205425,
+          "genre_matched_count": 499,
+          "small_sample": false
+        },
+        {
+          "label": "Sports",
+          "count": 43,
+          "total_revenue": 50683968.0,
+          "median_revenue": 153619.0,
+          "q25": 46332.5,
+          "q75": 1013872.5,
+          "mean_revenue": 1178696.9302325582,
+          "top_decile_count": 5,
+          "top_decile_share": 0.7005384227217569,
+          "genre_matched_count": 43,
+          "small_sample": false
+        },
+        {
+          "label": "Strategy",
+          "count": 356,
+          "total_revenue": 509468319.0,
+          "median_revenue": 155780.5,
+          "q25": 55967.5,
+          "q75": 669789.5,
+          "mean_revenue": 1431090.7837078653,
+          "top_decile_count": 36,
+          "top_decile_share": 0.7811264354594736,
+          "genre_matched_count": 356,
+          "small_sample": false
+        },
+        {
+          "label": "Utilities",
+          "count": 1,
+          "total_revenue": 22288.0,
+          "median_revenue": 22288.0,
+          "q25": 22288.0,
+          "q75": 22288.0,
+          "mean_revenue": 22288.0,
+          "top_decile_count": 1,
+          "top_decile_share": 1.0,
+          "genre_matched_count": 1,
+          "small_sample": true
+        }
+      ]
+    },
+    "zero": {
+      "filters": {
+        "mode": "zero",
+        "genre": "",
+        "publisher": "",
+        "q": ""
+      },
+      "summary": {
+        "count": 85,
+        "total_revenue": 239701942.02926642,
+        "median_revenue": 312915.8051949718,
+        "q25": 61737.0,
+        "q75": 1250580.7988945069,
+        "mean_revenue": 2820022.847403134,
+        "top_decile_count": 9,
+        "top_decile_share": 0.8141310681126611,
+        "genre_matched_count": 74,
+        "small_sample": false
+      },
+      "distribution": [
+        {
+          "label": "< 100,000",
+          "count": 29
+        },
+        {
+          "label": "100,000 to < 1 million",
+          "count": 30
+        },
+        {
+          "label": "1 to < 10 million",
+          "count": 22
+        },
+        {
+          "label": ">= 10 million",
+          "count": 4
+        }
+      ],
+      "by_price": [
+        {
+          "label": "0",
+          "count": 85,
+          "total_revenue": 239701942.02926642,
+          "median_revenue": 312915.8051949718,
+          "q25": 61737.0,
+          "q75": 1250580.7988945069,
+          "mean_revenue": 2820022.847403134,
+          "top_decile_count": 9,
+          "top_decile_share": 0.8141310681126611,
+          "genre_matched_count": 74,
+          "small_sample": false
+        }
+      ],
+      "by_genre": [
+        {
+          "label": "Action",
+          "count": 39,
+          "total_revenue": 201975870.16659918,
+          "median_revenue": 921760.0,
+          "q25": 161453.63736941986,
+          "q75": 1509673.0,
+          "mean_revenue": 5178868.465810236,
+          "top_decile_count": 4,
+          "top_decile_share": 0.8028693180769064,
+          "genre_matched_count": 39,
+          "small_sample": false
+        },
+        {
+          "label": "Adventure",
+          "count": 27,
+          "total_revenue": 187393492.5357382,
+          "median_revenue": 751373.0,
+          "q25": 141852.13736941986,
+          "q75": 2825064.856179038,
+          "mean_revenue": 6940499.72354586,
+          "top_decile_count": 3,
+          "top_decile_share": 0.8136074048546291,
+          "genre_matched_count": 27,
+          "small_sample": true
+        },
+        {
+          "label": "Casual",
+          "count": 32,
+          "total_revenue": 37724157.58649229,
+          "median_revenue": 274389.4025974859,
+          "q25": 82414.75,
+          "q75": 1067848.6420898198,
+          "mean_revenue": 1178879.9245778841,
+          "top_decile_count": 4,
+          "top_decile_share": 0.6690228427442535,
+          "genre_matched_count": 32,
+          "small_sample": false
+        },
+        {
+          "label": "Early Access",
+          "count": 9,
+          "total_revenue": 15695680.19114408,
+          "median_revenue": 235863.0,
+          "q25": 151939.1911440809,
+          "q75": 1753880.0,
+          "mean_revenue": 1743964.4656826756,
+          "top_decile_count": 1,
+          "top_decile_share": 0.55468351125759,
+          "genre_matched_count": 9,
+          "small_sample": true
+        },
+        {
+          "label": "Free To Play",
+          "count": 54,
+          "total_revenue": 224348566.64365494,
+          "median_revenue": 535084.956202122,
+          "q25": 79187.0,
+          "q75": 1705443.25,
+          "mean_revenue": 4154603.08599361,
+          "top_decile_count": 6,
+          "top_decile_share": 0.809694079468659,
+          "genre_matched_count": 54,
+          "small_sample": false
+        },
+        {
+          "label": "Indie",
+          "count": 18,
+          "total_revenue": 30070388.75906421,
+          "median_revenue": 295488.48888344364,
+          "q25": 96092.5,
+          "q75": 1226413.326281408,
+          "mean_revenue": 1670577.153281345,
+          "top_decile_count": 2,
+          "top_decile_share": 0.6635376186359688,
+          "genre_matched_count": 18,
+          "small_sample": true
+        },
+        {
+          "label": "Massively Multiplayer",
+          "count": 24,
+          "total_revenue": 43360684.73054323,
+          "median_revenue": 321032.0,
+          "q25": 61369.0,
+          "q75": 1318819.0,
+          "mean_revenue": 1806695.1971059681,
+          "top_decile_count": 3,
+          "top_decile_share": 0.6940075401403898,
+          "genre_matched_count": 24,
+          "small_sample": true
+        },
+        {
+          "label": "RPG",
+          "count": 39,
+          "total_revenue": 211648346.56223136,
+          "median_revenue": 825766.0,
+          "q25": 100039.0,
+          "q75": 2328989.5,
+          "mean_revenue": 5426880.681082855,
+          "top_decile_count": 4,
+          "top_decile_share": 0.7713364068291739,
+          "genre_matched_count": 39,
+          "small_sample": false
+        },
+        {
+          "label": "Racing",
+          "count": 2,
+          "total_revenue": 184669.0,
+          "median_revenue": 92334.5,
+          "q25": 59456.75,
+          "q75": 125212.25,
+          "mean_revenue": 92334.5,
+          "top_decile_count": 1,
+          "top_decile_share": 0.8560722156940255,
+          "genre_matched_count": 2,
+          "small_sample": true
+        },
+        {
+          "label": "Simulation",
+          "count": 15,
+          "total_revenue": 57597025.162424445,
+          "median_revenue": 184743.0,
+          "q25": 78659.5,
+          "q75": 854103.4104231779,
+          "mean_revenue": 3839801.677494963,
+          "top_decile_count": 2,
+          "top_decile_share": 0.8719187320356625,
+          "genre_matched_count": 15,
+          "small_sample": true
+        },
+        {
+          "label": "Sports",
+          "count": 3,
+          "total_revenue": 1370136.7988945069,
+          "median_revenue": 92977.0,
+          "q25": 59778.0,
+          "q75": 671778.8994472534,
+          "mean_revenue": 456712.266298169,
+          "top_decile_count": 1,
+          "top_decile_share": 0.9127415597504835,
+          "genre_matched_count": 3,
+          "small_sample": true
+        },
+        {
+          "label": "Strategy",
+          "count": 36,
+          "total_revenue": 96006599.25351767,
+          "median_revenue": 921765.5,
+          "q25": 74021.5,
+          "q75": 1484443.0,
+          "mean_revenue": 2666849.97926438,
+          "top_decile_count": 4,
+          "top_decile_share": 0.7364364918493531,
+          "genre_matched_count": 36,
+          "small_sample": false
+        }
+      ]
+    },
+    "all": {
+      "filters": {
+        "mode": "all",
+        "genre": "",
+        "publisher": "",
+        "q": ""
+      },
+      "summary": {
+        "count": 1500,
+        "total_revenue": 3948572974.0292664,
+        "median_revenue": 109053.0,
+        "q25": 45504.25,
+        "q75": 455156.75,
+        "mean_revenue": 2632381.9826861774,
+        "top_decile_count": 150,
+        "top_decile_share": 0.9143552879867743,
+        "genre_matched_count": 1401,
+        "small_sample": false
+      },
+      "distribution": [
+        {
+          "label": "< 100,000",
+          "count": 717
+        },
+        {
+          "label": "100,000 to < 1 million",
+          "count": 551
+        },
+        {
+          "label": "1 to < 10 million",
+          "count": 193
+        },
+        {
+          "label": ">= 10 million",
+          "count": 39
+        }
+      ],
+      "by_price": [
+        {
+          "label": "0",
+          "count": 85,
+          "total_revenue": 239701942.02926642,
+          "median_revenue": 312915.8051949718,
+          "q25": 61737.0,
+          "q75": 1250580.7988945069,
+          "mean_revenue": 2820022.847403134,
+          "top_decile_count": 9,
+          "top_decile_share": 0.8141310681126611,
+          "genre_matched_count": 74,
+          "small_sample": false
+        },
+        {
+          "label": "0 < price < 10",
+          "count": 417,
+          "total_revenue": 107314266.0,
+          "median_revenue": 59326.0,
+          "q25": 36165.0,
+          "q75": 132078.0,
+          "mean_revenue": 257348.35971223022,
+          "top_decile_count": 42,
+          "top_decile_share": 0.7173035037112401,
+          "genre_matched_count": 397,
+          "small_sample": false
+        },
+        {
+          "label": "10 <= price < 20",
+          "count": 629,
+          "total_revenue": 299959633.0,
+          "median_revenue": 105087.0,
+          "q25": 45463.0,
+          "q75": 309785.0,
+          "mean_revenue": 476883.35930047696,
+          "top_decile_count": 63,
+          "top_decile_share": 0.6846298181729006,
+          "genre_matched_count": 585,
+          "small_sample": false
+        },
+        {
+          "label": "20 <= price < 30",
+          "count": 226,
+          "total_revenue": 1017409409.0,
+          "median_revenue": 336346.0,
+          "q25": 72572.25,
+          "q75": 1320636.0,
+          "mean_revenue": 4501811.544247787,
+          "top_decile_count": 23,
+          "top_decile_share": 0.8713529825435298,
+          "genre_matched_count": 214,
+          "small_sample": false
+        },
+        {
+          "label": "price >= 30",
+          "count": 143,
+          "total_revenue": 2284187724.0,
+          "median_revenue": 787339.0,
+          "q25": 176111.5,
+          "q75": 3602890.0,
+          "mean_revenue": 15973340.727272727,
+          "top_decile_count": 15,
+          "top_decile_share": 0.8787060760860651,
+          "genre_matched_count": 131,
+          "small_sample": false
+        }
+      ],
+      "by_genre": [
+        {
+          "label": "Action",
+          "count": 524,
+          "total_revenue": 3238442624.1665993,
+          "median_revenue": 139427.13736941986,
+          "q25": 46390.25,
+          "q75": 816731.5,
+          "mean_revenue": 6180234.015585113,
+          "top_decile_count": 53,
+          "top_decile_share": 0.9401150544936575,
+          "genre_matched_count": 524,
+          "small_sample": false
+        },
+        {
+          "label": "Adventure",
+          "count": 630,
+          "total_revenue": 2639101491.535738,
+          "median_revenue": 114535.5,
+          "q25": 46113.5,
+          "q75": 605568.75,
+          "mean_revenue": 4189049.9865646637,
+          "top_decile_count": 63,
+          "top_decile_share": 0.933280907933318,
+          "genre_matched_count": 630,
+          "small_sample": false
+        },
+        {
+          "label": "Animation & Modeling",
+          "count": 2,
+          "total_revenue": 73384.0,
+          "median_revenue": 36692.0,
+          "q25": 29490.0,
+          "q75": 43894.0,
+          "mean_revenue": 36692.0,
+          "top_decile_count": 1,
+          "top_decile_share": 0.6962825684072822,
+          "genre_matched_count": 2,
+          "small_sample": true
+        },
+        {
+          "label": "Casual",
+          "count": 485,
+          "total_revenue": 261185687.5864923,
+          "median_revenue": 77800.0,
+          "q25": 42568.0,
+          "q75": 280098.0,
+          "mean_revenue": 538527.1908999841,
+          "top_decile_count": 49,
+          "top_decile_share": 0.7413849620371414,
+          "genre_matched_count": 485,
+          "small_sample": false
+        },
+        {
+          "label": "Design & Illustration",
+          "count": 2,
+          "total_revenue": 73384.0,
+          "median_revenue": 36692.0,
+          "q25": 29490.0,
+          "q75": 43894.0,
+          "mean_revenue": 36692.0,
+          "top_decile_count": 1,
+          "top_decile_share": 0.6962825684072822,
+          "genre_matched_count": 2,
+          "small_sample": true
+        },
+        {
+          "label": "Early Access",
+          "count": 226,
+          "total_revenue": 820595790.1911441,
+          "median_revenue": 151501.59557204045,
+          "q25": 54872.5,
+          "q75": 663129.25,
+          "mean_revenue": 3630954.82385462,
+          "top_decile_count": 23,
+          "top_decile_share": 0.9079863654021961,
+          "genre_matched_count": 226,
+          "small_sample": false
+        },
+        {
+          "label": "Education",
+          "count": 1,
+          "total_revenue": 51096.0,
+          "median_revenue": 51096.0,
+          "q25": 51096.0,
+          "q75": 51096.0,
+          "mean_revenue": 51096.0,
+          "top_decile_count": 1,
+          "top_decile_share": 1.0,
+          "genre_matched_count": 1,
+          "small_sample": true
+        },
+        {
+          "label": "Free To Play",
+          "count": 64,
+          "total_revenue": 229851138.64365494,
+          "median_revenue": 334014.89148092957,
+          "q25": 74021.5,
+          "q75": 1484443.0,
+          "mean_revenue": 3591424.0413071085,
+          "top_decile_count": 7,
+          "top_decile_share": 0.8107921033080852,
+          "genre_matched_count": 64,
+          "small_sample": false
+        },
+        {
+          "label": "Game Development",
+          "count": 1,
+          "total_revenue": 51096.0,
+          "median_revenue": 51096.0,
+          "q25": 51096.0,
+          "q75": 51096.0,
+          "mean_revenue": 51096.0,
+          "top_decile_count": 1,
+          "top_decile_share": 1.0,
+          "genre_matched_count": 1,
+          "small_sample": true
+        },
+        {
+          "label": "Indie",
+          "count": 882,
+          "total_revenue": 1439669958.7590642,
+          "median_revenue": 97303.5,
+          "q25": 42910.75,
+          "q75": 346428.0,
+          "mean_revenue": 1632278.8648061953,
+          "top_decile_count": 89,
+          "top_decile_share": 0.8958778380430846,
+          "genre_matched_count": 882,
+          "small_sample": false
+        },
+        {
+          "label": "Massively Multiplayer",
+          "count": 49,
+          "total_revenue": 199801199.73054323,
+          "median_revenue": 312155.0,
+          "q25": 65173.0,
+          "q75": 1395292.0,
+          "mean_revenue": 4077575.504704964,
+          "top_decile_count": 5,
+          "top_decile_share": 0.804611866022103,
+          "genre_matched_count": 49,
+          "small_sample": false
+        },
+        {
+          "label": "RPG",
+          "count": 498,
+          "total_revenue": 2293022119.5622315,
+          "median_revenue": 112326.0,
+          "q25": 48869.75,
+          "q75": 558622.75,
+          "mean_revenue": 4604462.08747436,
+          "top_decile_count": 50,
+          "top_decile_share": 0.9383066302733305,
+          "genre_matched_count": 498,
+          "small_sample": false
+        },
+        {
+          "label": "Racing",
+          "count": 30,
+          "total_revenue": 35358913.0,
+          "median_revenue": 138746.5,
+          "q25": 36646.0,
+          "q75": 655754.0,
+          "mean_revenue": 1178630.4333333333,
+          "top_decile_count": 3,
+          "top_decile_share": 0.6859720489710756,
+          "genre_matched_count": 30,
+          "small_sample": false
+        },
+        {
+          "label": "Simulation",
+          "count": 514,
+          "total_revenue": 857609711.1624244,
+          "median_revenue": 119509.0,
+          "q25": 50136.5,
+          "q75": 464246.75,
+          "mean_revenue": 1668501.3835844833,
+          "top_decile_count": 52,
+          "top_decile_share": 0.8541866056480633,
+          "genre_matched_count": 514,
+          "small_sample": false
+        },
+        {
+          "label": "Sports",
+          "count": 46,
+          "total_revenue": 52054104.79889451,
+          "median_revenue": 136511.0,
+          "q25": 46263.75,
+          "q75": 1043383.25,
+          "mean_revenue": 1131610.9738890112,
+          "top_decile_count": 5,
+          "top_decile_share": 0.6820992722317272,
+          "genre_matched_count": 46,
+          "small_sample": false
+        },
+        {
+          "label": "Strategy",
+          "count": 392,
+          "total_revenue": 605474918.2535176,
+          "median_revenue": 172614.5,
+          "q25": 56816.0,
+          "q75": 825772.75,
+          "mean_revenue": 1544578.8730957082,
+          "top_decile_count": 40,
+          "top_decile_share": 0.7770703936838632,
+          "genre_matched_count": 392,
+          "small_sample": false
+        },
+        {
+          "label": "Utilities",
+          "count": 1,
+          "total_revenue": 22288.0,
+          "median_revenue": 22288.0,
+          "q25": 22288.0,
+          "q75": 22288.0,
+          "mean_revenue": 22288.0,
+          "top_decile_count": 1,
+          "top_decile_share": 1.0,
+          "genre_matched_count": 1,
+          "small_sample": true
+        }
+      ]
+    }
+  }
+}

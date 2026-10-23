@@ -58,6 +58,39 @@ uv run --locked python src/analysis/verify_training_eda.py
 
 These commands rebuild research outputs; they are not required for an ordinary demonstration when verified local files already exist. Preserve the fixed source versions and analysis rules when reproducing saved results. A changed input hash requires investigation rather than bypassing validation. Large audit stages can require substantial time and temporary disk space; the DuckDB profiler uses a 4 GB memory limit and two threads, with additional memory used by Python and Arrow.
 
+## Audit supplementary revenue data
+
+After placing the three original CSVs in the folders listed in [Dataset/README.md](../Dataset/README.md), run:
+
+```powershell
+uv run --locked python src/data/audit_revenue_sources.py
+```
+
+This checks source hashes, missing values, duplicate keys, numeric/date fields and overlap with the existing Steam IDs and Google Play names. It writes [audit.json](reports/2026-10-23/revenue_sources/audit.json); `--output` selects another report path for a new download version. The original files, frozen cohorts and application snapshots are unchanged. Name matches are review candidates, not accepted revenue joins. The historical audit remains restricted to its original source folders.
+
+Prepare the separate Steam revenue explorer after reviewing the audit:
+
+```powershell
+uv run --locked python src/analysis/build_revenue_analysis.py
+```
+
+This preserves all 1,500 source rows and joins March 2025 genres by unique Steam ID. It writes the ignored `data/processed/revenue_v1/explorer.json` and the aggregate [analysis report](reports/2026-10-23/revenue_sources/analysis.json). Start or restart the application, then open `http://127.0.0.1:8765/revenue`. The page defaults to 1,415 positive-price records; zero-price records are separately selectable. It provides distributions, concentration, price/genre comparisons, searchable paginated rows and JSON export. The revenue page is independent of the main page's CSV version selection and does not train or evaluate models.
+
+The source is a selected high-revenue cohort. Its cumulative gross estimates, provider publisher classes, mixed observation ages and later genre metadata support descriptive comparisons only. Currency follows provider conventions; the source has no explicit currency field, and its exact 2024 estimation-method version is unavailable. The mobile compilation and launch panel are not incorporated into this explorer.
+
+The revenue page also includes **comparable-game references**. Select supported gameplay genres, a proposed USD price (0–1,000), an optional price-ratio bound and 5, 10 or 20 results. Positive and zero observed-price cohorts are separate. Candidates must share a supported gameplay genre. Ranking uses genre Jaccard similarity first, absolute price difference second and numeric Steam ID for ties. Provider labels such as Indie and Early Access, software categories, revenue and publisher classes do not participate in ranking. The nine supported genres are declared in `src/analysis/comparable_games.py`.
+
+This is deterministic reference retrieval, not a fitted KNN predictor or a validated recommendation model. It reuses the existing local revenue artifact and requires no additional build. Results include matching reasons, coverage counts, source metadata and a versioned method definition in their JSON export. Fewer eligible candidates produce fewer results. These controls are independent of the explorer filters and the main page's CSV version selection.
+
+Verify the revenue module, reference retrieval and interface:
+
+```powershell
+uv run --locked python -B -m unittest discover -s tests -p "test_revenue*.py" -v
+uv run --locked --with playwright python.exe tests/check_revenue_browser.py
+```
+
+The builder validates the audited source hash before processing. A changed download requires a reviewed source audit and a separately considered analysis version; rebuilding is not automatic activation of an arbitrary new revenue CSV.
+
 ## Model experiments and checks
 
 Each experiment protocol documents its inputs, model settings, execution commands and independent verification:

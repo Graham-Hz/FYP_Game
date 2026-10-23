@@ -20,6 +20,8 @@ Open `http://127.0.0.1:8765/` and keep the terminal running. Press Ctrl+C to sto
 4. Inspect a small or empty result. Small-sample feedback uses an interface threshold of 30 records, not a guarantee of statistical reliability.
 5. Export the JSON result. It includes the conditions, counts, proportions, overlap and data provenance. Re-run a comparison after changing its conditions before exporting.
 6. Use the [CSV import workflow](CSV_IMPORT_GUIDE.md) to validate a compatible file, review inclusion/exclusion results, save a version, activate it and return to the original research version.
+7. Open **Steam revenue analysis** using the link above the main title, or visit `/revenue`. Compare positive-price and zero-price subsets, inspect the revenue distribution and top-decile share, filter a genre, and search/sort/page through game records. Export the filtered JSON. This supplementary dataset is independent of the main page's imported versions.
+8. Expand **用遊戲構想尋找相近作品** on the revenue page. Try Action at USD 14.99, a half-to-double price range and 10 results. Inspect shared genres, genre overlap, price difference and source-provided revenue. Add Adventure or change the price, re-run and inspect why the reference list changes. Export the list with its matching method and provenance. A zero-price query searches zero-price candidates only.
 
 Conditions across fields are combined with AND. A blank feature condition does not mean the game lacks that feature. Steam genres can overlap; Android records use a single source category.
 
@@ -32,7 +34,13 @@ Conditions across fields are combined with AND. A blank feature condition does n
 
 The complete research cohorts contain 73,527 Steam and 318,300 Android records. The original application version queries training rows only. An imported version uses its own eligible historical records, with the version and denominator displayed separately.
 
-The interface does not provide model inference, revenue estimation, recommendation ranking or causal conclusions. Source dates differ, Steam price currency remains unresolved, and unknown Android free status is preserved rather than treated as paid. These samples should not be presented as the whole current market.
+The interface does not provide model inference, new-game revenue prediction or causal conclusions. The Steam revenue page offers deterministic reference retrieval using genres and observed prices. Source dates differ, the primary March 2025 Steam price currency remains unresolved, and unknown Android free status is preserved rather than treated as paid. These samples should not be presented as the whole current market.
+
+## Supplementary Steam revenue page
+
+Prepare the revenue snapshot using the [program guide](README.md#audit-supplementary-revenue-data), then restart the service. The separate page uses source-provided estimated cumulative gross revenue for 1,500 selected games. It retains 85 zero-price games separately and defaults to the other 1,415. In that default subset, median estimated revenue is USD 105,087 and the top 142 games account for 92.05% of the subset's revenue. These are selected-sample statistics, not market-wide benchmarks or expected earnings for a new game.
+
+Genre metadata matches 1,406 Steam IDs, with usable genre lists for 1,401. Genres can overlap and were observed later than the revenue snapshot. The provider's publisher classes partly reflect past revenue and should not be presented as independent causal explanations of revenue or verified studio size. The page shows these interpretation limits and exports its source hashes and filters with the results.
 
 ## Implementation and verification
 

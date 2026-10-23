@@ -17,6 +17,8 @@ These are report files, not evidence of institutional submission.
 |---|---|
 | [Dataset feasibility](2026-10-05/dataset_feasibility_report.md) | Source comparison, quality and coverage |
 | [Target feasibility](2026-10-05/target_feasibility.md) | Outcome proxies and interpretation limits |
+| [Supplementary revenue audit](2026-10-23/revenue_sources/audit.json) | Source hashes, quality issues and identifier/name matching coverage; no model integration |
+| [Steam revenue analysis](2026-10-23/revenue_sources/analysis.json) | Selected-sample distribution, concentration and group summaries; preparation counts, provenance and explorer artifact hash |
 | [Cleaning report](2026-10-06/cleaning_candidate_v1/cleaning_report.md) | Parsing, exclusions and quality checks |
 | [Data dictionary](2026-10-06/cleaning_candidate_v1/data_dictionary.md) | Prepared field definitions |
 | [Analysis protocol](2026-10-06/analysis_v1/analysis_protocol.md) | Primary cohorts, feature policy, developer groups and fixed partitions |
