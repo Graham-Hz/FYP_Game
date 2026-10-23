@@ -1,103 +1,103 @@
-# FYP game planning dataset audit
+# Program setup and research pipeline
 
-先讀 [FYP 資料夾與程式導覽](PROJECT_GUIDE_ZH.md)：按實際檔案解釋如何啟動、哪些程式清理資料、模型與網站的關係，以及老師可能追問的要點。日常示範不需要重跑下面所有研究指令。
+This directory contains the Python data pipeline, model experiments and local web application for the game-planning decision-support system. See the [project overview](../README.md) for its purpose, implemented capabilities and limitations.
 
-2026-10-16 程式導讀：雙擊 [START_WALKTHROUGH.cmd](START_WALKTHROUGH.cmd)，按 [操作說明](notebooks/README.md) 使用可逐格執行的 Notebook，親手讀 CSV、統計、畫圖及重現一次既有模型訓練。獨立教學環境；不更改正式研究分組或啟動下一輪模型搜尋。
+## Environments
 
-2026-10-11 課堂應用：[COMP1016／COMP3115／COMP3925 對照](reports/planning/course_to_fyp_review_2026-10-11.md) 及 [Power BI 教學交接](reports/planning/powerbi_handoff_v1.md)。兩平台 train CSV、Steam genre bridge 及核對數字已準備；學生下一步在 Power BI Desktop 製作並驗收兩頁 report，PBIX 尚未完成。
-
-快速入口：[報告與研究紀錄索引](reports/README.md)、[目前進度](PROJECT_STATUS.md)。2026-10-10 已清除核對為重複的 5 個下載 ZIP；原始資料與研究產物保持原位。詳見 repository [檔案保留說明](../README.md#檔案保留與清理)。
-
-最新方向：[產品範圍及驗收規格](reports/planning/product_scope_v1.md)。2026-10-10 已完成指定格式 CSV 匯入及應用資料版本首版，見 [操作與欄位字典](CSV_IMPORT_GUIDE.md) 和 [驗證證據](reports/2026-10-10/csv_import_v1/verification_notes.md)。原有研究 train 版本仍可切回；新版本不改動模型實驗。[第一輪 train EDA](reports/2026-10-07/train_eda_v1/eda_notes.md) 可用 `uv run --locked python.exe src/analysis/profile_training.py` 重現，再用 `uv run --locked python.exe src/analysis/verify_training_eda.py` 獨立核對。
-
-模型研究：[首輪線性／基準](reports/2026-10-07/model_dev_v1/results_notes.md)（26 組／78 次擬合）、[樹模型](reports/2026-10-10/model_tree_v1/results_notes.md)（20 組／60 次）、[年齡限制重訓](reports/2026-10-11/model_age_v1/results_notes.md)（28 組／84 次）及 2026-10-13 [cohort／target 敏感度](reports/2026-10-13/model_scope_v1/results_notes.md)（30 組／90 次）均已獨立驗證。48 項測試通過；沒有評估 calibration／最終 test。沿用 `experiments/model_dev_v1/` 的鎖定環境，最新指令見 [敏感度 protocol](reports/planning/model_scope_v1_protocol.md)。下一步是群組／random 對照，再進入最終選型與評估；app 及 Power BI 仍使用原三級。最新工作報告為 [FYP_v1.docx](reports/FYP_v1.docx)；[Chapter 2 七項素材索引](reports/planning/chapter2_evidence_map.md) 已更新實作證據，沒有修改 Word 正文。另見 [2026-10-08 Chapter 1 核對](reports/planning/fyp_v1_review_2026-10-08.md)，不代表已審閱學生之後的改稿。
-
-此目錄包含資料可行性審核、研究設計、候選清理、文獻對照、已固定的分析特徵／群組切分，以及首輪開發模型比較。已有描述比較原型，尚未完成最終應用程式。結果是工作筆記，應由學生理解與核對後再作研究決定。
-
-2026-10-07：已加入可操作的本機歷史比較原型。雙擊 [START_DEMO.cmd](START_DEMO.cmd) 啟動；見 [操作指引](DEMO_GUIDE.md) 及 [原型驗證與階段紀錄](reports/2026-10-07/demo_v1/verification_notes.md)。只使用 train 分區，不含預測模型；這不是最終應用程式。Chapter 1 寫作提示見 [規劃筆記](reports/planning/chapter1_planning_notes.md)。2026-10-23 已確認尚未與導師討論專案；舊匯報時間窗口已撤下，不是已完成或已預約的會議。
-
-分析設計：[analysis_v1 分析 protocol](reports/2026-10-06/analysis_v1/analysis_protocol.md)、[文獻對照](reports/2026-10-06/analysis_v1/literature_review_notes.md)、[資料疑點處理](reports/2026-10-06/analysis_v1/data_questions.md)。主要分析 cohort 為 PC 73,527 筆（觀察價格 >0 等限定）及 Mobile 318,300 筆；約 70/15/15 的 developer group split 和 train 內 3-fold CV 已產生，特徵與標籤分檔保存。這是工作版本，不表示導師已批准或模型性能已驗證。
-
-```powershell
-uv run --locked python src/data/freeze_analysis.py
-uv run --locked python src/data/verify_analysis.py
-uv run --locked python src/data/review_analysis_questions.py
-uv run --locked python -m unittest discover -s tests -v
-```
-
-前一階段：[2026-10-06 候選清理報告](reports/2026-10-06/cleaning_candidate_v1/cleaning_report.md) 及 [資料字典](reports/2026-10-06/cleaning_candidate_v1/data_dictionary.md)。該輪修正字面名稱被當成缺失的問題；PC 基本 cohort 為 89,453 筆，其中 81,158 筆可用候選標籤；Android 318,300 筆。此歷史 candidate 保留不改，新分析 cohort 的差異見 analysis_v1。
-
-```powershell
-uv run --locked python src/data/clean_candidates.py
-uv run --locked python -m unittest discover -s tests -v
-uv run --locked python src/data/verify_clean_candidates.py
-```
-
-主要報告：[2026-10-05 可行性報告](reports/2026-10-05/dataset_feasibility_report.md)。
-預測目標：[target feasibility](reports/2026-10-05/target_feasibility.md)。
-
-後續研究設計：[研究設計 v1](reports/2026-10-05/research_design/research_design_v1.md) 與 [實驗 protocol v1](reports/2026-10-05/research_design/experiment_protocol_v1.md)。
-這一階段補充 owners／評論計數的一致性、類別分布、未知值選擇偏差與 cohort 敏感度；沒有訓練模型。診斷可重跑：
-
-```powershell
-uv run --locked python src/data/target_design_diagnostics.py
-```
-
-研究設計中的 81,156 個 PC 可用標籤及 318,298 筆 Mobile 記錄是上一輪參考 cohort。各階段差異見上方報告；舊輸出保留作可追溯對照。PC 軟件產品、名稱篩選及 Mobile Free／price 衝突在 analysis_v1 已有明確處理政策與剩餘限制。
-
-## 重跑
-
-在 PowerShell 切換至 `F:\HKBU_Y4\FYP\My_FYP\Program` 後，逐項執行：
+Install `uv` and run commands from this directory. The data/application environment requires Python 3.14 and is defined by `pyproject.toml` and `uv.lock`.
 
 ```powershell
 uv sync --locked
+```
+
+Model experiments have a separate locked environment in `experiments/model_dev_v1/`. The executable notebook uses `experiments/walkthrough_v1/`. Use each environment's lock file; `requirements.txt` is an export of the main environment, not the model environment.
+
+## Launch the local application
+
+The application requires the four frozen analysis files in `data/processed/analysis_v1/`: `pc_features.parquet`, `pc_labels_splits.parquet`, `mobile_features.parquet` and `mobile_labels_splits.parquet`. It checks their hashes against the recorded analysis version. These large files are not included in Git.
+
+On Windows, double-click [START_DEMO.cmd](START_DEMO.cmd), or run:
+
+```powershell
+uv run --locked python src/demo/server.py --open
+```
+
+Keep the process running while using `http://127.0.0.1:8765/`. Press Ctrl+C to stop. A different port can be selected with `--port 8766`. The service binds to localhost and is not configured as a public web deployment.
+
+See the [demonstration guide](DEMO_GUIDE.md) and [CSV import specification](CSV_IMPORT_GUIDE.md). Imported application snapshots are stored separately in `data/application/v1/`; they do not replace the frozen research data.
+
+## Prepare the research inputs
+
+Keep `Dataset/` and `Program/` as sibling directories. Restore the source files described in [Dataset/README.md](../Dataset/README.md) and compare their sizes and hashes with the recorded source inventory. Newer downloads may not reproduce the existing analysis version.
+
+The complete audit reads supplementary datasets as well as the two principal sources. Its acquisition and audit commands are:
+
+```powershell
 uv run --locked python src/data/fetch_sources.py --date 2026-10-05 --download-steam
 uv run --locked python src/data/validate_structure.py
 uv run --locked python src/data/profile_datasets.py
 uv run --locked python src/data/compare_and_targets.py
 uv run --locked python src/data/build_reports.py
 uv run --locked python src/data/verify_audit.py
+uv run --locked python src/data/target_design_diagnostics.py
 ```
 
-使用 Python 3.14 與 `uv.lock` 的精確套件版本。`uv` 已存在於本機，環境放在此專案 `.venv`，不依賴 Windows 的 `python` alias。`requirements.txt` 是 lock 的匯出；以 uv.lock 為準。
+The acquisition command reuses the stored source lock and downloads the pinned Steam Hugging Face Parquet. It does not download the full RAWG or Steam review collections. The date identifies the existing audit version, not a request for current data. A new source audit needs a separately versioned configuration and outputs.
 
-`fetch_sources.py` 已保存本次來源 metadata 與固定的 Hugging Face revision。相同日期重跑會沿用 lock，下載只限 Steam Parquet 約 192 MB，並驗證 LFS SHA-256。RAWG 與 Steam Reviews 只保存 metadata；沒有下載幾十 GB 的評論。`--date` 是 metadata 保存日期，本審核程式的評估日期固定在 `audit_common.py` 的 `DATE`；新一輪審核需一致更新該日期，保留舊 reports。
+After the audit inputs are available, prepare and verify the candidate and analysis tables:
 
-正式全量重跑用上述指令。若先前執行因中斷而停止，可使用 `profile_datasets.py --resume` 跳過已完成的 profile；變更原始輸入或分析規則後不要使用 `--resume`，因為它不驗證既有結果是否符合新規則。`--only` 可指定資料集 key 作針對性重跑。完整 profiles 的合併會保留其他已存在的版本。
+```powershell
+uv run --locked python src/data/clean_candidates.py
+uv run --locked python src/data/verify_clean_candidates.py
+uv run --locked python src/data/freeze_analysis.py
+uv run --locked python src/data/verify_analysis.py
+uv run --locked python src/data/review_analysis_questions.py
+uv run --locked python src/analysis/profile_training.py
+uv run --locked python src/analysis/verify_training_eda.py
+```
 
-## 原始資料與產物
+These commands rebuild research outputs; they are not required for an ordinary demonstration when verified local files already exist. Preserve the fixed source versions and analysis rules when reproducing saved results. A changed input hash requires investigation rather than bypassing validation. Large audit stages can require substantial time and temporary disk space; the DuckDB profiler uses a 4 GB memory limit and two threads, with additional memory used by Python and Arrow.
 
-- `../Dataset/`：使用者原始 Kaggle 檔案，原位只讀，沒有更名、覆寫或修復原檔。
-- `data/raw/existing_local_sources.json`：原始本地來源路徑、大小及 SHA-256。
-- `data/raw/source_metadata/2026-10-05/`：metadata、固定 revision、dataset cards、匯出程式來源副本。
-- `data/raw/huggingface/<revision>/steam.parquet`：固定版本的原始下載。
-- `data/interim/`：審核用 Parquet；保留原記錄，只作欄位命名／序列化及明確的 Google 分類子集。不是最終 cleaned data。
-- `data/interim/cleaning_candidate_v1/`：兩平台基本候選 cohort 與覆蓋每列輸入的 ledger；candidate 含 target，不可直接整表作模型特徵。
-- `data/processed/analysis_v1/`：已固定工作 cohort 的特徵、標籤／群組切分、篩選 ledger 和 PC 全量 developer edges；Git 忽略這些生成資料。
-- `reports/2026-10-05/`：五份要求的輸出及支持證據。
-- `reports/2026-10-06/cleaning_candidate_v1/`：候選清理規則影響、欄位字典、邊界記錄、manifest 及獨立核對結果。
-- `reports/2026-10-06/analysis_v1/`：文獻矩陣、資料疑點、分析 protocol、實際 split 計數與獨立驗證。
+## Model experiments and checks
 
-資料 profile 以 DuckDB 4 GB 記憶體上限、2 threads 執行，可能使用暫存磁碟；Python、Arrow 及其他物件另需記憶體。大型推薦資料的逐列去重及唯一值計算需較長時間。所有 CSV row count、缺失與基數均是全量；本次未作隨機抽樣。日後模型／抽樣預定 seed 42，但未在本次使用。
+Each experiment protocol documents its inputs, model settings, execution commands and independent verification:
 
-## 五份主要輸出
+| Experiment | Protocol | Results |
+|---|---|---|
+| Baselines and Logistic Regression | [Linear model protocol](reports/planning/model_dev_v1_protocol.md) | [Development results](reports/2026-10-07/model_dev_v1/results_notes.md) |
+| Random Forest comparison | [Tree model protocol](reports/planning/model_tree_v1_protocol.md) | [Tree results](reports/2026-10-10/model_tree_v1/results_notes.md) |
+| Observation-age sensitivity | [Age protocol](reports/planning/model_age_v1_protocol.md) | [Age results](reports/2026-10-11/model_age_v1/results_notes.md) |
+| Sample and target sensitivity | [Scope protocol](reports/planning/model_scope_v1_protocol.md) | [Scope results](reports/2026-10-13/model_scope_v1/results_notes.md) |
 
-| 檔案 | 內容 |
+Run the unit/integration suite in the model environment:
+
+```powershell
+uv run --project experiments/model_dev_v1 --locked python -B -m unittest discover -s tests -v
+```
+
+Some integration checks require the frozen local artifacts. Browser checks require Microsoft Edge and the additional test dependency:
+
+```powershell
+uv run --locked --with playwright python.exe tests/check_demo_browser.py
+```
+
+This launches a separate headless browser and stores outputs in ignored local QA storage. The commands are documented reproduction paths; a clean clone without the required data cannot complete every check.
+
+## Code and storage
+
+| Location | Responsibility |
 |---|---|
-| `dataset_inventory.csv` | 每個本地／遠端資料檔的來源、授權、版本證據、大小、雜湊及審核程度 |
-| `schema_comparison.csv` | 原始欄名、對應名稱、缺少／新增欄位、觀察型態及 HF 原生型態 |
-| `data_quality_summary.csv` | 每欄缺失、空集合、唯一值、零值、無效值及表級重複紀錄 |
-| `target_feasibility.md` | 候選 target、分布、洩漏、評估方式與未知 |
-| `dataset_feasibility_report.md` | PC／Mobile 資料建議、限制及待確認事項 |
+| `src/data/` | Source acquisition, auditing, cleaning, feature preparation and fixed partitions |
+| `src/analysis/` | Training-set descriptive analysis and verification |
+| `src/features/` | Feature preparation and predictor policy |
+| `src/models/` | Model fitting, evaluation and experiment verification |
+| `src/demo/` | Local HTTP service, historical comparison queries and browser interface |
+| `src/imports/` | CSV contracts, validation, preview and application version management |
+| `config/` | Versioned rules and experiment parameters |
+| `data/raw/` | Source metadata and original downloads |
+| `data/interim/` | Audit and candidate-cleaning tables |
+| `data/processed/` | Frozen analysis tables, fitted artifacts and predictions |
+| `data/application/` | Independent imported application versions |
+| [reports](reports/README.md) | Methods, aggregate outputs and verification evidence |
 
-`schema_comparison.csv` 的 canonical mapping 僅處理明確名稱變體，不把 owners 自動改為 sales，不把 about_the_game 與 detailed_description 視為相同欄位。集合型欄位的字串差異不等於語義差異。
-
-`data_quality_summary.csv` 中同一 table 的重複列／key 計數在每個欄位重複顯示，不應逐欄加總。未實作特定 domain rule 的欄位 invalid_count 留空。空集合與字串 null 分開，`-1` 為數值領域無效而非已證實缺失。金額幣別、時間窗口及代理指標意義仍需按照研究用途核對。
-
-## 關鍵讀取決定
-
-FronkonGames 原 CSV 表頭 `DiscountDLC count` 合併了兩個名稱。程式先用原作者 exporter 的欄位順序與本地 JSON 的所有共同 AppID、21 個純量欄位核實，再以額外欄名解讀原 CSV。若出現不一致便停止依此解讀。額外 JSON AppID 被計數保留，沒有假設兩個檔案行數相同。
-
-Google Play 採 16 個明確遊戲標籤，Sports 另存：同一 Category 欄同時可能代表體育 App 或體育遊戲，缺少 genreId 不能可靠区分。實際保守樣本為 328,513 筆，Sports 歧義記錄 47,483 筆。名稱、日期及 target 可用性的進一步排除僅計算影響，不是定案清理。
-
-來源原始說明與自動 metadata 分開保存；目前 remote 版本號不能冒充使用者當初下載的版本。所有學術主張仍需要原始來源與文獻佐證。
+Raw inputs remain separate from processed outputs. Model features exclude identifiers and outcome fields; calibration and test data remain reserved. Historical audit counts can differ from the primary analysis sample because the stages apply different eligibility rules. The [analysis protocol](reports/2026-10-06/analysis_v1/analysis_protocol.md) defines the fixed modelling cohort.

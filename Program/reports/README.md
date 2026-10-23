@@ -1,47 +1,50 @@
-# 報告與研究紀錄索引
+# Reports and research evidence
 
-更新：2026-10-23。這個索引用來區分目前入口和歷史證據；保留原本日期及路徑，避免破壞引用或固定 manifest。
+This directory contains the project reports, data definitions, experimental protocols, aggregate results and verification records. Dates identify experiment or document versions, not dataset observation dates.
 
-## 平日優先打開
+## Project reports
 
-| 檔案 | 用途 |
+| Document | Contents |
 |---|---|
-| [First Progress Report 編輯版](2026-10-23/first_progress/First_Progress_Report_2026-10-23.docx) | 2026-10-23 進度報告；同資料夾保存 FYP／Moodle PDF 及 ChatGPT 交接文件，提交前由學生審閱 |
-| [FYP_v1.docx](FYP_v1.docx) | 學生目前的報告；本輪清理不修改正文 |
-| [PROJECT_STATUS](../PROJECT_STATUS.md) | 已完成／待完成工作及未知事項 |
-| [親手執行 FYP 程式](../notebooks/README.md) | CSV、Pandas、Matplotlib、一次既有模型訓練；教學 Notebook 及啟動方法 |
-| [課堂方法與 FYP 對照](planning/course_to_fyp_review_2026-10-11.md) | 三科課程內容、來源頁碼、已用／適合新增／暫不採用的方法 |
-| [Power BI 教學交接](planning/powerbi_handoff_v1.md) | 可交給 ChatGPT 的兩頁 report 規格、已備 CSV、DAX 起點及驗收數字；PBIX 未完成 |
-| [產品範圍](planning/product_scope_v1.md) | 可更新資料、CSV 匯入與功能验收 |
-| [Chapter 1 規劃筆記](planning/chapter1_planning_notes.md) | 保留章節與寫作提示；已移除舊導師討論時間表，並非會議紀錄 |
-| [首輪模型結果](2026-10-07/model_dev_v1/results_notes.md) | 現有開發 CV 比較，並非最終 test |
-| [樹模型比較及子組診斷](2026-10-10/model_tree_v1/results_notes.md) | 20 組／60 次擬合與獨立核對；未作 calibration／test 性能評估 |
-| [年齡限制重訓](2026-10-11/model_age_v1/results_notes.md) | 28 組／84 次擬合；新舊模型在同一批合資格遊戲上比較，並非只篩選既有預測 |
-| [樣本範圍及分級敏感度](2026-10-13/model_scope_v1/results_notes.md) | 30 組／90 次擬合；Steam 價格／軟件／例外、Android 四級及合併三級，已獨立驗證 |
-| [Chapter 2 七項素材索引](planning/chapter2_evidence_map.md) | 按學生指定章節要求連結實作證據；不是提交正文 |
-| [CSV 匯入及版本驗證](2026-10-10/csv_import_v1/verification_notes.md) | 新功能證據及 Chapter 2 素材對應；操作見 [匯入指引](../CSV_IMPORT_GUIDE.md) |
-| [Chapter 1 最新核對](planning/fyp_v1_review_2026-10-08.md) | 對 10 月 8 日版本的修改清單，不代表已審閱學生之後的改稿 |
-| [References 核對](planning/chapter1_verified_references_2026-10-08.md) | 正文引用所需書目與版本說明 |
+| [Project report draft](FYP_v1.docx) | Working report manuscript |
+| [First Progress Report](2026-10-23/first_progress/First_Progress_Report_HsiehLungKwun_24221546.docx) | Editable progress report |
 
-## 需要寫 Method 或重現實驗時
+These are report files, not evidence of institutional submission.
 
-| 目錄／文件 | 用途 |
+## Data and methodology
+
+| Evidence | Purpose |
 |---|---|
-| [2026-10-05 可行性報告](2026-10-05/dataset_feasibility_report.md) | 為何選擇目前資料；各來源的品質與限制 |
-| [研究設計](2026-10-05/research_design/research_design_v1.md) | RQs 與研究設計背景；數量及已落實規則以之後的 analysis_v1 為準 |
-| [候選清理報告](2026-10-06/cleaning_candidate_v1/cleaning_report.md) | 清理步驟、資料字典、逐列 ledger 及檢查 |
-| [固定分析 protocol](2026-10-06/analysis_v1/analysis_protocol.md) | cohort、特徵、developer groups、split 與資料洩漏控制 |
-| [文獻比較](2026-10-06/analysis_v1/literature_review_notes.md) | 原先閱讀深度及比較；出版 metadata 更新見上方 References 核對 |
-| [初步 EDA](2026-10-07/train_eda_v1/eda_notes.md) | 訓練資料描述統計與缺失情况 |
-| [原型驗證](2026-10-07/demo_v1/verification_notes.md) | 介面及工程測試證據 |
-| [模型實驗規格](planning/model_dev_v1_protocol.md) | 首輪模型設定、前處理與執行方式 |
-| [樹模型實驗規格](planning/model_tree_v1_protocol.md) | 小型 forest 搜尋、原分組比較、OOF 年齡診斷與限制 |
-| [年齡重訓實驗規格](planning/model_age_v1_protocol.md) | 固定參數、保留群組、匹配評估、前處理重訓及原子寫入檢查點 |
-| [Cohort／target 實驗規格](planning/model_scope_v1_protocol.md) | 共同樣本比較、四級機率合併及 90 次固定設定擬合 |
-| [AI 協助紀錄](planning/ai_assistance_log.md) | 實際協助範圍；供學生核對披露 |
+| [Dataset feasibility](2026-10-05/dataset_feasibility_report.md) | Source comparison, quality and coverage |
+| [Target feasibility](2026-10-05/target_feasibility.md) | Outcome proxies and interpretation limits |
+| [Cleaning report](2026-10-06/cleaning_candidate_v1/cleaning_report.md) | Parsing, exclusions and quality checks |
+| [Data dictionary](2026-10-06/cleaning_candidate_v1/data_dictionary.md) | Prepared field definitions |
+| [Analysis protocol](2026-10-06/analysis_v1/analysis_protocol.md) | Primary cohorts, feature policy, developer groups and fixed partitions |
+| [Literature comparison](2026-10-06/analysis_v1/literature_review_notes.md) | Related methods and the recorded depth of source review |
+| [Reference verification](planning/chapter1_verified_references_2026-10-08.md) | Bibliographic details and publication versions |
+| [Methodology evidence map](planning/chapter2_evidence_map.md) | Connection between system components, methods and supporting artifacts |
 
-## 歷史檔案與快取的區別
+## Analysis and model results
 
-日期資料夾、JSON manifest、驗證紀錄、統計 CSV 不是暫存：它們支持研究選擇、數據核對及重現。早期 Chapter 1 review 是當日版本的檢查紀錄。原 `supervisor_discussion_2026-10-06.md` 已改名及精簡為上方 Chapter 1 規劃筆記，不再另存討論包。2026-10-23 學生確認尚未與導師討論專案；舊日期文件中「準備討論／待確認」只表示當時意向，不是會議紀錄或導師指示。歷史清理 JSON 內的舊檔名保留為當日盤點證據。
+| Experiment | Results | Protocol |
+|---|---|---|
+| Descriptive analysis | [Training EDA](2026-10-07/train_eda_v1/eda_notes.md) | [Analysis design](2026-10-06/analysis_v1/analysis_protocol.md) |
+| Baselines and linear models | [Development results](2026-10-07/model_dev_v1/results_notes.md) | [Linear protocol](planning/model_dev_v1_protocol.md) |
+| Tree comparison | [Random Forest results](2026-10-10/model_tree_v1/results_notes.md) | [Tree protocol](planning/model_tree_v1_protocol.md) |
+| Observation age | [Age sensitivity](2026-10-11/model_age_v1/results_notes.md) | [Age protocol](planning/model_age_v1_protocol.md) |
+| Cohort and outcome tiers | [Scope sensitivity](2026-10-13/model_scope_v1/results_notes.md) | [Scope protocol](planning/model_scope_v1_protocol.md) |
 
-`maintenance/` 僅保存清理／維護證據，不是 report 章節；本輪紀錄：[cleanup_2026-10-10.json](maintenance/cleanup_2026-10-10.json)。Word 的 `~$...` 和 `~WRL*.tmp` 是暫存名稱，已加入 Git 忽略規則；不要將它們當作報告版本。
+The model results use training developer-group validation. Final model selection, calibration and reserved-test evaluation are not complete. CSV summaries, manifests and verification files alongside these notes support the measurements; they are research evidence rather than temporary files.
+
+## Application and visual evidence
+
+- [Local application checks](2026-10-07/demo_v1/verification_notes.md)
+- [CSV import and version checks](2026-10-10/csv_import_v1/verification_notes.md)
+- [Executable notebook verification](2026-10-16/walkthrough_v1/verification.json)
+- [Power BI material](powerbi/), including the report file and historical-overview screenshots
+
+Power BI screenshots provide supporting descriptive views. They do not establish that all PBIX calculations or interactions have been independently validated.
+
+## Attribution and reproducibility
+
+The [AI assistance statement](planning/ai_assistance_log.md) describes contributions to implementation, analysis and documentation. Large raw data, prepared tables, fitted models and per-row predictions remain in local storage outside Git. The [program guide](../README.md) documents the required inputs and execution paths.

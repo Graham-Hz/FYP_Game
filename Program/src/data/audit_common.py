@@ -92,6 +92,10 @@ def sources():
     result = []
     for p in sorted(DATA.rglob("*.csv")):
         folder = p.parent.name
+        # This audit reproduces the original source cohort. Supplementary revenue
+        # downloads have their own audit and must not enter the frozen pipeline.
+        if folder not in FOLDERS:
+            continue
         key = {
             "Steam Games Dataset": "fronkon_local",
             "Steam Games Dataset 2025": "artem_" + p.stem,

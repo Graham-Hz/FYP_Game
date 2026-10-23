@@ -1,52 +1,88 @@
-# FYP_Game
+# A Data-Driven Decision Support System for Early-Stage Game Development Planning
 
-HKBU BCDA FYP：**A Data-Driven Decision Support System for Early-Stage Game Development Planning**（工作題目；Steam＋Android 方向）。
+A final-year project in Business Computing and Data Analytics at Hong Kong Baptist University.
 
-目前已有資料審核、清理、固定特徵與群組切分、初步分析、歷史比較原型、指定格式 CSV 匯入與版本切換。首輪模型比較（26 組／78 次擬合）、樹模型（20 組／60 次）、年齡限制重訓（28 組／84 次）及 cohort／target 敏感度（30 組／90 次）均已完成並獨立核對。最新 48 項測試通過；群組／random 對照、最終評估及相似遊戲參考仍待完成。研究筆記和開發 CV 結果不等於最後研究結論；app／Power BI 保留原三級分析。
+## Project purpose
 
-## 專案入口
+This project develops a decision-support system for independent game developers and small studios during early development planning. It uses historical game data to help users explore how attributes such as genre, platform support and monetisation relate to observed outcome groups.
 
-- [先理解資料夾、啟動方式及資料流程](Program/PROJECT_GUIDE_ZH.md)
-- [目前進度](Program/PROJECT_STATUS.md)
-- [啟動比較原型](Program/START_DEMO.cmd)／[操作指引](Program/DEMO_GUIDE.md)
-- [CSV 匯入、欄位字典及資料版本](Program/CSV_IMPORT_GUIDE.md)
-- [目前報告 FYP_v1](Program/reports/FYP_v1.docx)
-- [報告與研究紀錄索引](Program/reports/README.md)
-- [產品範圍與待辦](Program/reports/planning/product_scope_v1.md)
-- [程式環境、審核與重跑方法](Program/README.md)
-- [資料來源與本機放置方法](Dataset/README.md)
-- [候選清理報告](Program/reports/2026-10-06/cleaning_candidate_v1/cleaning_report.md)
-- [資料字典](Program/reports/2026-10-06/cleaning_candidate_v1/data_dictionary.md)
-- [首輪模型結果](Program/reports/2026-10-07/model_dev_v1/results_notes.md)
-- [樹模型比較與子組診斷](Program/reports/2026-10-10/model_tree_v1/results_notes.md)
-- [年齡限制重新訓練](Program/reports/2026-10-11/model_age_v1/results_notes.md)
-- [樣本範圍及分級敏感度](Program/reports/2026-10-13/model_scope_v1/results_notes.md)
-- [Chapter 2 七項素材索引](Program/reports/planning/chapter2_evidence_map.md)
+The intended use is to compare planning options with evidence from existing games, understand the available sample, and inspect the limits of the comparison. Steam and Android are analysed separately because their datasets, observation dates and outcome measures differ.
 
-原始 `FYP_PROJECT_CONTEXT_FOR_CODEX.md` 目前放在此 repository 外的上一層 FYP 工作目錄。這裡不建立重複副本；最新進度以 `Program/PROJECT_STATUS.md` 為準。舊入口中不存在的 `GITHUB_SETUP.md` 連結已移除。
+The system combines a reproducible Python analysis pipeline with an interactive web interface. It also supports data updates through validated CSV imports, allowing the application to analyse new compatible snapshots.
 
-## 檔案保留與清理
+## Current application
 
-| 位置 | 用途與保留原則 |
+The implemented application runs locally in a browser.
+
+| Capability | Current behaviour |
 |---|---|
-| `Dataset/` | 已解壓的原始資料、來源說明；保留，完整審核仍會讀取非主分析資料 |
-| `Program/src/`、`config/`、`tests/` | 程式、固定規則及測試；保留路徑 |
-| `Program/data/raw/` | 來源 metadata、固定版本下載及原始 hash 證據；保留 |
-| `Program/data/interim/` | 清理／診斷輸入和中間產物；仍被研究流程引用，不當成無用快取 |
-| `Program/data/processed/` | 固定分析資料、切分、模型與預測；保留，避免重訓或失去實驗證據 |
-| `Program/reports/` | 學生報告、歷史實驗證據與目前計劃；按索引閱讀 |
-| `Program/.venv/`、`Program/experiments/model_dev_v1/.venv/` | 資料／原型環境和獨立模型環境；各有用途，保留 |
-| `.git/` | GitHub Desktop 所需版本歷史；保留 |
-| `__pycache__/`、Word 暫存檔 | 自動產生，不是交付成果；Git 忽略不代表會自動從磁碟刪除 |
+| Platform selection | Separate Steam and Android analysis with platform-specific attributes and outcome tiers |
+| Planning-condition comparison | Compare two sets of conditions within a platform using sample counts, outcome distributions and sample overlap |
+| Interpretation support | Display data provenance and feedback for small or empty samples |
+| Result export | Export comparison results and their conditions as JSON |
+| CSV data updates | Validate a specified schema, preview accepted/excluded records, save an application version, activate it and return to the original research version |
 
-2026-10-10 清理：5 個下載 ZIP 的 17 個成員逐一與保留原檔核對 SHA-256 後，刪除重複 ZIP，約釋放 **1.58 GiB**。17 個原始資料檔亦與原始來源清單 hash 相符。Python 快取約 40.6 MiB 的批次刪除被工具安全規則拒絕，本輪保留；沒有刪除 `.venv`、研究檔案或 Git 歷史。詳見 [核對及清理紀錄](Program/reports/maintenance/cleanup_2026-10-10.json)。
+For example, a user can compare two Android category and monetisation configurations, inspect the historical install-tier distributions, and export the evidence behind that comparison.
 
-以後下載資料，確認解壓檔齊全且內容一致後，才移除 ZIP；不要按「日期較舊」刪除研究資料。新增實驗需有用途、版本和結果摘要，避免把臨時草稿當成永久成果。保留現有路徑，讓程式和歷史紀錄繼續可用。
+CSV imports update the descriptive application. They do not automatically retrain research models or modify the fixed research partitions. The current interface does not serve model predictions.
 
-## Repository 內容
+## Data and analysis
 
-`Program/src/`、`config/`、`tests/`、環境鎖定檔及研究報告納入版本管理。大型原始資料、生成的 Parquet 與 `.venv` 保留在本機，不會隨 clone 下載；請按照資料來源說明準備輸入。
+| Platform | Principal source snapshot | Primary analysis sample | Outcome proxy |
+|---|---|---:|---|
+| Steam | Steam Games Dataset 2025, March 2025 | 73,527 games | Tiers derived from estimated-owner intervals |
+| Android | Google Play Store Apps, June 2021 | 318,300 games | Tiers derived from installation lower bounds |
 
-在本機保留 `Dataset/` 與 `Program/` 並排的目錄結構。歷史審核檔可能記錄搬移前的本機絕對路徑，這些是當時的執行證據；目前程式從所在位置計算輸入目錄。不要把歷史 manifest 當成另一台電腦已成功執行的證明。
+The Steam primary sample uses positive observed prices and additional eligibility rules. The Android sample uses 16 clearly identified game categories and excludes ambiguous Sports records. These are defined research samples, not complete or representative measurements of either market. Source links and file requirements are documented in [Dataset](Dataset/README.md).
 
-資料集及保存的第三方來源文件各自受其原始授權約束；本專案未新增涵蓋全部內容的統一授權。
+The research pipeline covers source auditing, conservative data cleaning, row-level inclusion records, feature preparation, descriptive analysis and outcome-tier classification. Developer groups are kept separate across training, calibration and test partitions, and across the three training validation folds. Preprocessing is fitted within each training fold to reduce leakage.
+
+## Model experiments
+
+Completed development experiments compare class-prior baselines, age-only models, Logistic Regression and Random Forest. Additional experiments examine observation age, Steam sample eligibility and Android outcome-tier definitions.
+
+The following results are mean macro-F1 over three training developer-group folds. They are development cross-validation results, not final test performance.
+
+| Platform | Feature set | Prior baseline | Logistic Regression | Random Forest |
+|---|---|---:|---:|---:|
+| Steam | Planning attributes | 0.2860 | 0.4401 | 0.4458 |
+| Steam | Planning attributes and age | 0.2860 | 0.4845 | 0.5062 |
+| Android | Planning attributes | 0.2127 | 0.4758 | 0.4785 |
+| Android | Planning attributes and age | 0.2127 | 0.5322 | 0.5376 |
+
+Planning attributes are observed snapshot properties, not verified pre-release measurements. Development settings were selected using these folds, so the scores are not independent estimates of final performance. See the [comparison data](Program/reports/2026-10-10/model_tree_v1/linear_tree_comparison.csv) and [research evidence index](Program/reports/README.md).
+
+## Implementation status
+
+Data preparation, fixed partitions, descriptive analysis, development model comparisons, sensitivity checks and the local comparison/import application are implemented. The latest recorded research verification includes 48 passing unit and integration tests.
+
+The integrated overview, searchable data explorer, similar-game references, group-versus-random diagnostic, final model selection and reserved-set evaluation remain to be completed. Public deployment and user-task evaluation are also pending. Power BI files provide supporting visual material; the main application does not require Power BI.
+
+The project supports historical comparison. Owner intervals and install lower bounds do not measure revenue or profit, and observed associations do not establish causal effects or guarantee future commercial success.
+
+## Run the application
+
+With `uv` installed and the required local analysis files available, open `Program/START_DEMO.cmd` on Windows. Alternatively, run from `Program/`:
+
+```powershell
+uv sync --locked
+uv run --locked python src/demo/server.py --open
+```
+
+The application opens at `http://127.0.0.1:8765/`. Large datasets and generated model artifacts are excluded from Git, so cloning this repository alone is insufficient to run the complete application. See the [setup and reproduction guide](Program/README.md) and [demonstration guide](Program/DEMO_GUIDE.md).
+
+## Repository structure
+
+| Location | Contents |
+|---|---|
+| [Dataset](Dataset/README.md) | Dataset sources and expected local input locations |
+| [Program](Program/README.md) | Environment setup and pipeline execution |
+| `Program/src/` | Data processing, analysis, modelling, comparison service and CSV import code |
+| `Program/config/` | Versioned analysis rules, feature policy and experiment settings |
+| `Program/tests/` | Automated checks for data, models and application behaviour |
+| [Program/reports](Program/reports/README.md) | Reports, aggregate results, protocols and verification evidence |
+| [Program/notebooks](Program/notebooks/README.md) | An executable example of data exploration and model reproduction |
+
+## Attribution
+
+ChatGPT and Codex assisted with planning, implementation, analysis workflows, verification and documentation, including report drafting. The [AI assistance statement](Program/reports/planning/ai_assistance_log.md) describes this contribution. Third-party datasets and source materials remain subject to their original licences.
