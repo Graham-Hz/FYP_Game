@@ -1,6 +1,6 @@
 # FYP_Game
 
-HKBU BCDA FYP：**A Data-Driven Decision Support System for Early-Stage Game Development Planning**（工作題目；Steam＋Android 方向仍待導師確認）。
+HKBU BCDA FYP：**A Data-Driven Decision Support System for Early-Stage Game Development Planning**（工作題目；Steam＋Android 方向）。
 
 目前已有資料審核、清理、固定特徵與群組切分、初步分析、歷史比較原型、指定格式 CSV 匯入與版本切換。首輪模型比較（26 組／78 次擬合）、樹模型（20 組／60 次）、年齡限制重訓（28 組／84 次）及 cohort／target 敏感度（30 組／90 次）均已完成並獨立核對。最新 48 項測試通過；群組／random 對照、最終評估及相似遊戲參考仍待完成。研究筆記和開發 CV 結果不等於最後研究結論；app／Power BI 保留原三級分析。
 
