@@ -1,4 +1,4 @@
-# A Data-Driven Decision Support System for Early-Stage Game Development Planning
+# A Data-Driven Decision Support for Game Development Planning
 
 A final-year project in Business Computing and Data Analytics at Hong Kong Baptist University.
 

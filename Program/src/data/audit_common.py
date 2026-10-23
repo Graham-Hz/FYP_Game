@@ -88,9 +88,19 @@ def normalize_view(conn, name, source, header):
         raise ValueError("Canonical column name collision")
     conn.execute(f"CREATE OR REPLACE VIEW {q(name)} AS SELECT " + ",".join(f"{q(x)} AS {q(canonical(x))}" for x in header) + " FROM " + source)
 
+def original_source_files():
+    """Keep the historical audit scoped to its explicitly registered folders."""
+    return sorted(
+        p for folder in FOLDERS for p in (DATA / folder).glob("*")
+        if p.is_file() and p.suffix.lower() in {".csv", ".json", ".zip"}
+    )
+
+
 def sources():
     result = []
-    for p in sorted(DATA.rglob("*.csv")):
+    for p in original_source_files():
+        if p.suffix.lower() != ".csv":
+            continue
         folder = p.parent.name
         # This audit reproduces the original source cohort. Supplementary revenue
         # downloads have their own audit and must not enter the frozen pipeline.

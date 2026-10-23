@@ -52,8 +52,10 @@ class RevenueAuditTests(unittest.TestCase):
             (base / "sources_lock.json").write_text(json.dumps({"hf": {"FronkonGames/steam-games-dataset": {"revision": "pinned", "download": {"path": "mock.parquet"}}}}))
             with patch.object(audit_common, "DATA", base), patch.object(audit_common, "META", base):
                 result = audit_common.sources()
+                inventory = audit_common.original_source_files()
             self.assertIn("artem_sample", [r["key"] for r in result])
             self.assertEqual(len(result), 3)  # one legacy CSV, pinned HF, JSON
+            self.assertEqual(inventory, [base / "Steam Games Dataset 2025/sample.csv"])
 
 
 if __name__ == "__main__":

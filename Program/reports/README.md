@@ -7,7 +7,7 @@ This directory contains the project reports, data definitions, experimental prot
 | Document | Contents |
 |---|---|
 | [Project report draft](FYP_v1.docx) | Working report manuscript |
-| [First Progress Report](2026-10-23/first_progress/First_Progress_Report_HsiehLungKwun_24221546.docx) | Editable progress report |
+| [First Progress Report](2026-10-23/first_progress/First_Progress_Report_HsiehLungKwun_24221546_Revised.docx) | Revised report including supplementary revenue analysis and comparable-game retrieval; the student-edited source is retained alongside it |
 
 These are report files, not evidence of institutional submission.
 

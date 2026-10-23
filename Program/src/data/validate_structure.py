@@ -8,7 +8,7 @@ import zipfile
 import ijson
 import pyarrow as pa
 import pyarrow.parquet as pq
-from audit_common import DATA, INTERIM, META, REPORTS, canonical, save_json, sha256
+from audit_common import DATA, INTERIM, META, REPORTS, canonical, original_source_files, save_json, sha256
 
 def main():
     import argparse
@@ -17,7 +17,7 @@ def main():
     REPORTS.mkdir(parents=True, exist_ok=True)
     INTERIM.mkdir(parents=True, exist_ok=True)
     facts = {}
-    for p in sorted(DATA.rglob("*")):
+    for p in original_source_files():
         if args.skip_inventory:
             break
         if not p.is_file() or p.suffix.lower() not in {".csv", ".json", ".zip"}:
