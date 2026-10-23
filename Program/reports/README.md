@@ -1,17 +1,19 @@
 # 報告與研究紀錄索引
 
-更新：2026-10-16。這個索引用來區分目前入口和歷史證據；保留原本日期及路徑，避免破壞引用或固定 manifest。
+更新：2026-10-23。這個索引用來區分目前入口和歷史證據；保留原本日期及路徑，避免破壞引用或固定 manifest。
 
 ## 平日優先打開
 
 | 檔案 | 用途 |
 |---|---|
+| [First Progress Report 編輯版](2026-10-23/first_progress/First_Progress_Report_2026-10-23.docx) | 2026-10-23 進度報告；同資料夾保存 FYP／Moodle PDF 及 ChatGPT 交接文件，提交前由學生審閱 |
 | [FYP_v1.docx](FYP_v1.docx) | 學生目前的報告；本輪清理不修改正文 |
 | [PROJECT_STATUS](../PROJECT_STATUS.md) | 已完成／待完成工作及未知事項 |
 | [親手執行 FYP 程式](../notebooks/README.md) | CSV、Pandas、Matplotlib、一次既有模型訓練；教學 Notebook 及啟動方法 |
 | [課堂方法與 FYP 對照](planning/course_to_fyp_review_2026-10-11.md) | 三科課程內容、來源頁碼、已用／適合新增／暫不採用的方法 |
 | [Power BI 教學交接](planning/powerbi_handoff_v1.md) | 可交給 ChatGPT 的兩頁 report 規格、已備 CSV、DAX 起點及驗收數字；PBIX 未完成 |
 | [產品範圍](planning/product_scope_v1.md) | 可更新資料、CSV 匯入與功能验收 |
+| [Chapter 1 規劃筆記](planning/chapter1_planning_notes.md) | 保留章節與寫作提示；已移除舊導師討論時間表，並非會議紀錄 |
 | [首輪模型結果](2026-10-07/model_dev_v1/results_notes.md) | 現有開發 CV 比較，並非最終 test |
 | [樹模型比較及子組診斷](2026-10-10/model_tree_v1/results_notes.md) | 20 組／60 次擬合與獨立核對；未作 calibration／test 性能評估 |
 | [年齡限制重訓](2026-10-11/model_age_v1/results_notes.md) | 28 組／84 次擬合；新舊模型在同一批合資格遊戲上比較，並非只篩選既有預測 |
@@ -40,6 +42,6 @@
 
 ## 歷史檔案與快取的區別
 
-日期資料夾、JSON manifest、驗證紀錄、統計 CSV 不是暫存：它們支持研究選擇、數據核對及重現。早期的 Chapter 1 review 和導師討論工作紙也保留作決策紀錄，閱讀時以上方最新入口為先。
+日期資料夾、JSON manifest、驗證紀錄、統計 CSV 不是暫存：它們支持研究選擇、數據核對及重現。早期 Chapter 1 review 是當日版本的檢查紀錄。原 `supervisor_discussion_2026-10-06.md` 已改名及精簡為上方 Chapter 1 規劃筆記，不再另存討論包。2026-10-23 學生確認尚未與導師討論專案；舊日期文件中「準備討論／待確認」只表示當時意向，不是會議紀錄或導師指示。歷史清理 JSON 內的舊檔名保留為當日盤點證據。
 
 `maintenance/` 僅保存清理／維護證據，不是 report 章節；本輪紀錄：[cleanup_2026-10-10.json](maintenance/cleanup_2026-10-10.json)。Word 的 `~$...` 和 `~WRL*.tmp` 是暫存名稱，已加入 Git 忽略規則；不要將它們當作報告版本。

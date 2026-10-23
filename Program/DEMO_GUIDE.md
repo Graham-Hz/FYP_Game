@@ -54,4 +54,4 @@ uv run --locked --with playwright python.exe tests/check_demo_browser.py
 
 ## 報告工作
 
-Chapter 1 的討論結構、Handbook 對照及兩星期計劃見 [寫作工作紙](reports/planning/supervisor_discussion_2026-10-06.md)。此指引及原型標籤是工作材料，不是可直接提交的報告正文。Handbook Section 11 的原文為 “Reports that include text generated from a large-scale language model (LLM) are prohibited.” 因此由學生撰寫正文，我們用工作紙討論，再協助檢查及潤飾。AI 協助程式、資料處理、圖表及文字編輯亦應按要求披露；紀錄見 [AI assistance log](reports/planning/ai_assistance_log.md)。
+Chapter 1 結構及寫作提示見 [Chapter 1 規劃筆記](reports/planning/chapter1_planning_notes.md)。2026-10-23 學生確認尚未與導師討論專案範圍及方法；這些筆記並非會議紀錄，舊兩星期匯報安排已移除。進度報告及各項研究證據見 [報告索引](reports/README.md)。最新 Handbook 的一般 AI 限制、學生另行表示的個別放寬，以及實際程式／分析／報告撰寫協助，分別記錄於 [AI assistance log](reports/planning/ai_assistance_log.md)；不把學生確認方向寫成導師批准。
