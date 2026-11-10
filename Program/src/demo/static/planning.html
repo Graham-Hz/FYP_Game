@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · 開發資源規劃</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/planning.css"><script src="/planning.js" defer></script></head>
+<body>
+<header><a class="brand" href="/">◈ GameScope <span>Game planning research</span></a><span class="badge">開發案例 · 預算情境</span></header>
+<main>
+<nav class="module-nav" aria-label="分析頁面"><a href="/">歷史分布比較</a> · <a href="/revenue">Steam 營收分析</a> · <a href="/planning" aria-current="page">開發資源規劃</a></nav>
+<section class="intro"><p class="eyebrow">DEVELOPMENT PLANNING</p><h1>把構想，放進時間與預算之內。</h1><p>先查看開發者公開的投入案例，再用自己的假設比較預算、延期與回本要求。</p></section>
+<nav class="section-links" aria-label="本頁內容"><a href="#case-library">1. 查看開發案例</a><a href="#budget-section">2. 計算自己的計劃</a></nav>
+
+<section id="case-library" class="panel">
+ <div class="result-heading"><h2>開發案例參考庫</h2><span id="case-count" class="fine"></span></div>
+ <p>這批資料來自開發者或工作室的公開自述，按資料可取得性選取；不是市場隨機樣本，也未經獨立財務審計。每項數值保留其成本範圍、時期及來源。</p>
+ <p class="sample-warning">原定預算、實際支出、募資額及未付薪酬估值各有不同。案例不計算跨遊戲平均成本；金額未作匯率或通脹調整。</p>
+ <div class="case-filters"><label>搜尋作品或案例說明<input id="case-search" type="search" placeholder="例如：TOEM、part-time" maxlength="100"></label><label>案例階段<select id="case-stage"><option value="">全部</option><option value="released">已發行</option><option value="pitch_prototype">提案／原型</option><option value="ongoing">持續開發</option></select></label><label>平台範圍<select id="case-platform"><option value="">全部</option><option value="PC">包含 PC</option><option value="Android">包含 Android</option></select></label></div>
+ <p id="case-status" role="status" aria-live="polite">正在讀取案例…</p>
+ <div id="case-list"></div>
+ <div class="downloads" id="case-downloads" hidden><span>下載完整資料：</span><a href="/api/planning/csv/cases" download="development_cases.csv">案例 CSV</a><a href="/api/planning/csv/observations" download="development_observations.csv">數值與定義 CSV</a><a href="/api/planning/csv/sources" download="development_sources.csv">來源 CSV</a></div>
+</section>
+
+<section id="budget-section" class="panel">
+ <div class="result-heading"><h2>你的預算情境</h2><button type="button" class="outline" id="load-example">載入假設示例</button></div>
+ <p>輸入自己的成本假設。案例資料不會自動填入這個計算器；示例亦不代表建議薪酬或市場報價。</p>
+ <form id="budget-form">
+  <div class="budget-grid"><label>統一計劃幣別<select id="budget-currency"><option>HKD</option><option>USD</option><option>EUR</option><option>GBP</option><option>CAD</option><option>AUD</option><option>JPY</option><option>SEK</option></select></label><label>預計開發月數<input id="budget-months" type="number" min="1" max="120" step="1" required></label></div>
+  <h3>人力投入</h3>
+  <p class="fine">每組填寫全職標準下「每人每月」的現金支出及額外未付勞動估值，系統再乘人數與投入比例。未付估值只填沒有包含在現金支出的部分；不計估值時明確填 0。請勿在其他開支重複計入同一筆薪酬。</p>
+  <div id="team-rows"></div>
+  <button type="button" id="add-team" class="outline">＋ 加入人員／職能組</button>
+  <h3>其他投入</h3>
+  <div class="budget-grid">
+   <label>每月其他現金支出<input id="monthly_overhead" type="number" min="0" max="1000000000" step="0.01" required><small>例如辦公室、軟件、伺服器；不含上方人力</small></label>
+   <label>一次性外包／素材費<input id="outsourcing" type="number" min="0" max="1000000000" step="0.01" required></label>
+   <label>一次性行銷預算<input id="marketing" type="number" min="0" max="1000000000" step="0.01" required></label>
+   <label>其他一次性現金支出<input id="other_one_off" type="number" min="0" max="1000000000" step="0.01" required><small>例如設備、上架、法律服務</small></label>
+   <label>現金成本備用金 (%)<input id="contingency_percent" type="number" min="0" max="100" step="0.1" required></label>
+   <label>可投入資金（選填）<input id="available_funds" type="number" min="0" max="1000000000" step="0.01"><small>留空則不計算資金差額及可支持月數</small></label>
+   <label>每份銷售淨貢獻（選填）<input id="net_unit_contribution" type="number" min="0" max="1000000000" step="0.01"><small>須扣除折扣、退款、平台／發行商分成、適用稅項及每份可變成本；不是標價。只有正值才可計算回本份數。廣告／IAP 模式可留空。</small></label>
+  </div>
+  <p class="fine">所有金額均使用上方幣別，切換幣別不會換算數值。不適用的必要支出請填 0；漏填不會自動當作零。</p>
+  <div class="form-actions"><button class="primary" type="submit" id="calculate-budget">計算預算與延期情境</button><button type="reset" class="outline">清空</button></div>
+ </form>
+ <p id="budget-status" role="status" aria-live="polite">等待輸入計劃。</p>
+</section>
+
+<section id="budget-results" hidden>
+ <div class="result-heading"><h2>計劃的資源要求</h2><button type="button" class="outline" id="budget-export">匯出假設及結果 JSON ↓</button></div>
+ <p id="budget-context"></p>
+ <div id="budget-metrics" class="budget-metrics"></div>
+ <div class="scenario-grid">
+  <section class="panel"><h3>現金預算組成</h3><div id="cost-chart" role="img" aria-label="現金預算各項金額，下方表格提供相同數值"></div><div id="cost-table" class="table-scroll" tabindex="0" aria-label="成本組成表"></div></section>
+  <section class="panel"><h3>如果工期延長</h3><p class="fine">保持每月人力、開支及一次性投入不變；備用金按新的現金成本計算。</p><div id="delay-chart" role="img" aria-label="原定工期及延期情境預算，下方表格提供相同數值"></div><div id="delay-table" class="table-scroll" tabindex="0" aria-label="延期情境比較表"></div></section>
+ </div>
+ <section class="panel"><h3>資金與回本要求</h3><div id="requirements"></div><p class="sample-warning">回本份數是按輸入假設計算的要求，不是預測銷量或成功機率。資金可支持月數假設一次性支出及全額備用金先行預留、之後每月支出固定，而且沒有收入流入。</p><p class="fine">未付勞動估值獨立列出，不影響現金支出或現金可支持月數。結果不含未輸入的維護、移植、個人生活費等項目；需要時請在相應成本欄位納入。金額顯示四捨五入至兩位小數。</p></section>
+</section>
+<footer><span>GameScope · Development planning pilot</span><span>來源案例與使用者情境分開保存</span></footer>
+</main>
+</body></html>

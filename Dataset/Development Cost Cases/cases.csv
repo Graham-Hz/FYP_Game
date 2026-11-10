@@ -1,0 +1,11 @@
+case_id,game,source_id,platform_scope,stage_at_source,context
+eastshade,Eastshade,S01,PC;consoles,released,Living-cost funding; team composition changed during development.
+shipwreck,Shipwreck,S02,PC;consoles,released,Developer retained contract work alongside production.
+fomography,FOMOGRAPHY,S03,PC;consoles,released,Solo project alongside employment; publisher services also involved.
+toem,TOEM,S04,PC;consoles,released,Different production/prototype durations; exchange-rate exposure discussed.
+hang_line,Hang Line,S05,Android;iOS,released,Mainly solo until soft launch; publisher joined afterwards. Total monetary cost not disclosed.
+fall_of_lazarus,The Fall of Lazarus,S06,PC,released,Source contains conflicting headline/body cost totals. Retain both without reconciliation.
+immortal_darkness,Immortal Darkness: Curse of The Pale King,S07,PC,released,Two main developers working mostly part-time; contractors helped near completion.
+shovel_knight,Shovel Knight,S08,PC;consoles,released,"Original plan included stretch goals; staffing, scope and pay were subsequently changed."
+nightshift_galaxy,Nightshift Galaxy,S09,PC;consoles (planned),pitch_prototype,Pitch-stage spending; larger studio funding plan was abandoned.
+monsters_memories,Monsters & Memories,S10,not recorded,ongoing,Volunteer development. Disclosed cash does not value volunteered labour; not a completed lifetime cost.

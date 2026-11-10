@@ -37,6 +37,10 @@ The mobile file contains 104 titles. Conservative name matching finds 50 with on
 
 ## Restore local inputs
 
+The [development fee reference catalogue](Development%20Fee%20References/README.md) records selected official software plans, distribution fees and equipment quotes with currencies, billing conditions and source evidence. Its CSVs and Excel review copy are included in Git. It is a separate budgeting reference and is not yet connected to the application or modelling pipeline.
+
+The [development cost and resource pilot](Development%20Cost%20Cases/README.md) contains ten manually curated developer cases, their observation definitions and source register. These small CSV files are included in Git and support the separate `/planning` page. They do not enter the frozen modelling cohort or automatically join to the revenue data.
+
 Keep the folder names and original filenames above, with `Dataset/` beside `Program/`. Check the [source file inventory](../Program/data/raw/existing_local_sources.json) for recorded sizes and SHA-256 hashes, and the [dataset inventory](../Program/reports/2026-10-05/dataset_inventory.csv) for provenance and audit coverage.
 
 The original Kaggle download versions are not fully established. A current download may differ from the recorded files and should not be treated as the same research snapshot. Follow the [pipeline guide](../Program/README.md) after restoring compatible inputs.

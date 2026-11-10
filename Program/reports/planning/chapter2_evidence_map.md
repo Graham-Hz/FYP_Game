@@ -12,6 +12,9 @@ This map connects the project methodology to its implementation and verification
 | Descriptive analysis | Training-only distributions, missingness and platform-specific attribute/outcome comparisons | [EDA](../2026-10-07/train_eda_v1/eda_notes.md) |
 | Model analysis | Fold-fitted preprocessing, simple baselines, Logistic Regression and Random Forest using developer-group CV | [Linear protocol](model_dev_v1_protocol.md), [tree protocol](model_tree_v1_protocol.md) |
 | Sensitivity | Fixed-setting refits for observation age, cohort eligibility and outcome-tier definitions | [Age protocol](model_age_v1_protocol.md), [scope protocol](model_scope_v1_protocol.md) |
+| Resource data acquisition | Ten manually curated public developer cases; per-observation definitions, source locations, currency uncertainty and coverage dates | [Cost-case method and source register](../../../Dataset/Development%20Cost%20Cases/README.md) |
+| Resource analysis | Transparent user-input cash/unpaid-labour budgeting, fixed-rate delay scenarios and conditional break-even requirements | [Calculation method](../../README.md#development-cost-cases-and-budget-scenarios), [implementation](../../src/demo/planning.py), [tests](../../tests/test_development_planning.py) |
+| Resource visualisation and evaluation | Source-linked expandable tables, budget composition and delay comparison; formative user tasks prepared but not conducted | [Application and user tasks](../../DEMO_GUIDE.md#development-planning), [browser checks](../../tests/check_planning_browser.py) |
 | Visualisation | Historical A/B distributions in the application, supporting Power BI views and executable notebook figures | [Power BI material](../powerbi/), [notebook](../../notebooks/README.md) |
 
 ## Evaluation boundaries

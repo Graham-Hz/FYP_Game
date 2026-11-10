@@ -1,0 +1,38 @@
+observation_id,case_id,metric,value,qualifier,unit,currency,currency_basis,scope,period,source_id,locator,notes
+O001,eastshade,reported_budget,200000,approx,money,USD,article_context,Initial budget; mainly living costs,development 2013-2019,S01,Quick Facts,Currency follows nearby USD disclosure; not a normal hiring budget.
+O002,eastshade,cash_cost,60000,approx,money,USD,article_context,Additional porting and patching after launch,post-launch through source date,S01,Quick Facts,
+O003,eastshade,economic_estimate,700000,approx,money,USD,article_context,Author hypothetical economic valuation,development,S01,Quick Facts footnote,Not actual cash expenditure.
+O004,eastshade,team_size,2,reported,people,,not_applicable,Full-time staff identified at retrospective; contractors additional,source retrospective,S01,Revenue,Not a constant team size across the whole project.
+O005,shipwreck,cash_cost,5000,approx,money,USD,article_context,Author expenditure excluding own time and opportunity cost,through release; retrospective four months later,S02,Finances,USD appears in the same financial section.
+O006,shipwreck,development_duration,12,greater_than,months,,not_applicable,Prototype to shipped game,through release,S02,Design/Production > What went well,Source says over one year; no exact duration.
+O007,fomography,reported_budget,0,reported,money,,unspecified,Author zero-budget description; complete cost scope unreported,project through retrospective,S03,Opening paragraph,Not zero labour cost or a verified whole-product cash total.
+O008,fomography,development_duration,78,approx,months,,not_applicable,Project involvement; includes part-time work,2019 through 2025 retrospective,S03,Opening paragraph,Converted from 6.5 years; not 78 full-time person-months.
+O009,toem,reported_budget,183000,reported,money,USD,article_context,Headline budget; actual-versus-planned basis not fully reconciled,through 2021 release,S04,Opening project facts,USD context in Finances; not labelled audited actual spend.
+O010,toem,planned_budget,1500000,reported,money,SEK,explicit,Original budget denominated in SEK,planning,S04,Wrong 5: Finances,Separate from headline budget and publisher funding.
+O011,toem,funding_received,150000,reported,money,USD,explicit,Humble funding described in financing discussion,funding agreement,S04,Wrong 5: Finances,
+O012,toem,development_duration,18,approx,months,,not_applicable,Production duration excluding earliest sketch and prototypes,through 2021 release,S04,Opening project facts,1.5 years multiplied by 12.
+O013,toem,development_duration,48,approx,months,,not_applicable,Including first sketch and prototypes,through 2021 release,S04,Opening project facts,Four years multiplied by 12; not an additional 48 months.
+O014,toem,team_size,2,reported,people,,not_applicable,Headline developer count; not total external contributors,project retrospective,S04,Opening project facts,
+O015,hang_line,development_duration,18,approx,months,,not_applicable,Start to soft launch,development,S05,Development Timeline,1.5 years multiplied by 12.
+O016,hang_line,development_duration,30,approx,months,,not_applicable,Start to final release,development,S05,Development Timeline,2.5 years multiplied by 12; includes soft-launch phase.
+O017,hang_line,logged_hours,2571,reported,hours,,not_applicable,Author tracked work until soft launch only,pre-soft-launch,S05,Production Breakdown,Some tasks not logged; later publisher phase not tracked.
+O018,hang_line,team_size,1,reported,people,,not_applicable,Main developer before soft launch; friends helped with audio,pre-soft-launch,S05,Development team,
+O019,fall_of_lazarus,cash_cost,65075,reported,money,,unspecified,Body explicitly paid expenditure,through release,S06,EARTH ABIDES,Period used as thousands separator in source. Currency only shown as $.
+O020,fall_of_lazarus,economic_estimate,166717,reported,money,,unspecified,Body virtual budget including unpaid owner salaries,through release,S06,EARTH ABIDES,Conflicts with headline total; not cash paid.
+O021,fall_of_lazarus,reported_budget,162972,reported,money,,unspecified,Headline cost claim; basis unresolved,through release,S06,Article subtitle,Conflicts with body 166717. Do not silently select a total.
+O022,fall_of_lazarus,development_duration,20,reported,months,,not_applicable,Development elapsed time,through October 2017 release,S06,EARTH ABIDES,
+O023,immortal_darkness,reported_cost,35000,approx,money,,unspecified,Final cost stated; own-labour and marketing coverage unclear,through October 2018 release,S07,Paragraph beginning Financially,Currency only shown as $; not assumed USD.
+O024,immortal_darkness,development_duration,30,approx,months,,not_applicable,"Start to finish, mostly part-time",through October 2018 release,S07,Opening development account,2.5 years multiplied by 12.
+O025,immortal_darkness,team_size,2,reported,people,,not_applicable,Main developers; contractors additional,development,S07,Opening development account,
+O026,shovel_knight,funding_received,328682,reported,money,,unspecified,Crowdfunding plus PayPal before deductions,2013 campaign,S08,It all began with a Kickstart!,Not development expenditure; taxes and fees not deducted.
+O027,shovel_knight,economic_estimate,1440000,reported,money,,unspecified,Original two-year plan valued with loaded monthly employment costs,original plan,S08,Cost of development,Not actual spend. Currency only shown as $.
+O028,shovel_knight,planned_effort,144,approx,person_months,,not_applicable,Original plan including stretch goals,original plan,S08,Cost of development,Not measured delivered effort.
+O029,nightshift_galaxy,cash_cost,10000,approx,money,,unspecified,Total out-of-pocket demo/deck and pitching expenses; excludes opportunity cost,through pitching in 2024,S09,Pitching at Conferences,Not full-game production cost; includes the demo assets below.
+O030,nightshift_galaxy,cash_cost,5000,approx,money,,unspecified,"Demo/deck models, illustration, sound and music",demo and pitch,S09,Creating the Demo,Subset of total 10000; do not add twice. Discounted contributor rates.
+O031,nightshift_galaxy,funding_request,3000000,reported,money,,unspecified,Original proposed production funding,original pitch,S09,Creating the Deck,Not funding secured or money spent.
+O032,nightshift_galaxy,development_duration,3,reported,months,,not_applicable,Self-contained demo preparation,demo,S09,Creating the Demo,Not whole-game duration.
+O033,monsters_memories,cash_cost,142000,less_than,money,,unspecified,Out-of-pocket cumulative development expenditure,2020-2025,S10,Development Costs to Date,"Source says just under threshold, not exactly 142000. Page dated by coverage, publication date absent."
+O034,monsters_memories,cash_cost,13835,reported,money,,unspecified,Accounting and legal component,2020-2025,S10,Costs listed > Accounting and Legal,"Component, not additional to total."
+O035,monsters_memories,cash_cost,71869.84,reported,money,,unspecified,Contractor component,2020-2025,S10,Costs listed > Contractors,"Component, not additional to total."
+O036,monsters_memories,cash_cost,18875.28,reported,money,,unspecified,Server component,2020-2025,S10,Costs listed > Servers,"Component, not additional to total."
+O037,monsters_memories,cash_cost,37302.64,reported,money,,unspecified,Software and cloud component,2020-2025,S10,Costs listed > Software & Cloud Services,"Component, not additional to total."

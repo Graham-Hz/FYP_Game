@@ -42,6 +42,24 @@ Prepare the revenue snapshot using the [program guide](README.md#audit-supplemen
 
 Genre metadata matches 1,406 Steam IDs, with usable genre lists for 1,401. Genres can overlap and were observed later than the revenue snapshot. The provider's publisher classes partly reflect past revenue and should not be presented as independent causal explanations of revenue or verified studio size. The page shows these interpretation limits and exports its source hashes and filters with the results.
 
+## Development planning
+
+Open **開發資源規劃** in the navigation or visit `/planning`. Search the developer case library, filter a production stage/platform, expand a case and follow its original source. Costs, budget plans, funding and labour estimates are explicitly separated. Download the three linked CSV tables for case context, observations and sources. The collection method and field definitions are in [Development Cost Cases](../Dataset/Development%20Cost%20Cases/README.md).
+
+In the budget section, enter a plan or click **載入假設示例**. The example is artificial, not market guidance: its 12-month cash budget is HKD 176,000; adding unpaid labour gives HKD 320,000. At an assumed HKD 40 net contribution per copy, cash break-even requires 4,400 copies. The three-month delay scenario requires HKD 209,000 cash. Edit any assumption, recalculate and export the resulting JSON, which includes the full inputs and calculation assumptions.
+
+Optional funds or net-contribution inputs can be blank; dependent outputs then remain unavailable. Zero monetary spending is valid when explicitly entered, but it does not erase unpaid labour. All monetary inputs must use the selected currency. There is no conversion when switching currencies. Cases are reviewed local CSVs, separate from the main snapshot importer, and are not used to train models.
+
+### Decision-usefulness checks still to conduct with users
+
+Automated checks establish software behaviour, not user benefit. Recruit a small initial group of people with relevant game-development experience (for example, 3–5 participants) for formative feedback; this is not a representative efficacy study. Ask each participant to complete these tasks without supplying the answer in advance:
+
+1. Find a relevant case and explain which costs or production phases it includes and excludes. Check that a funding request or zero-budget claim is not mistaken for actual total cost.
+2. Enter a resource plan, inspect a three-month delay and identify the funding shortfall or remaining capacity. Record the assumptions they would revise and why.
+3. Explain what the break-even requirement says, and what it cannot say about likely sales. Export enough evidence for another person to reproduce their calculation.
+
+Record anonymous participant background, task completion, time, interpretation errors, needed assistance and requested changes. Review misinterpretations before expanding the dataset or making recommendations. These sessions have **not** been conducted; no participant results or usability claims are recorded here.
+
 ## Implementation and verification
 
 The service uses the Python standard-library HTTP server, DuckDB and PyArrow. The frontend uses HTML, CSS and JavaScript without a CDN dependency. Analysis input hashes are checked at startup; imported versions have their own version files and validation. CSV updates do not alter research splits or retrain models.

@@ -20,6 +20,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from imports.contracts import MAX_BYTES, template, validate
 from imports.repository import DEFAULT_VERSION, SnapshotRepository
 from revenue import RevenueStore
+from planning import PlanningStore, budget
 STATIC = Path(__file__).parent / "static"
 MANIFEST = "reports/2026-10-06/analysis_v1/manifest.json"
 EXPECTED_MANIFEST = "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6"
@@ -269,6 +270,10 @@ def make_server(store, port=8765):
         revenue_store = RevenueStore(store.root)
     except (OSError, ValueError, KeyError):
         revenue_store = None
+    try:
+        planning_store = PlanningStore(store.root)
+    except (OSError, ValueError, KeyError):
+        planning_store = None
     class Handler(BaseHTTPRequestHandler):
         def respond(self, status, data, content_type="application/json; charset=utf-8"):
             body = json.dumps(data, ensure_ascii=False, allow_nan=False).encode("utf-8") if isinstance(data, dict) else data
@@ -286,6 +291,17 @@ def make_server(store, port=8765):
                 self.respond(403, {"error": "Use the local demo address."})
                 return
             path = urlsplit(self.path).path
+            if path == '/api/planning/cases' or path.startswith('/api/planning/csv/'):
+                if planning_store is None:
+                    self.respond(503, {'error': '開發案例資料未通過檢查；請核對 CSV 後重新啟動。'})
+                    return
+                if path == '/api/planning/cases':
+                    self.respond(200, planning_store.data)
+                elif path.removeprefix('/api/planning/csv/') in planning_store.raw:
+                    self.respond(200, planning_store.raw[path.removeprefix('/api/planning/csv/')], 'text/csv; charset=utf-8')
+                else:
+                    self.respond(404, {'error': 'Not found'})
+                return
             if path == "/api/revenue":
                 if revenue_store is None:
                     self.respond(503, {"error": "營收分析資料尚未準備好或版本核對失敗。請先執行 build_revenue_analysis.py，再重新啟動網站。"})
@@ -310,6 +326,9 @@ def make_server(store, port=8765):
                     self.respond(400, {"error": str(exc)})
                 return
             files = {"/": ("index.html", "text/html; charset=utf-8"),
+                     "/planning": ("planning.html", "text/html; charset=utf-8"),
+                     "/planning.js": ("planning.js", "text/javascript; charset=utf-8"),
+                     "/planning.css": ("planning.css", "text/css; charset=utf-8"),
                      "/revenue": ("revenue.html", "text/html; charset=utf-8"),
                      "/revenue.js": ("revenue.js", "text/javascript; charset=utf-8"),
                      "/revenue.css": ("revenue.css", "text/css; charset=utf-8"),
@@ -322,14 +341,14 @@ def make_server(store, port=8765):
             self.respond(200, (STATIC / file).read_bytes(), mime)
 
         def do_POST(self):
-            if self.path not in {"/api/compare", "/api/references", "/api/import/preview", "/api/import/commit", "/api/activate"}:
+            if self.path not in {"/api/compare", "/api/references", "/api/planning/budget", "/api/import/preview", "/api/import/commit", "/api/activate"}:
                 self.respond(404, {"error": "Not found"})
                 return
             origin = self.headers.get("Origin")
             if not self.local_host() or (origin and origin != f"http://127.0.0.1:{self.server.server_port}"):
                 self.respond(403, {"error": "Use the local demo page."})
                 return
-            mutation = self.path not in {"/api/compare", "/api/references"}
+            mutation = self.path not in {"/api/compare", "/api/references", "/api/planning/budget"}
             if mutation and (self.headers.get("X-GameScope-Token") != mutation_token or self.headers.get_content_type() != "application/json"):
                 self.respond(403, {"error": "請從本機頁面操作資料版本。"})
                 return
@@ -342,7 +361,9 @@ def make_server(store, port=8765):
                 if size < 1 or size > (MAX_BYTES * 2 + 8192 if self.path == "/api/import/preview" else 8192):
                     raise ValueError("Invalid request size.")
                 payload = json.loads(self.rfile.read(size))
-                if self.path == "/api/references":
+                if self.path == '/api/planning/budget':
+                    result = budget(payload)
+                elif self.path == "/api/references":
                     if revenue_store is None:
                         self.respond(503, {"error": "參考作品資料尚未準備好；請建立營收分析資料後重新啟動。"})
                         return

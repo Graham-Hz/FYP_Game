@@ -91,6 +91,23 @@ uv run --locked --with playwright python.exe tests/check_revenue_browser.py
 
 The builder validates the audited source hash before processing. A changed download requires a reviewed source audit and a separately considered analysis version; rebuilding is not automatic activation of an arbitrary new revenue CSV.
 
+## Development cost cases and budget scenarios
+
+Open `/planning` from the application navigation. The source-linked case library reads the small, Git-tracked CSV tables in `../Dataset/Development Cost Cases/`; the [source and method guide](../Dataset/Development%20Cost%20Cases/README.md) explains scope, unresolved values and updates. `src/demo/planning.py` validates the tables and implements budget arithmetic. No research cohort, model or revenue record is modified by this module.
+
+Budget inputs include constant monthly staffing/allocation, cash costs, additional unpaid-labour valuation, one-off costs, contingency, optional available funds and optional net contribution per sale. Figures are user assumptions. Case values do not fill the calculator. Changing inputs invalidates the displayed result until recalculation.
+
+Cash budget equals monthly cash outflow times months, plus one-off costs, plus the specified reserve on those cash costs. Unpaid-labour valuation is added separately to show total resource commitment. Delay scenarios add three or six months at unchanged monthly rates and one-off spending. Runway allocates one-off spending and the full reserve upfront and assumes no income. Break-even unit requirements divide the relevant budget by positive user-supplied net contribution and round up. They do not predict sales. No currency conversion occurs.
+
+From this directory:
+
+```powershell
+uv run --locked python src/demo/planning.py
+uv run --locked --with playwright python.exe -B tests/check_planning_browser.py
+```
+
+The audit prints structural validation, coverage and CSV hashes. The browser check uses headless Edge and saves local QA captures in ignored `data/processed/planning_qa/`. Case CSV updates require source review and application restart; the main Steam/Android CSV import screen does not import these tables.
+
 ## Model experiments and checks
 
 Each experiment protocol documents its inputs, model settings, execution commands and independent verification:

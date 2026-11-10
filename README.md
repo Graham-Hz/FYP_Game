@@ -14,6 +14,8 @@ The system combines a reproducible Python analysis pipeline with an interactive 
 
 The implemented application runs locally in a browser.
 
+The development-planning page combines a searchable library of ten publicly documented developer cases with a user-input budget calculator. Cases preserve the differences between cash spending, reported budgets, funding and unpaid labour. The calculator compares cash needs, additional unpaid-labour value, three- and six-month delays, funding coverage and break-even unit requirements. It uses explicit user assumptions rather than cost averages or predicted sales. See the [case sources and collection method](Dataset/Development%20Cost%20Cases/README.md).
+
 A separate Steam revenue explorer presents source-provided gross revenue estimates for 1,500 selected games, with price/genre filters, revenue distributions, concentration, searchable tables and export. It defaults to positive-price games and keeps zero-price games separately selectable. The source is a high-revenue selection rather than a representative market sample; the figures are descriptive estimates, not predictions or profit. See the [revenue preparation and execution guide](Program/README.md#audit-supplementary-revenue-data).
 
 | Capability | Current behaviour |
@@ -24,12 +26,15 @@ A separate Steam revenue explorer presents source-provided gross revenue estimat
 | Result export | Export comparison results and their conditions as JSON |
 | Comparable Steam games | Retrieve historical references by shared gameplay genres and observed-price proximity, with matching reasons and export; revenue is not a ranking input |
 | CSV data updates | Validate a specified schema, preview accepted/excluded records, save an application version, activate it and return to the original research version |
+| Development resources | Inspect source-linked cost/time/team cases, calculate a personal budget and delay scenarios, and export assumptions/results |
 
 For example, a user can compare two Android category and monetisation configurations, inspect the historical install-tier distributions, and export the evidence behind that comparison.
 
 CSV imports update the descriptive application. They do not automatically retrain research models or modify the fixed research partitions. The current interface does not serve model predictions.
 
 ## Data and analysis
+
+A separate [development fee catalogue](Dataset/Development%20Fee%20References/README.md) provides source-linked software plans, distribution charges and equipment examples as CSV and Excel. It records different payment schedules and eligibility conditions. These references are collected for budget planning; they are not yet connected to the application calculator.
 
 | Platform | Principal source snapshot | Primary analysis sample | Outcome proxy |
 |---|---|---:|---|
@@ -57,7 +62,7 @@ Planning attributes are observed snapshot properties, not verified pre-release m
 
 ## Implementation status
 
-Data preparation, fixed partitions, descriptive analysis, development model comparisons, sensitivity checks and the local comparison/import application are implemented. The latest recorded research verification includes 48 passing unit and integration tests.
+Data preparation, fixed partitions, descriptive analysis, development model comparisons, sensitivity checks and the local comparison/import application are implemented. The 23 October 2026 verification passed all 78 unit and integration tests, including supplementary revenue, reference retrieval, development-case validation and budget calculations.
 
 The integrated cross-platform overview and general data explorer, Android reference retrieval, group-versus-random diagnostic, final model selection and reserved-set evaluation remain to be completed. The supplementary Steam revenue module has its own searchable table and comparable-game references. Public deployment and user-task evaluation are also pending. Power BI files provide supporting visual material; the main application does not require Power BI.
 
