@@ -37,7 +37,7 @@ The mobile file contains 104 titles. Conservative name matching finds 50 with on
 
 ## Restore local inputs
 
-The [development fee reference catalogue](Development%20Fee%20References/README.md) records selected official software plans, distribution fees and equipment quotes with currencies, billing conditions and source evidence. Its CSVs and Excel review copy are included in Git. It is a separate budgeting reference and is not yet connected to the application or modelling pipeline.
+The [development fee reference catalogue](Development%20Fee%20References/README.md) records selected official software plans, distribution fees and equipment quotes with currencies, billing conditions and source evidence. Its CSVs and Excel review copy are included in Git. The `/planning` page supports source inspection and explicit fixed-fee selections in user budgets. The references remain separate from the modelling pipeline and historical game cohorts.
 
 The [development cost and resource pilot](Development%20Cost%20Cases/README.md) contains ten manually curated developer cases, their observation definitions and source register. These small CSV files are included in Git and support the separate `/planning` page. They do not enter the frozen modelling cohort or automatically join to the revenue data.
 

@@ -2,7 +2,7 @@
 
 A manually curated reference catalogue for early game-development budgeting. Checked on **9 November 2026**: **26 records**, covering 13 products/platforms and 16 official source URLs. The records comprise 24 software/platform fee variants and two equipment examples. Of these, 21 have a monetary amount (including five zero-cost entries), two contain conditional royalty rates, two require a custom quote, and one links to transaction-dependent rules without a universal price.
 
-This catalogue supplies reference inputs, not observed game production costs or a complete project budget. It is separate from the historical [developer cases](../Development%20Cost%20Cases/README.md), market datasets and model training data. The current `/planning` calculator still uses user-entered assumptions; these references are **not yet connected to its controls**.
+This catalogue supplies reference inputs, not observed game production costs or a complete project budget. It is separate from the historical [developer cases](../Development%20Cost%20Cases/README.md), market datasets and model training data. The `/planning` page now reads these CSVs, displays their sources, and supports explicit selections of applicable fixed-price plans. Quantities, eligibility confirmation and any exchange rates remain user inputs; no choice or licence eligibility is inferred automatically.
 
 ## Files
 
@@ -90,7 +90,13 @@ Specific unresolved details are retained instead of guessed:
 
 ## Using and maintaining the data
 
-From the `Program` directory, a future importer can read the catalogue using the existing pandas dependency:
+`Program/src/demo/fees.py` validates the catalogue and source links when the application starts. Its file hashes identify the exact snapshot used by each exported budget; a request referring to a different snapshot is rejected. Update the reviewed CSVs and restart the server to load a revision. The main Steam/Android CSV import form does not import these fee tables.
+
+The budget module permits one plan per product, with quantity for seats/licences/apps. Yearly plans and monthly-paid commitments renew in whole terms from development month 1; prices are not prorated for shorter projects. Monthly prices with no verified commitment require a separate, explicit flexible-monthly user assumption. Royalty rules, unpriced/custom offers and non-game seat references cannot be added as fixed fees. This restriction does not imply those costs are zero.
+
+Foreign amounts use the user's positive conversion rate to the plan currency. Currency changes require renewed confirmation. Selected costs are separate from manual overhead/one-off inputs; users must avoid duplication. Tax, usage overages and conditional revenue shares are not added automatically. For the conservative runway measure, all selected fees for the scenario are reserved upfront and runway is capped at that scenario's duration. The export includes original reference rows, supporting source records, hashes, user choices and per-scenario fee calculations.
+
+From the `Program` directory, the catalogue can also be inspected using the existing pandas dependency:
 
 ```python
 from pathlib import Path

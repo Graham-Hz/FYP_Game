@@ -21,6 +21,7 @@ from imports.contracts import MAX_BYTES, template, validate
 from imports.repository import DEFAULT_VERSION, SnapshotRepository
 from revenue import RevenueStore
 from planning import PlanningStore, budget
+from fees import FeeStore
 STATIC = Path(__file__).parent / "static"
 MANIFEST = "reports/2026-10-06/analysis_v1/manifest.json"
 EXPECTED_MANIFEST = "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6"
@@ -274,6 +275,10 @@ def make_server(store, port=8765):
         planning_store = PlanningStore(store.root)
     except (OSError, ValueError, KeyError):
         planning_store = None
+    try:
+        fee_store = FeeStore(store.root)
+    except (OSError, ValueError, KeyError):
+        fee_store = None
     class Handler(BaseHTTPRequestHandler):
         def respond(self, status, data, content_type="application/json; charset=utf-8"):
             body = json.dumps(data, ensure_ascii=False, allow_nan=False).encode("utf-8") if isinstance(data, dict) else data
@@ -291,6 +296,16 @@ def make_server(store, port=8765):
                 self.respond(403, {"error": "Use the local demo address."})
                 return
             path = urlsplit(self.path).path
+            if path == '/api/planning/fees' or path.startswith('/api/planning/fees/csv/'):
+                if fee_store is None:
+                    self.respond(503, {'error': '費用參考資料未通過檢查；手動預算仍可使用。'})
+                elif path == '/api/planning/fees':
+                    self.respond(200, fee_store.data)
+                elif path.removeprefix('/api/planning/fees/csv/') in fee_store.raw:
+                    self.respond(200, fee_store.raw[path.removeprefix('/api/planning/fees/csv/')], 'text/csv; charset=utf-8')
+                else:
+                    self.respond(404, {'error': 'Not found'})
+                return
             if path == '/api/planning/cases' or path.startswith('/api/planning/csv/'):
                 if planning_store is None:
                     self.respond(503, {'error': '開發案例資料未通過檢查；請核對 CSV 後重新啟動。'})
@@ -328,6 +343,7 @@ def make_server(store, port=8765):
             files = {"/": ("index.html", "text/html; charset=utf-8"),
                      "/planning": ("planning.html", "text/html; charset=utf-8"),
                      "/planning.js": ("planning.js", "text/javascript; charset=utf-8"),
+                     "/fees.js": ("fees.js", "text/javascript; charset=utf-8"),
                      "/planning.css": ("planning.css", "text/css; charset=utf-8"),
                      "/revenue": ("revenue.html", "text/html; charset=utf-8"),
                      "/revenue.js": ("revenue.js", "text/javascript; charset=utf-8"),
@@ -362,7 +378,7 @@ def make_server(store, port=8765):
                     raise ValueError("Invalid request size.")
                 payload = json.loads(self.rfile.read(size))
                 if self.path == '/api/planning/budget':
-                    result = budget(payload)
+                    result = budget(payload, fee_store)
                 elif self.path == "/api/references":
                     if revenue_store is None:
                         self.respond(503, {"error": "參考作品資料尚未準備好；請建立營收分析資料後重新啟動。"})

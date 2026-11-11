@@ -97,16 +97,23 @@ Open `/planning` from the application navigation. The source-linked case library
 
 Budget inputs include constant monthly staffing/allocation, cash costs, additional unpaid-labour valuation, one-off costs, contingency, optional available funds and optional net contribution per sale. Figures are user assumptions. Case values do not fill the calculator. Changing inputs invalidates the displayed result until recalculation.
 
-Cash budget equals monthly cash outflow times months, plus one-off costs, plus the specified reserve on those cash costs. Unpaid-labour valuation is added separately to show total resource commitment. Delay scenarios add three or six months at unchanged monthly rates and one-off spending. Runway allocates one-off spending and the full reserve upfront and assumes no income. Break-even unit requirements divide the relevant budget by positive user-supplied net contribution and round up. They do not predict sales. No currency conversion occurs.
+Cash budget equals manual monthly cash outflow times months, plus one-off costs and selected reference fees, plus the specified reserve on those cash costs. Unpaid-labour valuation is added separately to show total resource commitment. Delay scenarios add three or six months at unchanged manual monthly rates and one-off spending, while selected subscriptions renew in complete terms. Break-even unit requirements divide the relevant budget by positive user-supplied net contribution and round up. They do not predict sales.
+
+`src/demo/fees.py` validates the Git-tracked [fee catalogue](../Dataset/Development%20Fee%20References/README.md), resolves source records and computes selected fee components. `/api/planning/fees` returns the catalogue; `/api/planning/fees/csv/fees` and `/api/planning/fees/csv/sources` serve the checked CSV bytes. The frontend searches by tool/category/currency and permits one plan per product. Amounts come from the server snapshot, with user inputs for quantity, eligibility confirmation and FX. Unknown monthly commitment requires a clearly labelled flexible-monthly assumption; royalty/quote/non-game references remain unselectable. Requests include the catalogue revision so a stale selection cannot silently use changed prices.
+
+Yearly subscriptions charge `ceil(months / 12)` full years. Monthly-paid annual contracts include all committed instalments, including those beyond development completion. Other one-time fees are counted once; free base licences remain zero subject to eligibility. Fees start at development month 1; existing subscriptions, cancellations, prorating, taxes and usage overages are not modelled. FX is explicitly supplied by the user, not fetched or inferred. Changing the budget currency invalidates previous FX confirmation. Manual currency inputs are never automatically converted.
+
+Runway reserves one-off spending and the full contingency upfront and assumes no income. With selected paid references it additionally reserves those costs in full, and caps the displayed months at the scenario horizon, so annual payment timing is not mistaken for constant monthly spending. JSON exports include original fee/source snapshots, hashes, selected quantities/FX and separate calculation lines for every scenario. Missing fee files disable the fee library, while manual budgeting remains available.
 
 From this directory:
 
 ```powershell
 uv run --locked python src/demo/planning.py
+uv run --locked python -B -m unittest discover -s tests -p "test_fee_planning.py"
 uv run --locked --with playwright python.exe -B tests/check_planning_browser.py
 ```
 
-The audit prints structural validation, coverage and CSV hashes. The browser check uses headless Edge and saves local QA captures in ignored `data/processed/planning_qa/`. Case CSV updates require source review and application restart; the main Steam/Android CSV import screen does not import these tables.
+The case audit prints structural validation, coverage and CSV hashes. The browser check uses headless Edge and saves local QA captures in ignored `data/processed/planning_qa/`. It covers fee filters, source links/downloads, quantities/FX, required confirmations, full-term renewals, JSON evidence, invalidated results and a missing-catalogue fallback. Case and fee CSV updates require source review and application restart; the main Steam/Android CSV import screen does not import these tables.
 
 ## Model experiments and checks
 

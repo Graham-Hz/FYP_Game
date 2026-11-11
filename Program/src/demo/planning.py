@@ -9,6 +9,7 @@ from datetime import date
 from decimal import Decimal, InvalidOperation, ROUND_CEILING, ROUND_HALF_UP
 from pathlib import Path
 from urllib.parse import urlsplit
+from fees import fee_costs
 
 ROOT = Path(__file__).resolve().parents[2]
 METRICS = {
@@ -124,7 +125,7 @@ def money(value):
     return float(value.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP))
 
 
-def budget(payload):
+def budget(payload, fee_store=None):
     """Cash planning with constant monthly inputs; labour valuation is separate.
 
     All one-off costs and the full contingency reserve are allocated upfront for
@@ -133,13 +134,18 @@ def budget(payload):
     """
     fields = {'currency', 'months', 'team', 'monthly_overhead', 'outsourcing', 'marketing',
               'other_one_off', 'contingency_percent', 'available_funds', 'net_unit_contribution'}
-    if not isinstance(payload, dict) or set(payload) != fields:
+    if not isinstance(payload, dict) or set(payload) not in (fields, fields | {'fee_selection'}):
         raise ValueError('預算欄位不完整或有未支援欄位。')
     if not isinstance(payload['currency'], str) or payload['currency'] not in {'HKD', 'USD', 'EUR', 'GBP', 'CAD', 'AUD', 'JPY', 'SEK'}:
         raise ValueError('請選擇計劃幣別。')
     months = number(payload, 'months', 120)
     if months < 1 or months != int(months):
         raise ValueError('開發期須為 1 至 120 個整數月。')
+    reference = None
+    if 'fee_selection' in payload:
+        if fee_store is None:
+            raise ValueError('費用參考資料尚未通過檢查；可移除選用費用後使用手動預算。')
+        reference = fee_store.select(payload['fee_selection'], payload['currency'])
     team = payload['team']
     if not isinstance(team, list) or not 1 <= len(team) <= 20:
         raise ValueError('請填寫 1 至 20 個人員／職能組。')
@@ -164,16 +170,20 @@ def budget(payload):
     if contribution is not None and 0 < contribution < Decimal('0.01'):
         raise ValueError('每份淨貢獻須為 0 或至少 0.01。')
     recurring = payroll + overhead
-    if (recurring * (months + 6) + one_off_total) * (1 + reserve_rate) + unpaid * (months + 6) > Decimal('1000000000000'):
+    largest_fees, _ = fee_costs(reference, months + 6)
+    if (recurring * (months + 6) + one_off_total + largest_fees) * (1 + reserve_rate) + unpaid * (months + 6) > Decimal('1000000000000'):
         raise ValueError('總投入超出此計算器的支援範圍。')
 
     def scenario(duration):
-        cash_before_reserve = recurring * duration + one_off_total
+        fees_total, fee_lines = fee_costs(reference, duration)
+        cash_before_reserve = recurring * duration + one_off_total + fees_total
         reserve = cash_before_reserve * reserve_rate
         total = cash_before_reserve + reserve
         resource = total + unpaid * duration
         units = lambda cost: int((cost / contribution).to_integral_value(rounding=ROUND_CEILING)) if contribution is not None and contribution > 0 else None
-        upfront = one_off_total + reserve
+        # Reserve selected fees in full: this runway measure is conservative,
+        # not a payment-date schedule or an extrapolation beyond the plan.
+        upfront = one_off_total + fees_total + reserve
         if funds is None:
             runway, runway_status = None, 'funds_not_supplied'
         elif funds < upfront:
@@ -182,30 +192,44 @@ def budget(payload):
             runway, runway_status = None, 'no_monthly_cash_outflow'
         else:
             runway, runway_status = money((funds - upfront) / recurring), 'constant_burn_assumption'
+            if fees_total:
+                runway, runway_status = min(runway, int(duration)), 'reference_fees_reserved_upfront'
         components = {'team_cash': money(payroll * duration), 'overhead': money(overhead * duration),
                       **{k: money(v) for k, v in one_off.items()}, 'contingency': money(reserve)}
+        if reference:
+            components['reference_fees'] = money(fees_total)
         return {'months': int(duration), 'components': components,
                 'cash_before_reserve': money(cash_before_reserve), 'cash_budget': money(total),
                 'unpaid_labour_value': money(unpaid * duration), 'resource_budget': money(resource),
                 'funding_balance': money(funds - total) if funds is not None else None,
                 'runway_months': runway, 'runway_status': runway_status,
-                'cash_break_even_units': units(total), 'resource_break_even_units': units(resource)}
+                'cash_break_even_units': units(total), 'resource_break_even_units': units(resource),
+                'fee_lines': fee_lines}
 
     return {
-        'method_version': 'budget_scenario_v1', 'data_kind': 'user_assumptions',
+        'method_version': 'budget_scenario_v2' if reference else 'budget_scenario_v1',
+        'data_kind': 'user_assumptions_with_selected_fee_references' if reference else 'user_assumptions',
+        'fee_reference': reference,
         'request': payload, 'currency': payload['currency'],
         'monthly_cash_outflow': money(recurring), 'base': scenario(months),
         'delays': [scenario(months + d) for d in (0, 3, 6)],
         'break_even_status': 'available' if contribution is not None and contribution > 0 else 'positive_net_contribution_required',
         'assumptions': [
-            'All values use the selected currency; no currency or inflation conversion.',
+            'Manual inputs use the selected currency without conversion. Selected fee references use explicit user-supplied exchange rates; no live rates or inflation adjustment.' if reference else 'All values use the selected currency; no currency or inflation conversion.',
             'Headcount, allocation and monthly costs remain constant. Delay scenarios keep one-off costs unchanged.',
             'Contingency applies to cash costs only. Unpaid labour is an additional user valuation, not cash expenditure.',
             'Runway reserves all one-off costs and contingency upfront and assumes no incoming revenue.',
             'Net contribution per copy is supplied after discounts, refunds, platform/publisher deductions, applicable taxes and variable costs.',
             'Break-even units are requirements under assumptions, not predicted sales or a probability of success.',
             'No case averages or revenue-dataset values enter this calculation.',
-        ],
+        ] + ([
+            'Selected fee amounts are saved source observations; quantities, eligibility and exchange rates are user-confirmed assumptions.',
+            'Selected subscriptions start at month 1 and renew in full terms through each scenario. Remaining committed instalments are included, not prorated.',
+            'Unspecified monthly billing requires an explicit flexible-monthly user assumption, not a vendor-verified contract.',
+            'Reference fees are separate from manual overhead/one-off entries. Taxes, overages and conditional royalties are not automatically added.',
+            'Runway additionally reserves all selected fees upfront and is capped at the scenario duration; it is not a payment schedule.',
+            'monthly_cash_outflow covers manual payroll and overhead only; selected fees appear separately in scenario components.',
+        ] if reference else []),
     }
 
 

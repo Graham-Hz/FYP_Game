@@ -27,6 +27,7 @@ A separate Steam revenue explorer presents source-provided gross revenue estimat
 | Comparable Steam games | Retrieve historical references by shared gameplay genres and observed-price proximity, with matching reasons and export; revenue is not a ranking input |
 | CSV data updates | Validate a specified schema, preview accepted/excluded records, save an application version, activate it and return to the original research version |
 | Development resources | Inspect source-linked cost/time/team cases, calculate a personal budget and delay scenarios, and export assumptions/results |
+| Fee references | Compare 26 saved fee variants, select applicable plans with quantities and user-confirmed exchange rates, and inspect full-term costs with source-linked exports |
 
 For example, a user can compare two Android category and monetisation configurations, inspect the historical install-tier distributions, and export the evidence behind that comparison.
 
@@ -34,7 +35,7 @@ CSV imports update the descriptive application. They do not automatically retrai
 
 ## Data and analysis
 
-A separate [development fee catalogue](Dataset/Development%20Fee%20References/README.md) provides source-linked software plans, distribution charges and equipment examples as CSV and Excel. It records different payment schedules and eligibility conditions. These references are collected for budget planning; they are not yet connected to the application calculator.
+A separate [development fee catalogue](Dataset/Development%20Fee%20References/README.md) provides source-linked software plans, distribution charges and equipment examples as CSV and Excel. The `/planning` page reads its CSVs and lets users add applicable fixed-price plans to a budget after confirming quantity, eligibility and any currency conversion. Full subscription commitments and renewals are counted in each delay scenario. Conditional royalties, custom quotations and non-game seat references remain reference-only; no eligibility or revenue prediction is made.
 
 | Platform | Principal source snapshot | Primary analysis sample | Outcome proxy |
 |---|---|---:|---|
@@ -62,7 +63,7 @@ Planning attributes are observed snapshot properties, not verified pre-release m
 
 ## Implementation status
 
-Data preparation, fixed partitions, descriptive analysis, development model comparisons, sensitivity checks and the local comparison/import application are implemented. The 23 October 2026 verification passed all 78 unit and integration tests, including supplementary revenue, reference retrieval, development-case validation and budget calculations.
+Data preparation, fixed partitions, descriptive analysis, development model comparisons, sensitivity checks and the local comparison/import application are implemented. Verification on 10 November 2026 passed all 89 unit and integration tests, including fee-source validation, full-term subscription costs and exchange-rate assumptions. Headless browser checks also passed for the planning page's filters, selections, exports, fallback behaviour and desktop/mobile layouts. These checks establish implementation behaviour, not user benefit.
 
 The integrated cross-platform overview and general data explorer, Android reference retrieval, group-versus-random diagnostic, final model selection and reserved-set evaluation remain to be completed. The supplementary Steam revenue module has its own searchable table and comparable-game references. Public deployment and user-task evaluation are also pending. Power BI files provide supporting visual material; the main application does not require Power BI.
 

@@ -1,7 +1,7 @@
 'use strict';
 const $ = id => document.getElementById(id);
 const labels = {cash_cost:'現金支出',reported_budget:'來源所稱預算',planned_budget:'原定預算',economic_estimate:'經濟成本估值',funding_received:'獲得資金',funding_request:'申請資金',reported_cost:'來源所稱成本',development_duration:'開發期',team_size:'人數',logged_hours:'記錄工時',planned_effort:'計劃人月'};
-const componentNames = {team_cash:'人力現金',overhead:'每月其他開支',outsourcing:'外包／素材',marketing:'行銷',other_one_off:'其他一次性',contingency:'備用金'};
+const componentNames = {team_cash:'人力現金',overhead:'每月其他開支',outsourcing:'外包／素材',marketing:'行銷',other_one_off:'其他一次性',reference_fees:'選用工具／平台／設備費',contingency:'備用金'};
 const stages = {released:'已發行',pitch_prototype:'提案／原型',ongoing:'持續開發'};
 const fmt = n => Number(n).toLocaleString('en-US',{maximumFractionDigits:2});
 const el = (tag,text,cls) => {const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
@@ -45,7 +45,7 @@ function addTeam(data={}){
   const remove=el('button','移除此組','outline');remove.type='button';remove.addEventListener('click',()=>{row.remove();invalidate();});row.append(grid,remove);$('team-rows').append(row);
 }
 function num(id,optional=false){const v=$(id).value;return optional&&v===''?null:Number(v);}
-function payload(){return {currency:$('budget-currency').value,months:num('budget-months'),team:[...$('team-rows').children].map(r=>Object.fromEntries([...r.querySelectorAll('input')].map(i=>[i.dataset.field,i.type==='number'?Number(i.value):i.value.trim()]))),...Object.fromEntries(['monthly_overhead','outsourcing','marketing','other_one_off','contingency_percent'].map(k=>[k,num(k)])),available_funds:num('available_funds',true),net_unit_contribution:num('net_unit_contribution',true)};}
+function payload(){return {currency:$('budget-currency').value,months:num('budget-months'),team:[...$('team-rows').children].map(r=>Object.fromEntries([...r.querySelectorAll('input')].map(i=>[i.dataset.field,i.type==='number'?Number(i.value):i.value.trim()]))),...Object.fromEntries(['monthly_overhead','outsourcing','marketing','other_one_off','contingency_percent'].map(k=>[k,num(k)])),available_funds:num('available_funds',true),net_unit_contribution:num('net_unit_contribution',true),...feePlanner.selection()};}
 function bars(target,items,delayed=false){const max=Math.max(...items.map(i=>i[1]),1);$(target).replaceChildren();items.forEach(([name,value])=>{const row=el('div',undefined,'chart-row'),label=el('div',undefined,'chart-label');label.append(el('span',name),el('strong',fmt(value)));const track=el('div',undefined,'chart-track'),fill=el('div',undefined,`chart-fill${delayed?' delay':''}`);fill.style.width=`${value/max*100}%`;track.append(fill);row.append(label,track);$(target).append(row);});}
 function renderBudget(data){
   const b=data.base,cur=data.currency,money=v=>`${cur} ${fmt(v)}`;
@@ -53,24 +53,34 @@ function renderBudget(data){
   $('budget-metrics').replaceChildren();
   [['現金預算（含備用金）',b.cash_budget],['額外未付勞動估值',b.unpaid_labour_value],['含勞動估值的總投入',b.resource_budget]].forEach(([name,value])=>{const a=el('article');a.append(el('span',name),el('strong',money(value)));$('budget-metrics').append(a);});
   const parts=Object.entries(b.components).map(([k,v])=>[componentNames[k],v]);bars('cost-chart',parts);$('cost-table').replaceChildren(table(['現金項目',`金額 (${cur})`],parts.map(([k,v])=>[k,fmt(v)])));
+  $('fee-result-panel').hidden=!data.fee_reference;
+  if(data.fee_reference){
+    const rows=b.fee_lines.map(line=>{
+      const selected=data.fee_reference.selections.find(s=>s.fee_id===line.fee_id),r=selected.reference;
+      const source=el('a',`${line.product} · ${line.plan}`);source.href=r.primary_source_url;source.target='_blank';source.rel='noopener noreferrer';
+      return [source,`${fmt(line.quantity)} × ${r.amount} ${r.currency||''} × ${line.price_units} 個價格單位${line.covered_months?`（涵蓋 ${line.covered_months} 月）`:''}`,`${line.source_currency||'—'} ${fmt(line.source_total)}`,fmt(line.fx_rate),money(line.cost)];
+    });
+    $('fee-result-table').replaceChildren(table(['方案／來源','數量 × 單價 × 收費期','原幣金額','換算率','計劃金額'],rows));
+  }
   bars('delay-chart',data.delays.map(s=>[`${s.months} 個月`,s.cash_budget]),true);
   $('delay-table').replaceChildren(table(['開發期',`現金預算 (${cur})`,'較原定增加','資金差額'],data.delays.map(s=>[`${s.months} 個月`,fmt(s.cash_budget),fmt(s.cash_budget-b.cash_budget),s.funding_balance===null?'未提供資金':fmt(s.funding_balance)])));
   const req=$('requirements');req.replaceChildren();
   req.append(el('p',b.funding_balance===null?'可投入資金未提供，因此不判斷資金是否足夠。':b.funding_balance<0?`按輸入預算，資金不足 ${money(-b.funding_balance)}。`:`預留全部計劃現金成本後，資金餘額 ${money(b.funding_balance)}。`));
-  const runway={funds_not_supplied:'未提供資金，無法計算可支持月數。',insufficient_upfront_funds:'現有資金不足以預留一次性支出及備用金。',no_monthly_cash_outflow:'每月現金支出為零，無法以固定每月支出換算可支持月數。',constant_burn_assumption:`按固定支出假設，資金可支持約 ${fmt(b.runway_months)} 個月。`};req.append(el('p',runway[b.runway_status]));
+  const runway={funds_not_supplied:'未提供資金，無法計算可支持月數。',insufficient_upfront_funds:'現有資金不足以預留一次性支出、備用金及選用費用。',no_monthly_cash_outflow:'每月手動現金支出為零，無法以固定每月支出換算可支持月數。',constant_burn_assumption:`按固定支出假設，資金可支持約 ${fmt(b.runway_months)} 個月。`,reference_fees_reserved_upfront:`先預留本情境全部選用費用後，資金可支持約 ${fmt(b.runway_months)} 個月（最多顯示至本情境的 ${b.months} 個月）。`};req.append(el('p',runway[b.runway_status]));
   req.append(el('p',data.break_even_status==='available'?`覆蓋現金預算需要 ${fmt(b.cash_break_even_units)} 份銷售；連同未付勞動估值則需要 ${fmt(b.resource_break_even_units)} 份。`:'未提供正數的每份銷售淨貢獻，因此沒有回本份數結果。'));
   $('budget-results').hidden=false;
 }
 $('budget-form').addEventListener('input',()=>invalidate());
-$('budget-currency').addEventListener('change',()=>invalidate('幣別已改變，數值未作匯率換算。請核對所有輸入後重新計算。'));
+$('budget-currency').addEventListener('change',()=>{feePlanner.currencyChanged();invalidate('幣別已改變，手動數值未作匯率換算。請重新核對選用費用的換算率與資格確認。');});
 $('add-team').addEventListener('click',()=>{addTeam();invalidate();});
 $('load-example').addEventListener('click',()=>{
+  feePlanner.clear();
   $('budget-currency').value='HKD';$('budget-months').value=12;$('team-rows').replaceChildren();teamId=0;
   addTeam({label:'Founder',people:1,allocation:1,monthly_cash:0,monthly_unpaid:12000});addTeam({label:'Part-time developer',people:1,allocation:0.5,monthly_cash:16000,monthly_unpaid:0});
   Object.entries({monthly_overhead:2000,outsourcing:20000,marketing:15000,other_one_off:5000,contingency_percent:10,available_funds:200000,net_unit_contribution:40}).forEach(([k,v])=>$(k).value=v);
-  invalidate('已載入人工假設示例，不代表案例數據或市場報價。可修改後按計算。');
+  invalidate('已載入人工假設示例並清除選用費用，不代表案例數據或市場報價。可修改後按計算。');
 });
-$('budget-form').addEventListener('reset',()=>{queueMicrotask(()=>{$('team-rows').replaceChildren();teamId=0;addTeam();invalidate('已清空。請輸入自己的計劃。');});});
+$('budget-form').addEventListener('reset',()=>{queueMicrotask(()=>{feePlanner.clear();$('team-rows').replaceChildren();teamId=0;addTeam();invalidate('已清空。請輸入自己的計劃。');});});
 $('budget-form').addEventListener('submit',async event=>{
   event.preventDefault();invalidate('正在計算…');const requestRevision=revision;$('calculate-budget').disabled=true;
   try{const response=await fetch('/api/planning/budget',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload())});const data=await response.json();if(requestRevision!==revision)return;if(!response.ok)throw new Error(data.error);result=data;renderBudget(data);$('budget-status').textContent='計算完成。結果及假設可於下方查看和匯出。';}
@@ -78,4 +88,5 @@ $('budget-form').addEventListener('submit',async event=>{
   finally{$('calculate-budget').disabled=false;}
 });
 $('budget-export').addEventListener('click',()=>{if(!result)return;const blob=new Blob([JSON.stringify({...result,exported_at:new Date().toISOString()},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='game-planning-budget.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
-addTeam();loadCases();
+const feePlanner=new window.FeePlanner(invalidate);
+addTeam();loadCases();feePlanner.load();

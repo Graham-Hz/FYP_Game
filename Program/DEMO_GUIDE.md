@@ -48,7 +48,13 @@ Open **開發資源規劃** in the navigation or visit `/planning`. Search the d
 
 In the budget section, enter a plan or click **載入假設示例**. The example is artificial, not market guidance: its 12-month cash budget is HKD 176,000; adding unpaid labour gives HKD 320,000. At an assumed HKD 40 net contribution per copy, cash break-even requires 4,400 copies. The three-month delay scenario requires HKD 209,000 cash. Edit any assumption, recalculate and export the resulting JSON, which includes the full inputs and calculation assumptions.
 
-Optional funds or net-contribution inputs can be blank; dependent outputs then remain unavailable. Zero monetary spending is valid when explicitly entered, but it does not erase unpaid labour. All monetary inputs must use the selected currency. There is no conversion when switching currencies. Cases are reviewed local CSVs, separate from the main snapshot importer, and are not used to train models.
+Optional funds or net-contribution inputs can be blank; dependent outputs then remain unavailable. Zero monetary spending is valid when explicitly entered, but it does not erase unpaid labour. Manual monetary inputs must use the selected currency; changing currencies does not convert them. Cases are reviewed local CSVs, separate from the main snapshot importer, and are not used to train models.
+
+The **工具、平台與設備費用** section provides 26 saved fee variants with 16 official sources. Search a tool or filter its category/currency, expand its conditions and follow the source links. Add an applicable plan and enter quantity, any required exchange rate, and confirm eligibility/no duplicate manual entry. One product can have one selected plan; multiple seats use quantity. Royalty rules, quote-only prices and the non-game Unreal seat reference are displayed without an add action. GitHub monthly units require an explicit flexible-monthly budgeting assumption because the recorded pricing page did not establish a commitment.
+
+For a reproducible fee example, first load the artificial HKD example, select **Unity Pro - prepaid yearly**, set quantity to **2** and the user-assumed conversion rate to **7.8 HKD per USD**, then confirm the conditions. The rate is illustrative, not a market quote. The selected annual cost is HKD 36,036; total cash budget including the existing 10% reserve is HKD 215,639.60. At 15 months, a second full subscription year is included and total cash budget is HKD 288,279.20. Inspect the fee breakdown and export the source-linked JSON. Do not also add the same selected cost to manual overhead or one-off inputs.
+
+Subscriptions are assumed to start at development month 1 and renew in full terms. A monthly-paid annual contract includes the full commitment even for a shorter project. The conservative runway measure reserves selected fees upfront and does not extrapolate beyond the scenario horizon. Changing currency clears FX/eligibility confirmation for selected items; loading the example or resetting clears selections. Source data retains its original review date and is not refreshed from vendor sites automatically.
 
 ### Decision-usefulness checks still to conduct with users
 
@@ -57,6 +63,7 @@ Automated checks establish software behaviour, not user benefit. Recruit a small
 1. Find a relevant case and explain which costs or production phases it includes and excludes. Check that a funding request or zero-budget claim is not mistaken for actual total cost.
 2. Enter a resource plan, inspect a three-month delay and identify the funding shortfall or remaining capacity. Record the assumptions they would revise and why.
 3. Explain what the break-even requirement says, and what it cannot say about likely sales. Export enough evidence for another person to reproduce their calculation.
+4. Compare two tool plans, inspect their source/commitment, add one using an explicit FX assumption, and explain why crossing a renewal date changes the delay budget. Check that a conditional royalty or unquoted price is not interpreted as zero.
 
 Record anonymous participant background, task completion, time, interpretation errors, needed assistance and requested changes. Review misinterpretations before expanding the dataset or making recommendations. These sessions have **not** been conducted; no participant results or usability claims are recorded here.
 
