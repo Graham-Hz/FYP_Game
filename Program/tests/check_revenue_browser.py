@@ -54,7 +54,7 @@ def main():
             page.locator("#r-publisher").select_option("Indie")
             page.locator("#r-apply").click()
             expect(page.locator("#r-context")).to_contain_text("Action · Indie")
-            page.locator("#reference-panel summary").click()
+            page.locator("#reference-panel > summary").click()
             page.locator("#ref-submit").click()
             expect(page.locator("#ref-results")).to_be_visible()
             expect(page.locator("#ref-table tbody tr")).to_have_count(10)

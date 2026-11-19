@@ -22,6 +22,7 @@ from imports.repository import DEFAULT_VERSION, SnapshotRepository
 from revenue import RevenueStore
 from planning import PlanningStore, budget
 from fees import FeeStore
+from market import MarketStore
 STATIC = Path(__file__).parent / "static"
 MANIFEST = "reports/2026-10-06/analysis_v1/manifest.json"
 EXPECTED_MANIFEST = "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6"
@@ -279,23 +280,32 @@ def make_server(store, port=8765):
         fee_store = FeeStore(store.root)
     except (OSError, ValueError, KeyError):
         fee_store = None
+    market_store = MarketStore(store, revenue_store)
     class Handler(BaseHTTPRequestHandler):
         def respond(self, status, data, content_type="application/json; charset=utf-8"):
             body = json.dumps(data, ensure_ascii=False, allow_nan=False).encode("utf-8") if isinstance(data, dict) else data
-            self.send_response(status)
-            self.send_header("Content-Type", content_type)
-            self.send_header("Content-Length", str(len(body)))
-            self.send_header("Cache-Control", "no-store")
-            self.send_header("X-Content-Type-Options", "nosniff")
-            self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'")
-            self.end_headers()
-            self.wfile.write(body)
+            try:
+                self.send_response(status)
+                self.send_header("Content-Type", content_type)
+                self.send_header("Content-Length", str(len(body)))
+                self.send_header("Cache-Control", "no-store")
+                self.send_header("X-Content-Type-Options", "nosniff")
+                self.send_header("Content-Security-Policy", "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'; frame-ancestors 'none'")
+                self.end_headers()
+                self.wfile.write(body)
+            except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError):
+                # The UI cancels superseded chart requests. A closed client is
+                # not a failed data operation and cannot receive a second reply.
+                return
 
         def do_GET(self):
             if not self.local_host():
                 self.respond(403, {"error": "Use the local demo address."})
                 return
             path = urlsplit(self.path).path
+            if path == '/api/market/options':
+                self.respond(200, market_store.options())
+                return
             if path == '/api/planning/fees' or path.startswith('/api/planning/fees/csv/'):
                 if fee_store is None:
                     self.respond(503, {'error': '費用參考資料未通過檢查；手動預算仍可使用。'})
@@ -317,9 +327,12 @@ def make_server(store, port=8765):
                 else:
                     self.respond(404, {'error': 'Not found'})
                 return
-            if path == "/api/revenue":
+            if path in {"/api/revenue", "/api/revenue/metadata"}:
                 if revenue_store is None:
                     self.respond(503, {"error": "營收分析資料尚未準備好或版本核對失敗。請先執行 build_revenue_analysis.py，再重新啟動網站。"})
+                    return
+                if path == "/api/revenue/metadata":
+                    self.respond(200, {"metadata": revenue_store.data["metadata"], "options": revenue_store.options})
                     return
                 try:
                     params = parse_qs(urlsplit(self.path).query, keep_blank_values=True, max_num_fields=8)
@@ -341,6 +354,15 @@ def make_server(store, port=8765):
                     self.respond(400, {"error": str(exc)})
                 return
             files = {"/": ("index.html", "text/html; charset=utf-8"),
+                     "/market": ("market.html", "text/html; charset=utf-8"),
+                     "/market.js": ("market.js", "text/javascript; charset=utf-8"),
+                     "/market.css": ("market.css", "text/css; charset=utf-8"),
+                     "/charts.js": ("charts.js", "text/javascript; charset=utf-8"),
+                     "/charts.css": ("charts.css", "text/css; charset=utf-8"),
+                     "/plan": ("plan.html", "text/html; charset=utf-8"),
+                     "/plan.js": ("plan.js", "text/javascript; charset=utf-8"),
+                     "/workflow.js": ("workflow.js", "text/javascript; charset=utf-8"),
+                     "/workflow.css": ("workflow.css", "text/css; charset=utf-8"),
                      "/planning": ("planning.html", "text/html; charset=utf-8"),
                      "/planning.js": ("planning.js", "text/javascript; charset=utf-8"),
                      "/fees.js": ("fees.js", "text/javascript; charset=utf-8"),
@@ -357,18 +379,22 @@ def make_server(store, port=8765):
             self.respond(200, (STATIC / file).read_bytes(), mime)
 
         def do_POST(self):
-            if self.path not in {"/api/compare", "/api/references", "/api/planning/budget", "/api/import/preview", "/api/import/commit", "/api/activate"}:
+            if self.path not in {"/api/market", "/api/compare", "/api/references", "/api/planning/budget", "/api/import/preview", "/api/import/commit", "/api/activate"}:
                 self.respond(404, {"error": "Not found"})
                 return
             origin = self.headers.get("Origin")
             if not self.local_host() or (origin and origin != f"http://127.0.0.1:{self.server.server_port}"):
                 self.respond(403, {"error": "Use the local demo page."})
                 return
-            mutation = self.path not in {"/api/compare", "/api/references", "/api/planning/budget"}
+            mutation = self.path not in {"/api/market", "/api/compare", "/api/references", "/api/planning/budget"}
             if mutation and (self.headers.get("X-GameScope-Token") != mutation_token or self.headers.get_content_type() != "application/json"):
                 self.respond(403, {"error": "請從本機頁面操作資料版本。"})
                 return
-            if not upload_gate.acquire(blocking=False):
+            # Market queries already serialize their snapshot access through
+            # ComparisonStore.lock. Let a newer read wait there after the browser
+            # cancels an older request, rather than treating it as a second upload.
+            gated = self.path != '/api/market'
+            if gated and not upload_gate.acquire(blocking=False):
                 self.respond(409, {"error": "目前有其他請求，請稍後重試。"})
                 return
             try:
@@ -377,7 +403,9 @@ def make_server(store, port=8765):
                 if size < 1 or size > (MAX_BYTES * 2 + 8192 if self.path == "/api/import/preview" else 8192):
                     raise ValueError("Invalid request size.")
                 payload = json.loads(self.rfile.read(size))
-                if self.path == '/api/planning/budget':
+                if self.path == '/api/market':
+                    result = market_store.query(payload)
+                elif self.path == '/api/planning/budget':
                     result = budget(payload, fee_store)
                 elif self.path == "/api/references":
                     if revenue_store is None:
@@ -401,7 +429,8 @@ def make_server(store, port=8765):
                 self.log_error("Data operation failed: %s", exc)
                 self.respond(500, {"error": "資料操作未完成；請查看啟動視窗，保留原有資料後重試。"})
             finally:
-                upload_gate.release()
+                if gated:
+                    upload_gate.release()
 
         def local_host(self):
             return self.headers.get("Host") == f"127.0.0.1:{self.server.server_port}"
@@ -420,7 +449,7 @@ def main():
         server = make_server(store, args.port)
     except (OSError, ValueError) as exc:
         parser.exit(1, f"Demo could not start: {exc}\nSee DEMO_GUIDE.md.\n")
-    url = f"http://127.0.0.1:{server.server_port}/"
+    url = f"http://127.0.0.1:{server.server_port}/market"
     print(f"Demo ready: {url}\nClose this window or press Ctrl+C to stop.", flush=True)
     if args.open:
         webbrowser.open(url)

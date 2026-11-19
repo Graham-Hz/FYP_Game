@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GameScope · 市場資料分析</title>
+  <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/charts.css"><link rel="stylesheet" href="/market.css">
+  <script src="/charts.js" defer></script><script src="/market.js" defer></script>
+</head>
+<body>
+<header><a class="brand" href="/">◈ GameScope <span>Game market research</span></a><span class="badge">歷史資料 · 圖表探索</span></header>
+<main>
+  <nav class="module-nav" aria-label="分析頁面"><a href="/market" aria-current="page">市場資料分析</a><a href="/">歷史分布比較</a><a href="/revenue">Steam 營收分析</a><a href="/planning">開發資源規劃</a><a href="/plan">我的規劃摘要</a></nav>
+  <section class="intro"><p class="eyebrow">MARKET DATA EXPLORER</p><h1>探索遊戲市場資料。</h1><p>從市場概況到分布、關聯與作品排名，選擇你想了解的問題。</p></section>
+  <section class="market-source" aria-labelledby="market-source-heading">
+    <div class="market-source-top"><div class="market-source-label"><h2 id="market-source-heading">正在核對資料來源…</h2><p id="market-source-snapshot"></p><strong id="market-data-kind" class="market-kind-badge" hidden>人工示例 · 不代表市場</strong></div><button id="market-refresh" type="button" class="quiet-button">重新讀取版本</button></div>
+    <details class="market-source-detail"><summary>資料範圍與版本</summary><p id="market-source-description"></p><p id="market-version" class="fine"></p></details>
+  </section>
+  <form id="market-form" class="market-controls">
+    <div class="market-filter-grid">
+      <label class="market-source-control">資料集<select id="market-source" disabled></select></label>
+      <label><span id="market-group-label">玩法類型</span><select id="market-group" disabled><option value="">全部類型</option></select></label>
+      <label id="market-tag-label" hidden>內容／其他標籤<select id="market-tag" disabled><option value="">不限標籤</option></select></label>
+    </div>
+    <details id="market-advanced-filters" class="market-advanced"><summary>年份與排名設定</summary><div class="market-extra-grid"><label>發售年份由<input id="market-year-from" type="number" step="1" placeholder="不限" disabled></label><label>發售年份至<input id="market-year-to" type="number" step="1" placeholder="不限" disabled></label><label>作品排名依據<select id="market-rank" disabled></select></label><label>排名顯示數量<select id="market-top" disabled><option value="10">前 10 項</option><option value="20">前 20 項</option></select></label></div></details>
+    <div class="market-actions"><p id="market-filter-help">正在載入可選條件…</p><div><button id="market-reset" type="button" class="quiet-button" disabled>重設</button><button id="market-apply" type="submit" disabled>套用條件</button></div></div>
+  </form>
+  <p id="market-status" role="status" aria-live="polite">正在載入市場分析資料…</p>
+  <section id="market-results" hidden aria-label="市場分析結果">
+    <div class="market-result-heading"><p id="market-result-context" class="fine"></p><div class="market-exports"><button id="market-export-json" class="outline" type="button">分析 JSON</button><button id="market-export-csv" class="outline" type="button">圖表數據 CSV</button></div></div>
+    <div id="market-summary" class="market-summary"></div>
+    <div id="market-empty" class="market-empty" hidden><h3>沒有符合條件的樣本</h3><p>可擴大年份範圍或選擇全部類型。沒有樣本不代表市場沒有這類遊戲。</p></div>
+    <div id="market-analysis-tabs" class="market-tabs" role="tablist" aria-label="分析方向"></div>
+    <section id="market-analysis-panel" role="tabpanel" tabindex="0">
+      <div class="market-section-heading"><div><h2 id="market-section-title"></h2><p id="market-section-description"></p></div><label id="market-chart-select-label" hidden>檢視圖表<select id="market-chart-select"></select></label></div>
+      <aside id="market-point-detail" class="market-point-detail" role="status" hidden></aside>
+      <div id="market-charts" class="market-charts"></div>
+      <section id="market-leaders-panel" class="market-panel" hidden><h2 id="market-leaders-title">作品排名</h2><p class="fine">估算擁有者、最低安裝量及估算銷量是不同指標；這是所選樣本內的排名。</p><div id="market-leaders" class="market-table-scroll" tabindex="0" aria-label="作品排名表"></div></section>
+    </section>
+    <details id="market-method" class="market-method"><summary id="market-method-heading">資料來源、分析方法與限制</summary><ul id="market-source-links" aria-label="原始資料來源"></ul><ul id="market-notes"></ul><details id="market-provenance"><summary>本次分析的完整版本記錄</summary><pre id="market-provenance-json"></pre></details></details>
+  </section>
+  <footer>FYP · Independent market data analysis <span>Historical samples · reproducible chart data</span></footer>
+</main>
+</body>
+</html>

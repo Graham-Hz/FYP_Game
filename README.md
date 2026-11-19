@@ -14,6 +14,12 @@ The system combines a reproducible Python analysis pipeline with an interactive 
 
 The implemented application runs locally in a browser.
 
+The default `/market` page provides independent data analysis without entering a plan or budget. Users can switch between the Steam research/import snapshot, Android research/import snapshot and the separate Steam revenue selection; filter release years and genres; inspect counts, outcome rankings, group medians, release-cohort charts and price or monetisation comparisons; and export charts as SVG, chart data as CSV, or the full analysis as JSON. Each export retains its source, version, filters and interpretation limits. Platform snapshots remain separate rather than being combined into a cross-platform market ranking.
+
+The analysis interface separates gameplay genres from additional source labels such as Indie, Early Access, content descriptors and software/media uses. Five analysis sections provide focused views, including histograms, Tukey boxplots, scatter diagrams and outcome heatmaps. Users can filter by clicking a gameplay bar, inspect a scatter point, or change the display scale without changing the underlying observations. These views apply concepts reviewed in the supplied statistics, data-visualisation and Power BI course materials; the [methodology evidence map](Program/reports/planning/chapter2_evidence_map.md#course-concepts-used-in-the-explorer) records the specific references and adaptations.
+
+A connected planning workflow lets users choose comparison condition A or B, retain suitable Steam game references, calculate their own resource requirements, and review the evidence together at `/plan`. Android plans proceed from historical comparison to budgeting, with the absence of Android reference retrieval explicitly shown. The summary exports the selected condition, original comparison, chosen references, budget inputs, fee sources, user notes and completion status as JSON.
+
 The development-planning page combines a searchable library of ten publicly documented developer cases with a user-input budget calculator. Cases preserve the differences between cash spending, reported budgets, funding and unpaid labour. The calculator compares cash needs, additional unpaid-labour value, three- and six-month delays, funding coverage and break-even unit requirements. It uses explicit user assumptions rather than cost averages or predicted sales. See the [case sources and collection method](Dataset/Development%20Cost%20Cases/README.md).
 
 A separate Steam revenue explorer presents source-provided gross revenue estimates for 1,500 selected games, with price/genre filters, revenue distributions, concentration, searchable tables and export. It defaults to positive-price games and keeps zero-price games separately selectable. The source is a high-revenue selection rather than a representative market sample; the figures are descriptive estimates, not predictions or profit. See the [revenue preparation and execution guide](Program/README.md#audit-supplementary-revenue-data).
@@ -21,6 +27,8 @@ A separate Steam revenue explorer presents source-provided gross revenue estimat
 | Capability | Current behaviour |
 |---|---|
 | Platform selection | Separate Steam and Android analysis with platform-specific attributes and outcome tiers |
+| Independent market analysis | Explore source-specific rankings, group counts and medians, outcome distributions, release cohorts and business attributes without creating a plan |
+| Chart exports | Download self-contained SVG charts and source-linked chart-data CSV files; inspect accessible chart tables |
 | Planning-condition comparison | Compare two sets of conditions within a platform using sample counts, outcome distributions and sample overlap |
 | Interpretation support | Display data provenance and feedback for small or empty samples |
 | Result export | Export comparison results and their conditions as JSON |
@@ -28,6 +36,7 @@ A separate Steam revenue explorer presents source-provided gross revenue estimat
 | CSV data updates | Validate a specified schema, preview accepted/excluded records, save an application version, activate it and return to the original research version |
 | Development resources | Inspect source-linked cost/time/team cases, calculate a personal budget and delay scenarios, and export assumptions/results |
 | Fee references | Compare 26 saved fee variants, select applicable plans with quantities and user-confirmed exchange rates, and inspect full-term costs with source-linked exports |
+| Connected planning | Preserve a planning context and budget draft across pages in one browser tab; select up to five Steam references or record a skip reason; review and export a combined summary after checking source versions |
 
 For example, a user can compare two Android category and monetisation configurations, inspect the historical install-tier distributions, and export the evidence behind that comparison.
 
@@ -63,9 +72,13 @@ Planning attributes are observed snapshot properties, not verified pre-release m
 
 ## Implementation status
 
-Data preparation, fixed partitions, descriptive analysis, development model comparisons, sensitivity checks and the local comparison/import application are implemented. Verification on 10 November 2026 passed all 89 unit and integration tests, including fee-source validation, full-term subscription costs and exchange-rate assumptions. Headless browser checks also passed for the planning page's filters, selections, exports, fallback behaviour and desktop/mobile layouts. These checks establish implementation behaviour, not user benefit.
+Data preparation, fixed partitions, descriptive analysis, development model comparisons, sensitivity checks and the local comparison/import application are implemented. The independent market explorer, connected comparison-to-budget workflow and combined planning summary are also implemented. Verification on 19 November 2026 passed all 113 unit and integration tests. Browser checks cover market charts and exports, complete planning paths, draft and fee restoration, missing versus zero inputs, source-version changes, fallback behaviour and desktop/mobile layouts. These checks establish implementation behaviour, not user benefit.
 
-The integrated cross-platform overview and general data explorer, Android reference retrieval, group-versus-random diagnostic, final model selection and reserved-set evaluation remain to be completed. The supplementary Steam revenue module has its own searchable table and comparable-game references. Public deployment and user-task evaluation are also pending. Power BI files provide supporting visual material; the main application does not require Power BI.
+The independent market explorer now complements the planning workflow. Android reference retrieval, group-versus-random diagnostic, final model selection and reserved-set evaluation remain to be completed. The supplementary Steam revenue module has its own searchable table and comparable-game references. Public deployment and human user-task evaluation are also pending. Power BI files provide supporting visual material; the main application does not require Power BI.
+
+Time charts compare release cohorts observed in a historical snapshot. They do not show sales or downloads occurring in each plotted year/month, and these sources do not contain repeated per-game observations needed for longitudinal sales-growth charts. Estimated owner intervals, installation lower bounds and provider-estimated copies sold remain different measures. Steam genre memberships overlap; sums across genres are not unique users or market shares. The default market explorer uses only research training IDs, enriching them from hash-verified candidate tables; one approved Steam exception has no candidate detail record and is disclosed as missing rather than imputed. Imported versions use their own verified source CSV and eligible IDs.
+
+Planning state is temporary and specific to the current browser tab and application address. It is not a server account or durable saved-project service; export before closing the tab. Imported data versions and research artifacts keep their existing separate storage. Changing comparison context clears downstream reference choices and calculated budgets; manual budget drafts are retained for review. A platform change also clears selected fee plans. Historical revenue and observed prices never populate budget assumptions automatically.
 
 The project supports historical comparison. Owner intervals and install lower bounds do not measure revenue or profit, and observed associations do not establish causal effects or guarantee future commercial success.
 
@@ -78,7 +91,7 @@ uv sync --locked
 uv run --locked python src/demo/server.py --open
 ```
 
-The application opens at `http://127.0.0.1:8765/`. Large datasets and generated model artifacts are excluded from Git, so cloning this repository alone is insufficient to run the complete application. See the [setup and reproduction guide](Program/README.md) and [demonstration guide](Program/DEMO_GUIDE.md).
+The application opens at `http://127.0.0.1:8765/market`. The comparison page remains at `/`. Large datasets and generated model artifacts are excluded from Git, so cloning this repository alone is insufficient to run the complete application. See the [setup and reproduction guide](Program/README.md) and [demonstration guide](Program/DEMO_GUIDE.md).
 
 ## Repository structure
 

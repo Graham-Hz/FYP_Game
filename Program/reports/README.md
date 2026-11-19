@@ -7,7 +7,8 @@ This directory contains the project reports, data definitions, experimental prot
 | Document | Contents |
 |---|---|
 | [Project report draft](FYP_v1.docx) | Working report manuscript |
-| [First Progress Report](2026-10-23/first_progress/First_Progress_Report_HsiehLungKwun_24221546_Revised.docx) | Revised report including supplementary revenue analysis and comparable-game retrieval; the student-edited source is retained alongside it |
+| [First Progress Report](2026-10-23/first_progress/First_Progress_Report_HsiehLungKwun_24221546.docx) | Student-edited report including supplementary revenue analysis and comparable-game retrieval |
+| [Second Progress Report](2026-11-18/second_progress/Second_Progress_Report_HsiehLungKwun_24221546_Revised.docx) | Reviewed revised report as of 18 November 2026, including the confirmed Steam and Android scope, resource planning, fee references, remaining evaluation work and a proposed six-week schedule; matching Revised complete and Moodle PDFs are stored alongside it |
 
 These are report files, not evidence of institutional submission.
 

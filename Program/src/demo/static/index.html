@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · 歷史遊戲比較</title><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · 歷史遊戲比較</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/workflow.css"><script src="/workflow.js" defer></script><script src="/app.js" defer></script></head>
 <body>
 <header><a class="brand" href="/">◈ GameScope <span>FYP feasibility prototype</span></a><span class="badge">歷史資料 · 展示版本</span></header>
 <main>
-  <nav class="module-nav" aria-label="分析頁面"><a href="/" aria-current="page">歷史分布比較</a> · <a href="/revenue">Steam 營收分析</a> · <a href="/planning">開發資源規劃 →</a></nav>
+  <nav class="module-nav" aria-label="分析頁面"><a href="/market">市場資料分析</a> · <a href="/" aria-current="page">歷史分布比較</a> · <a href="/revenue">Steam 營收分析</a> · <a href="/planning">開發資源規劃 →</a> · <a href="/plan">我的規劃摘要</a></nav>
   <section class="intro"><p class="eyebrow">EARLY GAME PLANNING</p><h1>讓遊戲構想，有歷史資料作參考。</h1><p>為獨立開發者與小型工作室，探索不同遊戲條件對應的歷史分布。</p></section>
   <section class="source-panel" aria-label="資料來源"><div class="platform-switch" role="group" aria-label="選擇平台"><button type="button" data-platform="pc" aria-pressed="true">Steam</button><button type="button" data-platform="mobile" aria-pressed="false">Android</button></div><div class="source-meta"><span id="snapshot">載入資料中…</span><strong id="denominator"></strong></div><p id="scope"></p></section>
   <details id="data-manager" class="data-manager"><summary>資料版本與 CSV 匯入</summary>
@@ -33,6 +33,6 @@
   <form id="compare-form"><div class="scenario-grid"><section class="scenario"><div class="card-heading"><span class="letter">A</span><h2>比較條件 A</h2><button class="reset" type="button" data-reset="a">重設</button></div><div id="filters-a" class="filters"></div></section><section class="scenario"><div class="card-heading"><span class="letter secondary">B</span><h2>比較條件 B</h2><button class="reset" type="button" data-reset="b">重設</button></div><div id="filters-b" class="filters"></div></section></div><div class="actions"><p>同組條件以「同時符合」篩選；留空代表全部。</p><button id="compare" type="submit" disabled>比較歷史分布 →</button></div></form>
   <p id="status" role="status" aria-live="polite">正在核對資料…</p>
   <section id="results" hidden aria-label="歷史分布結果"><div class="result-heading"><div><p class="eyebrow">HISTORICAL DISTRIBUTION</p><h2 id="outcome"></h2></div><button id="export" type="button" class="outline">匯出結果 JSON ↓</button></div><div id="result-cards" class="scenario-grid"></div><p id="overlap" class="fine"></p><p class="fine">少於 30 筆會提示小樣本；這是介面提示門檻，超過門檻也不代表統計可靠。分級並非收入或利潤。</p></section>
-  <details><summary>如何解讀與使用</summary><p id="caveat"></p><p>遊戲年齡、選樣、資料缺漏及開發者差異都可能影響分布。本頁沒有控制這些因素，也不能證明改變類型、廣告或內購會造成結果改變。</p><p>原有研究版本僅查詢 train 分區；匯入版本使用各自的合資格歷史樣本，與固定研究資料分開保存。此展示版尚未接入預測模型；双平台方向待導師確認。匯出檔包含條件、樣本數、分級定義、資料時間與版本。</p></details>
+  <details><summary>如何解讀與使用</summary><p id="caveat"></p><p>遊戲年齡、選樣、資料缺漏及開發者差異都可能影響分布。本頁沒有控制這些因素，也不能證明改變類型、廣告或內購會造成結果改變。</p><p>原有研究版本僅查詢 train 分區；匯入版本使用各自的合資格歷史樣本，與固定研究資料分開保存。此展示版尚未接入預測模型；Steam 與 Android 雙平台範圍已獲導師確認。匯出檔包含條件、樣本數、分級定義、資料時間與版本。</p></details>
   <footer>FYP · Proof of feasibility <span>Local historical comparison · versioned data</span></footer>
 </main></body></html>

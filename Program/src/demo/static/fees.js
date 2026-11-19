@@ -104,4 +104,15 @@ window.FeePlanner = class {
     if(!this.items.length)return {};
     return {fee_selection:{revision:this.catalogue.metadata.revision,items:this.items.map(({reference,...i})=>({fee_id:reference.fee_id,...i}))}};
   }
+  restore(selection) {
+    if (!selection) return true;
+    if (!this.catalogue || selection.revision !== this.catalogue.metadata.revision || !Array.isArray(selection.items)) return false;
+    const restored = [], products = new Set();
+    for (const saved of selection.items) {
+      const reference = this.catalogue.fees.find(r => r.fee_id === saved.fee_id), product = reference && `${reference.vendor}/${reference.product}`;
+      if (!reference?.calculation_mode || products.has(product) || saved.target_currency !== this.$('budget-currency').value) return false;
+      products.add(product); restored.push({...saved, reference});
+    }
+    this.items = restored; this.renderSelections(); this.renderCatalogue(); return true;
+  }
 };

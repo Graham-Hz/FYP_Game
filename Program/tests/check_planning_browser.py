@@ -50,6 +50,19 @@ def main():
             expect(page.locator('#requirements')).to_contain_text('14.4')
             expect(page.locator('#requirements')).to_contain_text('4,400')
             expect(page.locator('#delay-table')).to_contain_text('209,000')
+            expect(page.locator('#budget-results svg')).to_have_count(4)
+            expect(page.locator('#cost-chart svg')).to_contain_text('96,000')
+            expect(page.locator('#resource-chart svg circle')).to_have_count(6)
+            expect(page.locator('#resource-chart svg')).to_contain_text('320,000')
+            expect(page.locator('#resource-chart')).to_contain_text('並非逐月現金流')
+            expect(page.locator('#break-even-chart svg')).to_contain_text('4,400')
+            expect(page.locator('#break-even-chart')).to_contain_text('不是預測銷量')
+            with page.expect_download() as event:
+                page.locator('#resource-chart').get_by_role('button',name='下載圖表 SVG').click()
+            event.value.save_as(str(output/'planning-duration-resources.svg'))
+            svg=(output/'planning-duration-resources.svg').read_text(encoding='utf-8')
+            assert '<svg' in svg and '176,000' in svg and '320,000' in svg
+            assert '來源：本次使用者輸入假設' in svg and '<script' not in svg
             page.locator('#budget-results').screenshot(path=str(output/'budget-desktop.png'))
             with page.expect_download() as event: page.locator('#budget-export').click()
             event.value.save_as(str(output/'budget-export.json'))
@@ -63,6 +76,8 @@ def main():
             page.locator('#calculate-budget').click()
             expect(page.locator('#requirements')).to_contain_text('沒有回本份數')
             expect(page.locator('#requirements')).to_contain_text('未提供資金')
+            expect(page.locator('#break-even-chart svg')).to_have_count(0)
+            expect(page.locator('#break-even-chart')).to_contain_text('不會把未知要求當作零')
             page.locator('#budget-currency').select_option('USD')
             expect(page.locator('#budget-status')).to_contain_text('未作匯率換算')
             expect(page.locator('#budget-results')).to_be_hidden()

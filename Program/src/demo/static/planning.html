@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · 開發資源規劃</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/planning.css"><script src="/fees.js" defer></script><script src="/planning.js" defer></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · 開發資源規劃</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/planning.css"><link rel="stylesheet" href="/workflow.css"><link rel="stylesheet" href="/charts.css"><script src="/charts.js" defer></script><script src="/workflow.js" defer></script><script src="/fees.js" defer></script><script src="/planning.js" defer></script></head>
 <body>
 <header><a class="brand" href="/">◈ GameScope <span>Game planning research</span></a><span class="badge">開發案例 · 預算情境</span></header>
 <main>
-<nav class="module-nav" aria-label="分析頁面"><a href="/">歷史分布比較</a> · <a href="/revenue">Steam 營收分析</a> · <a href="/planning" aria-current="page">開發資源規劃</a></nav>
+<nav class="module-nav" aria-label="分析頁面"><a href="/market">市場資料分析</a> · <a href="/">歷史分布比較</a> · <a href="/revenue">Steam 營收分析</a> · <a href="/planning" aria-current="page">開發資源規劃</a> · <a href="/plan">我的規劃摘要</a></nav>
 <section class="intro"><p class="eyebrow">DEVELOPMENT PLANNING</p><h1>把構想，放進時間與預算之內。</h1><p>先查看開發者公開的投入案例，再用自己的假設比較預算、延期與回本要求。</p></section>
 <nav class="section-links" aria-label="本頁內容"><a href="#case-library">1. 查看開發案例</a><a href="#fee-library">2. 選擇工具與費用</a><a href="#budget-section">3. 計算自己的計劃</a></nav>
 
@@ -56,17 +56,21 @@
   <div class="form-actions"><button class="primary" type="submit" id="calculate-budget">計算預算與延期情境</button><button type="reset" class="outline">清空</button></div>
  </form>
  <p id="budget-status" role="status" aria-live="polite">等待輸入計劃。</p>
+ <button id="discard-saved-fees" class="outline" type="button" hidden>移除舊費用，重新選取或使用手動預算</button>
 </section>
 
 <section id="budget-results" hidden>
  <div class="result-heading"><h2>計劃的資源要求</h2><button type="button" class="outline" id="budget-export">匯出假設及結果 JSON ↓</button></div>
  <p id="budget-context"></p>
+ <div id="budget-flow-summary" class="flow-actions" hidden><a href="/plan" id="budget-to-summary">查看整合規劃摘要 →</a><span class="fine">此計算已保存至目前規劃；淨貢獻仍由你自行假設。</span></div>
  <div id="budget-metrics" class="budget-metrics"></div>
  <section id="fee-result-panel" class="panel" hidden><h3>選用費用如何計入</h3><p class="fine">完整收費期已計入；金額按你填寫的換算率換算。每個延期情境會重新計算續期費用。原始價格、資格確認、換算率及來源會隨 JSON 匯出。</p><div id="fee-result-table" class="table-scroll" tabindex="0" aria-label="選用費用計算明細"></div></section>
  <div class="scenario-grid">
-  <section class="panel"><h3>現金預算組成</h3><div id="cost-chart" role="img" aria-label="現金預算各項金額，下方表格提供相同數值"></div><div id="cost-table" class="table-scroll" tabindex="0" aria-label="成本組成表"></div></section>
-  <section class="panel"><h3>如果工期延長</h3><p class="fine">每月人力及手動開支不變；選用訂閱按延長工期續訂完整期，備用金按新的現金成本計算。</p><div id="delay-chart" role="img" aria-label="原定工期及延期情境預算，下方表格提供相同數值"></div><div id="delay-table" class="table-scroll" tabindex="0" aria-label="延期情境比較表"></div></section>
+  <section class="panel"><div id="cost-chart"></div><div id="cost-table" class="table-scroll" tabindex="0" aria-label="成本組成表"></div></section>
+  <section class="panel"><div id="delay-chart"></div><div id="delay-table" class="table-scroll" tabindex="0" aria-label="延期情境比較表"></div></section>
  </div>
+ <section class="panel budget-chart-wide"><div id="resource-chart"></div></section>
+ <section class="panel budget-chart-wide"><div id="break-even-chart"></div></section>
  <section class="panel"><h3>資金與回本要求</h3><div id="requirements"></div><p class="sample-warning">回本份數是按輸入假設計算的要求，不是預測銷量或成功機率。資金可支持月數先預留一次性開支、全額備用金及選用費用，再按固定每月支出計算，假設沒有收入。選用付費項目時，結果最多顯示至本情境工期；這不是逐月付款時間表。</p><p class="fine">未付勞動估值獨立列出，不影響現金支出或現金可支持月數。結果不含未輸入的維護、移植、個人生活費等項目；需要時請在相應成本欄位納入。金額顯示四捨五入至兩位小數。</p></section>
 </section>
 <footer><span>GameScope · Development planning pilot</span><span>來源案例與使用者情境分開保存</span></footer>

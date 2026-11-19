@@ -79,6 +79,13 @@ function render(result) {
       row.append(heading, bar, node("small", `${count(tier.count)} 筆`));
       card.append(row);
     }
+    const use = node("button", `以條件 ${key.toUpperCase()} 繼續規劃 →`, "outline flow-choice");
+    use.type = "button"; use.dataset.planChoice = key; use.disabled = scenario.total === 0;
+    use.addEventListener("click", () => {
+      if (window.PlanningFlow.selectComparison(result, key)) location.href = result.platform === "pc" ? "/revenue#reference-panel" : "/planning#budget-section";
+      else $("#status").textContent = "規劃未能保存，請查看上方儲存提示。";
+    });
+    card.append(use, node("p", "這是你的規劃選擇，不是系統對成功機率的推薦。", "fine"));
     container.append(card);
   }
   $("#overlap").textContent = `兩組共有 ${count(result.overlap_count)} 筆重疊紀錄；本頁並非隨機對照實驗。百分比可能因四捨五入不合計為 100%。`;
@@ -205,4 +212,18 @@ $("#export-validation").addEventListener("click", () => {
   const a = document.createElement("a"); a.href = url; a.download = `validation-${platform}.json`; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
-fetch("/api/options").then(response => {if (!response.ok) throw new Error("資料載入失敗"); return response.json();}).then(async data => {platforms = data.platforms; mutationToken = data.mutation_token; selectPlatform("pc"); await reloadVersions();}).catch(error => {$("#status").textContent = `無法啟動：${error.message}。請參閱 DEMO_GUIDE.md。`;});
+window.PlanningFlow.mount('comparison');
+fetch("/api/options").then(response => {if (!response.ok) throw new Error("資料載入失敗"); return response.json();}).then(async data => {
+  platforms = data.platforms; mutationToken = data.mutation_token;
+  const saved = window.PlanningFlow.read(); selectPlatform(saved?.comparison.platform || 'pc');
+  if (saved && saved.comparison.version_id === platforms[platform].version_id) {
+    let compatible = true;
+    for (const scenario of ['a', 'b']) for (const [key, value] of Object.entries(saved.comparison.scenarios[scenario].filters)) {
+      const input = document.getElementById(`${scenario}-${key}`);
+      if (!input || ![...input.options].some(o => o.value === value)) compatible = false;
+      else input.value = value;
+    }
+    if (compatible) {displayed = saved.comparison; render(displayed); $('#status').textContent = '已還原規劃保存的比較；修改條件後請重新比較，再選擇要規劃的條件。';}
+  } else if (saved) $('#status').textContent = '目前資料版本與已保存規劃不同。請重新比較並選擇規劃條件。';
+  await reloadVersions();
+}).catch(error => {$("#status").textContent = `無法啟動：${error.message}。請參閱 DEMO_GUIDE.md。`;});

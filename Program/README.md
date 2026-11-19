@@ -22,9 +22,54 @@ On Windows, double-click [START_DEMO.cmd](START_DEMO.cmd), or run:
 uv run --locked python src/demo/server.py --open
 ```
 
-Keep the process running while using `http://127.0.0.1:8765/`. Press Ctrl+C to stop. A different port can be selected with `--port 8766`. The service binds to localhost and is not configured as a public web deployment.
+Keep the process running while using `http://127.0.0.1:8765/market`, the default independent analysis page. The comparison page remains at `/`. Press Ctrl+C to stop. A different port can be selected with `--port 8766`. The service binds to localhost and is not configured as a public web deployment.
 
 See the [demonstration guide](DEMO_GUIDE.md) and [CSV import specification](CSV_IMPORT_GUIDE.md). Imported application snapshots are stored separately in `data/application/v1/`; they do not replace the frozen research data.
+
+### Independent market analysis and charts
+
+`/market` loads charts automatically without a planning context. `src/demo/market.py` implements the read-only `GET /api/market/options` and `POST /api/market` queries. Steam and Android use the active application version selected on the comparison page; the supplementary revenue source has its own independent version. Reload source versions on the market page after activating a different CSV snapshot. No model is fitted or used to generate these descriptive charts.
+
+The research data are enriched from `data/interim/cleaning_candidate_v1/pc_candidates.parquet` and `mobile_candidates.parquet`, checked against the trusted analysis manifest. Only IDs already present in the research **train** tables are retained. One approved Steam exception lacks candidate details; count/tier charts retain it, while date and numeric-detail charts disclose the missing record. Missing or modified enrichment files make that source unavailable without disabling other application modules. Imported snapshots use `SnapshotRepository.load` to check their saved files and join `source.csv` only to eligible IDs; the CSV validation contract and frozen research files are unchanged.
+
+The explorer presents sample counts, summed and median outcome proxies by group, high-tier proportions with a minimum displayed group size of 30, distributions, release-cohort lines, business attributes and title rankings. Steam owner estimates retain their lower and upper bounds; they are not exact purchases. Android values are installation lower bounds. The independent revenue view uses all 1,500 selected records, including zero observed prices, whereas `/revenue` defaults to the 1,415 positive-price records. Revenue charts include estimated copies, gross revenue and concentration; neither selection represents the whole current market.
+
+`market_taxonomy.py` separates eight supported Steam gameplay genres from production labels (Indie), release stage (Early Access), pricing labels, play form (Massively Multiplayer), content descriptions and software/media uses. This is an explicit project presentation mapping, not a newly verified official Steam taxonomy. Unknown source labels remain selectable in an unclassified-label group. The separate gameplay and additional-label filters combine with AND; genre charts use gameplay groups only. Android retains the existing Google Play game categories. Source labels, eligibility rules, model features and frozen partitions are not rewritten. The mapping and coverage are included in exported provenance.
+
+The page organises its charts into overview, distribution, relationships, release cohorts and rankings. Users choose a focused plot instead of scrolling through every chart at once. Selecting a gameplay bar filters the analysis, while scatter-point selection exposes the individual displayed record. Full-analysis exports retain all chart definitions, even when a different plot is selected on screen.
+
+`market_analytics.py` adds histogram, Tukey boxplot, scatter and row-percentage heatmap summaries. Histograms use equal-width bins in `log1p(value)` space, with original-value bounds retained. Boxplots show actual observations at the whiskers within 1.5 IQR fences, group sizes and outlier counts; a limited set of outliers is displayed. PC distribution plots use observed prices, Android plots use installation lower bounds, and revenue plots use estimated gross revenue. No owner-interval midpoint is invented. Scatter diagrams use observed price versus owner lower bound (PC), observation age versus installation lower bound (Android), and observed price versus estimated revenue (the independent revenue source). At most 800 deterministically selected complete records are plotted; rank-correlation statistics use the full complete-pair sample. A log/linear display switch does not change those raw observations. A descriptive correlation is not a causal estimate or evidence for a pricing intervention.
+
+Time axes represent **release cohorts**, not repeated sales/download measurements. Steam genres can overlap. Counts, per-title medians and sums answer different questions; high-volume groups are not automatically the best development opportunity. The original Steam observed-price currency is unresolved and is labelled accordingly. No midpoint owner estimate or price-times-copies revenue is reconstructed.
+
+`static/charts.js` and `charts.css` render local, accessible SVG charts, numeric tables and self-contained SVG downloads without a network chart dependency. Market exports include a complete JSON evidence record and a UTF-8 chart-data CSV with provenance and formula-safe text. Budget charts use the existing calculator outputs only: cost composition, delay cash requirements, cash versus resource budgets and break-even unit requirements. These are assumption-based scenarios rather than market observations.
+
+Run the targeted checks from `Program/`:
+
+```powershell
+uv run --locked python -B -m unittest discover -s tests -p "test_market.py" -v
+uv run --locked python -B -m unittest discover -s tests -p "test_market_analytics.py" -v
+uv run --locked --with playwright python -B tests/check_market_browser.py
+uv run --locked --with playwright python -B tests/check_planning_browser.py
+```
+
+Browser captures and chart exports are written to ignored `data/processed/market_qa/` and `planning_qa/`. Test application versions use disposable storage and do not change the user's active data.
+
+### Connected planning workflow
+
+After a comparison, choose condition A or B to create a planning context. Steam proceeds to `/revenue#reference-panel`, where the supported genre is carried over and the user supplies a price, selects up to five references or records a skip reason. Android proceeds directly to `/planning#budget-section`. The `/plan` page combines the historical evidence, reference choices, budget scenarios and decision notes, and exports a provenance-preserving JSON summary. The input price for reference retrieval is never copied into net contribution or other budget fields.
+
+`src/demo/static/workflow.js` manages a versioned `sessionStorage` record for one browser tab. `plan.js` renders the combined summary and rechecks the active comparison version, reference metadata and fee revision before export. The new `/api/revenue/metadata` read-only endpoint supplies reference provenance without returning all game records. No new server database, model training, or change to frozen partitions is involved.
+
+The draft retains empty numeric fields as empty strings. Editing a budget clears its saved calculation; reference-query changes clear saved reference choices. Choosing an unchanged comparison preserves downstream work, while a changed context requires renewed review. A changed or unavailable fee catalogue blocks restoration of selected costs until the user explicitly removes them or restores the compatible catalogue. JSON export is an evidence record, not a supported saved-project import format. A closed tab or changed application origin may lose the working draft.
+
+Run the end-to-end checks with the existing optional browser-test dependency:
+
+```powershell
+uv run --locked --with playwright python -B tests/check_workflow_browser.py
+```
+
+This uses a separate headless Edge session and the real local comparison, reference and budget APIs. Captures, example exports and the check summary are saved under ignored `data/processed/workflow_qa/`. Source-version failures are simulated in the browser; source datasets and active application versions are not modified. These are automated task-path checks, not a human usability study.
 
 ## Prepare the research inputs
 

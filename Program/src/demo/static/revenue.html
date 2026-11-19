@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · Steam 營收分析</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/revenue.css"><script src="/revenue.js" defer></script></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · Steam 營收分析</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/revenue.css"><link rel="stylesheet" href="/workflow.css"><script src="/workflow.js" defer></script><script src="/revenue.js" defer></script></head>
 <body>
 <header><a class="brand" href="/">◈ GameScope <span>Game planning research</span></a><span class="badge">Steam · 2024 歷史樣本</span></header>
 <main>
-<nav class="module-nav" aria-label="分析頁面"><a href="/">← 歷史分布比較</a> · <a href="/revenue" aria-current="page">Steam 營收分析</a> · <a href="/planning">開發資源規劃 →</a></nav>
+<nav class="module-nav" aria-label="分析頁面"><a href="/market">市場資料分析</a> · <a href="/">← 歷史分布比較</a> · <a href="/revenue" aria-current="page">Steam 營收分析</a> · <a href="/planning">開發資源規劃 →</a> · <a href="/plan">我的規劃摘要</a></nav>
 <section class="intro"><p class="eyebrow">REVENUE EXPLORER</p><h1>查看營收分布與集中程度。</h1><p>從 1,500 款被收錄的 Steam 遊戲，探索不同價格與類型的歷史表現。</p></section>
 <div class="notice"><strong>估算收入，不是利潤</strong><span>樣本偏向高營收作品，無法代表所有 Steam 遊戲或新遊戲成功機率。價格組別只供比較，不表示改變售價會造成收入改變。</span></div>
 <details id="reference-panel" class="reference-panel">
@@ -21,6 +21,12 @@
   <button id="ref-submit" type="submit" class="outline" disabled>尋找參考作品</button>
  </form>
  <p id="ref-status" role="status" aria-live="polite">正在載入可選類型…</p>
+ <p id="ref-flow-note" class="fine"></p>
+ <div id="ref-flow-actions" class="flow-reference-actions" hidden>
+  <p id="ref-selection-status" role="status" aria-live="polite"></p>
+  <div class="flow-actions"><a href="/planning#budget-section" id="ref-to-budget">繼續成本預算 →</a><a href="/plan">查看目前摘要</a></div>
+  <details><summary>沒有合適作品，想先繼續？</summary><label>記錄略過原因<input type="text" id="ref-skip-reason" maxlength="500" placeholder="例如：樣本未涵蓋我的玩法"></label><button type="button" class="outline" id="ref-skip">保存原因並前往預算</button></details>
+ </div>
  <section id="ref-results" hidden>
   <div class="result-heading"><h2>相近作品與配對原因</h2><button id="ref-export" type="button" class="outline">匯出參考清單 JSON ↓</button></div>
   <p id="ref-context"></p><p id="ref-warning" class="sample-warning"></p>

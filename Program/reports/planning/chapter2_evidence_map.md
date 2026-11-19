@@ -10,12 +10,30 @@ This map connects the project methodology to its implementation and verification
 | Acquisition and processing | Recorded source versions, conservative parsing, row-level inclusion records, feature policy and developer-group partitions | [Cleaning report](../2026-10-06/cleaning_candidate_v1/cleaning_report.md), [data dictionary](../2026-10-06/cleaning_candidate_v1/data_dictionary.md), [analysis verification](../2026-10-06/analysis_v1/verification.json) |
 | Storage | Separate raw, interim, frozen research and versioned application data; hashes and manifests identify versions | [Program storage](../../README.md#code-and-storage), [CSV verification](../2026-10-10/csv_import_v1/verification_notes.md) |
 | Descriptive analysis | Training-only distributions, missingness and platform-specific attribute/outcome comparisons | [EDA](../2026-10-07/train_eda_v1/eda_notes.md) |
+| Independent market exploration | Verified active-snapshot enrichment, source-specific rankings and medians, release-cohort lines, group denominators and source-linked SVG/CSV/JSON export | [Market API](../../src/demo/market.py), [independent aggregate checks](../../tests/test_market.py), [browser checks](../../tests/check_market_browser.py), [walkthrough](../../DEMO_GUIDE.md#independent-market-analysis-walkthrough) |
+| Chart design and interactions | Separate gameplay/source-label taxonomy, transformed histograms, Tukey boxplots, scatter exploration, row-percentage heatmaps and linked genre filtering | [Label mapping](../../src/demo/market_taxonomy.py), [statistics](../../src/demo/market_analytics.py), [analytics checks](../../tests/test_market_analytics.py) |
 | Model analysis | Fold-fitted preprocessing, simple baselines, Logistic Regression and Random Forest using developer-group CV | [Linear protocol](model_dev_v1_protocol.md), [tree protocol](model_tree_v1_protocol.md) |
 | Sensitivity | Fixed-setting refits for observation age, cohort eligibility and outcome-tier definitions | [Age protocol](model_age_v1_protocol.md), [scope protocol](model_scope_v1_protocol.md) |
 | Resource data acquisition | Ten manually curated public developer cases; per-observation definitions, source locations, currency uncertainty and coverage dates | [Cost-case method and source register](../../../Dataset/Development%20Cost%20Cases/README.md) |
 | Resource analysis | Transparent user-input cash/unpaid-labour budgeting, fixed-rate delay scenarios and conditional break-even requirements | [Calculation method](../../README.md#development-cost-cases-and-budget-scenarios), [implementation](../../src/demo/planning.py), [tests](../../tests/test_development_planning.py) |
-| Resource visualisation and evaluation | Source-linked expandable tables, budget composition and delay comparison; formative user tasks prepared but not conducted | [Application and user tasks](../../DEMO_GUIDE.md#development-planning), [browser checks](../../tests/check_planning_browser.py) |
+| Resource visualisation and evaluation | Source-linked tables and exportable SVG cost, delay, cash/resource and break-even charts; formative user tasks prepared but not conducted | [Shared chart renderer](../../src/demo/static/charts.js), [application and user tasks](../../DEMO_GUIDE.md#development-planning), [browser checks](../../tests/check_planning_browser.py) |
+| Integrated planning workflow | Explicit comparison choice, optional Steam reference selection, restored budget drafts and combined source-checked export; Android references marked unavailable | [Workflow implementation](../../src/demo/static/workflow.js), [summary interface](../../src/demo/static/plan.js), [end-to-end browser checks](../../tests/check_workflow_browser.py), [demonstration](../../DEMO_GUIDE.md#connected-planning-walkthrough) |
 | Visualisation | Historical A/B distributions in the application, supporting Power BI views and executable notebook figures | [Power BI material](../powerbi/), [notebook](../../notebooks/README.md) |
+
+## Course concepts used in the explorer
+
+The following references were checked against the locally supplied lecture files. Course materials are not redistributed with this repository.
+
+| Local course material | Teaching evidence | Application and limits |
+|---|---|---|
+| COMP3115, `Lecture 5_BasicDataVisualization.pdf`, pp. 16–30 | Histograms and the effect of bin width (p. 27) | Distribution plots with explicit bins and original-value boundaries; transformed bins are labelled |
+| Same lecture, pp. 31–37, especially p. 32 | Median, quartiles and 1.5 IQR outlier definition | Gameplay-group boxplots with Tukey whiskers, group counts and disclosed outlier display limits |
+| Same lecture, pp. 49–55; COMP1016 `Lab/Lab3/examples/corr-01.py` | Scatter diagrams, scatter matrices and a correlation example | Price/outcome or age/outcome scatter plots; rank correlation is a project choice for skewed data, not a claim that the cited Pearson example taught Spearman |
+| COMP1016 `Lab/Lab3/lab3-ex3.py`; COMP3925 `Topic4_DesignReport.pdf`, pp. 7–8 | Crosstab/pivot operations and report matrices | A row-percentage outcome heatmap with explicit cell counts and denominators. COMP3115 Lecture 3, p. 26, names heatmaps as a library capability; it is not treated as a full heatmap-method lesson |
+| COMP3925 `Topic4_DesignReport.pdf`, p. 14, steps 7–12 | Cross-filtering, tooltips, focus mode and data export | Click a gameplay bar to filter the analysis, inspect scatter points, and export plot data. This is linked filtering, not a claimed implementation of drill-through pages |
+| COMP3115 `Lecture 6_Advanced_Data_Visualization.pdf`, pp. 74, 78 | Colour accessibility and avoiding excessive labels | Colour is supplemented by numeric labels/tables, focused views and tooltips |
+
+COMP1016 stock examples contain genuine repeated daily observations and operations such as resampling and percentage change. Those growth calculations are not transferred to the game's single-snapshot release cohorts. The interface preserves that distinction.
 
 ## Evaluation boundaries
 

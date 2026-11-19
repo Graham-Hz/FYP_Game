@@ -55,6 +55,7 @@ async function load() {
    for (const [id, values] of [["#r-genre",data.options.genres],["#r-publisher",data.options.publishers]]) values.forEach(v => $(id).add(new Option(v,v)));
    data.options.reference_genres.forEach(genre => {const label=node("label"), input=node("input"); input.type="checkbox"; input.value=genre; input.checked=genre==="Action"; input.addEventListener("change",invalidateReferences); label.append(input,document.createTextNode(genre)); $("#ref-genres").append(label);});
    $("#ref-submit").disabled=false; $("#ref-status").textContent="選擇條件後，按「尋找參考作品」。"; optionsReady=true;
+   restoreReferenceContext(data.metadata);
   }
   result = data; render(data); $("#r-status").textContent = "分析完成。所有數字只描述目前篩選的歷史樣本。";
  } catch(error) {if (current === generation) {$("#r-status").textContent = `載入失敗：${error.message}`; if(!optionsReady) $("#ref-status").textContent="參考資料未能載入；請查看下方資料錯誤。";}}
@@ -69,23 +70,40 @@ function invalidateReferences() {
  referenceGeneration++; referenceResult=null; $("#ref-results").hidden=true;
  $("#ref-submit").disabled=!optionsReady; $("#ref-factor").disabled=$("#ref-price").value!=="" && Number($("#ref-price").value)===0;
  $("#ref-status").textContent="構想已改變，請重新尋找參考作品。";
+ if (window.PlanningFlow.read()?.comparison.platform === 'pc') {
+  window.PlanningFlow.referenceDraft(referenceInputs()); updateReferenceSelection();
+ }
 }
 function renderReferences(data) {
  const r=data.request, coverage=data.coverage, range=data.price_range;
  const rangeLabel=range.minimum===null ? "不限制觀察價格" : range.maximum===0 ? "只比較零價格作品" : `候選觀察價格約 US$${range.minimum.toFixed(2)}–${range.maximum.toFixed(2)}`;
  $("#ref-context").textContent=`${r.genres.join(" + ")} · 預計售價 US$${r.price.toFixed(2)} · ${rangeLabel}。${count(coverage.same_price_cohort_rows)} 款有可用玩法類型且屬同一價格組別；${count(data.candidate_count)} 款符合類型與價格條件，顯示 ${count(data.returned_count)} 款。`;
  $("#ref-warning").textContent=data.status==="no_matches" ? "沒有符合條件的作品；可調整類型或價格範圍。系統沒有以不相關作品補足數量。" : `${data.status==="fewer_than_requested" ? "符合條件的作品少於要求數量。" : ""}參考作品來自高營收選樣；不能代表一般遊戲的收入或成功機率。`;
- table("#ref-table",["作品", "共同玩法類型", "類型重合率", "觀察價格 (USD)", "售價差距 (USD)", "歷史估算營收 (USD)"], data.rows.map(r=>{
+ const planning = window.PlanningFlow.read(), selectable = planning?.comparison.platform === 'pc';
+ const selected = planning?.references?.selected_ids || [];
+ table("#ref-table",["作品", "共同玩法類型", "類型重合率", "觀察價格 (USD)", "售價差距 (USD)", "歷史估算營收 (USD)", ...(selectable ? ['加入規劃'] : [])], data.rows.map(r=>{
   const link=node("a",r.name);link.href=`https://store.steampowered.com/app/${r.steam_id}/`;link.target="_blank";link.rel="noopener";
-  return [link,r.match.shared_genres.join(", "),`${pct(r.match.genre_similarity)} (${r.match.shared_count}/${r.match.union_count})`,r.price.toFixed(2),r.match.price_difference_usd.toFixed(2),money(r.revenue)];
+  const row = [link,r.match.shared_genres.join(", "),`${pct(r.match.genre_similarity)} (${r.match.shared_count}/${r.match.union_count})`,r.price.toFixed(2),r.match.price_difference_usd.toFixed(2),money(r.revenue)];
+  if (selectable) {
+   const label = node('label', '保存'), input = node('input'); input.type = 'checkbox'; input.dataset.planGame = String(r.steam_id); input.checked = selected.includes(String(r.steam_id)); input.setAttribute('aria-label', `加入規劃：${r.name}`);
+   input.addEventListener('change', () => {
+    const ids = [...document.querySelectorAll('[data-plan-game]:checked')].map(e => e.dataset.planGame);
+    if (ids.length > 5) {input.checked = false; $('#ref-selection-status').textContent = '最多選取五款；請先取消其他作品。'; return;}
+    if (!window.PlanningFlow.chooseReferences(data, ids)) input.checked = !input.checked;
+    updateReferenceSelection();
+   }); label.prepend(input); row.push(label);
+  }
+  return row;
  }));
  $("#ref-results").hidden=false; $("#ref-status").textContent="已依玩法類型及觀察價格選出參考作品。";
+ updateReferenceSelection();
 }
 $("#reference-form").addEventListener("submit",async event=>{
  event.preventDefault(); const current=++referenceGeneration; referenceResult=null; $("#ref-results").hidden=true;
  const genres=[...document.querySelectorAll("#ref-genres input:checked")].map(input=>input.value);
  if(!genres.length){$("#ref-status").textContent="請至少選擇一個玩法類型。";return;}
  const payload={genres,price:Number($("#ref-price").value),limit:Number($("#ref-limit").value),price_factor:$("#ref-factor").value ? Number($("#ref-factor").value) : null};
+ if (window.PlanningFlow.read()?.comparison.platform === 'pc') window.PlanningFlow.referenceDraft(payload);
  $("#ref-submit").disabled=true;$("#ref-status").textContent="正在尋找參考作品…";
  try {
   const response=await fetch("/api/references",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
@@ -96,4 +114,36 @@ $("#reference-form").addEventListener("submit",async event=>{
 });
 ["#ref-price","#ref-factor","#ref-limit"].forEach(id=>$(id).addEventListener("input",invalidateReferences));
 $("#ref-export").addEventListener("click",()=>{if(!referenceResult)return;const url=URL.createObjectURL(new Blob([JSON.stringify(referenceResult,null,2)],{type:"application/json"}));const a=node("a");a.href=url;a.download="gamescope-reference-games.json";a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+function referenceInputs() {
+ return {genres: [...document.querySelectorAll('#ref-genres input:checked')].map(e => e.value), price: $('#ref-price').value,
+  limit: Number($('#ref-limit').value), price_factor: $('#ref-factor').value ? Number($('#ref-factor').value) : null};
+}
+function updateReferenceSelection() {
+ const s = window.PlanningFlow.read(), active = s?.comparison.platform === 'pc';
+ $('#ref-flow-actions').hidden = !active;
+ if (active) $('#ref-selection-status').textContent = `已保存 ${s.references?.selected_ids.length || 0} / 5 款。選取後可繼續預算；更改搜尋條件會清除舊選取。`;
+}
+function restoreReferenceContext(metadata) {
+ let s = window.PlanningFlow.read(); updateReferenceSelection(); if (!s) return;
+ $('#reference-panel').open = true;
+ if (s.comparison.platform !== 'pc') {$('#ref-flow-note').textContent = '目前規劃是 Android。此處可獨立探索 Steam，但不會把 Steam 作品加入 Android 規劃。請直接繼續成本預算。'; return;}
+ if (s.references && JSON.stringify(s.references.evidence.metadata) !== JSON.stringify(metadata)) {
+  window.PlanningFlow.referenceDraft(s.reference_draft); s = window.PlanningFlow.read();
+ }
+ const genre = s.comparison.scenarios[s.choice].filters.genre;
+ const allowed = [...document.querySelectorAll('#ref-genres input')].map(e => e.value);
+ const draft = s.reference_draft || {genres: allowed.includes(genre) ? [genre] : [], price: '', limit: 10, price_factor: 2};
+ document.querySelectorAll('#ref-genres input').forEach(e => e.checked = draft.genres.includes(e.value));
+ $('#ref-price').value = draft.price; $('#ref-limit').value = draft.limit; $('#ref-factor').value = draft.price_factor ?? '';
+ $('#ref-factor').disabled = draft.price !== '' && Number(draft.price) === 0;
+ $('#ref-skip-reason').value = s.reference_skip || '';
+ $('#ref-flow-note').textContent = `已帶入 ${genre && allowed.includes(genre) ? `遊戲類型 ${genre}` : '規劃情境；請選擇可配對的玩法類型'}。其他比較條件不作自動配對；預計售價請自行填寫。參考作品來自獨立的 Steam 樣本，不隨主頁 CSV 版本切換。`;
+ if (s.references) {referenceResult = s.references.evidence; renderReferences(referenceResult);}
+}
+$('#ref-skip').addEventListener('click', () => {
+ const reason = $('#ref-skip-reason').value.trim();
+ if (!reason) {$('#ref-selection-status').textContent = '請簡述略過原因，例如沒有合適作品或樣本覆蓋不足。'; return;}
+ if (window.PlanningFlow.mutate(s => {s.reference_skip = reason; s.references = null;})) location.href = '/planning#budget-section';
+});
+window.PlanningFlow.mount('references');
 load();

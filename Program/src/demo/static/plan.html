@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · 我的規劃摘要</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/workflow.css"><script src="/workflow.js" defer></script><script src="/plan.js" defer></script></head>
+<body><header><a class="brand" href="/">◈ GameScope <span>Game planning research</span></a><span class="badge">歷史依據 · 個人假設</span></header>
+<main><nav class="module-nav" aria-label="分析頁面"><a href="/market">市場資料分析</a> · <a href="/">歷史分布比較</a> · <a href="/revenue">Steam 營收分析</a> · <a href="/planning">開發資源規劃</a> · <a href="/plan" aria-current="page">我的規劃摘要</a></nav>
+<section class="intro"><p class="eyebrow">YOUR PLANNING SUMMARY</p><h1>把分析依據與資源要求放在一起。</h1><p>回顧你選擇的條件、參考作品與預算，記下尚待驗證的假設。</p></section>
+<p id="plan-status" class="plan-status" role="status" aria-live="polite">正在讀取規劃…</p>
+<div id="plan-content" hidden>
+<section class="plan-section"><h2 id="plan-title">目前規劃</h2><p id="plan-note-display"></p><div class="plan-meta"><label>規劃名稱（選填）<input id="plan-name" maxlength="120" placeholder="例如：小型動作遊戲構想"></label><label>決定、原因與待驗證事項（選填）<textarea id="plan-notes" rows="3" maxlength="2000" placeholder="哪些資料影響了選擇？哪些預算假設仍不確定？"></textarea></label></div></section>
+<section id="plan-market" class="plan-section"></section>
+<section id="plan-references" class="plan-section"></section>
+<section id="plan-budget" class="plan-section"></section>
+<section class="plan-section"><h2>資料版本與解讀</h2><ul id="plan-checks"></ul><p>核對的是本機保存的資料版本，並非即時市場或供應商價格。歷史遊戲表現不能推導你的銷量；成本由你輸入，不會從參考作品營收反推。</p><p id="plan-completion"></p></section>
+</div>
+<div class="flow-actions"><button id="plan-export" class="outline" type="button" disabled>匯出目前規劃 JSON ↓</button><button id="plan-print" class="outline" type="button" disabled>列印摘要</button><button id="plan-refresh" class="outline" type="button">重新核對資料版本</button><button id="plan-clear" class="outline plan-reset" type="button">清除目前規劃</button></div>
+<footer>GameScope · Planning workflow <span>來源與假設一同匯出</span></footer></main></body></html>
