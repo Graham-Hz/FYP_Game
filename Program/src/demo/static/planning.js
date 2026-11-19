@@ -40,6 +40,7 @@ function renderCases() {
 async function loadCases(){try{const response=await fetch('/api/planning/cases');const data=await response.json();if(!response.ok)throw new Error(data.error);library=data;$('case-count').textContent=`${data.metadata.case_count} 個案例 · ${data.metadata.observation_count} 筆紀錄`;$('case-downloads').hidden=false;renderCases();}catch(e){$('case-status').textContent=`案例未能載入：${e.message}。預算計算仍可獨立使用。`;}}
 ['case-search','case-stage','case-platform'].forEach(id=>$(id).addEventListener('input',renderCases));
 function invalidate(message='輸入已改變，請重新計算。'){revision++;result=null;$('budget-results').hidden=true;$('budget-status').textContent=message;
+  window.BudgetScenarios.invalidateCurrent();
   if(!restoringDraft)window.PlanningFlow.saveDraft(captureDraft());
 }
 function addTeam(data={}){
@@ -80,6 +81,7 @@ function renderBudget(data){
   const runway={funds_not_supplied:'未提供資金，無法計算可支持月數。',insufficient_upfront_funds:'現有資金不足以預留一次性支出、備用金及選用費用。',no_monthly_cash_outflow:'每月手動現金支出為零，無法以固定每月支出換算可支持月數。',constant_burn_assumption:`按固定支出假設，資金可支持約 ${fmt(b.runway_months)} 個月。`,reference_fees_reserved_upfront:`先預留本情境全部選用費用後，資金可支持約 ${fmt(b.runway_months)} 個月（最多顯示至本情境的 ${b.months} 個月）。`};req.append(el('p',runway[b.runway_status]));
   req.append(el('p',data.break_even_status==='available'?`覆蓋現金預算需要 ${fmt(b.cash_break_even_units)} 份銷售；連同未付勞動估值則需要 ${fmt(b.resource_break_even_units)} 份。`:'未提供正數的每份銷售淨貢獻，因此沒有回本份數結果。'));
   $('budget-results').hidden=false;
+  window.BudgetScenarios.refreshCurrent();
 }
 $('budget-form').addEventListener('input',()=>invalidate());
 $('budget-currency').addEventListener('change',()=>{feePlanner.currencyChanged();invalidate('幣別已改變，手動數值未作匯率換算。請重新核對選用費用的換算率與資格確認。');});
@@ -109,7 +111,7 @@ async function initialisePlanning() {
   if(draft){draftFields.forEach(id=>{if(draft.fields[id]!==undefined)$(id).value=draft.fields[id];});draft.team.forEach(addTeam);}
   else addTeam();
   if(saved)$('case-platform').value=saved.comparison.platform==='pc'?'PC':'Android';
-  loadCases();await feePlanner.load();
+  loadCases();await feePlanner.load();window.BudgetScenarios.setFeeMetadata(feePlanner.catalogue?.metadata||null);
   if(draft?.fee_selection && !feePlanner.restore(draft.fee_selection)) {
     blockedSavedFees=true;$('discard-saved-fees').hidden=false;
     window.PlanningFlow.mutate(s=>s.budget=null);
@@ -119,4 +121,5 @@ async function initialisePlanning() {
   restoringDraft=false;$('budget-form').inert=false;$('load-example').disabled=false;$('calculate-budget').disabled=blockedSavedFees;
   $('budget-flow-summary').hidden=!saved;
 }
+window.BudgetScenarios.init({getCurrent:()=>result,getDraft:captureDraft});
 initialisePlanning();

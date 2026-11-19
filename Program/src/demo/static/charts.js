@@ -7,7 +7,7 @@
   let serial=0;
   const node=(tag,value,cls)=>{const n=document.createElement(tag);if(value!==undefined)n.textContent=value;if(cls)n.className=cls;return n;};
   const s=(tag,attrs={},value)=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,String(v)));if(value!==undefined)n.textContent=value;return n;};
-  const text=(parent,x,y,value,attrs={})=>{const n=s('text',{x,y,fill:'#18382e','font-size':14,...attrs},value);parent.append(n);return n;};
+  const text=(parent,x,y,value,attrs={})=>{const n=s('text',{x,y,fill:'#18382e','font-size':14,'pointer-events':'none',...attrs},value);parent.append(n);return n;};
   const number=v=>Number.isFinite(v)?v.toLocaleString('en-US',{maximumFractionDigits:v!==0&&Math.abs(v)<.01?6:2}):'未提供';
   const short=v=>Math.abs(v)>=1e9?`${number(v/1e9)}B`:Math.abs(v)>=1e6?`${number(v/1e6)}M`:Math.abs(v)>=1e3?`${number(v/1e3)}k`:number(v);
   const axisLabel=(label,unit)=>unit&&!(label||'').includes(unit)?`${label||'數值'} (${unit})`:label||unit||'數值';
@@ -31,7 +31,27 @@
     if(ticks[ticks.length-1]!==max)ticks.push(max);
     return {min:0,max,ticks,position:value=>value>=0?Math.log1p(value)/top:NaN};
   }
-  function mark(element,label,callback,item){element.setAttribute('tabindex','0');element.setAttribute('aria-label',label);element.append(s('title',{},label));if(typeof callback==='function'){element.setAttribute('role','button');element.classList.add('game-chart-selectable');element.addEventListener('click',()=>callback(item));element.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();callback(item);}});}return element;}
+  function mark(element,label,callback,item){
+    const description=label+(typeof callback==='function'?'\n點選或按 Enter 查看對應資料。':'');
+    element.setAttribute('tabindex','0');element.setAttribute('aria-label',description);element.dataset.chartLabel=description;
+    if(typeof callback==='function'){element.setAttribute('role','button');element.classList.add('game-chart-selectable');element.addEventListener('click',()=>callback(item));element.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();callback(item);}});}return element;
+  }
+  function tooltips(figure,svg,id){
+    const tip=node('div',undefined,'game-chart-tooltip');tip.id=id;tip.setAttribute('role','tooltip');tip.hidden=true;figure.append(tip);let active=null;
+    function hide(){tip.hidden=true;if(active)active.removeAttribute('aria-describedby');active=null;}
+    function place(event){
+      if(!active)return;const box=active.getBoundingClientRect(),pointer=event?.type?.startsWith('pointer');
+      let x=pointer?event.clientX:box.left+box.width/2,y=pointer?event.clientY:box.bottom;
+      const rect=tip.getBoundingClientRect();x=Math.max(8,Math.min(x+12,innerWidth-rect.width-8));
+      y=y+14+rect.height>innerHeight?Math.max(8,y-rect.height-12):y+14;
+      tip.style.left=`${x}px`;tip.style.top=`${y}px`;
+    }
+    function show(event){const target=event.target.closest?.('[data-chart-label]');if(!target||!svg.contains(target))return;hide();active=target;tip.textContent=target.dataset.chartLabel;tip.hidden=false;target.setAttribute('aria-describedby',id);place(event);}
+    svg.addEventListener('pointerover',show);svg.addEventListener('pointermove',place);svg.addEventListener('pointerleave',hide);
+    svg.addEventListener('focusin',show);svg.addEventListener('focusout',hide);svg.addEventListener('keydown',event=>{if(event.key==='Escape')hide();});
+    svg.addEventListener('pointerout',event=>{if(active&&!active.contains(event.relatedTarget))hide();});
+    figure.querySelector('.game-chart-viewport')?.addEventListener('scroll',hide,{passive:true});
+  }
   function legend(svg,series,W,force=false){if(series.length<2&&!force)return 8;let x=16,y=18;for(const item of series){const label=item.label||item.key||'數值',needed=Math.min(W-32,width(label)+28);if(x+needed>W-16&&x>16){x=16;y+=23;}svg.append(s('rect',{x,y:y-11,width:12,height:12,rx:2,fill:item.color}));text(svg,x+19,y,label);x+=needed+20;}return y+14;}
   function spacedTicks(scale,length,gap){const values=[];for(const value of scale.ticks){if(!values.length||(scale.position(value)-scale.position(values[values.length-1]))*length>=gap)values.push(value);}const last=scale.ticks[scale.ticks.length-1];if(values[values.length-1]!==last){if(values.length>1&&(scale.position(last)-scale.position(values[values.length-1]))*length<gap)values.pop();if(!values.length||(scale.position(last)-scale.position(values[values.length-1]))*length>=gap)values.push(last);}return values;}
   function grid(svg,scale,{left,top,plotW,plotH},horizontal=false){for(const value of spacedTicks(scale,horizontal?plotW:plotH,horizontal?65:30)){if(horizontal){const x=left+scale.position(value)*plotW;svg.append(s('line',{x1:x,x2:x,y1:top,y2:top+plotH,stroke:'#e1e8e4'}));text(svg,x,top+plotH+22,short(value),{'text-anchor':'middle'});}else{const y=top+plotH-scale.position(value)*plotH;svg.append(s('line',{x1:left,x2:left+plotW,y1:y,y2:y,stroke:'#e1e8e4'}));text(svg,left-10,y+5,short(value),{'text-anchor':'end'});}}}
@@ -44,7 +64,8 @@
     const output=s('svg',{xmlns:NS,width:W,height:header+H+footer,viewBox:`0 0 ${W} ${header+H+footer}`,'font-family':FONT,role:'img'});
     output.append(s('title',{},config.title||'資料圖表'),s('desc',{},config.description||''),s('metadata',{},JSON.stringify(config)),s('rect',{width:W,height:header+H+footer,fill:'#fff'}));
     titleLines.forEach((line,i)=>text(output,20,27+i*26,line,{'font-size':20,'font-weight':700}));if(config.description)descriptionLines.forEach((line,i)=>text(output,20,27+titleLines.length*26+i*20,line,{fill:'#4d665c'}));
-    const plot=s('g',{transform:`translate(0 ${header})`});[...svg.children].filter(child=>!['title','desc','metadata'].includes(child.localName)).forEach(child=>plot.append(child.cloneNode(true)));output.append(plot);
+    const plot=s('g',{transform:`translate(0 ${header})`});[...svg.children].filter(child=>!['title','desc','metadata'].includes(child.localName)).forEach(child=>plot.append(child.cloneNode(true)));
+    plot.querySelectorAll('[data-chart-label]').forEach(mark=>{mark.removeAttribute('aria-describedby');mark.append(s('title',{},mark.dataset.chartLabel));});output.append(plot);
     sourceLines.forEach((line,i)=>text(output,20,header+H+19+i*20,line,{fill:'#4d665c'}));return output;
   }
   function download(svg,filename='gamescope-chart.svg'){if(!(svg instanceof SVGElement))return;const raw='<?xml version="1.0" encoding="UTF-8"?>\n'+new XMLSerializer().serializeToString(exportImage(svg)),url=URL.createObjectURL(new Blob([raw],{type:'image/svg+xml;charset=utf-8'}));const a=node('a');a.href=url;a.download=filename.endsWith('.svg')?filename:`${filename}.svg`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
@@ -53,7 +74,30 @@
     const left=Math.min(190,Math.max(120,Math.round(W*.29))),right=Math.min(160,Math.max(72,...values.map(value=>width(number(value))+18))),plotW=W-left-right;
     const minRowHeight=Number.isFinite(config.rowHeight)?Math.min(96,Math.max(34,config.rowHeight)):34;
     const labels=rows.map(row=>wrap(row.label,left-24).slice(0,3)),heights=labels.map(a=>Math.max(minRowHeight,series.length*18+10,a.length*16+10)),plotH=heights.reduce((a,b)=>a+b,0),scale=niceScale(values,{integer,count:Math.max(1,Math.min(4,Math.floor(plotW/80)))});grid(svg,scale,{left,top,plotW,plotH},true);
-    let start=top;rows.forEach((row,i)=>{const center=start+heights[i]/2;labels[i].forEach((line,j)=>text(svg,left-14,center+(j-(labels[i].length-1)/2)*16+5,line,{'text-anchor':'end'}));series.forEach((item,j)=>{const value=row.values?.[j],y=center+(j-(series.length-1)/2)*18;if(!Number.isFinite(value)){text(svg,left+5,y+5,'未提供',{fill:'#6b7771'});return;}const x0=left+scale.position(Math.min(value,0))*plotW,x1=left+scale.position(Math.max(value,0))*plotW;svg.append(mark(s('rect',{x:x0,y:y-6,width:Math.max(0,x1-x0),height:12,rx:2,fill:item.color}),`${row.label} · ${item.label}: ${number(value)} ${config.unit||''}`,row.filter?config.onSelectRow:undefined,row));text(svg,value<0?x0-5:x1+5,y+5,number(value),{'text-anchor':value<0?'end':'start'});});start+=heights[i];});text(svg,left,top+plotH+45,config.yLabel||config.unit||'數值',{fill:'#4d665c'});return top+plotH+58;
+    let start=top;rows.forEach((row,i)=>{const center=start+heights[i]/2;labels[i].forEach((line,j)=>text(svg,left-14,center+(j-(labels[i].length-1)/2)*16+5,line,{'text-anchor':'end'}));series.forEach((item,j)=>{const value=row.values?.[j],y=center+(j-(series.length-1)/2)*18;if(!Number.isFinite(value)){text(svg,left+5,y+5,'未提供',{fill:'#6b7771'});return;}const x0=left+scale.position(Math.min(value,0))*plotW,x1=left+scale.position(Math.max(value,0))*plotW;svg.append(mark(s('rect',{x:x0,y:y-6,width:Math.max(0,x1-x0),height:12,rx:2,fill:item.color}),`${row.label} · ${item.label}: ${number(value)} ${config.unit||''}`,(row.filter||row.cohort)?config.onSelectRow:undefined,row));text(svg,value<0?x0-5:x1+5,y+5,number(value),{'text-anchor':value<0?'end':'start'});});start+=heights[i];});text(svg,left,top+plotH+45,config.yLabel||config.unit||'數值',{fill:'#4d665c'});return top+plotH+58;
+  }
+  function stackedPlot(svg,config,rows,series,W){
+    const left=Math.min(220,Math.max(175,Math.round(W*.26))),right=28,plotW=W-left-right,top=legend(svg,series,W,true)+18,rowH=88,plotH=rows.length*rowH;
+    const scale={ticks:[0,25,50,75,100],position:value=>value/100};grid(svg,scale,{left,top,plotW,plotH},true);
+    rows.forEach((row,i)=>{
+      const cy=top+(i+.5)*rowH,label=wrap(row.label,left-22).slice(0,3),lines=[...label,`n = ${number(row.n)}`];
+      lines.forEach((line,j)=>text(svg,left-12,cy+(j-(lines.length-1)/2)*17+5,line,{'text-anchor':'end'}));
+      if(!row.n||!row.values?.some(Number.isFinite)){text(svg,left+8,cy+5,'沒有樣本；比例未計算',{fill:'#526a5e'});return;}
+      svg.append(s('rect',{x:left,y:cy-17,width:plotW,height:34,fill:'#edf1ef',rx:3}));let offset=0;
+      series.forEach((item,index)=>{
+        const value=row.values[index];if(!Number.isFinite(value)||value<0)return;
+        const x=left+offset*plotW/100,segmentW=Math.max(0,Math.min(value,100-offset))*plotW/100;offset+=value;
+        if(segmentW<=0)return;
+        const label=`${row.label}\n${item.label}：${number(value)}%\n${number(row.counts?.[index])} / ${number(row.n)} 款（此組全部樣本）`;
+        const segment=mark(s('rect',{x,y:cy-17,width:segmentW,height:34,fill:item.color,stroke:'#fff','stroke-width':1}),label,config.onSelectSegment,{row,series:item,index});
+        segment.dataset.cohort=row.cohort||'';segment.dataset.tier=item.key||'';svg.append(segment);
+        const caption=`${number(value)}%`;
+        if(segmentW>width(caption)+12){const color=item.color||'#14745b',rgb=/^#[a-f\d]{6}$/i.test(color)?[1,3,5].map(n=>parseInt(color.slice(n,n+2),16)):[20,116,91];
+          const linear=rgb.map(v=>v/255<=.04045?v/3294.6:((v/255+.055)/1.055)**2.4),luminance=.2126*linear[0]+.7152*linear[1]+.0722*linear[2];
+          text(svg,x+segmentW/2,cy+5,caption,{'text-anchor':'middle',fill:luminance<.179?'#fff':'#000','pointer-events':'none'});
+        }
+      });
+    });text(svg,left,top+plotH+48,'組內比例 (%) · 每組使用自己的分母',{fill:'#4d665c'});return top+plotH+63;
   }
   function linePlot(svg,config,rows,series,W){
     const values=finite(rows.flatMap(row=>row.values||[])),top=legend(svg,series,W)+24,left=76,right=36,plotW=W-left-right,plotH=260,scale=niceScale(values,{integer:config.integerTicks??/[款份次人]/.test(config.unit||''),count:4});grid(svg,scale,{left,top,plotW,plotH});text(svg,16,top-9,config.yLabel||config.unit||'數值',{fill:'#4d665c'});
@@ -99,7 +143,7 @@
     if(config.type==='scatter'){table(figure,['遊戲／記錄','ID',`${config.xLabel||'X'} (${config.xUnit||''})`,`${config.yLabel||'Y'} (${config.yUnit||''})`],points.map(point=>[point.label||point.id,point.id||'',number(point.x),number(point.y)]));return;}
     if(config.type==='histogram'){table(figure,['區間','下界（原始值）','上界（原始值）','遊戲款數'],rows.map(row=>[row.label,number(row.lower),number(row.upper),number(row.values?.[0])]));return;}
     if(config.type==='boxplot'){table(figure,['分類','n','下鬚','Q1','中位數','Q3','上鬚','離群值總數','圖中離群值'],rows.map(row=>[row.label,number(row.n),...(row.values||[null,null,null,null,null]).map(number),number(row.outlier_count),(row.outliers||[]).map(number).join(', ')||'—']));return;}
-    if(config.type==='heatmap'){table(figure,['分類','n',...series.map(item=>item.label)],rows.map(row=>[row.label,number(row.n),...series.map((_,j)=>Number.isFinite(row.values?.[j])?`${number(row.values[j])}% (${number(row.counts?.[j])} 款)`:'未提供')]));return;}
+    if(config.type==='heatmap'||config.type==='stacked_bar'){table(figure,['分類','n',...series.map(item=>item.label)],rows.map(row=>[row.label,number(row.n),...series.map((_,j)=>Number.isFinite(row.values?.[j])?`${number(row.values[j])}% (${number(row.counts?.[j])} 款)`:'未提供')]));return;}
     table(figure,['分類／時期',...series.map(item=>`${item.label}${config.unit?` (${config.unit})`:''}`)],rows.map(row=>[row.label,...series.map((_,j)=>number(row.values?.[j]))]));
   }
   function dispose(container){const target=typeof container==='string'?document.getElementById(container):container;if(target){observers.get(target)?.disconnect();observers.delete(target);}}
@@ -107,16 +151,17 @@
     const target=typeof container==='string'?document.getElementById(container):container;if(!target)throw new Error('Chart container was not found.');dispose(target);
     const rows=Array.isArray(config.rows)?config.rows:[],series=(config.series?.length?config.series:[{label:'數值'}]).map((item,i)=>({...item,color:item.color||COLORS[i%COLORS.length]})),points=(config.points||[]).filter(point=>Number.isFinite(point.x)&&Number.isFinite(point.y));
     const type=config.type||'bar',title=config.title||'資料圖表',figure=node('figure',undefined,'game-chart');figure.append(node('figcaption',title,'game-chart-caption'));if(config.description)figure.append(node('p',config.description,'game-chart-note'));
-    if(!['bar','line','histogram','boxplot','scatter','heatmap'].includes(type))throw new Error('Unsupported chart type.');
+    if(!['bar','line','histogram','boxplot','scatter','heatmap','stacked_bar'].includes(type))throw new Error('Unsupported chart type.');
     const values=finite(rows.flatMap(row=>row.values||[]));if(type==='scatter'?!points.length:!rows.length||!values.length){figure.append(node('p','沒有可繪製的資料；缺漏值不會當作零。','game-chart-empty'));provenance(figure,config);target.replaceChildren(figure);return null;}
     if(type==='scatter'||type==='boxplot'){const label=node('label','顯示尺度','game-chart-scale'),select=node('select');select.setAttribute('aria-label','顯示尺度');for(const [value,labelText] of [['log1p','log1p 對數壓縮'],['linear','原始線性']]){const option=node('option',labelText);option.value=value;select.append(option);}select.value=config.xScale==='log1p'?'log1p':'linear';select.addEventListener('change',()=>render(target,{...config,xScale:select.value,...(type==='scatter'?{yScale:select.value}:{})}));label.append(select);figure.append(label);}
     const scaleNote=scaleDescription(config);if(scaleNote)figure.append(node('p',scaleNote,'game-chart-scale-note'));
     const summary=scatterSummary(config);if(summary)figure.append(node('p',summary,'game-chart-statistics'));
     const measuredWidth=contentWidth(target),availableWidth=Math.max(0,measuredWidth-2),W=Math.floor(Math.max(type==='bar'?380:type==='boxplot'||type==='heatmap'?560:640,Math.min(1100,availableWidth||760))),uid=`game-chart-${++serial}`;
     const svg=s('svg',{xmlns:NS,width:W,role:'img','aria-labelledby':`${uid}-title ${uid}-desc`,'font-family':FONT});svg.style.minWidth=`${W}px`;svg.append(s('title',{id:`${uid}-title`},title),s('desc',{id:`${uid}-desc`},`${config.description||''} 展開下方表格可讀取完整數值。`));
-    const H=type==='bar'?barPlot(svg,config,rows,series,W):type==='line'?linePlot(svg,config,rows,series,W):type==='histogram'?histogramPlot(svg,config,rows,series,W):type==='boxplot'?boxPlot(svg,config,rows,W):type==='scatter'?scatterPlot(svg,config,points,W):heatmapPlot(svg,config,rows,series,W);svg.setAttribute('height',H);svg.setAttribute('viewBox',`0 0 ${W} ${H}`);exports.set(svg,{config,W,H});
+    const H=type==='bar'?barPlot(svg,config,rows,series,W):type==='stacked_bar'?stackedPlot(svg,config,rows,series,W):type==='line'?linePlot(svg,config,rows,series,W):type==='histogram'?histogramPlot(svg,config,rows,series,W):type==='boxplot'?boxPlot(svg,config,rows,W):type==='scatter'?scatterPlot(svg,config,points,W):heatmapPlot(svg,config,rows,series,W);svg.setAttribute('height',H);svg.setAttribute('viewBox',`0 0 ${W} ${H}`);exports.set(svg,{config,W,H});
     const viewport=node('div',undefined,'game-chart-viewport');viewport.tabIndex=0;viewport.setAttribute('aria-label',`${title}；窄螢幕可左右捲動`);viewport.append(svg);if(W>availableWidth+1)figure.append(node('p','窄螢幕可左右捲動圖表；完整數值見下方表格。','game-chart-scroll-note'));figure.append(viewport);
     const actions=node('div',undefined,'game-chart-actions'),button=node('button','下載圖表 SVG','outline');button.type='button';button.addEventListener('click',()=>download(svg,config.filename||'gamescope-chart.svg'));actions.append(button);figure.append(actions);provenance(figure,config);chartTable(figure,config,rows,series,points);target.replaceChildren(figure);
+    tooltips(figure,svg,`${uid}-tooltip`);
     if(window.ResizeObserver){const observer=new ResizeObserver(()=>{if(!target.isConnected){observer.disconnect();return;}const next=contentWidth(target);if(next>0&&Math.abs(next-measuredWidth)>2)render(target,config);});observer.observe(target);observers.set(target,observer);}return svg;
   }
   window.GameCharts={render,download,dispose};

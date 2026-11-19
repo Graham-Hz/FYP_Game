@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GameScope · 市場資料分析</title>
   <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/charts.css"><link rel="stylesheet" href="/market.css">
-  <script src="/charts.js" defer></script><script src="/market.js" defer></script>
+  <script src="/charts.js" defer></script><script src="/workflow.js" defer></script><script src="/market.js" defer></script>
 </head>
 <body>
 <header><a class="brand" href="/">◈ GameScope <span>Game market research</span></a><span class="badge">歷史資料 · 圖表探索</span></header>
@@ -21,12 +21,13 @@
       <label><span id="market-group-label">玩法類型</span><select id="market-group" disabled><option value="">全部類型</option></select></label>
       <label id="market-tag-label" hidden>內容／其他標籤<select id="market-tag" disabled><option value="">不限標籤</option></select></label>
     </div>
+    <div id="market-comparison-control" class="market-comparison-control" hidden><label>比較對照<select id="market-compare-group" disabled><option value="">其他遊戲（不含所選類型）</option></select></label><p>兩組沿用相同年份與附加標籤；上方統計只計入你選擇的類型。</p></div>
     <details id="market-advanced-filters" class="market-advanced"><summary>年份與排名設定</summary><div class="market-extra-grid"><label>發售年份由<input id="market-year-from" type="number" step="1" placeholder="不限" disabled></label><label>發售年份至<input id="market-year-to" type="number" step="1" placeholder="不限" disabled></label><label>作品排名依據<select id="market-rank" disabled></select></label><label>排名顯示數量<select id="market-top" disabled><option value="10">前 10 項</option><option value="20">前 20 項</option></select></label></div></details>
     <div class="market-actions"><p id="market-filter-help">正在載入可選條件…</p><div><button id="market-reset" type="button" class="quiet-button" disabled>重設</button><button id="market-apply" type="submit" disabled>套用條件</button></div></div>
   </form>
   <p id="market-status" role="status" aria-live="polite">正在載入市場分析資料…</p>
   <section id="market-results" hidden aria-label="市場分析結果">
-    <div class="market-result-heading"><p id="market-result-context" class="fine"></p><div class="market-exports"><button id="market-export-json" class="outline" type="button">分析 JSON</button><button id="market-export-csv" class="outline" type="button">圖表數據 CSV</button></div></div>
+    <div class="market-result-heading"><p id="market-result-context" class="fine"></p><div class="market-exports"><button id="market-view-records" class="outline" type="button">查看篩選作品</button><button id="market-export-json" class="outline" type="button">分析 JSON</button><button id="market-export-csv" class="outline" type="button">圖表數據 CSV</button></div></div>
     <div id="market-summary" class="market-summary"></div>
     <div id="market-empty" class="market-empty" hidden><h3>沒有符合條件的樣本</h3><p>可擴大年份範圍或選擇全部類型。沒有樣本不代表市場沒有這類遊戲。</p></div>
     <div id="market-analysis-tabs" class="market-tabs" role="tablist" aria-label="分析方向"></div>
@@ -34,9 +35,31 @@
       <div class="market-section-heading"><div><h2 id="market-section-title"></h2><p id="market-section-description"></p></div><label id="market-chart-select-label" hidden>檢視圖表<select id="market-chart-select"></select></label></div>
       <aside id="market-point-detail" class="market-point-detail" role="status" hidden></aside>
       <div id="market-charts" class="market-charts"></div>
+      <section id="market-comparison" class="market-comparison" aria-labelledby="market-comparison-title" hidden><div class="market-comparison-heading"><h3 id="market-comparison-title">兩組樣本的差異</h3><p id="market-comparison-context"></p></div><div id="market-comparison-cohorts" class="market-comparison-cohorts"></div><details><summary>比較方法與注意事項</summary><ul id="market-comparison-notes"></ul></details></section>
       <section id="market-leaders-panel" class="market-panel" hidden><h2 id="market-leaders-title">作品排名</h2><p class="fine">估算擁有者、最低安裝量及估算銷量是不同指標；這是所選樣本內的排名。</p><div id="market-leaders" class="market-table-scroll" tabindex="0" aria-label="作品排名表"></div></section>
+      <section id="market-finding-capture" class="market-panel market-finding-capture" aria-labelledby="market-finding-heading" hidden>
+        <div class="market-finding-heading"><div><h2 id="market-finding-heading">把這項觀察留給規劃</h2><p id="market-finding-context" class="fine"></p></div><button id="market-finding-open" type="button" class="outline">保存分析發現</button></div>
+        <form id="market-finding-form" hidden>
+          <label>發現標題<input id="market-finding-title" type="text" maxlength="120" required></label>
+          <label>你的解讀／待驗證問題（可留空）<textarea id="market-finding-note" rows="3" maxlength="1200" placeholder="這項觀察會如何影響類型、規模或資源選擇？還需要驗證甚麼？"></textarea></label>
+          <p class="fine">保存概況、目前圖表的彙總值（最多 40 列）、兩組比較及來源。散點作品和完整清單請另行匯出。個人解讀與歷史數據分開保存；不會自動變成銷量或收入預測。</p>
+          <div class="market-finding-actions"><button id="market-finding-save" type="submit" class="outline">加入規劃資料夾</button><button id="market-finding-cancel" type="button" class="quiet-button">取消</button></div>
+        </form>
+        <p id="market-finding-status" role="status" aria-live="polite"></p>
+      </section>
+    </section>
+    <section id="market-records-panel" class="market-panel market-records-panel" aria-labelledby="market-records-title" tabindex="-1" hidden>
+      <div class="market-records-heading"><div><h2 id="market-records-title">查看這組作品</h2><p id="market-records-context" class="fine"></p></div><button id="market-records-close" type="button" class="quiet-button">關閉明細</button></div>
+      <form id="market-records-form" class="market-records-controls"><label class="market-records-search">搜尋名稱或 ID<input id="market-records-q" type="search" maxlength="200" placeholder="在這組作品內搜尋" autocomplete="off"></label><label>排序<select id="market-records-sort"><option value="title">作品名稱</option><option value="volume">數量由高至低</option><option value="release_date">發售日期由新至舊</option></select></label><label>每頁<select id="market-records-size"><option value="20">20 筆</option><option value="50">50 筆</option></select></label><button id="market-records-search-button" type="submit" class="outline">搜尋</button></form>
+      <p id="market-records-status" role="status" aria-live="polite"></p>
+      <div id="market-records-table" class="market-table-scroll" tabindex="0" aria-label="所選組別的作品明細" hidden></div>
+      <div id="market-records-pagination" class="market-records-pagination" hidden><button id="market-records-prev" type="button" class="outline">上一頁</button><span id="market-records-page"></span><button id="market-records-next" type="button" class="outline">下一頁</button></div>
     </section>
     <details id="market-method" class="market-method"><summary id="market-method-heading">資料來源、分析方法與限制</summary><ul id="market-source-links" aria-label="原始資料來源"></ul><ul id="market-notes"></ul><details id="market-provenance"><summary>本次分析的完整版本記錄</summary><pre id="market-provenance-json"></pre></details></details>
+  </section>
+  <section id="market-findings" class="market-panel market-findings" aria-labelledby="market-findings-heading">
+    <div class="market-finding-heading"><div><h2 id="market-findings-heading">已保存的分析發現 <span id="market-findings-count">0 / 5</span></h2><p class="fine">可先保存，再建立規劃。記錄只存在此瀏覽器分頁，關閉前請到摘要頁匯出。</p></div><a href="/plan">查看規劃摘要</a></div>
+    <p id="market-findings-status" role="status" aria-live="polite"></p><div id="market-findings-list" class="market-findings-list"></div>
   </section>
   <footer>FYP · Independent market data analysis <span>Historical samples · reproducible chart data</span></footer>
 </main>

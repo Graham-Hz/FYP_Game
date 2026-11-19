@@ -11,7 +11,7 @@
  <summary>用遊戲構想尋找相近作品</summary>
  <p>選擇玩法類型與預計售價，在同一批歷史樣本中尋找參考。這裡的條件獨立於下方營收分析篩選。</p>
  <form id="reference-form">
-  <fieldset><legend>遊戲類型（可多選）</legend><div id="ref-genres" class="reference-genres"></div></fieldset>
+  <fieldset><legend>玩法類型（可多選）</legend><div id="ref-genres" class="reference-genres"></div></fieldset>
   <div class="revenue-filters reference-inputs">
    <label>預計售價 (USD)<input id="ref-price" type="number" min="0" max="1000" step="0.01" value="14.99" required></label>
    <label>候選作品價格範圍<select id="ref-factor"><option value="2">預計售價的一半至兩倍</option><option value="1.5">預計售價 ÷ 1.5 至 × 1.5</option><option value="3">預計售價的三分之一至三倍</option><option value="">不限制價格範圍</option></select></label>
@@ -37,10 +37,11 @@
 <form id="revenue-form" class="source-panel">
  <div class="revenue-filters">
   <label>觀察價格組別<select id="r-mode"><option value="positive">正價格遊戲（預設）</option><option value="zero">零價格遊戲</option><option value="all">全部（收入定義可能不同）</option></select></label>
-  <label>遊戲類型<select id="r-genre"><option value="">全部，包括類型未配對</option></select></label>
+  <label>來源玩法／其他標籤<select id="r-genre"><option value="">全部，包括來源標籤未配對</option></select></label>
   <label>來源發行商分類<select id="r-publisher"><option value="">全部</option></select></label>
   <label>搜尋遊戲名稱<input id="r-search" maxlength="100" placeholder="例如：Balatro"></label>
  </div>
+ <p class="fine">此處按原始來源的一項玩法或其他標籤篩選，選項已按含義分組。Indie、Early Access、內容描述及遊玩形式保留為來源標籤；上方相近作品只使用玩法類型配對。</p>
  <button class="outline" type="submit" id="r-apply">更新分析</button><button class="outline" type="button" id="r-reset">重設</button>
 </form>
 <p id="r-status" role="status" aria-live="polite">正在載入營收資料…</p>
@@ -53,7 +54,7 @@
   <article class="result-card"><h2>營收集中程度</h2><p class="fine">按估算營收排序，前 10% 遊戲佔樣本收入多少？</p><div id="r-concentration"></div><p id="r-concentration-note" class="fine"></p></article>
  </div>
  <section class="result-card revenue-section"><h2>按觀察價格比較</h2><p class="fine">價格以來源 USD 欄位解讀，並非成交均價或已確認的首發價格。各組顯示中位數與四分位範圍。</p><div id="r-price-table" class="table-scroll" tabindex="0" aria-label="價格比較表"></div></section>
- <section class="result-card revenue-section"><h2>按遊戲類型比較</h2><p class="fine">類型來自較後的 2025 年 3 月資料。遊戲可以同屬多類，組別數量和收入不可相加；未配對的遊戲仍保留在整體分析。</p><div id="r-genre-table" class="table-scroll" tabindex="0" aria-label="類型比較表"></div></section>
+ <section class="result-card revenue-section"><h2>按來源玩法／其他標籤比較</h2><p class="fine">本表逐項保留來源標籤，包括玩法、製作標籤、發行階段及內容描述，並非全部都是玩法類型。標籤來自較後的 2025 年 3 月資料。遊戲可以有多個標籤，組別數量和收入不可相加；未配對的遊戲仍保留在整體分析。</p><div id="r-genre-table" class="table-scroll" tabindex="0" aria-label="來源玩法及其他標籤比較表"></div></section>
  <section class="result-card revenue-section"><div class="result-heading"><h2>遊戲明細</h2><label>排序<select id="r-sort"><option value="revenue">估算營收：高至低</option><option value="price">觀察價格：低至高</option><option value="name">遊戲名稱</option></select></label></div><div id="r-games" class="table-scroll" tabindex="0" aria-label="遊戲明細表"></div><div class="pagination"><button id="r-prev" class="outline" type="button">上一頁</button><span id="r-page"></span><button id="r-next" class="outline" type="button">下一頁</button></div></section>
 </section>
 <details open><summary>資料來源與解讀</summary><p>來源為 <a href="https://www.kaggle.com/datasets/alicemtopcu/top-1500-games-on-steam-by-revenue-09-09-2024" target="_blank" rel="noopener">Kaggle Steam Top 1500</a>，作者稱取自 Gamalytic；快照標示為 2024-09-09，每筆擷取時間未提供。收入是累計估算，不是統一首週或完整年度收入，各遊戲累積時間不同。來源發售日期可能是 Early Access 後的正式發售日期，因此收入未必全部在 2024 年產生。</p><p><a href="https://gamalytic.com/about" target="_blank" rel="noopener">Gamalytic 現行定義</a>：付費遊戲主要計算本體銷售，免費遊戲涵蓋較廣收入來源；觀察價格為零不一定代表發售時免費。Indie 等發行商分類部分依據歷史營收，並非工作室規模或獨立擁有權的認證。</p><p>金額按來源慣例解讀為 USD，CSV 未另列幣別。來源方法於 2026-10-23 核對，下載檔未附 2024 年方法版本。此頁是獨立的歷史營收探索，不隨主頁 CSV 版本切換，也未用於模型訓練或成效評估。</p></details>

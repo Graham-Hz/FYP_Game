@@ -16,6 +16,7 @@ import pandas as pd
 from imports.repository import DEFAULT_VERSION
 from market_taxonomy import gameplay, other_labels, tag_groups, metadata as taxonomy_metadata
 from market_analytics import analytical_charts
+from market_cohorts import compare as compare_cohorts
 
 
 MANIFEST = "reports/2026-10-06/analysis_v1/manifest.json"
@@ -91,7 +92,12 @@ class MarketStore:
             for source in SOURCES:
                 try:
                     data = self._load(source)
-                    sources.append(copy.deepcopy(data["source"]))
+                    item = copy.deepcopy(data["source"])
+                    item.update(analysis_schema_version="market_analysis_v2",
+                                comparison_method_version="market_cohort_comparison_v1",
+                                taxonomy_version=data["provenance"]["label_taxonomy"]["version"],
+                                input_hashes=copy.deepcopy(data["provenance"]["input_hashes"]))
+                    sources.append(item)
                 except (OSError, ValueError, KeyError, TypeError, duckdb.Error) as exc:
                     sources.append(self._unavailable(source, str(exc)))
         return {"sources": sources}
@@ -274,15 +280,17 @@ class MarketStore:
             source_obj['description'] = '此版本為人工示範資料，不代表真實市場。' + description
         return {"source": source_obj, "frame": frame, "provenance": provenance, "unit": unit}
 
-    def query(self, payload):
+    def _selection(self, payload):
+        """Validate and select both cohorts while the comparison lock is held."""
         expected = {"source", "version_id", "group", "year_from", "year_to", "top_n", "rank_metric"}
-        if not isinstance(payload, dict) or set(payload) not in (expected, expected | {'tag'}):
+        optional = {"tag", "compare_group"}
+        if not isinstance(payload, dict) or not expected <= set(payload) or set(payload) - expected - optional:
             raise ValueError("Expected source, version_id, group, year_from, year_to, top_n and rank_metric.")
-        payload = {'tag': '', **payload}
+        payload = {'tag': '', 'compare_group': '', **payload}
         source = payload["source"]
         if not isinstance(source, str) or source not in SOURCES:
             raise ValueError("Unknown market source.")
-        for field in ("version_id", "group", "tag", "rank_metric"):
+        for field in ("version_id", "group", "tag", "compare_group", "rank_metric"):
             if not isinstance(payload[field], str):
                 raise ValueError("Market selector values must be strings.")
         if type(payload["top_n"]) is not int or payload["top_n"] not in (10, 20):
@@ -292,30 +300,133 @@ class MarketStore:
                 raise ValueError("Years must be integer years or null.")
         if payload["year_from"] is not None and payload["year_to"] is not None and payload["year_from"] > payload["year_to"]:
             raise ValueError("The start year must not exceed the end year.")
-        with self.comparison.lock:
-            data = self._load(source)
-            if payload["version_id"] != data["source"]["version_id"]:
-                raise ValueError("The active source version changed; refresh the market page.")
-            if payload["group"] and payload["group"] not in data["source"]["groups"]:
+        data = self._load(source)
+        if payload["version_id"] != data["source"]["version_id"]:
+            raise ValueError("The active source version changed; refresh the market page.")
+        for name in ("group", "compare_group"):
+            if payload[name] and payload[name] not in data["source"]["groups"]:
                 raise ValueError("Unknown genre or category for this source.")
-            if payload['tag'] and payload['tag'] not in {v for g in data['source']['tag_groups'] for v in g['values']}:
-                raise ValueError('Unknown additional source label; gameplay genres and other labels have separate filters.')
-            if payload["rank_metric"] not in {item["id"] for item in data["source"]["rank_metrics"]}:
-                raise ValueError("Unsupported ranking metric for this source.")
-            frame = data["frame"]
-            if payload["group"]:
-                frame = frame[frame.groups.map(lambda xs: payload["group"] in xs)]
-            if payload['tag']:
-                frame = frame[frame.source_tags.map(lambda xs: payload['tag'] in xs)]
-            years = frame.release_date.dt.year
-            if payload["year_from"] is not None:
-                frame = frame[years >= payload["year_from"]]
-                years = frame.release_date.dt.year
-            if payload["year_to"] is not None:
-                frame = frame[years <= payload["year_to"]]
-            return self._analyze(data, frame, payload)
+        if payload["compare_group"] and (not payload["group"] or payload["compare_group"] == payload["group"]):
+            raise ValueError("Choose a primary group and a different comparison group.")
+        if payload['tag'] and payload['tag'] not in {v for g in data['source']['tag_groups'] for v in g['values']}:
+            raise ValueError('Unknown additional source label; gameplay genres and other labels have separate filters.')
+        if payload["rank_metric"] not in {item["id"] for item in data["source"]["rank_metrics"]}:
+            raise ValueError("Unsupported ranking metric for this source.")
+        base = data["frame"]
+        if payload['tag']:
+            base = base[base.source_tags.map(lambda xs: payload['tag'] in xs).astype(bool)]
+        if payload["year_from"] is not None:
+            base = base[base.release_date.dt.year >= payload["year_from"]]
+        if payload["year_to"] is not None:
+            base = base[base.release_date.dt.year <= payload["year_to"]]
+        selected, baseline = base, None
+        if payload["group"]:
+            selected = base[base.groups.map(lambda xs: payload["group"] in xs).astype(bool)]
+            if payload["compare_group"]:
+                baseline = base[base.groups.map(lambda xs: payload["compare_group"] in xs).astype(bool)]
+            else:
+                baseline = base[~base.app_id.isin(selected.app_id)]
+        return data, selected, baseline, payload
 
-    def _analyze(self, data, frame, filters):
+    def query(self, payload):
+        with self.comparison.lock:
+            data, selected, baseline, filters = self._selection(payload)
+            comparison = None
+            if baseline is not None:
+                baseline_label = filters["compare_group"] or "其餘樣本（不含所選遊戲）"
+                definition = ("同一版本、附加標籤及發售年份條件下，具有所選對照玩法／類別的記錄；Steam 組別可能重疊。"
+                              if filters["compare_group"] else
+                              "同一版本、附加標籤及發售年份條件下，排除所選樣本全部 ID 後的其餘記錄；可包含未對照玩法標籤的記錄，並非另一個單一類型。")
+                caption = (f"{data['source']['name']} · 快照 {data['source']['snapshot']} · {data['source']['version_id']} · "
+                           f"所選 {filters['group']} · 標籤 {filters['tag'] or '不限'} · 發售年 {filters['year_from'] or '不限'}–{filters['year_to'] or '不限'}")
+                comparison = compare_cohorts(selected, baseline, filters["source"], filters["group"], baseline_label,
+                                             definition, caption, TIERS.get(filters["source"], ()))
+            return self._analyze(data, selected, filters, comparison)
+
+    def records(self, payload):
+        """Bounded records for the exact selected/baseline analysis scope."""
+        fields = {"analysis", "cohort", "tier", "q", "page", "page_size", "sort"}
+        if not isinstance(payload, dict) or set(payload) != fields:
+            raise ValueError("Expected analysis, cohort, tier, q, page, page_size and sort.")
+        for name in ("cohort", "tier", "q", "sort"):
+            if not isinstance(payload[name], str):
+                raise ValueError("Record selectors must be strings.")
+        if payload["cohort"] not in {"selected", "baseline"} or len(payload["q"]) > 200:
+            raise ValueError("Invalid cohort or search text longer than 200 characters.")
+        if type(payload["page"]) is not int or not 1 <= payload["page"] <= 1_000_000:
+            raise ValueError("page must be an integer between 1 and 1000000.")
+        if type(payload["page_size"]) is not int or payload["page_size"] not in (20, 50):
+            raise ValueError("page_size must be 20 or 50.")
+        with self.comparison.lock:
+            data, selected, baseline, filters = self._selection(payload["analysis"])
+            source = filters["source"]
+            if payload["cohort"] == "baseline" and baseline is None:
+                raise ValueError("Choose a primary group before requesting baseline records.")
+            frame = selected if payload["cohort"] == "selected" else baseline
+            cohort_label = (filters["group"] or "全部樣本") if payload["cohort"] == "selected" else (filters["compare_group"] or "其餘樣本（不含所選遊戲）")
+            tier_map = dict(TIERS.get(source, ()))
+            if source != "revenue":
+                tier_map["unknown"] = "結果未知"
+            if payload["tier"] and payload["tier"] not in tier_map:
+                raise ValueError("Unknown outcome tier for this source.")
+            if payload["tier"] == "unknown":
+                frame = frame[~frame.target_tier.isin([ident for ident, _ in TIERS[source]])]
+            elif payload["tier"]:
+                frame = frame[frame.target_tier.eq(payload["tier"])]
+            query = payload["q"].strip()
+            if query:
+                search = query.casefold()
+                frame = frame[frame.title.str.casefold().str.contains(search, regex=False, na=False) |
+                              frame.app_id.str.casefold().str.contains(search, regex=False, na=False)]
+            allowed_sorts = {"title", "volume", "release_date"} | ({"revenue"} if source == "revenue" else set())
+            if payload["sort"] not in allowed_sorts:
+                raise ValueError("Unsupported record sort for this source.")
+            total = len(frame)
+            pages = math.ceil(total / payload["page_size"])
+            page = min(payload["page"], max(1, pages))
+            start = (page - 1) * payload["page_size"]
+            sort_column = {"title": "sort_title", "volume": "volume_lower", "release_date": "release_date", "revenue": "revenue"}[payload["sort"]]
+            if payload["sort"] == "title":
+                frame = frame.assign(sort_title=frame.title.str.casefold())
+            shown = frame.sort_values([sort_column, "app_id"], ascending=[payload["sort"] == "title", True], na_position="last").iloc[start:start + payload["page_size"]]
+            columns = [{"key": "title", "label": "遊戲／記錄"}, {"key": "app_id", "label": "ID"},
+                       {"key": "release_date", "label": "發售日期"}, {"key": "groups", "label": data["source"]["group_label"]}]
+            if source == "pc":
+                columns += [{"key": "volume_lower", "label": "Owners 估計下限"}, {"key": "volume_upper", "label": "Owners 估計上限"}]
+            elif source == "mobile":
+                columns += [{"key": "minimum_installs", "label": "安裝量下限"}]
+            else:
+                columns += [{"key": "copies_sold", "label": "估計售出份數"}, {"key": "revenue", "label": "估計總營收（USD）"}]
+            if source != "mobile":
+                columns += [{"key": "source_tags", "label": "其他來源標籤"}]
+            if source != "revenue":
+                columns += [{"key": "tier_label", "label": "數量分層"}]
+            rows = []
+            for item in shown.itertuples():
+                row = {"app_id": item.app_id, "title": item.title, "release_date": _text_date(item.release_date),
+                       "groups": list(item.groups), "source_tags": list(item.source_tags)}
+                if source == "pc":
+                    row.update(volume_lower=_number(item.volume_lower), volume_upper=_number(item.volume_upper))
+                elif source == "mobile":
+                    row["minimum_installs"] = _number(item.volume_lower)
+                else:
+                    row.update(steam_id=item.app_id, copies_sold=_number(item.copies_sold), revenue=_number(item.revenue))
+                if source != "revenue":
+                    row["tier"] = item.target_tier if isinstance(item.target_tier, str) and item.target_tier in dict(TIERS[source]) else "unknown"
+                    row["tier_label"] = tier_map[row["tier"]]
+                rows.append(row)
+            provenance = copy.deepcopy(data["provenance"])
+            provenance.update(record_scope="same_analysis_filters_then_cohort_tier_and_literal_title_or_id_search",
+                              record_total=total, records_returned=len(rows), display_order=payload["sort"])
+            return {"columns": columns, "rows": rows, "total": total, "page": page,
+                    "page_size": payload["page_size"], "pages": pages,
+                    "context": {"source_id": source, "version_id": data["source"]["version_id"],
+                                "cohort": payload["cohort"], "cohort_label": cohort_label,
+                                "tier": payload["tier"], "tier_label": tier_map.get(payload["tier"], "全部分層"),
+                                "analysis_filters": filters, "q": query, "sort": payload["sort"]},
+                    "provenance": provenance}
+
+    def _analyze(self, data, frame, filters, comparison=None):
         source = data["source"]["id"]
         pc = source == "pc"
         revenue = source == "revenue"
@@ -326,6 +437,8 @@ class MarketStore:
         charts = []
 
         def chart(ident, title, description, rows, series, chart_unit, kind="bar", y_label=None):
+            if ident in {"group_count", "group_volume_total", "group_volume_median", "group_high_tier_share", "group_revenue_total", "group_revenue_median"}:
+                description += f" 最多顯示排序後的前 {top} 組，未必涵蓋全部類型／類別。"
             charts.append({"id": ident, "title": title, "description": description, "type": kind,
                            "rows": [{"label": str(label), "values": [_number(v) for v in values]} for label, values in rows],
                            "series": [{"key": key, "label": label, "color": COLORS[i % len(COLORS)]} for i, (key, label) in enumerate(series)],
@@ -352,6 +465,15 @@ class MarketStore:
         medians = [(f"{label} (n={int(subset.volume_lower.notna().sum())})", volumes(subset, True)) for label, subset in grouped]
         medians.sort(key=lambda r: (r[1][0] is None, -(r[1][0] or 0), r[0]))
         chart("group_volume_median", f"每款遊戲的{unit}中位數", "n 是數量資料可用的遊戲數；中位數不等於下一款遊戲的預期表現。", medians[:top], volume_series, unit)
+        if comparison is not None:
+            charts[-1].update(title=f"所選樣本與對照：{unit}中位數",
+                              description="保留對照組，避免選擇單一類別後只重複總覽中位數；n 為數量資料可用的筆數。相同中位數不代表整體分布相同。",
+                              source=comparison['chart']['source'],
+                              rows=[{"label": item["label"], "n": item["statistics"]["volume_lower"]["n"],
+                                     "cohort": item["key"],
+                                     "values": [item["statistics"]["volume_lower"]["median"]] +
+                                               ([item["statistics"]["volume_upper"]["median"]] if pc else [])}
+                                    for item in (comparison["selected"], comparison["baseline"])])
         if revenue:
             for metric, title, function in [("total", "類型估計累積總營收", _sum), ("median", "類型每款遊戲營收中位數", _median)]:
                 rows = [(f"{label} (n={len(subset)})", [function(subset.revenue)]) for label, subset in grouped]
@@ -363,6 +485,8 @@ class MarketStore:
             rows.sort(key=lambda r: (-r[1][0], r[0]))
             chart("group_high_tier_share", "較高數量分層的組內比例", "只列 n ≥ 30 的組別；分母是該組全部樣本。30 為顯示門檻，並非統計充分性的保證。", rows[:top], [("percent", "較高分層比例")], "%")
             chart("outcome_tiers", "來源數量分層分布", "沿用既定 owners／安裝下限分層，保留完整已篩選樣本。", [(label, [int(frame.target_tier.eq(key).sum())]) for key, label in TIERS[source]], [("count", "遊戲數")], "款")
+            for row, (tier_id, _) in zip(charts[-1]["rows"], TIERS[source]):
+                row["filter"] = {"tier": tier_id}
         date_rows = frame[frame.release_date.notna()].copy()
         if revenue:
             date_rows["cohort"] = date_rows.release_date.dt.strftime("%Y-%m")
@@ -469,5 +593,6 @@ class MarketStore:
         charts.extend(analytical_charts(frame, source, unit, data['provenance']['price_currency'], caption, top_n=top))
         return {"schema_version": "market_analysis_v2", "generated_at_utc": datetime.now(timezone.utc).isoformat(),
                 "source": copy.deepcopy(data["source"]), "filters": dict(filters), "summary": summary,
+                "comparison": comparison,
                 "charts": charts, "leaders": {"title": f"遊戲排名：{rank_unit}", "columns": columns, "rows": leaders},
                 "notes": notes, "provenance": provenance, "empty": len(frame) == 0}

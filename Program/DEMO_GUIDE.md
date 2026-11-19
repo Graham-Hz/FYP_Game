@@ -4,9 +4,10 @@ The application provides independent historical market analysis, planning-condit
 
 ## Start
 
-Install `uv` and prepare the required analysis files described in the [program guide](README.md). On Windows, open `Program/START_DEMO.cmd`. Alternatively, run from `Program/`:
+Install `uv` and use the prepared Demo package, or prepare the required analysis files described in the [program guide](README.md). GitHub's source ZIP omits the generated data. On Windows, open `Program/START_DEMO.cmd`; it prepares the locked environment and verifies the complete Demo before opening the browser. `Program/CHECK_DEMO.cmd` runs the checks without starting the service. Alternatively, run from `Program/`:
 
 ```powershell
+uv run --locked python src/demo/preflight.py
 uv run --locked python src/demo/server.py --open
 ```
 
@@ -15,15 +16,19 @@ Open `http://127.0.0.1:8765/market` and keep the terminal running. Press Ctrl+C 
 ## Independent market analysis walkthrough
 
 1. Start on **市場資料分析**. Charts load automatically; no plan, team or budget input is required. Read the source date and sample definition before interpreting the results.
-2. With **Steam**, compare gameplay counts and summed owner bounds in the overview. **玩法類型** contains gameplay genres such as Action and RPG. **附加來源標籤** separately groups Indie, Early Access, content descriptors and software/media labels. For example, select Sexual Content as an additional content label: the gameplay chart still groups the matching records by Action, Adventure and other gameplay genres, rather than ranking content and gameplay labels together. Genre and additional-label selections combine with AND. Android uses its separate Google Play game categories.
-3. Select a genre and a release-year range, then click **更新圖表**. The old results are hidden until recalculation. Inspect high-tier shares alongside their group sizes; the 30-record display threshold does not establish statistical reliability.
+2. With **Steam**, compare gameplay counts and summed owner bounds in the overview. **玩法類型** contains gameplay genres such as Action and RPG. **內容／其他標籤** separately groups Indie, Early Access, content descriptors and software/media labels. For example, select Sexual Content as an additional content label: the gameplay chart still groups the matching records by Action, Adventure and other gameplay genres, rather than ranking content and gameplay labels together. Genre and additional-label selections combine with AND. Android uses its separate Google Play game categories.
+3. Select a genre and optionally a release-year range, then click **套用條件**. The old results are hidden until recalculation. The distribution view now compares the chosen group with all remaining records, excluding its IDs. Use **比較對照** to choose another gameplay group instead. Both groups keep the same source, years and additional tag; the page discloses any overlapping Steam records. Inspect each group's sample size, proportions and quartiles. The separate high-tier chart's 30-record display threshold does not establish statistical reliability.
 4. Inspect the release-cohort line charts. These compare different games released in each year and observed in one historical snapshot. They are not sales occurring in those years, growth of the same games, or a forecast. Older games have had more time to accumulate outcomes.
 5. Switch to **Android**. Inspect installation lower-bound rankings and free/paid/unknown, advertising and in-app-purchase comparisons. Do not compare these numeric outcomes directly with Steam owner estimates.
 6. Switch to the separate **Steam revenue** selection. Inspect estimated copies/revenue rankings, genre medians, release-month cohorts and revenue concentration. This source includes all 1,500 selected games, including 85 with zero observed prices; its results differ intentionally from the positive-price default on `/revenue`.
-7. Use **下載圖表 SVG** on an individual chart, expand its data table, and try **匯出圖表數據 CSV** and **匯出分析 JSON**. These exports preserve the displayed values and source context. SVG is a scalable image suitable for further layout work; it is not a screenshot.
-8. To analyse a compatible new snapshot, use **歷史分布比較** to validate, save and activate its CSV version. Return to the market page and select **重新讀取資料版本**. The market analysis uses that platform's eligible records, while the revenue dataset remains independent.
+7. Use **下載圖表 SVG** on an individual chart, expand its data table, and try **圖表數據 CSV** and **分析 JSON**. These exports preserve the values and source context, including both comparison groups, denominators and statistics. SVG is a scalable image suitable for further layout work; it is not a screenshot.
+8. To analyse a compatible new snapshot, use **歷史分布比較** to validate, save and activate its CSV version. Return to the market page and select **重新讀取版本**. The market analysis uses that platform's eligible records, while the revenue dataset remains independent.
 
 Use the analysis tabs to switch between overview, distribution, relationships, release cohorts and rankings. The plot selector focuses on one question at a time. In **數值分布**, compare the histogram with the boxplot: the histogram shows where values accumulate, while the boxplot shows medians, quartiles and outliers by gameplay group. Read the metric and units because the PC price, Android install-lower-bound and revenue distributions have different meanings. Groups below the boxplot's minimum size are disclosed rather than treated as having no variation.
+
+For a concrete comparison, select the original Android research version and **Adventure**, leave years unrestricted, and apply. Adventure contains **15,795** records and the remaining categories contain **206,011**. Both install-lower-bound medians are **1,000**, but their high-tier shares are about **15.75%** and **16.51%**. This demonstrates why the full distribution and quartiles add context to a median. These are descriptive differences in a June 2021 sample, not evidence that one category causes better outcomes.
+
+Hover or focus a segment to see its count and denominator. Click Adventure's highest install tier, or press Enter/Space on that segment, to open its **2,487** matching records. Search by name or ID, change sorting, and page through the results. **查看這組作品** opens a whole comparison group; **查看篩選作品** opens the primary selection. Changing analysis conditions closes stale details. The separate revenue comparison uses median estimated revenue with quartile cards rather than inventing a new outcome tier.
 
 In **變數關聯**, inspect the scatter diagram and its complete-pair count; click a point to inspect its displayed record. The visual may contain a deterministic subset of up to 800 records, whereas the reported rank correlation uses all valid pairs. Change the linear/log display when needed to inspect skew and extreme values. Use the heatmap to compare within-group outcome proportions, checking the row sample sizes and cell counts. These are descriptive associations, not evidence of a causal effect or a reliable market opportunity. Selecting a gameplay-count bar applies that genre filter across the analysis; reset the conditions to restore the whole source.
 
@@ -42,6 +47,19 @@ The research view contains 51,152 Steam and 221,806 Android training records. On
 7. Repeat with **Android**. It proceeds directly from the selected historical condition to budgeting, filters the cost-case library to Android, and marks Android game-reference retrieval as unavailable. Steam references are not inserted into the Android plan.
 
 The workflow is stored in the current browser tab, not in a server account. Export before closing; a different port or browser tab has a separate context. JSON is currently an evidence export and cannot be loaded back as a project file. The main CSV importer continues to update datasets independently. If a source version changes, follow the summary's prompt to update the affected evidence before export.
+
+The comparison page separates the same eight Steam gameplay genres from additional source labels. Old conditions that used Indie or Massively Multiplayer as a gameplay genre must be reselected. Stored reference selections from the previous matching method are cleared with an explanation, while manual budget inputs remain available for review.
+
+### Save findings and compare budget alternatives
+
+1. On `/market`, select Android and Adventure, then apply. Use **保存分析發現** for the current comparison chart. Enter a short title and optionally explain what it means for your plan. The saved finding retains both denominators, tier counts, quartiles, filters and source hashes. Up to five distinct findings can be kept; a changed title alone does not create duplicate evidence.
+2. Open **規劃摘要**. The finding is available even before choosing a historical condition. Expand its saved chart and source record. A finding is background evidence; its interpretation is your note, and it does not automatically create or select a planning condition. A summary without a selected condition is explicitly partial.
+3. On `/planning`, load the artificial HKD example, calculate, name it and save it as **方案 A**. Its cash requirement is HKD 176,000. Change assumptions and recalculate before saving **方案 B**. Editing or resetting the live form leaves the saved snapshots intact; updating an occupied slot requires an explicit replacement.
+4. For a source-linked example, keep the original inputs and add two Unity Pro prepaid yearly seats with the illustrative conversion rate of 7.8 HKD per USD, confirming conditions as described below. Save that result as B. Its cash requirement is HKD 215,639.60, a difference of HKD 39,639.60 including the reserve. Compare the two cost-composition and delay charts and inspect exactly which inputs changed.
+5. The comparison uses **B minus A** and equal delay offsets (original, +3 months, +6 months), not a common calendar timeline. Each alternative retains its actual total duration. Different currencies, unsupported methods or unverified fee sources suppress numeric comparison and combined export; unknown funds or contribution stay unknown. Use **重新核對費用來源** to retry a failed source check.
+6. Return to the summary. Findings, A/B alternatives and an optional selected-condition plan remain separately labelled. Alternatives do not automatically replace the current plan budget. Export the combined JSON or print the summary after source checks pass. Export before closing the browser tab; the JSON is evidence, not a project file that can be re-imported.
+
+Saved findings contain aggregate charts rather than all source records. Scatter findings retain summary statistics without raw points; individual boxplot outliers are omitted and views over 40 aggregate rows are labelled as truncated. The complete original analysis remains separately exportable from the market page. Automated checks verify persistence, numbers and version handling; no participant study has established decision usefulness yet.
 
 ## Individual module checks
 

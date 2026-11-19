@@ -23,6 +23,7 @@ from revenue import RevenueStore
 from planning import PlanningStore, budget
 from fees import FeeStore
 from market import MarketStore
+from analysis.game_taxonomy import gameplay, other_labels, tag_groups, metadata as taxonomy_metadata
 STATIC = Path(__file__).parent / "static"
 MANIFEST = "reports/2026-10-06/analysis_v1/manifest.json"
 EXPECTED_MANIFEST = "5f3f341ed1c45fbca703995d95d4eca46d54d1af75e69677e15308d20aed12a6"
@@ -33,7 +34,8 @@ PLATFORMS = {
         "scope": "正價格、擁有者分級及開發者資料可用的遊戲；已排除僅軟件類型紀錄。只顯示訓練分區。",
         "outcome": "來源估算擁有者區間分級",
         "caveat": "價格為資料快照時的觀察值，並非已確認的發售價格。類型及功能可以重疊；兩組樣本也可能重疊。",
-        "fields": {"genre": ("遊戲類型", "genres", "list"),
+        "fields": {"genre": ("玩法類型", "genres", "list"),
+                   "source_tag": ("其他來源標籤", "genres", "list"),
                    "capability": ("遊戲功能", "planning_categories", "list")},
         "tiers": [("O1_source_interval_up_to_20k", "來源區間上限 ≤ 20,000"),
                   ("O2_source_intervals_20k_to_100k", "來源區間 20,000–100,000"),
@@ -92,24 +94,37 @@ class ComparisonStore:
             actual_tiers = {r[0] for r in self.db.execute(f"SELECT DISTINCT target_tier FROM {platform}").fetchall()}
             if actual_tiers != {t[0] for t in spec["tiers"]}:
                 raise ValueError(f"Unexpected target tiers: {platform}")
-            fields = []
-            for key, (label, column, kind) in spec["fields"].items():
-                if kind == "bool":
-                    choices = [{"value": "true", "label": "是"}, {"value": "false", "label": "否"},
-                               {"value": "unknown", "label": "資料不明"}]
-                else:
-                    expression = f"unnest({column})" if kind == "list" else column
-                    values = self.db.execute(f"SELECT DISTINCT v FROM (SELECT {expression} v FROM {platform}) WHERE v IS NOT NULL ORDER BY v").fetchall()
-                    choices = [{"value": v, "label": v} for (v,) in values]
-                fields.append({"key": key, "label": label, "choices": choices})
             self.options[platform] = {k: spec[k] for k in ("name", "snapshot", "scope", "outcome", "caveat")}
-            self.options[platform].update(train_count=count, fields=fields)
+            self.options[platform].update(train_count=count, fields=self._filter_fields(platform))
+            if platform == "pc":
+                self.options[platform]["label_taxonomy"] = taxonomy_metadata()
             self.options[platform].update(row_count=count, sample_label="訓練樣本", version_id=DEFAULT_VERSION,
                                           partition="train", data_kind="historical", source_name="固定研究 train 資料")
         self.research_options = copy.deepcopy(self.options)
         for platform, ident in self.repository.active().items():
             if ident != DEFAULT_VERSION:
                 self.activate(platform, ident, persist=False)
+
+    def _filter_fields(self, platform):
+        """Split presentation choices, retaining original database columns/rows."""
+        fields = []
+        for key, (label, column, kind) in PLATFORMS[platform]["fields"].items():
+            field = {"key": key, "label": label}
+            if kind == "bool":
+                choices = [{"value": "true", "label": "是"}, {"value": "false", "label": "否"},
+                           {"value": "unknown", "label": "資料不明"}]
+            else:
+                expression = f"unnest({column})" if kind == "list" else column
+                values = [v for v, in self.db.execute(
+                    f"SELECT DISTINCT v FROM (SELECT {expression} v FROM {platform}) WHERE v IS NOT NULL ORDER BY v").fetchall()]
+                if platform == "pc" and key == "genre":
+                    values = gameplay(values)
+                elif platform == "pc" and key == "source_tag":
+                    values = other_labels(values)
+                    field["groups"] = tag_groups(values)
+                choices = [{"value": value, "label": value} for value in values]
+            fields.append({**field, "choices": choices})
+        return fields
 
     def options_snapshot(self):
         with self.lock:
@@ -182,12 +197,7 @@ class ComparisonStore:
                 count, unique = self.db.execute(f"SELECT count(*), count(DISTINCT app_id) FROM {platform}").fetchone()
                 if count != unique or count != spec["row_count"]:
                     raise ValueError("Version row counts are inconsistent")
-                for field in spec["fields"]:
-                    _, column, kind = PLATFORMS[platform]["fields"][field["key"]]
-                    if kind != "bool":
-                        expression = f"unnest({column})" if kind == "list" else column
-                        values = self.db.execute(f"SELECT DISTINCT v FROM (SELECT {expression} v FROM {platform}) WHERE v IS NOT NULL ORDER BY v").fetchall()
-                        field["choices"] = [{"value": v, "label": v} for v, in values]
+                spec["fields"] = self._filter_fields(platform)
                 next_active = {**old_active, platform: ident}
                 if persist:
                     self.repository.set_active(next_active)
@@ -214,6 +224,8 @@ class ComparisonStore:
             if value == "":
                 continue
             if value not in {c["value"] for c in field["choices"]}:
+                if platform == "pc" and key == "genre":
+                    raise ValueError("Unsupported gameplay genre. Indie, Early Access, content and play-form labels belong under source_tag; select the appropriate field and compare again.")
                 raise ValueError(f"Invalid value for {key}.")
             _, column, kind = PLATFORMS[platform]["fields"][key]
             normalized[key] = value
@@ -365,6 +377,8 @@ def make_server(store, port=8765):
                      "/workflow.css": ("workflow.css", "text/css; charset=utf-8"),
                      "/planning": ("planning.html", "text/html; charset=utf-8"),
                      "/planning.js": ("planning.js", "text/javascript; charset=utf-8"),
+                     "/budget_scenarios.js": ("budget_scenarios.js", "text/javascript; charset=utf-8"),
+                     "/budget_scenarios.css": ("budget_scenarios.css", "text/css; charset=utf-8"),
                      "/fees.js": ("fees.js", "text/javascript; charset=utf-8"),
                      "/planning.css": ("planning.css", "text/css; charset=utf-8"),
                      "/revenue": ("revenue.html", "text/html; charset=utf-8"),
@@ -379,21 +393,21 @@ def make_server(store, port=8765):
             self.respond(200, (STATIC / file).read_bytes(), mime)
 
         def do_POST(self):
-            if self.path not in {"/api/market", "/api/compare", "/api/references", "/api/planning/budget", "/api/import/preview", "/api/import/commit", "/api/activate"}:
+            if self.path not in {"/api/market", "/api/market/records", "/api/compare", "/api/references", "/api/planning/budget", "/api/import/preview", "/api/import/commit", "/api/activate"}:
                 self.respond(404, {"error": "Not found"})
                 return
             origin = self.headers.get("Origin")
             if not self.local_host() or (origin and origin != f"http://127.0.0.1:{self.server.server_port}"):
                 self.respond(403, {"error": "Use the local demo page."})
                 return
-            mutation = self.path not in {"/api/market", "/api/compare", "/api/references", "/api/planning/budget"}
+            mutation = self.path not in {"/api/market", "/api/market/records", "/api/compare", "/api/references", "/api/planning/budget"}
             if mutation and (self.headers.get("X-GameScope-Token") != mutation_token or self.headers.get_content_type() != "application/json"):
                 self.respond(403, {"error": "請從本機頁面操作資料版本。"})
                 return
             # Market queries already serialize their snapshot access through
             # ComparisonStore.lock. Let a newer read wait there after the browser
             # cancels an older request, rather than treating it as a second upload.
-            gated = self.path != '/api/market'
+            gated = self.path not in {'/api/market', '/api/market/records'}
             if gated and not upload_gate.acquire(blocking=False):
                 self.respond(409, {"error": "目前有其他請求，請稍後重試。"})
                 return
@@ -405,6 +419,8 @@ def make_server(store, port=8765):
                 payload = json.loads(self.rfile.read(size))
                 if self.path == '/api/market':
                     result = market_store.query(payload)
+                elif self.path == '/api/market/records':
+                    result = market_store.records(payload)
                 elif self.path == '/api/planning/budget':
                     result = budget(payload, fee_store)
                 elif self.path == "/api/references":

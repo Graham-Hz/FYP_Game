@@ -1,6 +1,7 @@
 """End-to-end planning tasks using the real local APIs and fixed research data."""
 import json
 import sys
+import tempfile
 import threading
 from pathlib import Path
 from playwright.sync_api import sync_playwright, expect
@@ -13,7 +14,8 @@ from server import ComparisonStore, make_server
 def main():
     output = ROOT / 'data/processed/workflow_qa'
     output.mkdir(parents=True, exist_ok=True)
-    store = ComparisonStore()
+    isolated = tempfile.TemporaryDirectory(prefix='planning-workflow-browser-')
+    store = ComparisonStore(app_path=Path(isolated.name))
     server = make_server(store, 0)
     thread = threading.Thread(target=server.serve_forever, daemon=True)
     thread.start()
@@ -238,7 +240,7 @@ def main():
         (output/'verification.json').write_text(json.dumps({'checks':checks,'page_errors':errors,'note':'Automated task-path checks, not a human usability study.'},ensure_ascii=False,indent=2),encoding='utf-8')
         print(f'Planning workflow browser checks passed ({len(checks)} groups).')
     finally:
-        server.shutdown();server.server_close();thread.join();store.db.close()
+        server.shutdown();server.server_close();thread.join();store.db.close();isolated.cleanup()
 
 
 if __name__=='__main__':main()

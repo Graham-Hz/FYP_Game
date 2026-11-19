@@ -2,13 +2,14 @@
 import math
 from fractions import Fraction
 from decimal import Decimal
+from analysis.game_taxonomy import GAMEPLAY_GENRES, metadata as taxonomy_metadata
 
 # Restrict matching to gameplay genres. Provider labels such as Indie, Early
 # Access and Free To Play, and software categories, are not gameplay similarity.
-REFERENCE_GENRES = frozenset({"Action", "Adventure", "Casual", "Massively Multiplayer",
-                              "RPG", "Racing", "Simulation", "Sports", "Strategy"})
+REFERENCE_GENRES = GAMEPLAY_GENRES
 METHOD = {
-    "version": "genre_price_references_v1",
+    "version": "genre_price_references_v2",
+    "label_taxonomy": taxonomy_metadata(),
     "eligibility": "At least one shared supported gameplay genre; separate positive and zero observed-price cohorts; optional symmetric price-ratio bound.",
     "genre_similarity": "Jaccard = shared gameplay genres / union of requested and candidate gameplay genres. Non-gameplay source labels are excluded.",
     "ranking": ["genre similarity descending", "absolute observed-price difference ascending", "numeric Steam ID ascending"],

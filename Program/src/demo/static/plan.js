@@ -1,15 +1,21 @@
 'use strict';
 const flow = window.PlanningFlow, el = flow.element, $ = id => document.getElementById(id);
 const number = n => Number(n).toLocaleString('en-US', {maximumFractionDigits: 2});
-let state = null, checkId = 0;
+let state = null, workspace = null, checkId = 0;
 flow.mount('summary');
 function link(text, href) {const a = el('a', text); a.href = href; return a;}
 function detail(target, label, value) {const d = el('details'); d.append(el('summary', label), el('pre', JSON.stringify(value, null, 2))); target.append(d);}
 function render() {
-  state = flow.read(); flow.render();
-  $('plan-content').hidden = !state; $('plan-print').disabled = !state;
-  if (!state) {$('plan-status').replaceChildren(el('span', '尚未有規劃。'), link('先比較歷史分布並選擇 A 或 B →', '/')); return;}
-  $('plan-name').value = state.name || ''; $('plan-notes').value = state.notes || ''; renderNotes();
+  state = flow.read();workspace=flow.readWorkspace(); flow.render();
+  const hasContent=!!(state||workspace.findings.length||workspace.budget_scenarios.a||workspace.budget_scenarios.b);
+  $('plan-content').hidden = !hasContent; $('plan-print').disabled = !hasContent;
+  if (!hasContent) {$('plan-status').replaceChildren(el('span', workspace.error||'尚未有規劃。'), link('探索市場並保存依據', '/market')); return;}
+  $('plan-name').value = (state?state.name:workspace.name) || ''; $('plan-notes').value = (state?state.notes:workspace.notes) || ''; renderNotes();
+  renderFindings();
+  $('plan-legacy-empty').hidden=!!state;
+  ['plan-market','plan-references','plan-budget'].forEach(id=>$(id).hidden=!state);
+  $('plan-scenarios').replaceChildren(el('p','正在核對保存的預算方案…'));
+  if(!state)return;
   const result = state.comparison, selected = result.scenarios[state.choice], market = $('plan-market');
   market.replaceChildren(el('h2', '1 歷史比較與選擇'), el('p', flow.describe(state)),
     el('p', `${result.metadata.source_name} · ${result.metadata.snapshot} · ${result.metadata.sample_label} · 版本 ${result.version_id}`),
@@ -45,30 +51,59 @@ function render() {
   }
   budget.append(link('修改預算及選用費用 →', '/planning#budget-section'));
 }
-function renderNotes() {$('plan-title').textContent = state?.name || '目前規劃'; $('plan-note-display').textContent = state?.notes || '尚未填寫決定或待驗證事項。';}
+function renderNotes() {$('plan-title').textContent = (state?state.name:workspace?.name) || '目前規劃'; $('plan-note-display').textContent = (state?state.notes:workspace?.notes) || '尚未填寫決定或待驗證事項。';}
+function renderFindings() {
+  const host=$('plan-findings');host.querySelectorAll('[data-saved-chart]').forEach(node=>window.GameCharts.dispose(node));
+  host.replaceChildren(el('h2','市場分析依據'),el('p','各來源的背景證據分開保存；下方筆記是你的解讀，不會自動變成銷量預測或成本假設。','fine'));
+  if(!workspace.findings.length){host.append(el('p','尚未保存市場分析依據。'),link('探索市場並加入依據','/market'));return;}
+  for(const finding of workspace.findings) {
+    const card=el('article',undefined,'plan-finding');card.dataset.findingId=finding.id;
+    card.append(el('h3',finding.title),el('p',`${finding.source.name} · ${finding.source.snapshot||'資料日期未提供'} · 版本 ${finding.source.version_id}`,'fine'));
+    card.append(el('p','正在核對此依據的來源…','plan-finding-check fine'));
+    if(finding.source.data_kind==='synthetic')card.append(el('strong','人工示例，並非真實市場','sample-warning'));
+    const filters=finding.filters;card.append(el('p',`類型：${filters.group||'全部'}；標籤：${filters.tag||'不限'}；發售年：${filters.year_from??'不限'}–${filters.year_to??'不限'}。`));
+    const list=el('ul');finding.summary.forEach(item=>list.append(el('li',`${item.label}：${item.value===null?'未提供':number(item.value)} ${item.unit||''}`)));card.append(list);
+    if(finding.comparison){const c=finding.comparison;card.append(el('p',`所選 ${c.selected.label}：n=${number(c.selected.n)}；對照 ${c.baseline.label}：n=${number(c.baseline.n)}；重疊 ${number(c.overlap_count)}。`));}
+    card.append(el('p',`你的解讀／規劃用途：${finding.note||'尚未填寫。請補充這份分析如何影響你的規劃。'}`,'plan-finding-note'));
+    const charts=el('details');charts.append(el('summary','查看保存的圖表與數值'));const chartHost=el('div');charts.append(chartHost);let drawn=false;
+    charts.addEventListener('toggle',()=>{if(!charts.open||drawn)return;drawn=true;for(const chart of finding.charts){
+      if(chart.type==='scatter'){chartHost.append(el('p',`${chart.title}：保存完整配對統計及圖表描述；散點個別記錄未複製至規劃。`));detail(chartHost,'查看散點分析摘要',chart);continue;}
+      const plot=el('div');plot.dataset.savedChart='true';chartHost.append(plot);window.GameCharts.render(plot,{...chart,description:[chart.description?.replace('點選分段可查看記錄。',''),'這是保存時的圖表摘要；完整互動及作品明細可返回市場分析查看。',chart.rows_truncated?`只保存原圖前 ${chart.rows_saved} / ${chart.row_count} 項；完整資料請返回市場分析。`:'',chart.outlier_points_omitted?'個別離群點未複製至此摘要圖。':''].filter(Boolean).join(' ')});
+    }});card.append(charts);
+    detail(card,'查看完整來源、條件及保存數值',finding);
+    const remove=el('button','移除此依據','outline');remove.type='button';remove.dataset.removeFinding=finding.id;remove.addEventListener('click',()=>{const removed=flow.removeFinding(finding.id);if(removed.ok)validate();else $('plan-status').textContent=removed.error;});card.append(remove);host.append(card);
+  }
+  host.append(link('繼續探索及保存分析','/market'));
+}
 async function validate() {
-  const id = ++checkId; $('plan-export').disabled = true; render(); if (!state) return;
+  const id = ++checkId; $('plan-export').disabled = true; render(); if ($('plan-content').hidden) return;
+  const checkedState=state,checkedWorkspace=workspace;
   $('plan-status').textContent = '正在核對此規劃使用的資料版本…';
-  const checks = await flow.sourceChecks(state); if (id !== checkId) return;
+  const checks = await flow.sourceChecks(checkedState,checkedWorkspace); if (id !== checkId) return;
+  $('plan-findings').querySelectorAll('.plan-finding').forEach(card=>{const status=(checks.item_checks||[]).find(item=>item.id===card.dataset.findingId),node=card.querySelector('.plan-finding-check');node.textContent=status?.message||'此依據未能通過來源核對，請查看下方提示。';node.classList.toggle('sample-warning',!status?.current);});
+  window.BudgetScenarios.renderInto($('plan-scenarios'),checkedWorkspace.budget_scenarios,{feeMetadata:checks.feeMetadata,currentContextId:checkedState?.context_id||null});
   $('plan-checks').replaceChildren(); [...checks.checked, ...checks.issues].forEach(text => $('plan-checks').append(el('li', text)));
   $('plan-checks').className = checks.issues.length ? 'plan-issues' : '';
-  const bundle = flow.bundle(state, checks);
+  const bundle = flow.bundle(checkedState, checks,checkedWorkspace);
   $('plan-completion').textContent = bundle.completion.missing.length ? `仍未完成：${bundle.completion.missing.join('、')}。匯出時會標記為未完成。` : '各步驟已有記錄；這表示流程已填妥，不表示計劃已證明可行。';
   $('plan-status').textContent = checks.issues.length ? '部分來源版本未通過核對，請按提示更新後再匯出。' : '本機來源版本核對完成。可繼續修改或匯出目前規劃。';
   $('plan-export').disabled = checks.issues.length > 0;
 }
 ['plan-name', 'plan-notes'].forEach(id => $(id).addEventListener('input', () => {
-  flow.mutate(s => {s.name = $('plan-name').value.trim(); s.notes = $('plan-notes').value.trim();}); state = flow.read(); renderNotes();
+  const name=$('plan-name').value.trim(),notes=$('plan-notes').value.trim();
+  const saved=state?flow.mutate(s => {s.name=name;s.notes=notes;}):flow.saveWorkspaceMeta(name,notes);
+  if(!saved){$('plan-status').textContent=flow.storageMessage();$('plan-export').disabled=true;return;}
+  state = flow.read();workspace=flow.readWorkspace(); renderNotes();
 }));
 $('plan-refresh').addEventListener('click', validate);
 $('plan-print').addEventListener('click', () => window.print());
-$('plan-clear').addEventListener('click', () => {if (confirm('清除此分頁的規劃條件、參考作品及預算？請先匯出需要保留的內容。') && flow.clear()) validate();});
+$('plan-clear').addEventListener('click', () => {if (confirm('清除此分頁的規劃、分析依據及預算 A／B？請先匯出需要保留的內容。') && flow.clear()) validate();});
 $('plan-export').addEventListener('click', async () => {
-  $('plan-export').disabled = true; const current = flow.read(); if (!current) return;
-  const checks = await flow.sourceChecks(current);
-  const latest = flow.read();
-  if (!latest || latest.context_id !== current.context_id || latest.updated_at_utc !== current.updated_at_utc) {await validate(); $('plan-status').textContent = '規劃已改變，請核對後重新匯出。'; return;}
+  $('plan-export').disabled = true; const current = flow.read(),currentWorkspace=flow.readWorkspace();
+  if(!current&&!currentWorkspace.findings.length&&!currentWorkspace.budget_scenarios.a&&!currentWorkspace.budget_scenarios.b)return;
+  const checks = await flow.sourceChecks(current,currentWorkspace);
+  if (JSON.stringify(flow.read())!==JSON.stringify(current)||JSON.stringify(flow.readWorkspace())!==JSON.stringify(currentWorkspace)) {await validate(); $('plan-status').textContent = '規劃已改變，請核對後重新匯出。'; return;}
   if (checks.issues.length) {await validate(); return;}
-  flow.download(flow.bundle(current, checks), 'gamescope-planning-summary.json'); $('plan-export').disabled = false;
+  flow.download(flow.bundle(current, checks,currentWorkspace), 'gamescope-planning-summary.json'); $('plan-export').disabled = false;
 });
 validate();

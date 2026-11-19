@@ -14,13 +14,18 @@ Model experiments have a separate locked environment in `experiments/model_dev_v
 
 ## Launch the local application
 
+For a new computer, the [distribution guide](distribution/README.md) describes the prepared Demo package, installation and verification. The package supplies the seven required/enrichment data artifacts and source-linked reference tables. GitHub's source ZIP alone does not contain those generated artifacts. Ordinary demonstration users do not need to rerun cleaning or model training.
+
 The application requires the four frozen analysis files in `data/processed/analysis_v1/`: `pc_features.parquet`, `pc_labels_splits.parquet`, `mobile_features.parquet` and `mobile_labels_splits.parquet`. It checks their hashes against the recorded analysis version. These large files are not included in Git.
 
 On Windows, double-click [START_DEMO.cmd](START_DEMO.cmd), or run:
 
 ```powershell
+uv run --locked python src/demo/preflight.py
 uv run --locked python src/demo/server.py --open
 ```
+
+The Windows launcher first synchronises the locked environment and runs complete-demo checks. [CHECK_DEMO.cmd](CHECK_DEMO.cmd) performs those checks without opening the website; use `--no-pause` in automated terminal runs. `--skip-port-check` checks files while another instance is running, and `START_DEMO.cmd --port 8766` uses an alternative port. Missing data, checksum failures and unwritable import storage produce an actionable diagnostic before the server opens.
 
 Keep the process running while using `http://127.0.0.1:8765/market`, the default independent analysis page. The comparison page remains at `/`. Press Ctrl+C to stop. A different port can be selected with `--port 8766`. The service binds to localhost and is not configured as a public web deployment.
 
@@ -28,15 +33,19 @@ See the [demonstration guide](DEMO_GUIDE.md) and [CSV import specification](CSV_
 
 ### Independent market analysis and charts
 
-`/market` loads charts automatically without a planning context. `src/demo/market.py` implements the read-only `GET /api/market/options` and `POST /api/market` queries. Steam and Android use the active application version selected on the comparison page; the supplementary revenue source has its own independent version. Reload source versions on the market page after activating a different CSV snapshot. No model is fitted or used to generate these descriptive charts.
+`/market` loads charts automatically without a planning context. `src/demo/market.py` implements the read-only `GET /api/market/options`, `POST /api/market` and `POST /api/market/records` queries. Steam and Android use the active application version selected on the comparison page; the supplementary revenue source has its own independent version. Reload source versions on the market page after activating a different CSV snapshot. No model is fitted or used to generate these descriptive charts.
 
 The research data are enriched from `data/interim/cleaning_candidate_v1/pc_candidates.parquet` and `mobile_candidates.parquet`, checked against the trusted analysis manifest. Only IDs already present in the research **train** tables are retained. One approved Steam exception lacks candidate details; count/tier charts retain it, while date and numeric-detail charts disclose the missing record. Missing or modified enrichment files make that source unavailable without disabling other application modules. Imported snapshots use `SnapshotRepository.load` to check their saved files and join `source.csv` only to eligible IDs; the CSV validation contract and frozen research files are unchanged.
 
 The explorer presents sample counts, summed and median outcome proxies by group, high-tier proportions with a minimum displayed group size of 30, distributions, release-cohort lines, business attributes and title rankings. Steam owner estimates retain their lower and upper bounds; they are not exact purchases. Android values are installation lower bounds. The independent revenue view uses all 1,500 selected records, including zero observed prices, whereas `/revenue` defaults to the 1,415 positive-price records. Revenue charts include estimated copies, gross revenue and concentration; neither selection represents the whole current market.
 
-`market_taxonomy.py` separates eight supported Steam gameplay genres from production labels (Indie), release stage (Early Access), pricing labels, play form (Massively Multiplayer), content descriptions and software/media uses. This is an explicit project presentation mapping, not a newly verified official Steam taxonomy. Unknown source labels remain selectable in an unclassified-label group. The separate gameplay and additional-label filters combine with AND; genre charts use gameplay groups only. Android retains the existing Google Play game categories. Source labels, eligibility rules, model features and frozen partitions are not rewritten. The mapping and coverage are included in exported provenance.
+`src/analysis/game_taxonomy.py` separates eight supported Steam gameplay genres from production labels (Indie), release stage (Early Access), pricing labels, play form (Massively Multiplayer), content descriptions and software/media uses. Market analysis, planning-condition comparison and Steam reference retrieval share this mapping; `market_taxonomy.py` provides compatible imports. This is an explicit project presentation mapping, not a newly verified official Steam taxonomy. Unknown source labels remain selectable in an unclassified-label group. The separate gameplay and additional-label filters combine with AND; genre charts use gameplay groups only. Android retains the existing Google Play game categories. Source labels, eligibility rules, model features and frozen partitions are not rewritten. The mapping and coverage are included in exported provenance.
 
 The page organises its charts into overview, distribution, relationships, release cohorts and rankings. Users choose a focused plot instead of scrolling through every chart at once. Selecting a gameplay bar filters the analysis, while scatter-point selection exposes the individual displayed record. Full-analysis exports retain all chart definitions, even when a different plot is selected on screen.
+
+Selecting one gameplay group opens a comparison with the remaining records, excluding the selected IDs. Users can instead choose another group; overlapping Steam membership is counted and disclosed. Both groups use the same source/version, release-year range and additional tag. `market_cohorts.py` reports sample counts, outcome-tier percentages and Q1/median/Q3, with unknown outcomes retained in the denominator. Android and Steam tier comparisons use 100% stacked bars; the revenue source compares estimated-revenue medians and reports quartiles. These are descriptive comparisons, not significance tests or success predictions.
+
+Hover or focus a chart mark for its values. Clicking a tier segment (or pressing Enter/Space) opens the matching records, with literal name/ID search, sorting and pagination; both groups also have full-record buttons. Changing analysis conditions hides stale results. JSON and CSV exports retain the comparison definition, overlap, both denominators and statistics. Existing references saved under the older genre method must be reselected; manual budget fields are preserved for review.
 
 `market_analytics.py` adds histogram, Tukey boxplot, scatter and row-percentage heatmap summaries. Histograms use equal-width bins in `log1p(value)` space, with original-value bounds retained. Boxplots show actual observations at the whiskers within 1.5 IQR fences, group sizes and outlier counts; a limited set of outliers is displayed. PC distribution plots use observed prices, Android plots use installation lower bounds, and revenue plots use estimated gross revenue. No owner-interval midpoint is invented. Scatter diagrams use observed price versus owner lower bound (PC), observation age versus installation lower bound (Android), and observed price versus estimated revenue (the independent revenue source). At most 800 deterministically selected complete records are plotted; rank-correlation statistics use the full complete-pair sample. A log/linear display switch does not change those raw observations. A descriptive correlation is not a causal estimate or evidence for a pricing intervention.
 
@@ -44,12 +53,21 @@ Time axes represent **release cohorts**, not repeated sales/download measurement
 
 `static/charts.js` and `charts.css` render local, accessible SVG charts, numeric tables and self-contained SVG downloads without a network chart dependency. Market exports include a complete JSON evidence record and a UTF-8 chart-data CSV with provenance and formula-safe text. Budget charts use the existing calculator outputs only: cost composition, delay cash requirements, cash versus resource budgets and break-even unit requirements. These are assumption-based scenarios rather than market observations.
 
+The market page can save the currently selected chart view as a finding, with a user title/note, original source hashes, filters, statistics and comparison denominators. Each finding stores at most two charts and 40 aggregate rows per chart; raw scatter points and individual outliers are omitted with explicit metadata. At most five findings are retained. Before saving and summary export, active source versions, hashes and analysis/taxonomy methods are checked. No historical planning condition is silently inferred from a finding.
+
+`static/workflow.js` preserves the existing selected-condition state and adds a separate `gamescope.planning.workspace.v1` session-storage record for findings and budget A/B snapshots. Both work before a legacy planning context exists. `static/budget_scenarios.js` compares saved server outputs rather than recalculating costs in the browser. Supported manual and optional-fee methods can be compared, but currencies must match and selected fee revisions must pass verification. Missing funds/contribution retain null outputs. Editing the live form invalidates its calculation without changing either saved alternative; replacement is explicit. Summary exports include both snapshots, input differences, source checks and any selected-condition plan, while a workspace-only export remains incomplete as a full plan. Data lives in the current browser tab and is not an importable saved project or server account.
+
 Run the targeted checks from `Program/`:
 
 ```powershell
 uv run --locked python -B -m unittest discover -s tests -p "test_market.py" -v
 uv run --locked python -B -m unittest discover -s tests -p "test_market_analytics.py" -v
+uv run --locked python -B -m unittest discover -s tests -p "test_market_comparison.py" -v
 uv run --locked --with playwright python -B tests/check_market_browser.py
+uv run --locked --with playwright python -B tests/check_market_comparison_browser.py
+uv run --locked --with playwright python -B tests/check_market_findings_browser.py
+uv run --locked --with playwright python -B tests/check_budget_scenarios_browser.py
+uv run --locked --with playwright python -B tests/check_planning_workspace_browser.py
 uv run --locked --with playwright python -B tests/check_planning_browser.py
 ```
 
@@ -123,7 +141,7 @@ This preserves all 1,500 source rows and joins March 2025 genres by unique Steam
 
 The source is a selected high-revenue cohort. Its cumulative gross estimates, provider publisher classes, mixed observation ages and later genre metadata support descriptive comparisons only. Currency follows provider conventions; the source has no explicit currency field, and its exact 2024 estimation-method version is unavailable. The mobile compilation and launch panel are not incorporated into this explorer.
 
-The revenue page also includes **comparable-game references**. Select supported gameplay genres, a proposed USD price (0–1,000), an optional price-ratio bound and 5, 10 or 20 results. Positive and zero observed-price cohorts are separate. Candidates must share a supported gameplay genre. Ranking uses genre Jaccard similarity first, absolute price difference second and numeric Steam ID for ties. Provider labels such as Indie and Early Access, software categories, revenue and publisher classes do not participate in ranking. The nine supported genres are declared in `src/analysis/comparable_games.py`.
+The revenue page also includes **comparable-game references**. Select supported gameplay genres, a proposed USD price (0–1,000), an optional price-ratio bound and 5, 10 or 20 results. Positive and zero observed-price cohorts are separate. Candidates must share a supported gameplay genre. Ranking uses genre Jaccard similarity first, absolute price difference second and numeric Steam ID for ties. Provider labels such as Indie and Early Access, software categories, revenue and publisher classes do not participate in ranking. The eight supported gameplay genres are declared in `src/analysis/game_taxonomy.py`; reference method `genre_price_references_v2` records this shared mapping. The revenue analysis's original-label dropdown remains separate and groups its labels explicitly.
 
 This is deterministic reference retrieval, not a fitted KNN predictor or a validated recommendation model. It reuses the existing local revenue artifact and requires no additional build. Results include matching reasons, coverage counts, source metadata and a versioned method definition in their JSON export. Fewer eligible candidates produce fewer results. These controls are independent of the explorer filters and the main page's CSV version selection.
 

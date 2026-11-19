@@ -14,11 +14,17 @@ The system combines a reproducible Python analysis pipeline with an interactive 
 
 The implemented application runs locally in a browser.
 
+A prepared Windows Demo package combines the runtime and verified historical data, with startup diagnostics and English setup instructions. The student reported successfully running the first package (v1) on a second laptop. The latest v3 package includes group comparison, saved analytical findings and budget alternatives; it passed integrity, API and browser checks in a separate extraction and newly created environment on the development computer. A second-laptop run of v3 has not been recorded. See the [distribution guide and verification evidence](Program/distribution/README.md).
+
 The default `/market` page provides independent data analysis without entering a plan or budget. Users can switch between the Steam research/import snapshot, Android research/import snapshot and the separate Steam revenue selection; filter release years and genres; inspect counts, outcome rankings, group medians, release-cohort charts and price or monetisation comparisons; and export charts as SVG, chart data as CSV, or the full analysis as JSON. Each export retains its source, version, filters and interpretation limits. Platform snapshots remain separate rather than being combined into a cross-platform market ranking.
 
 The analysis interface separates gameplay genres from additional source labels such as Indie, Early Access, content descriptors and software/media uses. Five analysis sections provide focused views, including histograms, Tukey boxplots, scatter diagrams and outcome heatmaps. Users can filter by clicking a gameplay bar, inspect a scatter point, or change the display scale without changing the underlying observations. These views apply concepts reviewed in the supplied statistics, data-visualisation and Power BI course materials; the [methodology evidence map](Program/reports/planning/chapter2_evidence_map.md#course-concepts-used-in-the-explorer) records the specific references and adaptations.
 
+Choosing one gameplay group adds an explicit comparison with the other records or another chosen group under the same source, year and tag conditions. Sample counts, outcome-tier proportions and quartiles provide context beyond a single median bar. Interactive tier segments open the corresponding games, with name/ID search, sorting and pagination. Exports preserve both groups and their denominators; overlapping Steam genre membership is disclosed. The same eight-genre presentation mapping is used for Steam market exploration, planning-condition comparison and reference retrieval.
+
 A connected planning workflow lets users choose comparison condition A or B, retain suitable Steam game references, calculate their own resource requirements, and review the evidence together at `/plan`. Android plans proceed from historical comparison to budgeting, with the absence of Android reference retrieval explicitly shown. The summary exports the selected condition, original comparison, chosen references, budget inputs, fee sources, user notes and completion status as JSON.
+
+Users can also start from independent market exploration: save up to five findings with their chart aggregates, source hashes, filters and personal interpretation, then review them in the planning summary. Two separately named budget alternatives preserve calculated assumptions and compare cash requirements, labour value, funding, break-even requirements and delay scenarios. The interface identifies changed inputs and displays cost-composition and delay-comparison charts. Findings and alternatives remain available before selecting a historical planning condition; they do not automatically choose a plan or imply commercial feasibility. Source changes, unsupported methods and mixed-currency alternatives prevent an unqualified combined export.
 
 The development-planning page combines a searchable library of ten publicly documented developer cases with a user-input budget calculator. Cases preserve the differences between cash spending, reported budgets, funding and unpaid labour. The calculator compares cash needs, additional unpaid-labour value, three- and six-month delays, funding coverage and break-even unit requirements. It uses explicit user assumptions rather than cost averages or predicted sales. See the [case sources and collection method](Dataset/Development%20Cost%20Cases/README.md).
 
@@ -37,6 +43,8 @@ A separate Steam revenue explorer presents source-provided gross revenue estimat
 | Development resources | Inspect source-linked cost/time/team cases, calculate a personal budget and delay scenarios, and export assumptions/results |
 | Fee references | Compare 26 saved fee variants, select applicable plans with quantities and user-confirmed exchange rates, and inspect full-term costs with source-linked exports |
 | Connected planning | Preserve a planning context and budget draft across pages in one browser tab; select up to five Steam references or record a skip reason; review and export a combined summary after checking source versions |
+| Saved analytical evidence | Keep up to five source-labelled findings and user interpretations; inspect their saved aggregate charts and include them in the planning summary |
+| Budget alternatives | Save independent A/B calculation snapshots; compare assumptions, costs and equal delay offsets; export snapshots, differences and source-linked charts |
 
 For example, a user can compare two Android category and monetisation configurations, inspect the historical install-tier distributions, and export the evidence behind that comparison.
 
@@ -84,10 +92,13 @@ The project supports historical comparison. Owner intervals and install lower bo
 
 ## Run the application
 
-With `uv` installed and the required local analysis files available, open `Program/START_DEMO.cmd` on Windows. Alternatively, run from `Program/`:
+For another computer, use a **prepared Demo ZIP** containing the application and verified runtime data. GitHub's **Code > Download ZIP** contains source code but omits the generated data. The [distribution guide](Program/distribution/README.md) explains the bundle, setup and verification boundaries. No public release upload is implied by the local bundle build.
+
+With `uv` installed and the required local analysis files available, open `Program/START_DEMO.cmd` on Windows. The launcher prepares the locked environment and checks complete-demo files, hashes, write access and port availability before opening the browser. `Program/CHECK_DEMO.cmd` runs those checks alone. Alternatively, run from `Program/`:
 
 ```powershell
 uv sync --locked
+uv run --locked python src/demo/preflight.py
 uv run --locked python src/demo/server.py --open
 ```
 

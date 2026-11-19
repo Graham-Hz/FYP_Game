@@ -4,7 +4,8 @@ import json
 from pathlib import Path
 
 from analysis.revenue_metrics import analyze
-from analysis.comparable_games import comparable_games, REFERENCE_GENRES
+from analysis.comparable_games import comparable_games, REFERENCE_GENRES, METHOD
+from analysis.game_taxonomy import gameplay, tag_groups, metadata as taxonomy_metadata
 
 
 class RevenueStore:
@@ -17,9 +18,13 @@ class RevenueStore:
             raise ValueError("Revenue artifact changed; rebuild before displaying")
         self.data = json.loads(data)
         rows = self.data["rows"]
-        self.options = {"genres": sorted({g for r in rows for g in r["genres"]}),
+        source_labels = {g for r in rows for g in r["genres"]}
+        self.options = {"genres": sorted(source_labels),
+                        "genre_groups": [{"id": "gameplay", "label": "玩法類型", "values": gameplay(source_labels)}, *tag_groups(source_labels)],
+                        "label_taxonomy": taxonomy_metadata(),
                         "publishers": sorted({r["publisher_class"] for r in rows}),
-                        "reference_genres": sorted(REFERENCE_GENRES & {g for r in rows for g in r["genres"]})}
+                        "reference_genres": sorted(REFERENCE_GENRES & source_labels),
+                        "reference_method_version": METHOD["version"]}
 
     def query(self, params):
         if any(len(values) != 1 for values in params.values()):

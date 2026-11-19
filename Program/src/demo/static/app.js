@@ -41,7 +41,13 @@ function selectPlatform(value) {
       select.id = `${scenario}-${field.key}`;
       select.dataset.key = field.key;
       select.add(new Option("全部", ""));
-      field.choices.forEach(choice => select.add(new Option(choice.label, choice.value)));
+      if (field.groups) {
+        for (const group of field.groups) {
+          const optgroup = document.createElement('optgroup'); optgroup.label = group.label;
+          group.values.forEach(value => optgroup.append(new Option(field.choices.find(c => c.value === value)?.label || value, value)));
+          select.append(optgroup);
+        }
+      } else field.choices.forEach(choice => select.add(new Option(choice.label, choice.value)));
       select.addEventListener("change", () => invalidate());
       label.append(select);
       container.append(label);
@@ -224,6 +230,11 @@ fetch("/api/options").then(response => {if (!response.ok) throw new Error("資�
       else input.value = value;
     }
     if (compatible) {displayed = saved.comparison; render(displayed); $('#status').textContent = '已還原規劃保存的比較；修改條件後請重新比較，再選擇要規劃的條件。';}
+    else {
+      const message = '已保存規劃含目前不支援的舊篩選條件。玩法類型與其他來源標籤已分開，請重新選擇、比較並保存規劃；舊條件沒有自動轉換。';
+      $('#status').textContent = message;
+      $('#workflow-panel').append(node('p', message, 'sample-warning'));
+    }
   } else if (saved) $('#status').textContent = '目前資料版本與已保存規劃不同。請重新比較並選擇規劃條件。';
   await reloadVersions();
 }).catch(error => {$("#status").textContent = `無法啟動：${error.message}。請參閱 DEMO_GUIDE.md。`;});

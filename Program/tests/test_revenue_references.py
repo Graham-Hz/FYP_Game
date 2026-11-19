@@ -13,7 +13,8 @@ from urllib.request import Request, urlopen
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "src/demo"))
-from analysis.comparable_games import comparable_games
+from analysis.comparable_games import comparable_games, REFERENCE_GENRES, METHOD
+from analysis.game_taxonomy import GAMEPLAY_GENRES
 from server import make_server
 
 
@@ -28,6 +29,17 @@ def request(**changes):
 
 
 class ReferenceTests(unittest.TestCase):
+    def test_shared_gameplay_taxonomy_excludes_play_form_from_similarity(self):
+        self.assertEqual(REFERENCE_GENRES, GAMEPLAY_GENRES)
+        result = comparable_games([row(1, ["Action", "Massively Multiplayer"], 10),
+                                   row(2, ["Massively Multiplayer"], 10)], request(genres=["Action"]))
+        self.assertEqual(result["returned_count"], 1)
+        self.assertEqual(result["rows"][0]["match"]["genre_similarity"], 1)
+        self.assertEqual(result["rows"][0]["genres"], ["Action", "Massively Multiplayer"])
+        self.assertEqual(result["method"]["label_taxonomy"]["gameplay_genres"], sorted(GAMEPLAY_GENRES))
+        with self.assertRaises(ValueError):
+            comparable_games([], request(genres=["Massively Multiplayer"]))
+
     def test_priority_overlap_then_price_then_numeric_id(self):
         rows = [row(99, ["Action"], 10, 10000000), row(10, ["Action", "Adventure"], 10),
                 row(2, ["Action", "Adventure", "Indie", "Early Access"], 10),
@@ -104,10 +116,27 @@ class ReferenceHttpTests(unittest.TestCase):
         self.assertEqual(result["candidate_count"], len(expected))
         self.assertEqual(result["returned_count"], 5)
         self.assertEqual(result["metadata"]["source_sha256"], raw["metadata"]["source_sha256"])
-        self.assertEqual(result["method"]["version"], "genre_price_references_v1")
+        self.assertEqual(result["method"]["version"], "genre_price_references_v2")
         for row in result["rows"]:
             self.assertTrue(set(row["match"]["shared_genres"]) & {"Action", "Adventure"})
             self.assertTrue(5 <= row["price"] <= 20)
+
+    def test_metadata_exposes_reference_method_version(self):
+        with urlopen(self.url.removesuffix("/api/references") + "/api/revenue/metadata") as response:
+            result = json.load(response)
+        self.assertEqual(result["options"]["reference_method_version"], METHOD["version"])
+        self.assertNotIn("Massively Multiplayer", result["options"]["reference_genres"])
+        groups = result["options"]["genre_groups"]
+        self.assertEqual(set(groups[0]["values"]), GAMEPLAY_GENRES & set(result["options"]["genres"]))
+        self.assertEqual({value for group in groups for value in group["values"]}, set(result["options"]["genres"]))
+        self.assertIn("Indie", next(group["values"] for group in groups if group["id"] == "production"))
+
+    def test_revenue_source_label_filter_retains_original_semantics(self):
+        with urlopen(self.url.removesuffix("/api/references") + "/api/revenue?genre=Indie") as response:
+            result = json.load(response)
+        self.assertEqual(result["filters"]["genre"], "Indie")
+        self.assertTrue(result["rows"])
+        self.assertTrue(all("Indie" in row["genres"] for row in result["rows"]))
 
     def test_invalid_and_cross_origin_requests_fail(self):
         cases = [({}, {}, 400), (request(), {"Origin": "https://example.com"}, 403),

@@ -1,0 +1,30 @@
+A Data-Driven Decision Support for Game Development Planning
+Local Windows demonstration
+
+1. Right-click the ZIP and choose Extract All. Use a writable local folder.
+   Keep Dataset and Program together; do not run inside the ZIP preview.
+
+2. Install uv once, if it is not already installed:
+   https://docs.astral.sh/uv/getting-started/installation/
+   The README.md provides the Windows installation command and alternatives.
+
+3. Open Program and double-click START_DEMO.cmd.
+   The first launch prepares Python 3.14 and the locked dependencies.
+   Internet access is normally needed for that first setup.
+   Wait for "Demo ready"; the browser then opens the market analysis page.
+
+4. Keep the terminal window open while using the demo.
+   Close the window or press Ctrl+C when finished.
+
+CHECK_DEMO.cmd checks the environment and packaged files without starting
+the website. If it reports an error, follow the message and README.md.
+It does not prove that all interactive tasks work on this computer.
+
+This is a local source-and-data package, not a standalone EXE or hosted site.
+You do not need to download the original datasets or retrain models.
+The CSV import function saves new versions inside Program/data/application/.
+Export planning results before closing their browser tab.
+
+Project source: https://github.com/Graham-Hz/FYP_Game
+Data sources and interpretation limits: DATA_SOURCES.md
+Detailed feature walkthrough: Program/DEMO_GUIDE.md
