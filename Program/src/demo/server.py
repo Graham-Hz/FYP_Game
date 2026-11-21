@@ -19,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from imports.contracts import MAX_BYTES, template, validate
 from imports.repository import DEFAULT_VERSION, SnapshotRepository
+from imports.guided import inspect as inspect_csv, prepare as prepare_guided
 from revenue import RevenueStore
 from planning import PlanningStore, budget
 from fees import FeeStore
@@ -146,6 +147,26 @@ class ComparisonStore:
                 self.pending = (token, time.monotonic(), raw, prepared)
             return {"preview_id": token, "validation": prepared[0], "expires_in_seconds": 900 if token else 0}
 
+    def inspect_import(self, payload):
+        if not isinstance(payload, dict) or set(payload) != {"platform", "csv_text"} or not isinstance(payload["csv_text"], str):
+            raise ValueError("請提供平台及 CSV 內容。")
+        with self.import_lock:
+            self.pending = None
+            return inspect_csv(payload["csv_text"].encode("utf-8"), payload["platform"])
+
+    def preview_guided(self, payload):
+        if not isinstance(payload, dict) or set(payload) != {"metadata", "csv_text", "mapping", "options"} or not isinstance(payload["csv_text"], str):
+            raise ValueError("請提供 CSV、來源資料、欄位對照及格式設定。")
+        with self.import_lock:
+            self.pending = None
+            raw = payload["csv_text"].encode("utf-8")
+            prepared = prepare_guided(raw, payload["metadata"], payload["mapping"], payload["options"])
+            summary = prepared["summary"]
+            token = secrets.token_urlsafe(24) if summary["can_import"] else None
+            if token:
+                self.pending = (token, time.monotonic(), raw, prepared)
+            return {"preview_id": token, "validation": summary, "expires_in_seconds": 900 if token else 0}
+
     def commit_preview(self, payload):
         if not isinstance(payload, dict) or set(payload) != {"preview_id"}:
             raise ValueError("請提供 preview_id。")
@@ -154,8 +175,9 @@ class ComparisonStore:
                 self.pending = None
                 raise ValueError("預覽已過期或被新的預覽取代，請重新驗證。")
             _, _, raw, prepared = self.pending
+            summary = prepared["summary"] if isinstance(prepared, dict) else prepared[0]
             with self.lock:
-                result = self.repository.save(raw, prepared[0]["metadata"], prepared)
+                result = self.repository.save(raw, summary["metadata"], prepared)
             self.pending = None
             return result
 
@@ -190,6 +212,12 @@ class ComparisonStore:
                             scope=("人工示例資料；不可解讀為市場證據。" if meta["data_kind"] == "synthetic" else "匯入的歷史快照；未經獨立來源核實。") +
                                   ("僅納入正觀察價格、owners 分級及開發者可用的遊戲；排除軟件及 demo/playtest 啟發式命中。" if platform == "pc" else "僅納入 16 個遊戲類別、發佈日期、安裝量下界及開發者可用的紀錄。") +
                                   "此版本沒有研究 train/test 切分，也不會更新模型。")
+                if manifest["contract_version"] == "application_guided_csv_v1":
+                    spec.update(exploration_rows=manifest["exploration_rows"],
+                                sample_label="規劃比較樣本",
+                                scope=("人工示例；不可解讀為市場證據。" if meta["data_kind"] == "synthetic" else "匯入快照；未經獨立來源核實。") +
+                                      f"市場探索保留 {manifest['exploration_rows']:,} 筆可用紀錄；本頁使用其中 {manifest['eligible_rows']:,} 筆符合較嚴格條件的規劃比較樣本。" +
+                                      "若本頁沒有樣本，可前往市場資料分析查看仍可使用的圖表。此版本不改動研究切分或模型。")
             self.db.execute("BEGIN TRANSACTION")
             wrote_active = False
             try:
@@ -373,6 +401,9 @@ def make_server(store, port=8765):
                     self.respond(400, {"error": str(exc)})
                 return
             files = {"/": ("index.html", "text/html; charset=utf-8"),
+                     "/import": ("import.html", "text/html; charset=utf-8"),
+                     "/import.js": ("import.js", "text/javascript; charset=utf-8"),
+                     "/import.css": ("import.css", "text/css; charset=utf-8"),
                      "/market": ("market.html", "text/html; charset=utf-8"),
                      "/market.js": ("market.js", "text/javascript; charset=utf-8"),
                      "/market.css": ("market.css", "text/css; charset=utf-8"),
@@ -402,7 +433,7 @@ def make_server(store, port=8765):
             self.respond(200, (STATIC / file).read_bytes(), mime)
 
         def do_POST(self):
-            if self.path not in {"/api/market", "/api/market/records", "/api/compare", "/api/references", "/api/planning/budget", "/api/import/preview", "/api/import/commit", "/api/activate"}:
+            if self.path not in {"/api/market", "/api/market/records", "/api/compare", "/api/references", "/api/planning/budget", "/api/import/preview", "/api/import/inspect", "/api/import/guided-preview", "/api/import/commit", "/api/activate"}:
                 self.respond(404, {"error": "Not found"})
                 return
             origin = self.headers.get("Origin")
@@ -423,7 +454,7 @@ def make_server(store, port=8765):
             try:
                 self.connection.settimeout(30)
                 size = int(self.headers.get("Content-Length", "0"))
-                if size < 1 or size > (MAX_BYTES * 2 + 8192 if self.path == "/api/import/preview" else 8192):
+                if size < 1 or size > (MAX_BYTES * 2 + 65536 if self.path in {"/api/import/preview", "/api/import/inspect", "/api/import/guided-preview"} else 8192):
                     raise ValueError("Invalid request size.")
                 payload = json.loads(self.rfile.read(size))
                 if self.path == '/api/market':
@@ -441,6 +472,10 @@ def make_server(store, port=8765):
                     result = store.compare(payload)
                 elif self.path == "/api/import/preview":
                     result = store.preview(payload)
+                elif self.path == "/api/import/inspect":
+                    result = store.inspect_import(payload)
+                elif self.path == "/api/import/guided-preview":
+                    result = store.preview_guided(payload)
                 elif self.path == "/api/import/commit":
                     result = store.commit_preview(payload)
                 else:

@@ -24,6 +24,7 @@ FIXED_FILES = (
     "Program/DEMO_GUIDE.md", "Program/CSV_IMPORT_GUIDE.md",
     "Program/config/analysis_v1.json", "Program/config/cleaning_candidate_v1.json",
     "Program/src/imports/__init__.py", "Program/src/imports/contracts.py",
+    "Program/src/imports/guided.py",
     "Program/src/imports/repository.py",
     "Program/src/imports/cli.py", "Program/src/imports/convert_sources.py",
     "Program/src/analysis/revenue_metrics.py", "Program/src/analysis/comparable_games.py",

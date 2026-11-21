@@ -15,6 +15,7 @@ window.GameShell = (() => {
     cohorts:'M3 5h18v16H3z M7 3v4 M17 3v4 M3 10h18 M7 14h3 M14 17h3',
     rankings:'M8 6h13 M8 12h13 M8 18h13 M3 6h1 M3 12h1 M3 18h1',
     revenue:'M4 20h16 M6 17V9 M12 17V4 M18 17v-6',
+    import:'M12 16V3 M7 8l5-5 5 5 M4 14v7h16v-7',
   };
   const element=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
   const icon=name=>{const n=document.createElementNS('http://www.w3.org/2000/svg','svg');n.setAttribute('viewBox','0 0 24 24');n.setAttribute('aria-hidden','true');n.setAttribute('focusable','false');const p=document.createElementNS(n.namespaceURI,'path');p.setAttribute('d',icons[name]||icons.overview);n.append(p);return n;};
@@ -46,6 +47,7 @@ window.GameShell = (() => {
   }
   for(const [id,title,iconName] of sections){const item=addLink(analysis,{id,href:`/market#${id}`,title,iconName});item.a.dataset.marketSection=id;const status=element('small',undefined,'app-nav-availability');status.hidden=true;item.body.append(status);marketLinks.set(id,{...item,status});}
   addLink(analysis,{id:'revenue',href:'/revenue',title:'Steam 營收分析',iconName:'revenue'});
+  addLink(analysis,{id:'import',href:'/import',title:'匯入資料',iconName:'import'});
   const planning=makeGroup('開發規劃','以分析依據整理你的計劃');
   addLink(planning,{id:'comparison',href:'/',title:'比較規劃方向',step:1});
   const references=addLink(planning,{id:'references',href:'/revenue#reference-panel',title:'尋找相近遊戲',step:2});
@@ -58,7 +60,7 @@ window.GameShell = (() => {
   function current(){
     if(location.pathname==='/market')return activeMarket;
     if(location.pathname==='/revenue')return location.hash==='#reference-panel'?'references':'revenue';
-    return {'/':'comparison','/planning':'budget','/plan':'summary'}[location.pathname]||'overview';
+    return {'/':'comparison','/planning':'budget','/plan':'summary','/import':'import'}[location.pathname]||'overview';
   }
   function renderCurrent(){
     const key=current();for(const {id,a,title} of links){if(id===key){a.setAttribute('aria-current','page');pageTitle.textContent=title;crumb.textContent=['comparison','references','budget','summary'].includes(id)?'開發規劃':'資料分析';}else a.removeAttribute('aria-current');}

@@ -23,7 +23,7 @@ ROOT = Path(__file__).resolve().parents[2]
 COUNTS = {"pc": 51152, "mobile": 221806, "revenue": 1500}
 DEFAULT_VERSION = "research_train_v1"
 STATIC_PATHS = (
-    "/", "/market", "/revenue", "/planning", "/plan",
+    "/", "/market", "/revenue", "/planning", "/plan", "/import", "/import.js", "/import.css",
     "/app.js", "/style.css", "/market.js", "/market.css",
     "/charts.js", "/charts.css", "/revenue.js", "/revenue.css",
     "/planning.js", "/planning.css", "/fees.js", "/plan.js",
@@ -272,6 +272,34 @@ def exercise(client, report):
     check_import(client, report)
 
 
+def check_guided_import(client, report):
+    csv_text = "Game ID,Game Name,Genre,Price,Notes\na,Example A,Action,0,extra column\nb,Example B,RPG,10,kept in source\n"
+    inspected = client.request("/api/import/inspect", {"platform": "pc", "csv_text": csv_text}, mutate=True)
+    require(inspected["suggestions"].get("title") == "Game Name", "Guided alias suggestion missing")
+    payload = {"csv_text": csv_text,
+               "metadata": {"platform": "pc", "source_name": "Synthetic package check", "source_url": "",
+                            "snapshot_date": "2026-11-22", "outcome_definition": "estimated_owner_interval",
+                            "data_kind": "synthetic", "price_currency": "USD"},
+               "mapping": {"app_id": "Game ID", "title": "Game Name", "genres": "Genre", "price_observed": "Price"},
+               "options": {"delimiter": ",", "date_format": "iso", "list_separator": ";", "boolean_format": "true_false",
+                           "number_format": "plain", "id_policy": "source", "confirmed_semantics": True}}
+    preview = client.request("/api/import/guided-preview", payload, mutate=True)
+    require(preview["validation"]["exploration_rows"] == 2 and preview["validation"]["eligible_rows"] == 0,
+            "Exploration and comparison eligibility were not separated")
+    saved = client.request("/api/import/commit", {"preview_id": preview["preview_id"]}, mutate=True)
+    ident = saved["version_id"]
+    client.request("/api/activate", {"platform": "pc", "version_id": ident}, mutate=True)
+    result = client.request("/api/market", market_payload("pc", ident))
+    charts = {c["id"]: c for c in result["charts"]}
+    require(charts["group_count"]["availability"]["valid_rows"] == 2, "Partial records missing from genre chart")
+    require(charts["outcome_histogram"]["availability"]["valid_rows"] == 2, "Partial records missing from PC price histogram")
+    require(charts["release_count"]["availability"]["status"] == "unavailable", "Missing dates invented")
+    require(charts["top_games"]["availability"]["status"] == "unavailable", "Missing owners invented")
+    client.request("/api/activate", {"platform": "pc", "version_id": DEFAULT_VERSION}, mutate=True)
+    passed(report, "Guided renamed-column import, partial exploration, unavailable charts and rollback",
+           exploration_rows=2, strict_comparison_rows=0, original_extra_columns_preserved=True)
+
+
 def run(report, temporary_parent=None):
     sys.path.insert(0, str(ROOT / "src"))
     sys.path.insert(0, str(ROOT / "src/demo"))
@@ -287,7 +315,9 @@ def run(report, temporary_parent=None):
             server = make_server(store, 0)
             thread = threading.Thread(target=server.serve_forever, daemon=True)
             thread.start()
-            exercise(Client(f"http://127.0.0.1:{server.server_port}"), report)
+            client = Client(f"http://127.0.0.1:{server.server_port}")
+            exercise(client, report)
+            check_guided_import(client, report)
         finally:
             if server is not None:
                 if thread is not None:

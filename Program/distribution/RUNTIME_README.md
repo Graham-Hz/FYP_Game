@@ -11,3 +11,5 @@ The source repository also contains the cleaning pipeline, modelling experiments
 - [Data provenance and limits](../DATA_SOURCES.md)
 
 Imported data versions are written to `data/application/`. The shipped research artifacts remain unchanged. Keep `Dataset/` beside `Program/` for the source-linked cost and fee libraries.
+
+Use **匯入資料** in the left sidebar (`/import`) for confirmed column mapping and partial Steam/Android snapshots. Preview which analyses have enough fields, save a version, then activate it. Market exploration and stricter planning comparison have separate row counts. Original files, mappings and validation records are retained; research partitions are not retrained. The legacy exact-template importer is also retained.

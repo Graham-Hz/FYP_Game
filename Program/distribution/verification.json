@@ -980,6 +980,181 @@
         "Extracted-package API and preflight checks reused the existing development environment. Fresh dependency installation and another physical computer were not tested for v6.",
         "Automated checks do not establish human usability or decision benefit. No publication or GitHub upload was performed."
       ]
+    },
+    {
+      "verification_date": "2026-11-22",
+      "package": "FYP_Demo_2026-11-22_v7.zip",
+      "zip_sha256": "c7fa72f88cbe0eaff041613c10e47f26cbb29292fd309ad702775e878bcddf3c",
+      "archive_bytes": 40148464,
+      "inventoried_files": 74,
+      "uncompressed_file_bytes": 49837666,
+      "features": [
+        "Confirmed guided CSV field mappings and format selection",
+        "Reusable browser-local profiles with fresh semantic confirmation",
+        "Independent exploration and strict comparison eligibility",
+        "Original, normalized, mapping, ledger and separate typed tables retained",
+        "Per-analysis field coverage and missing-data explanations"
+      ],
+      "environment": {
+        "existing_development_environment_reused": true,
+        "fresh_dependency_installation": false,
+        "physical_second_device": false,
+        "browser": "Headless Microsoft Edge via cached Playwright"
+      },
+      "checks": {
+        "source_unit_integration_tests": {
+          "passed": 115,
+          "failed": 0,
+          "guided": 38,
+          "legacy_import": 11,
+          "demo_distribution_preflight": 20,
+          "market_regression": 46
+        },
+        "source_browser_groups": {
+          "guided_import": 6,
+          "legacy_import": 4,
+          "shared_navigation": 5
+        },
+        "large_existing_csv_dry_runs": {
+          "pc": {
+            "rows": 51152,
+            "strict_comparison_rows": 51152,
+            "exploration_rows": 51152,
+            "errors": 0
+          },
+          "mobile": {
+            "rows": 221806,
+            "strict_comparison_rows": 221806,
+            "exploration_rows": 221806,
+            "errors": 0
+          }
+        },
+        "all_package_hashes_verified": true,
+        "packaged_api_smoke": {
+          "kind": "packaged_demo_http_smoke",
+          "passed": true,
+          "started_at_utc": "2026-11-21T20:11:42.320843+00:00",
+          "program_root": "F:\\HKBU_Y4\\FYP\\tmp\\Demo v7 validation\\FYP_Demo_2026-11-22_v7\\Program",
+          "python_executable": "F:\\HKBU_Y4\\FYP\\My_FYP\\Program\\.venv\\Scripts\\python.exe",
+          "python_version": "3.14.3",
+          "python_prefix": "F:\\HKBU_Y4\\FYP\\My_FYP\\Program\\.venv",
+          "os": "Windows-11-10.0.26300-SP0",
+          "architecture": "AMD64",
+          "fresh_machine": false,
+          "browser_ui_test": false,
+          "environment_creation_verified_by_this_script": false,
+          "application_state": "Disposable temporary directory; existing imports are not used",
+          "limitations": [
+            "This verifies local HTTP behaviour only, not browser layout or user benefit.",
+            "This does not establish another physical computer or clean OS installation.",
+            "Environment installation/download checks must be recorded separately."
+          ],
+          "checks": [
+            {
+              "name": "All application pages and static assets",
+              "status": "passed",
+              "paths": 26
+            },
+            {
+              "name": "Frozen Steam and Android comparison samples",
+              "status": "passed",
+              "pc_rows": 51152,
+              "mobile_rows": 221806
+            },
+            {
+              "name": "pc market charts and ranking",
+              "status": "passed",
+              "rows": 51152,
+              "charts": 14,
+              "readiness_checked": true
+            },
+            {
+              "name": "mobile market charts and ranking",
+              "status": "passed",
+              "rows": 221806,
+              "charts": 14,
+              "readiness_checked": true
+            },
+            {
+              "name": "revenue market charts and ranking",
+              "status": "passed",
+              "rows": 1500,
+              "charts": 14,
+              "readiness_checked": true
+            },
+            {
+              "name": "Shared gameplay taxonomy, cohort comparison and record drill-down",
+              "status": "passed",
+              "gameplay_genres": 8,
+              "selected_rows": 15795,
+              "baseline_rows": 206011,
+              "high_tier_rows": 2487,
+              "records_returned": 20,
+              "version_id": "research_train_v1"
+            },
+            {
+              "name": "Revenue analysis and reference retrieval",
+              "status": "passed",
+              "positive_price_rows": 1415,
+              "references": 10
+            },
+            {
+              "name": "Cost cases, fee catalogue and five CSV downloads",
+              "status": "passed",
+              "cases": 10,
+              "observations": 37,
+              "fees": 26,
+              "fee_sources": 16
+            },
+            {
+              "name": "Artificial manual and source-linked fee budgets",
+              "status": "passed",
+              "currency": "HKD",
+              "manual_cash": 176000,
+              "with_fees_cash": 215639.6,
+              "delayed_with_fees_cash": 288279.2
+            },
+            {
+              "name": "Synthetic CSV preview, commit, activation and rollback",
+              "status": "passed",
+              "eligible_rows": 2,
+              "restored_rows": 221806,
+              "uncredentialed_write_status": 403
+            },
+            {
+              "name": "Guided renamed-column import, partial exploration, unavailable charts and rollback",
+              "status": "passed",
+              "exploration_rows": 2,
+              "strict_comparison_rows": 0,
+              "original_extra_columns_preserved": true
+            },
+            {
+              "name": "Restored research selection survives restart",
+              "status": "passed"
+            }
+          ],
+          "elapsed_seconds": 7.64,
+          "finished_at_utc": "2026-11-21T20:11:50.045105+00:00"
+        },
+        "packaged_browser": {
+          "status": "passed",
+          "checks": [
+            "Renamed fields and extras mapped explicitly; saved profile reuses mappings without confirming semantics",
+            "Partial records give 2 exploration / 0 comparison rows; metadata change invalidates preview and confirmation",
+            "Activated partial CSV renders real genre and price charts, marks missing-date charts unavailable, and retains both game records",
+            "Export, save without activation, activation, reload and rollback succeed",
+            "Invalid UTF-8 fails before inspection; previous preview cannot be reused",
+            "390px layout has no horizontal overflow and no browser JavaScript errors"
+          ],
+          "page_errors": []
+        }
+      },
+      "limitations": [
+        "Package tested in a separate extraction on the development computer using the existing Python environment; no new physical-device or clean-install claim.",
+        "Only supported Steam/Android game snapshots; arbitrary revenue and longitudinal time-series schemas remain unsupported.",
+        "Automatic checks establish implementation behaviour, not dataset truthfulness, representativeness or human decision benefit.",
+        "No GitHub publication or public deployment performed."
+      ]
     }
   ]
 }

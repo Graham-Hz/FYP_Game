@@ -221,3 +221,15 @@ def analytical_charts(frame, source, unit, currency, caption, top_n=10):
             _boxplots(frame, values, name, metric_unit, caption, top_n),
             _scatter(frame, source, unit, currency, caption),
             _heatmap(frame, source, caption, top_n)]
+
+
+def imported_mobile_price_chart(frame, caption):
+    """A guided Android upload can expose price even without install outcomes.
+
+    The loader supplies USD-only values; mixed or unknown currencies are never
+    summed or implicitly converted. Keep the legacy research chart set stable.
+    """
+    chart = _histogram(_numeric(frame.price), "觀測價格", "USD", caption)
+    chart["id"] = "price_histogram"
+    chart["description"] += " 僅使用來源明示為 USD 的價格；其他幣別未換算，價格未知不等於免費。"
+    return chart

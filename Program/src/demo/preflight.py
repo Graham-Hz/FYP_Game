@@ -23,6 +23,7 @@ CANDIDATE_ARTIFACTS = tuple(
 )
 DATA_ARTIFACTS = (*ANALYSIS_ARTIFACTS, *CANDIDATE_ARTIFACTS, REVENUE_ARTIFACT)
 STATIC_FILES = (
+    "import.html", "import.js", "import.css",
     "app.js", "charts.css", "charts.js", "fees.js", "index.html", "market.css",
     "market.html", "market.js", "plan.html", "plan.js", "planning.css",
     "planning.html", "planning.js", "revenue.css", "revenue.html", "revenue.js",
@@ -35,7 +36,7 @@ REQUIRED_FILES = (
     "src/demo/server.py", "src/demo/market.py", "src/demo/market_analytics.py", "src/demo/market_availability.py",
     "src/demo/market_taxonomy.py", "src/demo/market_cohorts.py", "src/demo/revenue.py", "src/demo/planning.py",
     "src/demo/fees.py", "src/imports/__init__.py", "src/imports/contracts.py",
-    "src/imports/repository.py", "src/analysis/revenue_metrics.py",
+    "src/imports/repository.py", "src/imports/guided.py", "src/analysis/revenue_metrics.py",
     "src/analysis/comparable_games.py", "src/analysis/game_taxonomy.py",
     *(f"src/demo/static/{name}" for name in STATIC_FILES),
     "../Dataset/Development Cost Cases/cases.csv",

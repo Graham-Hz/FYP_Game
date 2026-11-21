@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GameScope · 匯入你的資料</title>
+  <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/shell.css"><link rel="stylesheet" href="/import.css">
+  <script src="/shell.js" defer></script><script src="/import.js" defer></script>
+</head>
+<body class="app-shell import-workspace">
+<header><a class="brand" href="/market">◈ GameScope</a></header>
+<main>
+  <section class="intro"><p class="eyebrow">YOUR DATA, EXPLAINED</p><h1>匯入你的遊戲資料</h1><p>確認欄位的意思，預覽可以進行的分析，再啟用新版本。</p></section>
+  <p class="import-scope">支援 Steam／Android 的遊戲快照。每行是一款遊戲；不同月份的重複紀錄、營收 CSV 和自動貨幣換算尚未支援。</p>
+  <form id="guided-form">
+    <fieldset id="source-fields" class="import-section">
+      <legend><span class="import-step">1</span> 選擇來源</legend>
+      <div class="import-grid">
+        <label>平台<select id="guided-platform"><option value="pc">Steam</option><option value="mobile">Android</option></select></label>
+        <label>CSV 檔案<input id="guided-file" type="file" accept=".csv,.tsv,text/csv,text/tab-separated-values" required><small>UTF-8，最多 64 MiB／500,000 行。</small></label>
+        <label>資料來源名稱<input id="guided-source" maxlength="200" required placeholder="例如：自己的 Steam 市場資料"></label>
+        <label>快照截至日期<input id="guided-date" type="date" required></label>
+        <label>來源網址（可留空）<input id="guided-url" type="url" maxlength="2000" placeholder="https://…"></label>
+        <label>資料性質<select id="guided-kind"><option value="historical">歷史資料</option><option value="synthetic">人工示例（不代表市場）</option></select></label>
+        <label id="guided-currency-label">Steam 價格幣別<input id="guided-currency" value="unknown" maxlength="7" placeholder="USD、HKD 或 unknown"><small>只填來源已確認的幣別；不會換算匯率。</small></label>
+      </div>
+      <div class="import-actions"><button id="inspect-csv" class="import-primary" type="button" disabled>讀取欄位 →</button><span class="fine">原始檔案及未使用欄位會隨版本保存。</span></div>
+    </fieldset>
+    <fieldset id="mapping-fields" class="import-section" hidden>
+      <legend><span class="import-step">2</span> 確認欄位與格式</legend>
+      <p class="fine">下方只是欄名對照建議。請核對資料來源的定義；未提供的欄位可留空，系統會按每種分析的需要判斷。</p>
+      <div class="import-profile"><p id="profile-status" class="fine"></p><div><button id="reuse-profile" type="button" class="outline" disabled>套用已保存的對照</button><button id="save-profile" type="button" class="outline">保存此平台的對照</button></div></div>
+      <details class="import-details"><summary>查看原始資料範例</summary><div id="raw-sample" class="import-table-scroll" tabindex="0" aria-label="原始 CSV 前幾行"></div></details>
+      <div id="field-mapping" class="import-mapping-grid"></div>
+      <p id="unmapped-columns" class="fine"></p>
+      <details id="format-settings" class="import-details" open><summary>資料格式設定</summary>
+        <div class="import-grid">
+          <label>CSV 分隔符號<select id="format-delimiter"><option value=",">逗號 ,</option><option value=";">分號 ;</option><option value="&#9;">Tab 定位字元</option></select></label>
+          <label>日期格式<select id="format-date"><option value="iso">YYYY-MM-DD</option><option value="dmy">DD/MM/YYYY</option><option value="mdy">MM/DD/YYYY</option></select><small>不會猜測 01/02 代表哪一天。</small></label>
+          <label>類型／開發者集合的格式<select id="format-list"><option value="json">JSON 陣列 ["Action","RPG"]</option><option value=";">以分號分隔 Action;RPG</option><option value="|">以豎線分隔 Action|RPG</option><option value=",">以逗號分隔 Action,RPG</option></select></label>
+          <label>布林值格式<select id="format-boolean"><option value="true_false">true / false</option><option value="yes_no">yes / no</option><option value="one_zero">1 / 0</option></select></label>
+          <label>數字格式<select id="format-number"><option value="plain">一般數字 1000 或 12.50</option><option value="thousands_comma">千分位逗號 1,000 或 1,234.50</option></select><small>不接受 10k、貨幣符號或不明單位。</small></label>
+          <label>識別方式<select id="format-id"><option value="source">使用來源的唯一遊戲 ID</option><option value="row_number">沒有 ID：建立本次檔案的內部行號</option></select><small>內部行號不是 Steam ID，不用作跨來源配對。</small></label>
+        </div>
+      </details>
+      <div class="import-meaning"><strong>確認數字代表甚麼</strong><p id="metric-meaning"></p><label class="import-checkbox"><input id="confirm-semantics" type="checkbox" required><span>我已核對欄位、格式及單位；每行是一款遊戲的快照，已對照的數量符合上述定義。沒有的指標保持未對照。</span></label></div>
+      <div class="import-actions"><button id="preview-guided" type="submit" class="import-primary">驗證並預覽分析 →</button></div>
+    </fieldset>
+  </form>
+  <p id="guided-status" class="import-status" role="status" aria-live="polite">正在連接本機資料服務…</p>
+  <section id="guided-preview" class="import-section" aria-labelledby="preview-heading" hidden>
+    <h2 id="preview-heading"><span class="import-step">3</span> 分析所需欄位的可用性</h2>
+    <div id="preview-counts" class="import-counts"></div>
+    <p id="preview-explanation" class="fine"></p>
+    <div id="readiness-table" class="import-table-scroll" tabindex="0" aria-label="各分析的資料可用性"></div>
+    <details id="preview-issues" class="import-details"><summary id="preview-issues-title">檢查提示與錯誤</summary><ul id="issue-list"></ul></details>
+    <details class="import-details"><summary>查看轉換後資料範例</summary><div id="normalized-sample" class="import-table-scroll" tabindex="0" aria-label="轉換後資料前幾行"></div></details>
+    <div class="import-actions"><button id="save-guided" type="button" class="import-primary" disabled>儲存已驗證版本</button><button id="download-validation" type="button" class="outline">下載驗證報告 JSON</button></div>
+    <p class="fine">儲存後仍需啟用。新資料不會改動研究 train/test 切分，也不會自動訓練模型。</p>
+  </section>
+  <section class="import-section import-version" aria-labelledby="version-heading">
+    <h2 id="version-heading">啟用或切回資料版本</h2>
+    <p class="fine">套用於目前所選平台的市場分析與規劃比較。其他平台、獨立營收資料及費用參考不變。</p>
+    <fieldset id="version-fields"><div class="import-version-controls"><label>資料版本<select id="guided-version" disabled></select></label><button id="activate-guided" type="button" class="outline" disabled>啟用所選版本</button><a href="/market">前往市場分析 →</a></div></fieldset>
+    <p id="guided-active" class="fine"></p><p id="activation-status" role="status" aria-live="polite"></p>
+  </section>
+  <footer>GameScope · Guided CSV import <span>原始資料、欄位對照與分析資格分開記錄</span></footer>
+</main>
+</body>
+</html>

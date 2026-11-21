@@ -1,8 +1,9 @@
 """Independent descriptive charts from verified, versioned historical snapshots.
 
 Research rows are restricted to the already materialised training membership.
-Imported source files supply descriptive values omitted by the narrow comparison
-contract; they never change that contract, the research split or model features.
+Legacy imports use their validated comparison membership. Guided imports keep a
+separate exploration table so missing comparison fields do not erase otherwise
+usable chart observations. Neither path changes research splits or models.
 """
 import copy
 import hashlib
@@ -15,7 +16,7 @@ import pandas as pd
 
 from imports.repository import DEFAULT_VERSION
 from market_taxonomy import gameplay, other_labels, tag_groups, metadata as taxonomy_metadata
-from market_analytics import analytical_charts
+from market_analytics import analytical_charts, imported_mobile_price_chart
 from market_cohorts import compare as compare_cohorts
 from market_availability import annotate_charts
 
@@ -118,6 +119,9 @@ class MarketStore:
         spec = copy.deepcopy(self.comparison.options[source])
         db = self.comparison.db
         hashes = {}
+        guided = False
+        import_details = {}
+        expected_rows = spec["row_count"]
         if version == DEFAULT_VERSION:
             path = self.root / MANIFEST
             if _sha(path) != EXPECTED_MANIFEST:
@@ -147,16 +151,33 @@ class MarketStore:
             observation_fallback_rows = int(frame.detail_available.sum()) if source == "pc" else 0
         else:
             manifest, parquet = self.comparison.repository.load(source, version)
-            raw = pd.read_csv(parquet.parent / "source.csv", dtype=str, keep_default_na=False)
-            active = db.execute(f"SELECT * FROM {source}").fetchdf()
-            numeric = ["owner_lower", "owner_upper", "price_observed"] if source == "pc" else ["minimum_installs", "price", "currency"]
-            details = raw[["app_id", "release_date", "observed_date"] + numeric]
-            frame = active.merge(details, on="app_id", how="left", validate="one_to_one", indicator=True)
-            if not frame["_merge"].eq("both").all():
-                raise ValueError("Imported descriptive source does not cover the eligible snapshot.")
+            guided = manifest["contract_version"] == "application_guided_csv_v1"
+            if guided:
+                # Missing dates, developers or tiers do not disqualify a game
+                # from a chart that only needs its category or observed price.
+                frame = pd.read_parquet(parquet.parent / "exploration.parquet")
+                expected_rows = manifest["exploration_rows"]
+                validation = json.loads((parquet.parent / "validation.json").read_text(encoding="utf-8"))
+                import_details = {key: copy.deepcopy(validation[key]) for key in
+                                  ("mapping", "options", "unmapped_columns", "identity_basis") if key in validation}
+                import_details.update(exploration_rows=expected_rows,
+                                      comparison_eligible_rows=manifest["eligible_rows"],
+                                      row_eligibility_basis="per_chart_available_fields")
+            else:
+                raw = pd.read_csv(parquet.parent / "source.csv", dtype=str, keep_default_na=False)
+                active = db.execute(f"SELECT * FROM {source}").fetchdf()
+                numeric = ["owner_lower", "owner_upper", "price_observed"] if source == "pc" else ["minimum_installs", "price", "currency"]
+                details = raw[["app_id", "release_date", "observed_date"] + numeric]
+                frame = active.merge(details, on="app_id", how="left", validate="one_to_one", indicator=True)
+                if not frame["_merge"].eq("both").all():
+                    raise ValueError("Imported descriptive source does not cover the eligible snapshot.")
             frame["detail_available"] = True
-            observation_fallback_rows = int(frame["observed_date"].eq("").sum())
-            frame["observed_date"] = frame["observed_date"].replace("", manifest["metadata"]["snapshot_date"])
+            absent_observation = frame["observed_date"].isna() | frame["observed_date"].eq("")
+            observation_fallback_rows = int(absent_observation.sum())
+            if guided:
+                observation_fallback_rows = int(validation.get("exploration_warnings", validation.get("warnings", {})).get(
+                    "observation_uses_snapshot_proxy", observation_fallback_rows))
+            frame["observed_date"] = frame["observed_date"].where(~absent_observation, manifest["metadata"]["snapshot_date"])
             lower = "owner_lower" if source == "pc" else "minimum_installs"
             upper = "owner_upper" if source == "pc" else "minimum_installs"
             frame["volume_lower"] = pd.to_numeric(frame[lower], errors="raise")
@@ -167,11 +188,12 @@ class MarketStore:
             if source == "mobile":
                 frame.loc[frame["currency"].ne("USD"), "price"] = float("nan")
             hashes = {f"application/{version}/{name}": value for name, value in manifest["files"].items()}
-            scope = "Eligible rows of the active imported application snapshot; not research training or test data."
+            scope = ("Exploration rows of the active guided import; each chart uses its own available fields. Comparison eligibility is separate; not research training or test data."
+                     if guided else "Eligible rows of the active imported application snapshot; not research training or test data.")
             urls = [manifest["metadata"]["source_url"]] if manifest["metadata"]["source_url"] else []
             observation_basis = "declared_per_row_date_with_snapshot_fallback"
-        if len(frame) != spec["row_count"] or frame.app_id.duplicated().any():
-            raise ValueError("Market membership is inconsistent with the active comparison snapshot.")
+        if len(frame) != expected_rows or frame.app_id.duplicated().any():
+            raise ValueError("Market membership is inconsistent with the validated snapshot.")
         frame["app_id"] = frame.app_id.astype(str)
         frame["title"] = frame.title.where(frame.title.notna(), frame.app_id.map(lambda x: f"ID {x}（名稱未載入）"))
         frame["release_date"] = pd.to_datetime(frame.release_date, errors="raise")
@@ -179,7 +201,7 @@ class MarketStore:
         frame["volume_lower"] = pd.to_numeric(frame.volume_lower).astype(float)
         frame["volume_upper"] = pd.to_numeric(frame.volume_upper).astype(float)
         frame["price"] = pd.to_numeric(frame.price).astype(float)
-        frame["groups"] = frame.genres.map(_list) if source == "pc" else frame.category.map(lambda x: [str(x)])
+        frame["groups"] = frame.genres.map(_list) if source == "pc" else frame.category.map(lambda x: [] if pd.isna(x) or not str(x).strip() else [str(x)])
         if source == "mobile":
             for name in ("free", "ad_supported", "in_app_purchases"):
                 frame[name] = frame[name].map(lambda x: None if pd.isna(x) else bool(x))
@@ -191,7 +213,7 @@ class MarketStore:
         ]
         if source == "pc":
             limits += ["Owners 是來源估計區間，並非精確購買量、售出份數或獨立玩家人數。依下限排序不代表區間重疊的遊戲有確定先後。",
-                       "Steam 樣本僅包含研究／匯入規則保留的正價遊戲；多類型遊戲會出現在多組，組別總和不能相加為市場總量。",
+                       ("此匯入的探索樣本可包含零價格、未知數量或日期的遊戲；每張圖只使用自己所需的已知資料。" if guided else "Steam 樣本僅包含研究／匯入規則保留的正價遊戲；") + "多類型遊戲會出現在多組，組別總和不能相加為市場總量。",
                        "玩法類型依本項目的明示對照表展示；Indie、Early Access、內容及軟件標籤另設篩選，原始標籤與研究納入規則不變。"]
             if currency == "unknown":
                 limits.append("Steam 價格幣別未獲來源確認，價格分組只使用來源數值，不標示為美元或與其他幣別合併。")
@@ -205,6 +227,13 @@ class MarketStore:
             limits.append(f"{missing} 款保留樣本未有已核實的名稱／日期／數量詳細資料；保留於類型及分層計數，數量與日期圖只使用已知值。")
         if spec.get("data_kind") == "synthetic":
             limits.insert(0, "此版本為人工示範資料，不能解讀為真實市場證據。")
+        if guided:
+            limits.append(f"市場探索保留 {len(frame):,} 筆；規劃方向比較另有 {manifest['eligible_rows']:,} 筆符合較嚴格條件。缺少日期／開發者或無法分層，不會令其他可用圖表的資料消失。")
+            limits.append("數量分層未知包含未提供數量或 owners 區間跨越分層邊界；不是低數量，亦不會當成零。")
+            if import_details.get("identity_basis") == "local_row_id_not_platform_identity":
+                limits.append("ID 是此 CSV 的本機列識別碼，不是 Steam／Google Play 的正式遊戲 ID，不能用它跨來源對接作品。")
+            if source == "mobile":
+                limits.append("Android 價格只在來源幣別為 USD 時保留於價格欄位；其他幣別沒有自動換算，安裝量與類別分析仍可使用。")
         if version != DEFAULT_VERSION and observation_fallback_rows:
             limits.append(f"{observation_fallback_rows:,} 筆未填觀測日期的匯入記錄使用所提供的快照日期作代理；這不是額外查證的擷取時間。")
         provenance = {"source_id": source, "version_id": version, "partition": spec["partition"],
@@ -216,8 +245,16 @@ class MarketStore:
                       "observation_date_proxy_rows": observation_fallback_rows,
                       "source_urls": urls, "temporal_basis": "release_cohort_not_longitudinal",
                       "data_kind": spec.get("data_kind", "historical"), "price_currency": currency}
-        return self._package(source, version, spec["snapshot"], frame, unit, limits, provenance,
-                             "既定納入規則下的歷史樣本；所有圖表均隨篩選條件更新。")
+        if guided:
+            provenance["guided_import"] = import_details
+            provenance["source_name"] = manifest["metadata"]["source_name"]
+        package = self._package(source, version, spec["snapshot"], frame, unit, limits, provenance,
+                               "匯入的遊戲快照；圖表按各自所需欄位使用有效記錄，規劃比較另採較嚴格條件。" if guided else
+                               "既定納入規則下的歷史樣本；所有圖表均隨篩選條件更新。")
+        if guided:
+            package["source"]["name"] = f"{spec['name']} · {manifest['metadata']['source_name']}" + ("（人工示例）" if spec.get("data_kind") == "synthetic" else "")
+            package["source"].update(exploration_rows=len(frame), comparison_eligible_rows=manifest["eligible_rows"])
+        return package
 
     def _load_revenue(self):
         if self.revenue is None:
@@ -482,12 +519,18 @@ class MarketStore:
                 chart(f"group_revenue_{metric}", title, "來源估計總營收，並非利潤；多類型組別互相重疊。", rows[:top], [("revenue", "估計總營收")], "USD")
         else:
             upper = TIERS[source][-1][0]
-            rows = [(f"{label} (n={len(subset)})", [100 * subset.target_tier.eq(upper).mean()]) for label, subset in grouped if len(subset) >= 30]
+            tier_ids = [key for key, _ in TIERS[source]]
+            known_groups = [(label, subset[subset.target_tier.isin(tier_ids)]) for label, subset in grouped]
+            rows = [(f"{label} (n={len(subset)})", [100 * subset.target_tier.eq(upper).mean()]) for label, subset in known_groups if len(subset) >= 30]
             rows.sort(key=lambda r: (-r[1][0], r[0]))
-            chart("group_high_tier_share", "較高數量分層的組內比例", "只列 n ≥ 30 的組別；分母是該組全部樣本。30 為顯示門檻，並非統計充分性的保證。", rows[:top], [("percent", "較高分層比例")], "%")
-            chart("outcome_tiers", "來源數量分層分布", "沿用既定 owners／安裝下限分層，保留完整已篩選樣本。", [(label, [int(frame.target_tier.eq(key).sum())]) for key, label in TIERS[source]], [("count", "遊戲數")], "款")
+            chart("group_high_tier_share", "較高數量分層的組內比例", "只列已知分層 n ≥ 30 的組別；分母是該組分層已知的遊戲數，未知／無法分層不當作低數量。30 為顯示門檻，並非統計充分性的保證。", rows[:top], [("percent", "較高分層比例")], "%")
+            charts[-1]["percentage_denominator"] = "known_outcome_rows_within_each_group"
+            chart("outcome_tiers", "來源數量分層分布", "沿用既定 owners／安裝下限分層；未提供數量或區間無法分層的遊戲另列，不當作零或低數量。", [(label, [int(frame.target_tier.eq(key).sum())]) for key, label in TIERS[source]], [("count", "遊戲數")], "款")
             for row, (tier_id, _) in zip(charts[-1]["rows"], TIERS[source]):
                 row["filter"] = {"tier": tier_id}
+            unknown_tiers = int((~frame.target_tier.isin(tier_ids)).sum())
+            if unknown_tiers:
+                charts[-1]["rows"].append({"label": "數量未知／區間無法分層", "values": [unknown_tiers], "filter": {"tier": "unknown"}})
         date_rows = frame[frame.release_date.notna()].copy()
         if revenue:
             date_rows["cohort"] = date_rows.release_date.dt.strftime("%Y-%m")
@@ -592,6 +635,8 @@ class MarketStore:
             item['section'] = sections[item['id']]
             item['integerTicks'] = item['unit'] == '款'
         charts.extend(analytical_charts(frame, source, unit, data['provenance']['price_currency'], caption, top_n=top))
+        if source == "mobile" and data["provenance"].get("guided_import"):
+            charts.append(imported_mobile_price_chart(frame, caption))
         annotate_charts(charts, frame, source, comparison=comparison)
         return {"schema_version": "market_analysis_v2", "generated_at_utc": datetime.now(timezone.utc).isoformat(),
                 "source": copy.deepcopy(data["source"]), "filters": dict(filters), "summary": summary,

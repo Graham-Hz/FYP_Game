@@ -92,11 +92,9 @@ def annotate_charts(charts, frame, source, *, comparison=None):
             ready = _result(n, (grouped & known).sum(), ["至少有 1 款同時具備玩法／類別及所需數值的遊戲。"])
         elif ident in {"genre_boxplot", "group_outcome_heatmap", "group_high_tier_share"}:
             minimum = 5 if ident == "genre_boxplot" else 30
-            known = known_metric if ident == "genre_boxplot" else known_outcome if ident == "group_outcome_heatmap" else pd.Series(True, index=frame.index)
+            known = known_metric if ident == "genre_boxplot" else known_outcome
             mask, eligible, excluded = group_info(known, minimum)
-            if ident == "group_high_tier_share":
-                mask &= known_outcome
-            requirement = f"每個展示組別至少 {minimum} 款{'具備所需數值的' if ident == 'genre_boxplot' else '分層已知的' if ident == 'group_outcome_heatmap' else ''}遊戲。"
+            requirement = f"每個展示組別至少 {minimum} 款{'具備所需數值的' if ident == 'genre_boxplot' else '分層已知的'}遊戲。"
             threshold_note = f"{minimum} 是此圖的顯示規則，不代表已達統計可靠性。"
             status = "unavailable" if not eligible or not mask.any() else "limited" if excluded or mask.sum() < n else "available"
             reason = (f"目前沒有組別符合每組至少 {minimum} 款的顯示要求；{excluded} 組未達要求。" if not eligible else
@@ -109,7 +107,10 @@ def annotate_charts(charts, frame, source, *, comparison=None):
                             reason=reason, eligible_groups=eligible, excluded_groups=excluded,
                             minimum_rows_per_group=minimum)
         elif ident == "outcome_tiers":
-            ready = _result(n, known_outcome.sum(), ["至少有 1 款具備來源數量分層的遊戲。"])
+            ready = _result(n, known_outcome.sum(), ["比較來源數量分層需要已知數量；未知或區間無法分層的記錄只計為缺失筆數。"])
+            if not known_outcome.any():
+                ready.update(status="limited", reason="數量分層全部未知或區間跨越分層邊界；只展示無法分層的筆數，不能比較分層表現。",
+                             action="若要比較分層表現，需提供可分類的來源數量；跨界 owners 區間仍可用於數量圖，不必強行分類。")
         elif ident in {"release_count", "release_volume_median"}:
             valid = known_date if ident == "release_count" else known_date & known_volume
             frequency = frame.loc[valid, "release_date"].dt.to_period("M" if source == "revenue" else "Y")
@@ -125,15 +126,18 @@ def annotate_charts(charts, frame, source, *, comparison=None):
                                 action="放寬年份條件或加入其他發售批次；這仍是批次比較，不是逐期銷售紀錄。", observed_periods=periods)
             else:
                 ready = _result(n, valid.sum(), requirements, observed_periods=periods)
-        elif ident == "outcome_histogram":
-            distinct = int(frame.loc[known_metric, metric].nunique())
-            requirements = [f"至少有 1 款具備{numeric_name}的遊戲；零是有效數值。"]
-            if known_metric.any() and (known_metric.sum() < 2 or distinct < 2):
-                ready = _result(n, known_metric.sum(), requirements, status="limited",
-                                reason="目前只有 1 筆有效數值。" if known_metric.sum() == 1 else "所有有效數值都相同，圖中只會出現一個有資料的區間。",
+        elif ident in {"outcome_histogram", "price_histogram"}:
+            histogram_known = known_price if ident == "price_histogram" else known_metric
+            histogram_field = "price" if ident == "price_histogram" else metric
+            histogram_name = "來源明示為 USD 的觀測價格" if ident == "price_histogram" else numeric_name
+            distinct = int(frame.loc[histogram_known, histogram_field].nunique())
+            requirements = [f"至少有 1 款具備{histogram_name}的遊戲；零是有效數值。"]
+            if histogram_known.any() and (histogram_known.sum() < 2 or distinct < 2):
+                ready = _result(n, histogram_known.sum(), requirements, status="limited",
+                                reason="目前只有 1 筆有效數值。" if histogram_known.sum() == 1 else "所有有效數值都相同，圖中只會出現一個有資料的區間。",
                                 action="可查看此數值的筆數；若要觀察分布差異，請放寬條件或加入其他有效記錄。", distinct_values=distinct)
             else:
-                ready = _result(n, known_metric.sum(), requirements, distinct_values=distinct)
+                ready = _result(n, histogram_known.sum(), requirements, distinct_values=distinct)
         elif ident == "price_outcome_scatter":
             if source == "mobile":
                 x = (frame.observed_date - frame.release_date).dt.total_seconds() / 86400
