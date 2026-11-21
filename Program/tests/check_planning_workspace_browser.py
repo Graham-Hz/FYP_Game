@@ -10,6 +10,7 @@ import tempfile
 import threading
 
 from playwright.sync_api import expect, sync_playwright
+from market_browser_controls import market_control
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src/demo'))
@@ -57,10 +58,10 @@ def main():
                     # Capture a real result before any historical planning condition exists.
                     page.goto(base + '/market')
                     expect(page.locator('#market-results')).to_be_visible()
-                    page.locator('#market-source').select_option('mobile')
-                    expect(page.locator('#market-result-context')).to_contain_text('Android')
-                    page.locator('#market-group').select_option('Adventure')
-                    page.locator('#market-apply').click()
+                    market_control(page, '#market-source').select_option('mobile')
+                    expect(page.locator('#market-scope-source')).to_contain_text('Android')
+                    market_control(page, '#market-group').select_option('Adventure')
+                    market_control(page, '#market-apply').click()
                     expect(page.locator('article[data-chart-id="cohort_comparison"]')).to_be_visible()
                     page.locator('#market-finding-open').click()
                     page.locator('#market-finding-title').fill('Adventure distribution needs context')

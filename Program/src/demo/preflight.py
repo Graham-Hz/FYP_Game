@@ -26,13 +26,13 @@ STATIC_FILES = (
     "app.js", "charts.css", "charts.js", "fees.js", "index.html", "market.css",
     "market.html", "market.js", "plan.html", "plan.js", "planning.css",
     "planning.html", "planning.js", "revenue.css", "revenue.html", "revenue.js",
-    "style.css", "workflow.css", "workflow.js", "budget_scenarios.js", "budget_scenarios.css",
+    "style.css", "workflow.css", "workflow.js", "budget_scenarios.js", "budget_scenarios.css", "shell.js", "shell.css",
 )
 # Paths are relative to Program; keep Dataset beside Program when packaging.
 REQUIRED_FILES = (
     "pyproject.toml", "uv.lock", ANALYSIS_MANIFEST, REVENUE_MANIFEST,
     "config/analysis_v1.json", "config/cleaning_candidate_v1.json",
-    "src/demo/server.py", "src/demo/market.py", "src/demo/market_analytics.py",
+    "src/demo/server.py", "src/demo/market.py", "src/demo/market_analytics.py", "src/demo/market_availability.py",
     "src/demo/market_taxonomy.py", "src/demo/market_cohorts.py", "src/demo/revenue.py", "src/demo/planning.py",
     "src/demo/fees.py", "src/imports/__init__.py", "src/imports/contracts.py",
     "src/imports/repository.py", "src/analysis/revenue_metrics.py",

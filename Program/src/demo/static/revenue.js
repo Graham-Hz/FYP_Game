@@ -19,7 +19,8 @@ function bar(target, label, fraction, detail) {
  heading.append(node("span", label), node("strong", detail)); fill.style.width = `${Math.max(0, Math.min(100, (fraction || 0) * 100))}%`; track.append(fill); row.append(heading, track); $(target).append(row);
 }
 function groupTable(target, groups) {
- table(target, ["組別", "遊戲數", "營收中位數 (USD)", "25%–75% 分位 (USD)"], groups.map(g => [g.label, `${count(g.count)}${g.small_sample ? "（小樣本）" : ""}`, money(g.median_revenue), `${money(g.q25)} – ${money(g.q75)}`]));
+ table(target, ["組別", "遊戲數", "營收中位數 (USD)", "中間一半遊戲的營收範圍 (USD)"], groups.map(g => [g.label, `${count(g.count)}${g.small_sample ? "（小樣本）" : ""}`, money(g.median_revenue), `${money(g.q25)} – ${money(g.q75)}`]));
+ $(target).append(node("p", "中位數是把數值由小至大排列後的中間值；中間一半的範圍由第 25 至第 75 百分位（Q1–Q3）界定。這些是目前樣本的描述，不是下一款遊戲的收入預測。", "fine"));
 }
 function gameTable() {
  if (!result) return;

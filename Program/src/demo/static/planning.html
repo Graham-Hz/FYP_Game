@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="zh-Hant">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · 開發資源規劃</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/planning.css"><link rel="stylesheet" href="/workflow.css"><link rel="stylesheet" href="/charts.css"><link rel="stylesheet" href="/budget_scenarios.css"><script src="/charts.js" defer></script><script src="/workflow.js" defer></script><script src="/budget_scenarios.js" defer></script><script src="/fees.js" defer></script><script src="/planning.js" defer></script></head>
-<body>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GameScope · 開發資源規劃</title><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/planning.css"><link rel="stylesheet" href="/workflow.css"><link rel="stylesheet" href="/charts.css"><link rel="stylesheet" href="/budget_scenarios.css"><script src="/shell.js" defer></script><script src="/charts.js" defer></script><script src="/workflow.js" defer></script><script src="/budget_scenarios.js" defer></script><script src="/fees.js" defer></script><script src="/planning.js" defer></script><link rel="stylesheet" href="/shell.css"></head>
+<body class="app-shell">
 <header><a class="brand" href="/">◈ GameScope <span>Game planning research</span></a><span class="badge">開發案例 · 預算情境</span></header>
 <main>
-<nav class="module-nav" aria-label="分析頁面"><a href="/market">市場資料分析</a> · <a href="/">歷史分布比較</a> · <a href="/revenue">Steam 營收分析</a> · <a href="/planning" aria-current="page">開發資源規劃</a> · <a href="/plan">我的規劃摘要</a></nav>
 <section class="intro"><p class="eyebrow">DEVELOPMENT PLANNING</p><h1>把構想，放進時間與預算之內。</h1><p>先查看開發者公開的投入案例，再用自己的假設比較預算、延期與回本要求。</p></section>
-<nav class="section-links" aria-label="本頁內容"><a href="#case-library">1. 查看開發案例</a><a href="#fee-library">2. 選擇工具與費用</a><a href="#budget-section">3. 計算自己的計劃</a><a href="#budget-scenarios">4. 比較成本方案</a></nav>
+<nav class="section-links" aria-label="本頁內容"><a href="#case-library">開發案例</a><a href="#fee-library">工具與費用</a><a href="#budget-section">預算輸入</a><a href="#budget-scenarios">成本方案比較</a></nav>
 
 <section id="case-library" class="panel">
  <div class="result-heading"><h2>開發案例參考庫</h2><span id="case-count" class="fine"></span></div>
@@ -63,14 +62,15 @@
  <h2 id="budget-scenarios-title">比較成本方案 A 與 B</h2>
  <p>先計算並保存 A，再修改工期、人力或工具方案，計算後保存 B。兩份記錄各自保留假設與來源，可比較不同做法的資源要求。</p>
  <p id="scenario-current" class="scenario-current"></p>
+ <p id="scenario-form-match" class="fine" role="status" aria-live="polite"></p>
  <div class="scenario-save-grid">
-  <div class="scenario-save-card"><label>方案 A 名稱<input id="scenario-name-a" maxlength="80" placeholder="例如：兼職小團隊"></label><div class="scenario-save-actions"><button id="scenario-save-a" class="primary" type="button" disabled>保存為方案 A</button><button id="scenario-remove-a" class="outline" type="button" disabled>移除 A</button></div></div>
-  <div class="scenario-save-card"><label>方案 B 名稱<input id="scenario-name-b" maxlength="80" placeholder="例如：縮短工期並外包"></label><div class="scenario-save-actions"><button id="scenario-save-b" class="primary" type="button" disabled>保存為方案 B</button><button id="scenario-remove-b" class="outline" type="button" disabled>移除 B</button></div></div>
+  <div class="scenario-save-card"><label>方案 A 名稱<input id="scenario-name-a" maxlength="80" placeholder="例如：兼職小團隊"></label><div class="scenario-save-actions"><button id="scenario-save-a" class="primary" type="button" disabled>保存為方案 A</button><button id="scenario-load-a" class="outline" type="button" disabled>載入 A 假設</button><button id="scenario-remove-a" class="outline" type="button" disabled>移除 A</button></div></div>
+  <div class="scenario-save-card"><label>方案 B 名稱<input id="scenario-name-b" maxlength="80" placeholder="例如：縮短工期並外包"></label><div class="scenario-save-actions"><button id="scenario-save-b" class="primary" type="button" disabled>保存為方案 B</button><button id="scenario-load-b" class="outline" type="button" disabled>載入 B 假設</button><button id="scenario-remove-b" class="outline" type="button" disabled>移除 B</button></div></div>
  </div>
  <p id="budget-scenarios-status" role="status" aria-live="polite">方案暫存在此瀏覽器分頁；可獨立比較，也可在規劃摘要一同查看。</p>
  <div id="budget-scenarios-view"></div>
  <div class="scenario-export-row"><button id="scenario-recheck" type="button" class="outline" hidden>重新核對費用來源</button><button id="scenario-export" type="button" class="outline" disabled>匯出兩個方案及比較 JSON</button><a href="/plan">查看規劃摘要</a></div>
- <p class="fine">兩個成本方案與歷史條件 A／B 分開保存，不會自動互相配對或取代目前規劃預算。關閉分頁前請匯出需要保留的記錄。</p>
+ <p class="fine">兩個成本方案與歷史條件 A／B 分開保存。載入假設後再計算，才會更新目前規劃的預算；不會自動判定哪個方案較好。關閉分頁前請匯出需要保留的記錄。</p>
 </section>
 
 <section id="budget-results" hidden>

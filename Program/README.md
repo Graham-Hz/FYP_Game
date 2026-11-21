@@ -33,6 +33,8 @@ See the [demonstration guide](DEMO_GUIDE.md) and [CSV import specification](CSV_
 
 ### Independent market analysis and charts
 
+All five routes use `static/shell.js` and `shell.css` for the same left navigation. **Data analysis** contains overview, distributions, relationships, release cohorts, rankings and the supplementary revenue view. **Development planning** contains Steps 1–4: condition comparison, reference retrieval, budget comparison and summary. Market sections have direct fragment links such as `/market#distribution`; small screens use an accessible menu drawer. The analysis and planning contexts remain separate.
+
 `/market` loads charts automatically without a planning context. `src/demo/market.py` implements the read-only `GET /api/market/options`, `POST /api/market` and `POST /api/market/records` queries. Steam and Android use the active application version selected on the comparison page; the supplementary revenue source has its own independent version. Reload source versions on the market page after activating a different CSV snapshot. No model is fitted or used to generate these descriptive charts.
 
 The research data are enriched from `data/interim/cleaning_candidate_v1/pc_candidates.parquet` and `mobile_candidates.parquet`, checked against the trusted analysis manifest. Only IDs already present in the research **train** tables are retained. One approved Steam exception lacks candidate details; count/tier charts retain it, while date and numeric-detail charts disclose the missing record. Missing or modified enrichment files make that source unavailable without disabling other application modules. Imported snapshots use `SnapshotRepository.load` to check their saved files and join `source.csv` only to eligible IDs; the CSV validation contract and frozen research files are unchanged.
@@ -42,6 +44,10 @@ The explorer presents sample counts, summed and median outcome proxies by group,
 `src/analysis/game_taxonomy.py` separates eight supported Steam gameplay genres from production labels (Indie), release stage (Early Access), pricing labels, play form (Massively Multiplayer), content descriptions and software/media uses. Market analysis, planning-condition comparison and Steam reference retrieval share this mapping; `market_taxonomy.py` provides compatible imports. This is an explicit project presentation mapping, not a newly verified official Steam taxonomy. Unknown source labels remain selectable in an unclassified-label group. The separate gameplay and additional-label filters combine with AND; genre charts use gameplay groups only. Android retains the existing Google Play game categories. Source labels, eligibility rules, model features and frozen partitions are not rewritten. The mapping and coverage are included in exported provenance.
 
 The page organises its charts into overview, distribution, relationships, release cohorts and rankings. Users choose a focused plot instead of scrolling through every chart at once. Selecting a gameplay bar filters the analysis, while scatter-point selection exposes the individual displayed record. Full-analysis exports retain all chart definitions, even when a different plot is selected on screen.
+
+`market_availability.py` checks each chart against the actual filtered records and adds `availability` metadata: `status`, `reason`, `action`, `valid_rows`, `total_rows` and `requirements`. Missing dates, incomplete numeric pairs, unmapped groups, existing group display thresholds and undefined percentage denominators receive specific explanations. One-point or constant-value scatter views may remain visible with a warning; they do not fabricate correlation. A single release cohort is labelled as insufficient for a multi-period comparison. These checks establish whether the descriptive view can be produced, not statistical reliability or representativeness.
+
+The sidebar indicates partial or unavailable sections while keeping their explanations accessible. Unavailable charts cannot be saved as findings or downloaded as blank SVGs; JSON retains their original descriptors and readiness, while CSV retains their metadata without treating unavailable bins as observations. Pending filters invalidate previous readiness. Short reading notes explain sample sizes, medians, quartiles and platform-specific outcome proxies. Existing CSV field validation is unchanged; this is not an arbitrary-schema chart generator or a new regression model.
 
 Selecting one gameplay group opens a comparison with the remaining records, excluding the selected IDs. Users can instead choose another group; overlapping Steam membership is counted and disclosed. Both groups use the same source/version, release-year range and additional tag. `market_cohorts.py` reports sample counts, outcome-tier percentages and Q1/median/Q3, with unknown outcomes retained in the denominator. Android and Steam tier comparisons use 100% stacked bars; the revenue source compares estimated-revenue medians and reports quartiles. These are descriptive comparisons, not significance tests or success predictions.
 
@@ -57,16 +63,23 @@ The market page can save the currently selected chart view as a finding, with a 
 
 `static/workflow.js` preserves the existing selected-condition state and adds a separate `gamescope.planning.workspace.v1` session-storage record for findings and budget A/B snapshots. Both work before a legacy planning context exists. `static/budget_scenarios.js` compares saved server outputs rather than recalculating costs in the browser. Supported manual and optional-fee methods can be compared, but currencies must match and selected fee revisions must pass verification. Missing funds/contribution retain null outputs. Editing the live form invalidates its calculation without changing either saved alternative; replacement is explicit. Summary exports include both snapshots, input differences, source checks and any selected-condition plan, while a workspace-only export remains incomplete as a full plan. Data lives in the current browser tab and is not an importable saved project or server account.
 
+Saved A/B assumptions can be loaded into the live budget form after explicit confirmation. The loader validates the saved request and any fee revision before replacing inputs; failed validation or persistence leaves the previous form and result intact. A successful load clears the current calculation and requires recalculation. It preserves both saved alternatives and the current historical/reference context. The form and summary identify matching alternatives by their inputs, calculation method and fee revision, rather than by equal totals alone.
+
 Run the targeted checks from `Program/`:
 
 ```powershell
 uv run --locked python -B -m unittest discover -s tests -p "test_market.py" -v
 uv run --locked python -B -m unittest discover -s tests -p "test_market_analytics.py" -v
 uv run --locked python -B -m unittest discover -s tests -p "test_market_comparison.py" -v
+uv run --locked python -B -m unittest discover -s tests -p "test_market_availability.py" -v
+uv run --locked --with playwright python -B tests/check_shell_browser.py
+uv run --locked --with playwright python -B tests/check_market_readiness_browser.py
+uv run --locked --with playwright python -B tests/check_market_layout_browser.py
 uv run --locked --with playwright python -B tests/check_market_browser.py
 uv run --locked --with playwright python -B tests/check_market_comparison_browser.py
 uv run --locked --with playwright python -B tests/check_market_findings_browser.py
 uv run --locked --with playwright python -B tests/check_budget_scenarios_browser.py
+uv run --locked --with playwright python -B tests/check_budget_restore_browser.py
 uv run --locked --with playwright python -B tests/check_planning_workspace_browser.py
 uv run --locked --with playwright python -B tests/check_planning_browser.py
 ```

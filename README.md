@@ -44,7 +44,10 @@ A separate Steam revenue explorer presents source-provided gross revenue estimat
 | Fee references | Compare 26 saved fee variants, select applicable plans with quantities and user-confirmed exchange rates, and inspect full-term costs with source-linked exports |
 | Connected planning | Preserve a planning context and budget draft across pages in one browser tab; select up to five Steam references or record a skip reason; review and export a combined summary after checking source versions |
 | Saved analytical evidence | Keep up to five source-labelled findings and user interpretations; inspect their saved aggregate charts and include them in the planning summary |
-| Budget alternatives | Save independent A/B calculation snapshots; compare assumptions, costs and equal delay offsets; export snapshots, differences and source-linked charts |
+| Budget alternatives | Save independent A/B calculation snapshots; compare assumptions, costs and equal delay offsets; load saved assumptions for review and recalculation; export snapshots, differences and source-linked charts |
+| Analysis availability | Check filtered data against each chart's requirements; explain missing fields, insufficient pairs and limited comparisons with plain-language guidance |
+
+The shared left navigation separates independent data analysis from a four-step planning flow. Short reading notes explain sample sizes and statistical terms. Chart availability changes with the selected data and filters; unavailable views retain an explanation instead of silently disappearing.
 
 For example, a user can compare two Android category and monetisation configurations, inspect the historical install-tier distributions, and export the evidence behind that comparison.
 

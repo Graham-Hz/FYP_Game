@@ -11,6 +11,7 @@ import threading
 from pathlib import Path
 
 from playwright.sync_api import expect, sync_playwright
+from market_browser_controls import market_control
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'src/demo'))
@@ -49,10 +50,10 @@ def main():
                         return page.evaluate('PlanningFlow.findings().items')
 
                     def select_mobile(group='Adventure'):
-                        page.locator('#market-source').select_option('mobile')
+                        market_control(page, '#market-source').select_option('mobile')
                         expect(page.locator('#market-results')).to_be_visible()
-                        page.locator('#market-group').select_option(group)
-                        page.locator('#market-apply').click()
+                        market_control(page, '#market-group').select_option(group)
+                        market_control(page, '#market-apply').click()
                         expect(page.locator('#market-charts > article[data-chart-id="cohort_comparison"]')).to_be_visible()
 
                     def prepare(title, note=''):
@@ -101,24 +102,24 @@ def main():
                     key = next(iter(mobile['input_hashes']))
                     mobile['input_hashes'][key] = '0' * 64
                     page.route('**/api/market/options', lambda route: route.fulfill(json=changed))
-                    page.locator('#market-tab-overview').click()
+                    page.evaluate("location.hash = 'overview'")
                     prepare('Must not save changed bytes')
                     page.locator('#market-finding-save').click()
                     expect(page.locator('#market-results')).to_be_hidden()
                     expect(page.locator('#market-status')).to_contain_text('尚未保存')
                     require(len(items()) == 1, 'Stale hashes accepted')
                     page.unroute('**/api/market/options')
-                    page.locator('#market-refresh').click()
+                    market_control(page, '#market-refresh').click()
                     expect(page.locator('#market-results')).to_be_visible()
                     select_mobile()
                     pending = []
                     page.route('**/api/market/options', lambda route: pending.append(route))
-                    page.locator('#market-tab-overview').click()
+                    page.evaluate("location.hash = 'overview'")
                     prepare('Must not survive changed filters')
                     page.locator('#market-finding-save').click()
                     page.wait_for_timeout(120)
                     require(len(pending) == 1, 'Expected one pending capture check')
-                    page.locator('#market-group').select_option('Action')
+                    market_control(page, '#market-group').select_option('Action')
                     expect(page.locator('#market-results')).to_be_hidden()
                     pending.pop().fulfill(json=current_options)
                     page.wait_for_timeout(120)
@@ -126,7 +127,7 @@ def main():
                     page.unroute('**/api/market/options')
                     checks.append('Same-version changed source hashes and late responses after dirty filters cannot save stale evidence')
 
-                    page.locator('#market-apply').click()
+                    market_control(page, '#market-apply').click()
                     expect(page.locator('#market-results')).to_be_visible()
                     prepare('Write failure is not a saved finding')
                     page.evaluate("() => {window.originalSetItem=Storage.prototype.setItem; Storage.prototype.setItem=function(){throw new DOMException('Storage blocked','QuotaExceededError')};}")
@@ -139,7 +140,7 @@ def main():
                     expect(page.locator('#market-findings-count')).to_have_text('2 / 5')
                     checks.append('Storage failure is explicit and preserves prior findings; retry succeeds after storage recovery')
 
-                    page.locator('#market-tab-relationships').click()
+                    page.evaluate("location.hash = 'relationships'")
                     scatter_id = page.locator('#market-chart-select option').evaluate_all("nodes=>nodes.find(n=>n.value.includes('scatter')).value")
                     page.locator('#market-chart-select').select_option(scatter_id)
                     save('Scatter relationship observation')
@@ -148,12 +149,12 @@ def main():
                             'Scatter scope is not explicit')
                     require('points' not in scatter and scatter.get('summary', {}).get('paired_rows', 0) > 0,
                             'Scatter evidence failed to retain aggregate statistics without raw points')
-                    page.locator('#market-tab-cohorts').click()
+                    page.evaluate("location.hash = 'cohorts'")
                     save('Release cohort observation')
-                    page.locator('#market-tab-rankings').click()
+                    page.evaluate("location.hash = 'rankings'")
                     save('Observed ranking')
                     expect(page.locator('#market-findings-count')).to_have_text('5 / 5')
-                    page.locator('#market-tab-overview').click()
+                    page.evaluate("location.hash = 'overview'")
                     prepare('Sixth distinct finding')
                     page.locator('#market-finding-save').click()
                     expect(page.locator('#market-finding-status')).to_have_attribute('data-error', 'true')

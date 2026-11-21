@@ -29,7 +29,11 @@ The target is Windows with a current Edge or Chrome browser. macOS/Linux and a c
 
 See [the feature walkthrough](Program/DEMO_GUIDE.md). The comparison page also offers validated CSV imports; the [CSV specification](Program/CSV_IMPORT_GUIDE.md) defines the required format. No original raw dataset download, cleaning run or model training is required to use this package.
 
-Imported datasets are stored in `Program/data/application/`, separate from frozen research files. Planning drafts live in one browser tab; export before closing. A different port or tab has a different planning context. Exported planning JSON is an evidence record, not an importable saved project.
+All pages use the same left sidebar: independent data analysis followed by four planning steps. On small screens, open the menu button. Chart data checks identify unavailable or limited views and explain what is missing; unavailable options remain accessible for their explanations. These checks do not guarantee statistical reliability and do not relax the CSV import requirements.
+
+Market pages show a compact source/date/filter summary above the charts. Click **更改條件** to change those shared controls and **收起條件** to collapse them. Switching among market views preserves the filters; the overall metric cards appear only in the overview. Pending edits and analysis errors remain visible with the controls closed.
+
+Imported datasets are stored in `Program/data/application/`, separate from frozen research files. Planning drafts live in one browser tab; export before closing. A different port or tab has a different planning context. Exported planning JSON is an evidence record, not an importable saved project. Within the current tab, saved A/B budget assumptions can be loaded after confirmation and source checks; recalculate before using them as the current budget. Loading preserves both alternatives and does not change the historical planning choice or game references.
 
 ## Check an installation
 

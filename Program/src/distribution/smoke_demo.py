@@ -27,7 +27,7 @@ STATIC_PATHS = (
     "/app.js", "/style.css", "/market.js", "/market.css",
     "/charts.js", "/charts.css", "/revenue.js", "/revenue.css",
     "/planning.js", "/planning.css", "/fees.js", "/plan.js",
-    "/workflow.js", "/workflow.css", "/budget_scenarios.js", "/budget_scenarios.css",
+    "/workflow.js", "/workflow.css", "/budget_scenarios.js", "/budget_scenarios.css", "/shell.js", "/shell.css",
 )
 
 
@@ -186,8 +186,12 @@ def exercise(client, report):
                 len({c["id"] for c in result["charts"]}) == 14,
                 f"Expected fourteen distinct charts for {ident}")
         require(bool(result["leaders"]["rows"]), f"Missing {ident} ranking")
+        require(all(c.get("availability", {}).get("status") in {"available", "limited", "unavailable"}
+                    and c["availability"].get("requirements")
+                    and c["availability"].get("reason") for c in result["charts"]),
+                f"Missing chart data requirements or readiness for {ident}")
         passed(report, f"{ident} market charts and ranking",
-               rows=COUNTS[ident], charts=len(result["charts"]))
+               rows=COUNTS[ident], charts=len(result["charts"]), readiness_checked=True)
 
     gameplay_genres = {"Action", "Adventure", "Casual", "RPG", "Racing",
                        "Simulation", "Sports", "Strategy"}

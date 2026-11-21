@@ -7,7 +7,9 @@ const fmt = n => Number(n).toLocaleString('en-US',{maximumFractionDigits:2});
 const el = (tag,text,cls) => {const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
 let library = null, result = null, revision = 0, teamId = 0;
 let restoringDraft = true, blockedSavedFees = false;
+let loadingScenario = false;
 const draftFields = ['budget-currency','budget-months','monthly_overhead','outsourcing','marketing','other_one_off','contingency_percent','available_funds','net_unit_contribution'];
+const canonical = value => JSON.stringify(value,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])):v);
 function captureDraft() {const fees=blockedSavedFees?{fee_selection:window.PlanningFlow.read()?.draft?.fee_selection}:feePlanner.selection();return {fields:Object.fromEntries(draftFields.map(id=>[id,$(id).value])),team:[...$('team-rows').children].map(r=>Object.fromEntries([...r.querySelectorAll('input')].map(i=>[i.dataset.field,i.value]))),...fees};}
 function sourceLink(source) {const a=el('a',`${source.author} · ${source.title}`,'source-link');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';return a;}
 function displayValue(o) {
@@ -52,6 +54,82 @@ function addTeam(data={}){
 }
 function num(id,optional=false){const v=$(id).value;return optional&&v===''?null:Number(v);}
 function payload(){return {currency:$('budget-currency').value,months:num('budget-months'),team:[...$('team-rows').children].map(r=>Object.fromEntries([...r.querySelectorAll('input')].map(i=>[i.dataset.field,i.type==='number'?Number(i.value):i.value.trim()]))),...Object.fromEntries(['monthly_overhead','outsourcing','marketing','other_one_off','contingency_percent'].map(k=>[k,num(k)])),available_funds:num('available_funds',true),net_unit_contribution:num('net_unit_contribution',true),...feePlanner.selection()};}
+// Stage all checks before changing the visible form or its saved current budget.
+function validateScenarioDraft(snapshot){
+  const draft=JSON.parse(JSON.stringify(snapshot.draft)),budget=snapshot.budget;
+  if(!['budget_scenario_v1','budget_scenario_v2'].includes(budget?.method_version))throw new Error('此方案的計算方法不受目前版本支援');
+  if(!draft?.fields||!Array.isArray(draft.team)||draft.team.length<1||draft.team.length>20)throw new Error('保存的輸入格式不完整');
+  for(const id of draftFields){
+    const value=draft.fields[id],input=$(id).cloneNode(true);
+    if(typeof value!=='string')throw new Error('保存的輸入格式不完整');
+    input.value=value;
+    if(input.value!==value||!input.checkValidity())throw new Error('保存的輸入包含缺漏或無效數值');
+  }
+  const team=draft.team.map(row=>{
+    if(typeof row.label!=='string'||!row.label.trim()||row.label.length>80)throw new Error('保存的人員組名稱無效');
+    const next={label:row.label.trim()};
+    for(const [key,min,max,step] of [['people',1,50,'1'],['allocation',0,1,'0.01'],['monthly_cash',0,1000000000,'0.01'],['monthly_unpaid',0,1000000000,'0.01']]){
+      const input=document.createElement('input');input.type='number';input.required=true;input.min=min;input.max=max;input.step=step;input.value=row[key];
+      if(typeof row[key]!=='string'||input.value!==row[key]||!input.checkValidity())throw new Error('保存的人員組數值無效');
+      next[key]=Number(row[key]);
+    }
+    return next;
+  });
+  const f=draft.fields,request={currency:f['budget-currency'],months:Number(f['budget-months']),team,
+    ...Object.fromEntries(['monthly_overhead','outsourcing','marketing','other_one_off','contingency_percent'].map(k=>[k,Number(f[k])])),
+    ...Object.fromEntries(['available_funds','net_unit_contribution'].map(k=>[k,f[k]===''?null:Number(f[k])])),
+    ...(draft.fee_selection?{fee_selection:draft.fee_selection}:{})};
+  if(canonical(request)!==canonical(budget.request)||budget.currency!==request.currency)throw new Error('保存的輸入與原計算記錄不一致');
+  if(!!draft.fee_selection!==!!budget.fee_reference||budget.method_version!==(draft.fee_selection?'budget_scenario_v2':'budget_scenario_v1'))throw new Error('保存的費用來源記錄不完整');
+  return draft;
+}
+function validateScenarioFees(selection,catalogue,currency,budget){
+  if(!catalogue?.metadata?.revision||!Array.isArray(catalogue.fees)||selection.revision!==catalogue.metadata.revision||budget.fee_reference?.metadata?.revision!==catalogue.metadata.revision)throw new Error('費用來源版本已改變或未能核對，請重新選取費用及保存方案');
+  if(!Array.isArray(selection.items)||!selection.items.length||selection.items.length>20)throw new Error('保存的費用選擇格式不完整');
+  const products=new Set();
+  for(const item of selection.items){
+    const r=catalogue.fees.find(row=>row.fee_id===item.fee_id),product=r&&`${r.vendor}/${r.product}`;
+    if(!r?.calculation_mode||products.has(product)||item.target_currency!==currency)throw new Error('保存的費用項目已無法使用，請重新選取');
+    if(!Number.isInteger(item.quantity)||item.quantity<1||item.quantity>1000||!Number.isFinite(item.fx_rate)||item.fx_rate<=0||item.fx_rate>1000000||item.eligibility_confirmed!==true)throw new Error('保存的數量、換算率或資格確認不完整');
+    if((r.currency===currency||r.calculation_mode==='free')&&item.fx_rate!==1)throw new Error('同幣別或免費費用的換算率無效');
+    if(item.billing_assumption!==(r.calculation_mode==='monthly_assumption_required'?'monthly_flexible_user_assumption':null))throw new Error('保存的付款假設無效');
+    products.add(product);
+  }
+}
+async function restoreScenarioDraft(snapshot,{slot}){
+  if(restoringDraft||loadingScenario)throw new Error('頁面仍在載入，請稍後重試');
+  const draft=validateScenarioDraft(snapshot),flow=window.PlanningFlow,context=flow.read(),contextBefore=canonical(context),before=canonical(captureDraft());
+  // Supersede any older calculation request without discarding an existing result.
+  const loadRevision=++revision;loadingScenario=true;
+  $('budget-form').inert=true;$('fee-library').inert=true;$('calculate-budget').disabled=true;$('load-example').disabled=true;$('discard-saved-fees').disabled=true;
+  let catalogue=null;
+  try{
+    if(draft.fee_selection){
+      try{
+        const response=await fetch('/api/planning/fees',{cache:'no-store',signal:AbortSignal.timeout(10000)});
+        if(!response.ok)throw new Error('費用來源服務未能回應，恢復服務後可重試');
+        catalogue=await response.json();validateScenarioFees(draft.fee_selection,catalogue,draft.fields['budget-currency'],snapshot.budget);
+      }catch(error){window.BudgetScenarios.setFeeMetadata(null);throw error;}
+    }
+    const latest=flow.budgetScenarios();
+    if(loadRevision!==revision||before!==canonical(captureDraft())||contextBefore!==canonical(flow.read())||latest.error||canonical(latest.slots[slot])!==canonical(snapshot))throw new Error('目前輸入、規劃情境或保存方案已改變，請核對後重試');
+    // A single storage write preserves the previous draft/result on quota/permission failure.
+    if(context&&!flow.saveDraft(draft))throw new Error(flow.storageMessage()||'無法保存目前規劃的預算輸入');
+    restoringDraft=true;
+    draftFields.forEach(id=>$(id).value=draft.fields[id]);$('team-rows').replaceChildren();teamId=0;draft.team.forEach(addTeam);
+    blockedSavedFees=false;$('discard-saved-fees').hidden=true;
+    if(catalogue){
+      feePlanner.catalogue=catalogue;
+      $('fee-count').textContent=`${catalogue.metadata.fee_count} 項 · ${catalogue.metadata.source_count} 個來源 · 查閱 ${(catalogue.metadata.accessed_on||[]).join('、')}`;$('fee-downloads').hidden=false;
+      feePlanner.restore(draft.fee_selection);window.BudgetScenarios.setFeeMetadata(catalogue.metadata);
+    }else feePlanner.clear();
+    invalidate('已載入保存的成本假設；請核對並重新計算。舊結果未被採用。');
+    $('budget-flow-summary').hidden=true;
+  }finally{
+    restoringDraft=false;loadingScenario=false;$('budget-form').inert=false;$('fee-library').inert=false;
+    $('calculate-budget').disabled=blockedSavedFees;$('load-example').disabled=false;$('discard-saved-fees').disabled=false;
+  }
+}
 function renderBudget(data){
   const b=data.base,cur=data.currency,money=v=>`${cur} ${fmt(v)}`;
   // Reveal before measuring chart containers; SVG keeps readable labels at card width.
@@ -96,10 +174,10 @@ $('load-example').addEventListener('click',()=>{
 });
 $('budget-form').addEventListener('reset',()=>{queueMicrotask(()=>{blockedSavedFees=false;$('discard-saved-fees').hidden=true;$('calculate-budget').disabled=false;feePlanner.clear();$('team-rows').replaceChildren();teamId=0;addTeam();invalidate('已清空。請輸入自己的計劃。');});});
 $('budget-form').addEventListener('submit',async event=>{
-  event.preventDefault();if(blockedSavedFees || restoringDraft)return;invalidate('正在計算…');const requestRevision=revision,context=window.PlanningFlow.read()?.context_id;$('calculate-budget').disabled=true;
+  event.preventDefault();if(blockedSavedFees || restoringDraft || loadingScenario)return;invalidate('正在計算…');const requestRevision=revision,context=window.PlanningFlow.read()?.context_id;$('calculate-budget').disabled=true;
   try{const response=await fetch('/api/planning/budget',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload())});const data=await response.json();if(requestRevision!==revision)return;if(!response.ok)throw new Error(data.error);result=data;renderBudget(data);const saved=context&&window.PlanningFlow.saveBudget(data,context);$('budget-flow-summary').hidden=!saved;$('budget-status').textContent=context&&!saved?'計算完成，但未能保存至規劃；可先匯出個別預算，並查看上方儲存提示。':'計算完成。結果及假設可於下方查看和匯出。';}
   catch(e){if(requestRevision===revision)$('budget-status').textContent=`未完成計算：${e.message}`;}
-  finally{$('calculate-budget').disabled=false;}
+  finally{$('calculate-budget').disabled=loadingScenario||restoringDraft||blockedSavedFees;}
 });
 $('budget-export').addEventListener('click',()=>{if(!result)return;const blob=new Blob([JSON.stringify({...result,exported_at:new Date().toISOString()},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=el('a');a.href=url;a.download='game-planning-budget.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);});
 const feePlanner=new window.FeePlanner(invalidate);
@@ -120,6 +198,7 @@ async function initialisePlanning() {
   else if(draft)$('budget-status').textContent='已還原此規劃的預算輸入。請核對後計算。';
   restoringDraft=false;$('budget-form').inert=false;$('load-example').disabled=false;$('calculate-budget').disabled=blockedSavedFees;
   $('budget-flow-summary').hidden=!saved;
+  window.BudgetScenarios.refreshCurrent();
 }
-window.BudgetScenarios.init({getCurrent:()=>result,getDraft:captureDraft});
+window.BudgetScenarios.init({getCurrent:()=>result,getDraft:captureDraft,restoreDraft:restoreScenarioDraft,isBusy:()=>restoringDraft||loadingScenario});
 initialisePlanning();

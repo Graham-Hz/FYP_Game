@@ -45,6 +45,10 @@ function render() {
     const b = state.budget, money = n => `${b.currency} ${number(n)}`, metrics = el('div', undefined, 'plan-metrics');
     [['原定現金預算', b.base.cash_budget], ['額外未付勞動估值', b.base.unpaid_labour_value], ['含勞動估值總投入', b.base.resource_budget]].forEach(([label, value]) => {const m = el('div'); m.append(el('span', label), el('strong', money(value))); metrics.append(m);});
     budget.append(el('p', `${b.base.months} 個月 · 使用者假設 · 已含現金備用金`), metrics);
+    const matching = window.BudgetScenarios.matchingSlots(b, workspace.budget_scenarios);
+    budget.append(el('p', matching.length
+      ? `目前預算的輸入及計算來源與已保存方案 ${matching.map(slot => slot.toUpperCase()).join('／')} 相同。這是你最近一次計算的預算，並非系統推薦。`
+      : '目前預算是你最近一次計算的結果，輸入或計算來源與已保存 A／B 不完全相同。可到成本預算載入所需方案，核對並重新計算。', 'plan-budget-current'));
     const delays = el('ul'); b.delays.forEach(d => delays.append(el('li', `${d.months} 個月：現金預算 ${money(d.cash_budget)}${d.funding_balance === null ? '' : `；資金差額 ${money(d.funding_balance)}`}`)));
     budget.append(delays, el('p', b.base.cash_break_even_units === null ? '未提供正數每份淨貢獻，沒有回本份數結果。' : `每份淨貢獻由你假設：${money(b.request.net_unit_contribution)}。覆蓋現金預算需要 ${number(b.base.cash_break_even_units)} 份銷售；這是要求，不是銷量預測。`));
     detail(budget, '查看全部預算輸入、計算及費用來源', b);

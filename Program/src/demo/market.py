@@ -17,6 +17,7 @@ from imports.repository import DEFAULT_VERSION
 from market_taxonomy import gameplay, other_labels, tag_groups, metadata as taxonomy_metadata
 from market_analytics import analytical_charts
 from market_cohorts import compare as compare_cohorts
+from market_availability import annotate_charts
 
 
 MANIFEST = "reports/2026-10-06/analysis_v1/manifest.json"
@@ -591,6 +592,7 @@ class MarketStore:
             item['section'] = sections[item['id']]
             item['integerTicks'] = item['unit'] == '款'
         charts.extend(analytical_charts(frame, source, unit, data['provenance']['price_currency'], caption, top_n=top))
+        annotate_charts(charts, frame, source, comparison=comparison)
         return {"schema_version": "market_analysis_v2", "generated_at_utc": datetime.now(timezone.utc).isoformat(),
                 "source": copy.deepcopy(data["source"]), "filters": dict(filters), "summary": summary,
                 "comparison": comparison,

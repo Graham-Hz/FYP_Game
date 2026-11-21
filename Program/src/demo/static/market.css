@@ -22,3 +22,67 @@ main{max-width:1280px;padding-top:25px}header{padding:18px max(5%,calc((100% - 1
 .market-finding-capture{background:#f4f8f5}.market-finding-heading{display:flex;align-items:center;justify-content:space-between;gap:18px}.market-finding-heading>div{min-width:0}.market-finding-heading .fine{margin:5px 0 0;overflow-wrap:anywhere}.market-finding-heading>button,.market-finding-heading>a{flex-shrink:0;font-size:.875rem}.market-finding-capture form{margin-top:16px;display:grid;gap:13px}.market-finding-capture label{font-size:.875rem}.market-finding-capture input,.market-finding-capture textarea{width:100%;font:inherit;line-height:1.5;margin-top:5px;border:1px solid #c6d9d0;border-radius:7px;padding:9px 11px;background:white;color:#234b3e}.market-finding-capture textarea{resize:vertical;min-height:95px}.market-finding-actions{display:flex;gap:10px;align-items:center}.market-finding-actions button{font-size:.875rem}#market-finding-status,#market-findings-status{font-size:.875rem;line-height:1.6;color:#3f6b57;margin:10px 0 0;overflow-wrap:anywhere}#market-finding-status[data-error=true],#market-findings-status[data-error=true]{color:#93472a}.market-findings{margin-top:20px}.market-findings h2 span{font-size:.875rem;font-weight:400;color:#5b7568;margin-left:8px}.market-findings-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}.market-finding-item{padding:13px 15px;border:1px solid #dce6e0;border-radius:8px;min-width:0}.market-finding-item h3{font-size:.94rem;margin:0;overflow-wrap:anywhere}.market-finding-item .fine{font-size:.875rem;margin:6px 0}.market-finding-note{font-size:.875rem;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;margin:9px 0}.market-finding-item button{font-size:.875rem;padding:4px 7px}.market-finding-capture form[hidden]{display:none}
 @media(max-width:650px){.market-finding-heading{align-items:flex-start;flex-direction:column;gap:12px}.market-findings-list{grid-template-columns:1fr}.market-finding-capture{padding:15px}.market-finding-heading>button,.market-finding-heading>a{align-self:flex-start}.market-finding-actions{flex-wrap:wrap}}
 @media print{.market-finding-capture{display:none!important}.market-finding-item button,.market-findings>.market-finding-heading>a{display:none}.market-finding-item{break-inside:avoid}}
+.market-readiness{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;padding:12px 15px;margin:18px 0 10px;border:1px solid #cddfd7;border-radius:9px;background:#eef5f1;font-size:.875rem;color:#315c4c;line-height:1.6}.market-readiness strong{font-size:.875rem}.market-readiness p{margin:0;flex-basis:100%}.market-readiness[data-status=limited],.market-readiness[data-status=unavailable]{background:#fff8e9;border-color:#e4d6b5;color:#785624}.market-reading-guide{border:0;padding:0 3px;margin:0 0 18px;font-size:.875rem}.market-reading-guide p{margin:7px 0;color:#526c61;line-height:1.7}.market-reading-guide summary{font-size:.875rem}.market-cohort-card dd small{font-size:.875rem}
+
+/* Keep analysis in view. Shared settings are one disclosure, not a repeated hero. */
+.app-shell.market-workspace .market-page-heading{max-width:none;margin-bottom:18px}
+.app-shell.market-workspace .market-page-heading h1{font-size:clamp(24px,2.1vw,29px);margin:0 0 5px}
+.market-workspace .market-page-heading p{font-size:.875rem;line-height:1.65;max-width:900px}
+.market-filter-panel{margin:0 0 16px;padding:0;border:1px solid #cfdfdb;border-radius:10px;background:#fff;font-size:.875rem}
+.market-filter-panel>summary{display:flex;align-items:center;gap:20px;justify-content:space-between;padding:12px 16px;list-style:none;border-radius:10px;font-weight:400}
+.market-filter-panel>summary::-webkit-details-marker{display:none}
+.market-filter-panel>summary:hover{background:#f0f6f3}
+.market-scope{display:grid;gap:3px;min-width:0;line-height:1.55}
+.market-scope-source{display:flex;align-items:baseline;flex-wrap:wrap;gap:5px 10px;color:#284f4c}
+.market-scope-source>strong{font-weight:650}
+#market-result-context{font-size:.875rem;color:#506d67;overflow-wrap:anywhere}
+#market-scope-state{font-size:.875rem;color:#8b5d19}
+#market-scope-state:empty{display:none}
+.market-filter-toggle-label{display:flex;align-items:center;gap:12px;color:#21675b;font-size:.875rem;font-weight:600;flex-shrink:0}
+.market-filter-chevron{width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:-3px 2px 0}
+.market-filter-panel[open] .market-filter-chevron{transform:rotate(225deg);margin-top:3px}
+.market-filter-panel .when-open,.market-filter-panel[open] .when-closed{display:none}
+.market-filter-panel[open] .when-open{display:inline}
+.market-filter-panel[open]>summary{border-bottom:1px solid #dfebe6;border-radius:10px 10px 0 0;background:#f4f8f6}
+.market-shared-note{margin:13px 16px 0;color:#58756b;font-size:.875rem}
+.market-filter-panel .market-controls{border:0;padding:13px 16px 16px;background:transparent}
+.market-filter-panel .market-source{margin:0 16px 16px;padding:12px 0 0;border:0;border-top:1px solid #dfebe6;border-radius:0;background:transparent}
+#market-status.market-status-quiet{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;padding:0;margin:0;min-height:0;border:0}
+.market-workspace .market-summary{margin:0 0 16px;gap:12px}
+.market-workspace .market-summary article{padding:11px 15px}
+.market-workspace .market-summary strong{font-size:1.3rem;margin-top:3px}
+.market-workspace .market-result-heading{margin:0 0 12px;align-items:center;gap:12px;flex-wrap:wrap}
+.market-workspace #market-chart-select-label{display:flex;align-items:center;gap:10px;flex:1 1 360px;min-width:0;max-width:650px;white-space:nowrap}
+.market-workspace #market-chart-select{min-width:0;width:100%;margin:0;min-height:38px;flex:1}
+.market-workspace .market-exports{margin-left:auto;gap:7px}
+.market-workspace .market-exports .outline{padding:7px 10px}
+.market-workspace .market-readiness{display:block;margin:0 0 12px;padding:0 2px;border:0;border-radius:0;background:transparent;line-height:1.6;font-size:.875rem}
+.market-workspace .market-readiness>summary{font-weight:500;font-size:.875rem;color:#456b5c}
+.market-workspace .market-readiness[data-status=limited]>summary{color:#785624}
+.market-workspace .market-readiness p{margin:6px 0;color:inherit}
+.market-workspace .market-readiness[data-status=unavailable]{padding:12px 15px;border:1px solid #e4d6b5;border-radius:8px;background:#fff8e9;color:#785624}
+.market-workspace .market-readiness[data-status=unavailable]>summary{color:#785624}
+.market-workspace .market-reading-guide{margin:14px 0 0;padding:0 2px}
+.market-workspace .game-chart-readiness-compact{margin:10px 0;padding:8px 11px;font-size:.875rem}
+.market-workspace .game-chart-readiness-compact>summary{font-weight:500;line-height:1.6}
+.market-workspace .game-chart-readiness-compact[open]>summary{margin-bottom:9px}
+@media(max-width:650px){
+  .app-shell.market-workspace .market-page-heading{margin-bottom:14px}
+  .market-filter-panel>summary{align-items:flex-start;gap:10px;padding:12px}
+  .market-filter-toggle-label{font-size:.875rem;gap:7px;padding-top:1px}
+  .market-filter-panel .market-controls{padding:12px}
+  .market-shared-note{margin:12px 12px 0}
+  .market-filter-panel .market-source{margin:0 12px 12px}
+  .market-workspace .market-result-heading{flex-direction:column;align-items:stretch;gap:10px}
+  .market-workspace #market-chart-select-label{flex:auto;max-width:none;margin:0;align-items:flex-start;flex-direction:column;gap:5px;white-space:normal}
+  .market-workspace .market-exports{margin-left:0;align-self:stretch;justify-content:flex-start}
+  .market-workspace .market-summary{gap:8px}
+  .market-workspace .market-summary article{padding:10px 12px}
+  .market-workspace .market-summary strong{font-size:1.15rem}
+}
+@media print{
+  .market-filter-panel{border:0;margin:0 0 15px;padding:0}
+  .market-filter-panel>summary{padding:0;display:block}
+  .market-filter-panel .market-source,.market-shared-note,.market-filter-toggle-label,#market-scope-state{display:none!important}
+  .market-workspace .market-readiness,.market-workspace .market-reading-guide{display:none}
+}

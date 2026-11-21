@@ -277,6 +277,13 @@ class ComparisonStore:
         return result
 
 
+class DemoHTTPServer(ThreadingHTTPServer):
+    # A page requests several local scripts/styles while earlier API work may
+    # still be finishing. The default five pending connections can be refused
+    # during fast route changes on Windows, leaving a partially styled page.
+    request_queue_size = 64
+
+
 def make_server(store, port=8765):
     mutation_token = secrets.token_urlsafe(32)
     upload_gate = threading.BoundedSemaphore(1)
@@ -371,6 +378,8 @@ def make_server(store, port=8765):
                      "/market.css": ("market.css", "text/css; charset=utf-8"),
                      "/charts.js": ("charts.js", "text/javascript; charset=utf-8"),
                      "/charts.css": ("charts.css", "text/css; charset=utf-8"),
+                     "/shell.js": ("shell.js", "text/javascript; charset=utf-8"),
+                     "/shell.css": ("shell.css", "text/css; charset=utf-8"),
                      "/plan": ("plan.html", "text/html; charset=utf-8"),
                      "/plan.js": ("plan.js", "text/javascript; charset=utf-8"),
                      "/workflow.js": ("workflow.js", "text/javascript; charset=utf-8"),
@@ -451,7 +460,7 @@ def make_server(store, port=8765):
         def local_host(self):
             return self.headers.get("Host") == f"127.0.0.1:{self.server.server_port}"
 
-    return ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    return DemoHTTPServer(("127.0.0.1", port), Handler)
 
 
 def main():

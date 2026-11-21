@@ -13,6 +13,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 from playwright.sync_api import expect, sync_playwright
+from market_browser_controls import market_control
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src/demo"))
@@ -65,11 +66,11 @@ def main():
 
                     page.goto(base + '/market')
                     expect(page.locator('#market-results')).to_be_visible()
-                    page.locator('#market-tab-distribution').click()
+                    page.evaluate("location.hash = 'distribution'")
                     expect(page.locator('#market-charts > article')).to_have_attribute('data-chart-id', 'outcome_tiers')
-                    page.locator('#market-source').select_option('mobile')
+                    market_control(page, '#market-source').select_option('mobile')
                     expect(page.locator('#market-summary')).to_contain_text('221,806')
-                    page.locator('#market-tab-distribution').click()
+                    page.evaluate("location.hash = 'distribution'")
                     expect(page.locator('#market-charts > article')).to_have_attribute('data-chart-id', 'outcome_tiers')
                     page.locator('#market-charts rect[role="button"]').first.click()
                     expect(page.locator('#market-records-table')).to_be_visible()
@@ -77,11 +78,11 @@ def main():
                     page.locator('#market-records-close').click()
                     checks.append('Unfiltered distribution defaults to quantity tiers, whose bars open matching records')
 
-                    page.locator('#market-group').select_option('Adventure')
+                    market_control(page, '#market-group').select_option('Adventure')
                     expect(page.locator('#market-comparison-control')).to_be_visible()
                     require(page.locator('#market-compare-group option[value="Adventure"]').count() == 0,
                             'A group must not be its own named baseline')
-                    page.locator('#market-apply').click()
+                    market_control(page, '#market-apply').click()
                     expected = api('/api/market', analysis())
                     comparison = expected['comparison']
                     expect(page.locator('#market-charts > article')).to_have_attribute('data-chart-type', 'stacked_bar')
@@ -166,22 +167,22 @@ def main():
                     page.locator('#market-records-q').fill('delayed')
                     page.locator('#market-records-search-button').click()
                     expect(page.locator('#market-records-search-button')).to_be_disabled()
-                    page.locator('#market-group').select_option('Puzzle')
+                    market_control(page, '#market-group').select_option('Puzzle')
                     expect(page.locator('#market-records-panel')).to_be_hidden()
                     expect(page.locator('#market-results')).to_be_hidden()
                     require(len(held) == 1, 'Expected one held stale record request')
                     held[0].fulfill(json=selected_records)
                     page.unroute('**/api/market/records')
-                    page.locator('#market-apply').click()
+                    market_control(page, '#market-apply').click()
                     expect(page.locator('#market-summary')).to_contain_text('34,175')
                     expect(page.locator('#market-records-panel')).to_be_hidden()
                     checks.append('Dirty analysis filters cancel and clear record results; late old requests cannot reopen stale tables')
 
-                    page.locator('#market-source').select_option('pc')
+                    market_control(page, '#market-source').select_option('pc')
                     expect(page.locator('#market-summary')).to_contain_text('51,152')
-                    page.locator('#market-group').select_option('Action')
-                    page.locator('#market-compare-group').select_option('Adventure')
-                    page.locator('#market-apply').click()
+                    market_control(page, '#market-group').select_option('Action')
+                    market_control(page, '#market-compare-group').select_option('Adventure')
+                    market_control(page, '#market-apply').click()
                     steam = api('/api/market', analysis('pc', 'Action', 'Adventure'))
                     expect(page.locator('#market-comparison-context')).to_contain_text(f"{steam['comparison']['overlap_count']:,} 款重疊")
                     require(steam['comparison']['overlap_count'] > 0, 'Steam named genres should disclose their overlap')
@@ -192,13 +193,13 @@ def main():
                     expect(page.locator('#market-records-table')).to_be_visible()
                     checks.append('Named Steam baselines disclose shared games; median chart bars drill to their own cohort')
 
-                    page.locator('#market-source').select_option('revenue')
+                    market_control(page, '#market-source').select_option('revenue')
                     expect(page.locator('#market-summary')).to_contain_text('1,500')
                     expect(page.locator('#market-records-panel')).to_be_hidden()
-                    page.locator('#market-tab-distribution').click()
+                    page.evaluate("location.hash = 'distribution'")
                     expect(page.locator('#market-charts > article')).to_have_attribute('data-chart-type', 'histogram')
-                    page.locator('#market-group').select_option('Action')
-                    page.locator('#market-apply').click()
+                    market_control(page, '#market-group').select_option('Action')
+                    market_control(page, '#market-apply').click()
                     expect(page.locator('#market-comparison')).to_be_visible()
                     expect(page.locator('#market-charts > article')).to_have_attribute('data-chart-type', 'bar')
                     expect(page.locator('.market-cohort-card[data-cohort="selected"]')).to_contain_text('已知估計營收')

@@ -4,17 +4,15 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <title>GameScope · 市場資料分析</title>
   <link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/charts.css"><link rel="stylesheet" href="/market.css">
-  <script src="/charts.js" defer></script><script src="/workflow.js" defer></script><script src="/market.js" defer></script>
-</head>
-<body>
+  <script src="/shell.js" defer></script><script src="/charts.js" defer></script><script src="/workflow.js" defer></script><script src="/market.js" defer></script>
+<link rel="stylesheet" href="/shell.css"></head>
+<body class="app-shell market-workspace">
 <header><a class="brand" href="/">◈ GameScope <span>Game market research</span></a><span class="badge">歷史資料 · 圖表探索</span></header>
 <main>
-  <nav class="module-nav" aria-label="分析頁面"><a href="/market" aria-current="page">市場資料分析</a><a href="/">歷史分布比較</a><a href="/revenue">Steam 營收分析</a><a href="/planning">開發資源規劃</a><a href="/plan">我的規劃摘要</a></nav>
-  <section class="intro"><p class="eyebrow">MARKET DATA EXPLORER</p><h1>探索遊戲市場資料。</h1><p>從市場概況到分布、關聯與作品排名，選擇你想了解的問題。</p></section>
-  <section class="market-source" aria-labelledby="market-source-heading">
-    <div class="market-source-top"><div class="market-source-label"><h2 id="market-source-heading">正在核對資料來源…</h2><p id="market-source-snapshot"></p><strong id="market-data-kind" class="market-kind-badge" hidden>人工示例 · 不代表市場</strong></div><button id="market-refresh" type="button" class="quiet-button">重新讀取版本</button></div>
-    <details class="market-source-detail"><summary>資料範圍與版本</summary><p id="market-source-description"></p><p id="market-version" class="fine"></p></details>
-  </section>
+  <section class="intro market-page-heading"><h1 id="market-section-title">市場的供給與規模</h1><p id="market-section-description">並排比較各玩法的作品數與累積數量。</p></section>
+  <details id="market-filter-panel" class="market-filter-panel">
+    <summary id="market-filter-toggle"><span class="market-scope"><span class="market-scope-source"><strong id="market-scope-source">正在核對資料來源…</strong><strong id="market-data-kind" class="market-kind-badge" hidden>人工示例 · 不代表市場</strong><span id="market-scope-state" role="status"></span></span><span id="market-result-context">正在載入分析條件…</span></span><span class="market-filter-toggle-label"><span class="when-closed">更改條件</span><span class="when-open">收起條件</span><span class="market-filter-chevron" aria-hidden="true"></span></span></summary>
+    <p class="market-shared-note">以下條件適用於這五個市場分析頁面，切換頁面會保留。修改後請按「套用條件」。</p>
   <form id="market-form" class="market-controls">
     <div class="market-filter-grid">
       <label class="market-source-control">資料集<select id="market-source" disabled></select></label>
@@ -25,14 +23,18 @@
     <details id="market-advanced-filters" class="market-advanced"><summary>年份與排名設定</summary><div class="market-extra-grid"><label>發售年份由<input id="market-year-from" type="number" step="1" placeholder="不限" disabled></label><label>發售年份至<input id="market-year-to" type="number" step="1" placeholder="不限" disabled></label><label>作品排名依據<select id="market-rank" disabled></select></label><label>排名顯示數量<select id="market-top" disabled><option value="10">前 10 項</option><option value="20">前 20 項</option></select></label></div></details>
     <div class="market-actions"><p id="market-filter-help">正在載入可選條件…</p><div><button id="market-reset" type="button" class="quiet-button" disabled>重設</button><button id="market-apply" type="submit" disabled>套用條件</button></div></div>
   </form>
+  <section class="market-source" aria-labelledby="market-source-heading">
+    <div class="market-source-top"><div class="market-source-label"><h2 id="market-source-heading">正在核對資料來源…</h2><p id="market-source-snapshot"></p></div><button id="market-refresh" type="button" class="quiet-button">重新讀取版本</button></div>
+    <details class="market-source-detail"><summary>資料範圍與版本</summary><p id="market-source-description"></p><p id="market-version" class="fine"></p></details>
+  </section>
+  </details>
   <p id="market-status" role="status" aria-live="polite">正在載入市場分析資料…</p>
   <section id="market-results" hidden aria-label="市場分析結果">
-    <div class="market-result-heading"><p id="market-result-context" class="fine"></p><div class="market-exports"><button id="market-view-records" class="outline" type="button">查看篩選作品</button><button id="market-export-json" class="outline" type="button">分析 JSON</button><button id="market-export-csv" class="outline" type="button">圖表數據 CSV</button></div></div>
     <div id="market-summary" class="market-summary"></div>
     <div id="market-empty" class="market-empty" hidden><h3>沒有符合條件的樣本</h3><p>可擴大年份範圍或選擇全部類型。沒有樣本不代表市場沒有這類遊戲。</p></div>
     <div id="market-analysis-tabs" class="market-tabs" role="tablist" aria-label="分析方向"></div>
     <section id="market-analysis-panel" role="tabpanel" tabindex="0">
-      <div class="market-section-heading"><div><h2 id="market-section-title"></h2><p id="market-section-description"></p></div><label id="market-chart-select-label" hidden>檢視圖表<select id="market-chart-select"></select></label></div>
+      <div class="market-result-heading"><label id="market-chart-select-label" hidden>檢視圖表<select id="market-chart-select"></select></label><div class="market-exports"><button id="market-view-records" class="outline" type="button">查看篩選作品</button><button id="market-export-json" class="outline" type="button">分析 JSON</button><button id="market-export-csv" class="outline" type="button">圖表數據 CSV</button></div></div>
       <aside id="market-point-detail" class="market-point-detail" role="status" hidden></aside>
       <div id="market-charts" class="market-charts"></div>
       <section id="market-comparison" class="market-comparison" aria-labelledby="market-comparison-title" hidden><div class="market-comparison-heading"><h3 id="market-comparison-title">兩組樣本的差異</h3><p id="market-comparison-context"></p></div><div id="market-comparison-cohorts" class="market-comparison-cohorts"></div><details><summary>比較方法與注意事項</summary><ul id="market-comparison-notes"></ul></details></section>

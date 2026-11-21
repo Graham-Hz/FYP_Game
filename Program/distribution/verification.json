@@ -485,6 +485,501 @@
         "These software checks do not establish human usability or decision benefit.",
         "No GitHub release or public deployment was uploaded."
       ]
+    },
+    {
+      "verification_date": "2026-11-20",
+      "package": "FYP_Demo_2026-11-20_v4.zip",
+      "zip_sha256": "6badd838d86a2731e640a17072dd8db3baebaba8529f613bb0a75ea4281f2c47",
+      "archive_bytes": 40103225,
+      "inventoried_files": 67,
+      "uncompressed_file_bytes": 49706909,
+      "changes": [
+        "Confirmed loading of saved A/B budget assumptions with fresh fee checks, atomic failure handling and required recalculation",
+        "Current form and summary identify alternatives with matching request, method and fee revision"
+      ],
+      "environment": {
+        "os": "Windows-11-10.0.26300-SP0",
+        "python": "3.14.3",
+        "fresh_extraction_with_spaces_and_chinese_characters": true,
+        "new_virtual_environment": true,
+        "copied_original_virtual_environment": false,
+        "setup": "uv sync --offline --locked; 13 cached locked packages installed into a new environment using existing uv and managed Python.",
+        "physical_machine": "development computer",
+        "second_laptop_validation": "not repeated for v4; latest user statement confirms testing but does not specify device or individual outcomes"
+      },
+      "checks": {
+        "preflight_data_and_all_package_hashes": "passed",
+        "source_browser_regressions": {
+          "budget_restore": {
+            "passed": true,
+            "groups": 6,
+            "checks": [
+              "Standalone A/B inputs survive navigation through immutable snapshots; restoration preserves team, blanks and explicit zeros, clears results and requires Calculate.",
+              "Fresh fee validation restores quantities, FX and confirmations exactly; loading manual A removes B fees; matching requires exact method/request/source revision.",
+              "Unavailable/stale/missing fee sources and unsupported methods reject the entire restoration, preserving visible form, result and immutable snapshots.",
+              "Legacy write failure is atomic. Cross-context loads explicitly preserve current platform/comparison/references; only recalculation replaces active budget and summary labels the matching saved inputs.",
+              "Async fee validation freezes editing and rejects changed contexts. Pending old calculation responses cannot overwrite a restored, uncalculated draft.",
+              "Restore controls and current-input status fit at 390px; no JavaScript errors."
+            ],
+            "page_errors": []
+          },
+          "budget_alternatives": {
+            "passed": true,
+            "groups": 6,
+            "checks": [
+              "Standalone immutable A/B snapshots compare exact server outputs; null funds/contribution stay unknown, delay offsets retain actual durations, JSON/SVG preserve evidence.",
+              "Manual v1 and current optional-fee v2 budgets are compatible; saved fee selections, FX, sources and whole-term renewals are preserved.",
+              "Unavailable or changed fee sources block numeric comparison/export without deleting snapshots; explicit retry or reload with matching sources restores the saved comparison.",
+              "Different currencies show both saved contexts but suppress numeric differences, shared-axis charts and combined export.",
+              "Unsupported saved calculation methods are explicitly rejected until the user recalculates and updates that slot.",
+              "390px layout contains chart/table scrolling; removing B preserves A and no JavaScript errors occur."
+            ],
+            "page_errors": []
+          },
+          "combined_workspace": {
+            "passed": true,
+            "groups": 7,
+            "checks": [
+              "Market finding can precede a plan; the summary preserves evidence and notes without inventing condition or completion",
+              "A changed market version blocks qualified summary export while keeping the original evidence available for review",
+              "Standalone A/B snapshots preserve inputs, fee sources and results through editing/navigation; summary comparisons do not choose an active budget",
+              "Summary checks fee provenance inside saved alternatives even when no active budget or legacy plan exists",
+              "A later Android condition integrates supplementary evidence and alternatives without rewriting their filters or selecting a budget automatically",
+              "Workspace title/notes carry into the first plan; later deliberate blank values remain blank in the form, heading and export",
+              "Failed workspace writes retain visible evidence; successful explicit removal preserves both alternatives and the active budget"
+            ],
+            "page_errors": []
+          },
+          "selected_condition_workflow": {
+            "passed": true,
+            "groups": 7,
+            "checks": [
+              "Steam comparison -> explicit reference selection -> fee budget -> source-linked summary export",
+              "Draft/fee/FX persistence, missing-versus-zero preservation, edited-input result invalidation",
+              "Same comparison preservation, changed reference invalidation, honest no-match/skip path",
+              "Source mismatch blocks export; missing catalogue requires explicit removal of saved fees",
+              "Android direct budget route and explicitly unavailable references",
+              "Corrupt-state recovery and explicit reset",
+              "Storage failure preserves standalone comparison and blocks an unsaved handoff"
+            ],
+            "page_errors": []
+          }
+        },
+        "api_smoke": {
+          "passed": true,
+          "groups": 11,
+          "checks": [
+            {
+              "name": "All application pages and static assets",
+              "status": "passed",
+              "paths": 21
+            },
+            {
+              "name": "Frozen Steam and Android comparison samples",
+              "status": "passed",
+              "pc_rows": 51152,
+              "mobile_rows": 221806
+            },
+            {
+              "name": "pc market charts and ranking",
+              "status": "passed",
+              "rows": 51152,
+              "charts": 14
+            },
+            {
+              "name": "mobile market charts and ranking",
+              "status": "passed",
+              "rows": 221806,
+              "charts": 14
+            },
+            {
+              "name": "revenue market charts and ranking",
+              "status": "passed",
+              "rows": 1500,
+              "charts": 14
+            },
+            {
+              "name": "Shared gameplay taxonomy, cohort comparison and record drill-down",
+              "status": "passed",
+              "gameplay_genres": 8,
+              "selected_rows": 15795,
+              "baseline_rows": 206011,
+              "high_tier_rows": 2487,
+              "records_returned": 20,
+              "version_id": "research_train_v1"
+            },
+            {
+              "name": "Revenue analysis and reference retrieval",
+              "status": "passed",
+              "positive_price_rows": 1415,
+              "references": 10
+            },
+            {
+              "name": "Cost cases, fee catalogue and five CSV downloads",
+              "status": "passed",
+              "cases": 10,
+              "observations": 37,
+              "fees": 26,
+              "fee_sources": 16
+            },
+            {
+              "name": "Artificial manual and source-linked fee budgets",
+              "status": "passed",
+              "currency": "HKD",
+              "manual_cash": 176000,
+              "with_fees_cash": 215639.6,
+              "delayed_with_fees_cash": 288279.2
+            },
+            {
+              "name": "Synthetic CSV preview, commit, activation and rollback",
+              "status": "passed",
+              "eligible_rows": 2,
+              "restored_rows": 221806,
+              "uncredentialed_write_status": 403
+            },
+            {
+              "name": "Restored research selection survives restart",
+              "status": "passed"
+            }
+          ]
+        },
+        "browser_smoke": {
+          "passed": true,
+          "groups": 12,
+          "browser_version": "157.0.4341.60",
+          "checks": [
+            "Actual extracted-venv CLI reports a ready loopback URL",
+            "pc: two overview SVGs drawn; SVG and fourteen-chart CSV exports verified",
+            "mobile: two overview SVGs drawn; SVG and fourteen-chart CSV exports verified",
+            "revenue: two overview SVGs drawn; SVG and fourteen-chart CSV exports verified",
+            "Android Adventure: n15795 versus n206011; high-tier keyboard drill-through returns2487 records; JSON/SVG/typed CSV preserve counts, quartiles and provenance",
+            "Adventure finding captured through UI with exact denominators, chart identity and source hashes; no implicit planning choice",
+            "Planning: cases/fees load, HKD176000 artificial budget, four charts, SVG and JSON exports",
+            "Budget A176000 and B189200 retain assumptions and immutable snapshots; cash difference13200 and two comparison charts verified",
+            "Workspace-only summary combines one finding and both budgets with exact delta13200, current provenance and honest incomplete status",
+            "Guide route: Steam Action/RPG finding and 2088-record drill-through -> explicit Action choice -> two named USD14.99 references -> A176000/B189200 and delay209000/225500 -> complete summary with current B",
+            "Load saved A requires recalculation, preserves both snapshots/references, labels and exports current A176000; independent Android exploration preserves Steam plan",
+            "No page JavaScript errors"
+          ],
+          "page_errors": [],
+          "owned_server_stopped": true
+        }
+      },
+      "limitations": [
+        "Verified on the development computer; no physical second-device rerun of v4 is recorded.",
+        "Existing uv, managed Python and cached packages were used; first-install or fully offline-machine support is not established.",
+        "The complete scripted demonstration route passed; this does not measure student speaking time or establish human usability or decision benefit.",
+        "No GitHub release or public deployment was uploaded."
+      ]
+    },
+    {
+      "verification_date": "2026-11-21",
+      "package": "FYP_Demo_2026-11-21_v5.zip",
+      "zip_sha256": "7fd2addb70c22c43f47e028b1837bd119ed37b6c74338b0099b5c6a20b43debb",
+      "archive_bytes": 40118808,
+      "inventoried_files": 70,
+      "uncompressed_file_bytes": 49749859,
+      "changes": [
+        "Consistent left sidebar groups data analysis and four planning steps, with responsive accessible drawer",
+        "Per-chart availability and actionable explanations based on filtered data; readable sample labels and statistical help",
+        "Keyboard chart tooltips retain focused records across passive pointer events",
+        "Pending HTTP connection queue increased after rapid navigation reproduced refused static assets"
+      ],
+      "environment": {
+        "os": "Windows-11-10.0.26300-SP0",
+        "python": "3.14.3",
+        "fresh_extraction_with_spaces_and_chinese_characters": true,
+        "new_virtual_environment": true,
+        "copied_original_virtual_environment": false,
+        "setup": "uv sync --offline --locked; 13 cached locked packages installed into a new environment using existing uv and managed Python.",
+        "physical_machine": "development computer",
+        "second_laptop_validation": "not repeated for v5"
+      },
+      "checks": {
+        "preflight_data_and_all_package_hashes": "passed",
+        "unit_regressions": {
+          "market_including_10_readiness_tests": 46,
+          "distribution_and_preflight": 14,
+          "failed": 0
+        },
+        "source_browser_regressions": {
+          "sidebar": {
+            "passed": true,
+            "groups": 5,
+            "checks": [
+              "Five routes share sidebar groups, header geometry, link styles and one current item; old navigation removed; initial navigation writes no session state.",
+              "Reference step opens its disclosure directly and is distinct from revenue analysis current state.",
+              "Analysis hash links remain navigable when unavailable so reasons can be inspected; current item follows the chosen section.",
+              "390px drawer has inert background, focus wrapping, Escape/focus restoration and close-on-navigation; content remains accessible without overflow.",
+              "Print layout removes sidebar/header and restores full content width."
+            ],
+            "page_errors": []
+          },
+          "readiness": {
+            "passed": true,
+            "groups": 5,
+            "checks": [
+              "Direct section entry, sidebar navigation and browser back/forward preserve section; dirty filters mark readiness pending; sample labels and glossary explain actual historical counts.",
+              "Explicit missing-date response fixture leaves release/scatter choices visible with cause/action and no blank SVG/download/finding; CSV retains all 14 chart descriptions. The current importer excludes missing-date rows.",
+              "Constant valid pairs remain visible with no-correlation explanation; too-small boxplot groups explain the display requirement instead of drawing an empty plot.",
+              "A comparison with one empty cohort displays separate valid counts and an explicit inability to interpret group differences.",
+              "A real empty year filter suppresses zero-filled tier plots and saving while preserving an explanatory JSON export; 390px layout has no document overflow."
+            ],
+            "page_errors": []
+          },
+          "market": {
+            "passed": true,
+            "groups": 13,
+            "checks": [
+              "Fourteen real chart configurations are accessible through five tabs, with only one or two plots shown and gameplay separated from other tags",
+              "Whole-analysis JSON and typed BOM CSV preserve all charts including raw scatter coordinates, bins, box statistics and source evidence; SVG is self-contained",
+              "Sexual Content filters 61 records separately from gameplay; genre and tag combine with AND, and genre bars support exact-filter drill-down",
+              "Scatter marks expose original records and scale switching changes the drawing without changing raw values",
+              "Type/year filters hide stale results and recompute the matching cohort",
+              "Android and separate revenue sources switch with their own dates, metrics and denominators",
+              "Rapid real source changes settle on the final selection without upload-gate errors or stale rendering",
+              "Empty response is explained without fabricated zero charts",
+              "Delayed response from a previously selected source cannot overwrite the new view",
+              "API version errors and mismatched successful payloads block stale results and export",
+              "Unavailable source remains explicit while independent sources still work",
+              "Synthetic source metadata is prominently labelled rather than silently presented as market evidence",
+              "390px page has no horizontal overflow; chart scrolling is contained and no JavaScript errors occur"
+            ],
+            "page_errors": []
+          },
+          "cohort_comparison": {
+            "passed": true,
+            "groups": 8,
+            "checks": [
+              "Unfiltered distribution defaults to quantity tiers, whose bars open matching records",
+              "Adventure compares two independently denominated cohorts; focus tooltip and Enter drill to exact high-install records",
+              "Record search, quantity sorting, page size and server-clamped pagination preserve the selected cohort/tier",
+              "JSON, typed CSV and self-contained SVG retain separate cohort denominators, quartiles and tier evidence",
+              "Dirty analysis filters cancel and clear record results; late old requests cannot reopen stale tables",
+              "Named Steam baselines disclose shared games; median chart bars drill to their own cohort",
+              "Revenue defaults to histogram, supports two-cohort median comparison and inspectable selected/baseline records",
+              "390px and 320px layouts retain local chart/table scrolling without page overflow; no JavaScript errors"
+            ],
+            "page_errors": []
+          },
+          "findings": {
+            "passed": true,
+            "groups": 5,
+            "checks": [
+              "Standalone findings persist across reload, preserve exact cohorts/provenance and reject duplicate evidence despite changed titles",
+              "Same-version changed source hashes and late responses after dirty filters cannot save stale evidence",
+              "Storage failure is explicit and preserves prior findings; retry succeeds after storage recovery",
+              "Scatter findings retain aggregate statistics without raw points; five-item limit requires explicit removal before adding another finding",
+              "390px capture and saved findings stay within the viewport; no JavaScript errors"
+            ],
+            "page_errors": []
+          },
+          "selected_condition_workflow": {
+            "passed": true,
+            "groups": 7,
+            "checks": [
+              "Steam comparison -> explicit reference selection -> fee budget -> source-linked summary export",
+              "Draft/fee/FX persistence, missing-versus-zero preservation, edited-input result invalidation",
+              "Same comparison preservation, changed reference invalidation, honest no-match/skip path",
+              "Source mismatch blocks export; missing catalogue requires explicit removal of saved fees",
+              "Android direct budget route and explicitly unavailable references",
+              "Corrupt-state recovery and explicit reset",
+              "Storage failure preserves standalone comparison and blocks an unsaved handoff"
+            ],
+            "page_errors": []
+          }
+        },
+        "existing_planning_browser_regression": "passed",
+        "rapid_navigation": {
+          "passed": true,
+          "routes": 5,
+          "static_request_failures": 0,
+          "note": "Before queue fix, refused app.js and shell.js were reproduced; same sequence passed after queue_size64. Aborted old-page API fetches are expected."
+        },
+        "api_smoke": {
+          "passed": true,
+          "groups": 11,
+          "checks": [
+            {
+              "name": "All application pages and static assets",
+              "status": "passed",
+              "paths": 23
+            },
+            {
+              "name": "Frozen Steam and Android comparison samples",
+              "status": "passed",
+              "pc_rows": 51152,
+              "mobile_rows": 221806
+            },
+            {
+              "name": "pc market charts and ranking",
+              "status": "passed",
+              "rows": 51152,
+              "charts": 14,
+              "readiness_checked": true
+            },
+            {
+              "name": "mobile market charts and ranking",
+              "status": "passed",
+              "rows": 221806,
+              "charts": 14,
+              "readiness_checked": true
+            },
+            {
+              "name": "revenue market charts and ranking",
+              "status": "passed",
+              "rows": 1500,
+              "charts": 14,
+              "readiness_checked": true
+            },
+            {
+              "name": "Shared gameplay taxonomy, cohort comparison and record drill-down",
+              "status": "passed",
+              "gameplay_genres": 8,
+              "selected_rows": 15795,
+              "baseline_rows": 206011,
+              "high_tier_rows": 2487,
+              "records_returned": 20,
+              "version_id": "research_train_v1"
+            },
+            {
+              "name": "Revenue analysis and reference retrieval",
+              "status": "passed",
+              "positive_price_rows": 1415,
+              "references": 10
+            },
+            {
+              "name": "Cost cases, fee catalogue and five CSV downloads",
+              "status": "passed",
+              "cases": 10,
+              "observations": 37,
+              "fees": 26,
+              "fee_sources": 16
+            },
+            {
+              "name": "Artificial manual and source-linked fee budgets",
+              "status": "passed",
+              "currency": "HKD",
+              "manual_cash": 176000,
+              "with_fees_cash": 215639.6,
+              "delayed_with_fees_cash": 288279.2
+            },
+            {
+              "name": "Synthetic CSV preview, commit, activation and rollback",
+              "status": "passed",
+              "eligible_rows": 2,
+              "restored_rows": 221806,
+              "uncredentialed_write_status": 403
+            },
+            {
+              "name": "Restored research selection survives restart",
+              "status": "passed"
+            }
+          ]
+        },
+        "browser_smoke": {
+          "passed": true,
+          "groups": 13,
+          "browser_version": "157.0.4341.60",
+          "checks": [
+            "Actual extracted-venv CLI reports a ready loopback URL",
+            "pc: two overview SVGs drawn; SVG and fourteen-chart CSV exports verified",
+            "mobile: two overview SVGs drawn; SVG and fourteen-chart CSV exports verified",
+            "revenue: two overview SVGs drawn; SVG and fourteen-chart CSV exports verified",
+            "Android Adventure: n15795 versus n206011; high-tier keyboard drill-through returns2487 records; JSON/SVG/typed CSV preserve counts, quartiles and provenance",
+            "Adventure finding captured through UI with exact denominators, chart identity and source hashes; no implicit planning choice",
+            "Planning: cases/fees load, HKD176000 artificial budget, four charts, SVG and JSON exports",
+            "Budget A176000 and B189200 retain assumptions and immutable snapshots; cash difference13200 and two comparison charts verified",
+            "Workspace-only summary combines one finding and both budgets with exact delta13200, current provenance and honest incomplete status",
+            "Guide route: Steam Action/RPG finding and 2088-record drill-through -> explicit Action choice -> two named USD14.99 references -> A176000/B189200 and delay209000/225500 -> complete summary with current B",
+            "Load saved A requires recalculation, preserves both snapshots/references, labels and exports current A176000; independent Android exploration preserves Steam plan",
+            "Shared left sidebar and four planning steps, readable sample labels, readiness in all chart CSV descriptions, real empty filter suppresses chart/save with concrete reason, mobile unavailable view remains navigable",
+            "No page JavaScript errors"
+          ],
+          "page_errors": [],
+          "owned_server_stopped": true
+        }
+      },
+      "limitations": [
+        "Verified in a fresh extracted environment on the development computer; v5 was not rerun on a second physical computer.",
+        "Existing uv, managed Python and cached packages were used; first-install or fully offline-machine support is not established.",
+        "Chart availability checks concern data requirements, not statistical reliability or causal conclusions.",
+        "Missing-date UI coverage uses an explicitly simulated source response because the current CSV importer excludes such rows; real imports cover constant/small data and empty filters.",
+        "Automated checks do not establish human usability or decision benefit. No GitHub release or public deployment was uploaded."
+      ]
+    },
+    {
+      "verification_date": "2026-11-21",
+      "package": "FYP_Demo_2026-11-21_v6.zip",
+      "zip_sha256": "58ffcc1e6d941f7c0830b4d3663a964f7580dab0b8cb83bd6a66aeff497cfedc",
+      "archive_bytes": 40121022,
+      "inventoried_files": 70,
+      "uncompressed_file_bytes": 49759202,
+      "changes": [
+        "Section-specific market headings and overview-only metric cards",
+        "Shared collapsed source/filter scope with retained settings across views",
+        "Compact expandable limited-data notices; unavailable charts retain direct explanations"
+      ],
+      "environment": {
+        "fresh_extraction": true,
+        "new_virtual_environment": false,
+        "existing_development_python_environment_used": true,
+        "python": "3.14.3",
+        "second_physical_computer_tested": false
+      },
+      "checks": {
+        "extracted_package_preflight": {
+          "passed": true,
+          "verified_file_hashes": 70
+        },
+        "extracted_package_api": {
+          "passed": true,
+          "groups": 11,
+          "evidence": "tmp/demo_portability_verification/api_smoke_v6.json"
+        },
+        "source_browser": {
+          "passed": true,
+          "groups": 37,
+          "suites": [
+            {
+              "suite": "market_layout_qa",
+              "passed": true,
+              "groups": 6,
+              "evidence": "Program/data/processed/market_layout_qa/verification.json"
+            },
+            {
+              "suite": "market_qa",
+              "passed": true,
+              "groups": 13,
+              "evidence": "Program/data/processed/market_qa/verification.json"
+            },
+            {
+              "suite": "market_readiness_qa",
+              "passed": true,
+              "groups": 5,
+              "evidence": "Program/data/processed/market_readiness_qa/verification.json"
+            },
+            {
+              "suite": "market_comparison_qa",
+              "passed": true,
+              "groups": 8,
+              "evidence": "Program/data/processed/market_comparison_qa/verification.json"
+            },
+            {
+              "suite": "market_findings_qa",
+              "passed": true,
+              "groups": 5,
+              "evidence": "Program/data/processed/market_findings_qa/verification.json"
+            }
+          ]
+        },
+        "changed_browser_assets_match_tested_source": true
+      },
+      "limitations": [
+        "Browser checks ran against the source checkout; packaged browser assets were checked byte-for-byte against that source.",
+        "Extracted-package API and preflight checks reused the existing development environment. Fresh dependency installation and another physical computer were not tested for v6.",
+        "Automated checks do not establish human usability or decision benefit. No publication or GitHub upload was performed."
+      ]
     }
   ]
 }

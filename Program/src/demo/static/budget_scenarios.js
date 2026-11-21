@@ -7,11 +7,22 @@ window.BudgetScenarios = (() => {
   const TEAM = {label:'人員／職能',people:'人數',allocation:'投入比例',monthly_cash:'每人每月現金成本',monthly_unpaid:'每人每月額外未付勞動估值'};
   const FEE = {quantity:'數量',fx_rate:'換算率',target_currency:'計劃幣別',eligibility_confirmed:'資格確認',billing_assumption:'付款假設'};
   const clone = value => JSON.parse(JSON.stringify(value));
+  const canonical = value => JSON.stringify(value,(_,v)=>v&&typeof v==='object'&&!Array.isArray(v)?Object.fromEntries(Object.keys(v).sort().map(k=>[k,v[k]])):v);
   const el = (tag,text,cls) => {const n=document.createElement(tag);if(text!==undefined)n.textContent=String(text);if(cls)n.className=cls;return n;};
   const fmt = value => Number.isFinite(value)?value.toLocaleString('en-US',{maximumFractionDigits:2}):'未提供';
   const signed = value => Number.isFinite(value)?`${value>0?'+':''}${fmt(value)}`:'未計算';
   const present = value => value===null||value===undefined?'未提供':typeof value==='boolean'?(value?'已確認':'未確認'):typeof value==='number'?fmt(value):String(value);
-  let config=null, feeMetadata=null;
+  let config=null, feeMetadata=null, restoring=false, loadedPendingCalculation=false;
+
+  function matchingSlots(budget,slots) {
+    if(!budget?.request||!METHODS.has(budget.method_version))return [];
+    return ['a','b'].filter(key=>{
+      const other=slots?.[key]?.budget;
+      return other?.request&&other.method_version===budget.method_version&&
+        (other.fee_reference?.metadata?.revision??null)===(budget.fee_reference?.metadata?.revision??null)&&
+        canonical(other.request)===canonical(budget.request);
+    });
+  }
 
   function flatInputs(snapshot) {
     const request=snapshot.budget.request, values={};
@@ -109,15 +120,38 @@ window.BudgetScenarios = (() => {
     if(!config)return;
     const current=config.getCurrent(),saved=read();
     for(const key of ['a','b']){
-      const button=document.getElementById(`scenario-save-${key}`);button.disabled=!current||!!saved.error;
+      const button=document.getElementById(`scenario-save-${key}`);button.disabled=restoring||!current||!!saved.error;
       button.textContent=`${saved.slots[key]?'更新':'保存為'}方案 ${key.toUpperCase()}`;
-      document.getElementById(`scenario-remove-${key}`).disabled=!saved.slots[key];
+      document.getElementById(`scenario-remove-${key}`).disabled=restoring||!saved.slots[key];
+      document.getElementById(`scenario-load-${key}`).disabled=restoring||!saved.slots[key]||!!saved.error||!!config.isBusy?.();
+      document.getElementById(`scenario-name-${key}`).disabled=restoring;
     }
     document.getElementById('scenario-current').textContent=current?`目前已計算：${current.base.months} 個月 · ${current.currency} ${fmt(current.base.cash_budget)} 現金預算。可保存為 A 或 B。`:'先完成計算，才可保存目前輸入；已保存的方案不會隨表單修改而改變。';
+    const matches=current?matchingSlots(current,saved.slots):['a','b'].filter(key=>saved.slots[key]&&canonical(config.getDraft())===canonical(saved.slots[key].draft));
+    document.getElementById('scenario-form-match').textContent=matches.length?`目前輸入對應已保存方案 ${matches.map(key=>key.toUpperCase()).join('／')}；${current?'已完成計算。':'尚需按「計算預算與延期情境」更新結果。'}`:'目前為自訂輸入，未對應已保存方案 A／B。';
+    if(current&&loadedPendingCalculation){loadedPendingCalculation=false;message('已按目前輸入重新計算；A／B 已保存記錄保持不變。目前計算結果可於下方查看。');}
     const comparison=renderInto('budget-scenarios-view',saved.slots,{feeMetadata,currentContextId:window.PlanningFlow.read()?.context_id||null});
-    document.getElementById('scenario-export').disabled=!comparison.ready||!!saved.error;
+    document.getElementById('scenario-export').disabled=restoring||!comparison.ready||!!saved.error;
     document.getElementById('scenario-recheck').hidden=!Object.values(saved.slots).some(item=>item?.budget?.fee_reference);
+    document.getElementById('scenario-recheck').disabled=restoring;
     if(saved.error)message(saved.error,true);
+  }
+  async function restore(key){
+    if(restoring||config.isBusy?.())return;
+    const saved=read();if(saved.error){message(saved.error,true);return;}
+    const snapshot=saved.slots[key];if(!snapshot)return;
+    const context=window.PlanningFlow.read(),different=(snapshot.context_id||null)!==(context?.context_id||null);
+    const scope=different?`\n保存時：${snapshot.context_label||'獨立預算假設'}。\n本次只載入成本假設，保留目前平台、歷史條件及相近遊戲。`:'';
+    if(!confirm(`載入方案 ${key.toUpperCase()}「${snapshot.name}」會取代目前預算輸入並清除目前計算結果。A／B 已保存記錄保持不變；載入後須重新計算。${scope}\n繼續？`))return;
+    restoring=true;refreshCurrent();message(`正在核對方案 ${key.toUpperCase()} 的輸入與費用來源…`);
+    try{
+      await config.restoreDraft(clone(snapshot),{slot:key});
+      loadedPendingCalculation=true;
+      message(`已載入方案 ${key.toUpperCase()}「${snapshot.name}」的成本假設。請核對後按「計算預算與延期情境」；尚未採用舊結果。`);
+      document.getElementById('budget-section').scrollIntoView({block:'start'});
+      document.getElementById('budget-months').focus({preventScroll:true});
+    }catch(error){message(`未能載入：${error.message}。目前輸入及已有結果未被替換。`,true);}
+    finally{restoring=false;refreshCurrent();}
   }
   function save(key){
     const budget=config.getCurrent();if(!budget)return;
@@ -160,6 +194,7 @@ window.BudgetScenarios = (() => {
     for(const key of ['a','b']){
       document.getElementById(`scenario-name-${key}`).value=saved.slots[key]?.name||'';
       document.getElementById(`scenario-save-${key}`).addEventListener('click',()=>save(key));
+      document.getElementById(`scenario-load-${key}`).addEventListener('click',()=>restore(key));
       document.getElementById(`scenario-remove-${key}`).addEventListener('click',()=>{
         if(window.PlanningFlow.removeBudgetScenario(key)){document.getElementById(`scenario-name-${key}`).value='';refreshCurrent();message(`已移除方案 ${key.toUpperCase()}。目前輸入沒有改變。`);}
         else message(window.PlanningFlow.storageMessage()||'未能移除方案。',true);
@@ -168,5 +203,5 @@ window.BudgetScenarios = (() => {
     document.getElementById('scenario-export').addEventListener('click',exportComparison);
     document.getElementById('scenario-recheck').addEventListener('click',recheckSources);refreshCurrent();
   }
-  return {compare,renderInto,init,refreshCurrent,invalidateCurrent:refreshCurrent,setFeeMetadata(value){feeMetadata=value;refreshCurrent();}};
+  return {compare,matchingSlots,renderInto,init,refreshCurrent,invalidateCurrent:refreshCurrent,setFeeMetadata(value){feeMetadata=value;refreshCurrent();}};
 })();

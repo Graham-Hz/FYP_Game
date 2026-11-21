@@ -29,7 +29,7 @@ function selectPlatform(value) {
   $("#template-link").href = `/api/template?platform=${platform}`;
   $("#template-link").download = `${platform}_template_v1.csv`;
   $("#currency-label").hidden = platform !== "pc";
-  $("#import-outcome").textContent = platform === "pc" ? "Outcome：估算 owners 上下界。不可填入收入、評論數或同時在線人數。" : "Outcome：Minimum Installs 下界。不可填入評分、收入或其他下載量定義。";
+  $("#import-outcome").textContent = platform === "pc" ? "數量欄位：估計擁有者人數（owners）的下限和上限。這是來源估算區間；不可用收入、評論數或同時在線人數代替。" : "數量欄位：最低安裝量（Minimum Installs）。這是來源提供的下限；不可用評分、收入或其他下載量定義代替。";
   clearPreview();
   refreshVersionChoices();
   for (const scenario of ["a", "b"]) {
@@ -85,7 +85,7 @@ function render(result) {
       row.append(heading, bar, node("small", `${count(tier.count)} 筆`));
       card.append(row);
     }
-    const use = node("button", `以條件 ${key.toUpperCase()} 繼續規劃 →`, "outline flow-choice");
+    const use = node("button", `以條件 ${key.toUpperCase()} 繼續規劃`, "outline flow-choice");
     use.type = "button"; use.dataset.planChoice = key; use.disabled = scenario.total === 0;
     use.addEventListener("click", () => {
       if (window.PlanningFlow.selectComparison(result, key)) location.href = result.platform === "pc" ? "/revenue#reference-panel" : "/planning#budget-section";

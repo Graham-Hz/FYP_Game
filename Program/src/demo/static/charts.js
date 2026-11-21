@@ -4,17 +4,23 @@
   const NS='http://www.w3.org/2000/svg',FONT='Segoe UI, Microsoft JhengHei, Arial, sans-serif';
   const COLORS=['#14745b','#426cba','#bd7623','#8851a0','#b44e59'];
   const observers=new WeakMap(),exports=new WeakMap(),measure=document.createElement('canvas').getContext('2d');
+  // Scrolling can fire pointerover without a person moving the mouse. Only a
+  // changed pointer position should take precedence over a focused chart mark.
+  const movedPointers=new WeakSet();let pointerPosition=null;
+  document.addEventListener('pointermove',event=>{if(!pointerPosition||event.clientX!==pointerPosition.x||event.clientY!==pointerPosition.y)movedPointers.add(event);pointerPosition={x:event.clientX,y:event.clientY};},true);
   let serial=0;
-  const node=(tag,value,cls)=>{const n=document.createElement(tag);if(value!==undefined)n.textContent=value;if(cls)n.className=cls;return n;};
+  // Keep source labels untouched in metadata; translate notation only for readers.
+  const readable=value=>String(value??'').replace(/\(n\s*=\s*([\d,]+)\)/g,(_,n)=>`\n樣本 ${Number(n.replace(/,/g,'')).toLocaleString('en-US')} 款`).replace(/\bn\s*=\s*([\d,]+)/g,(_,n)=>`樣本 ${Number(n.replace(/,/g,'')).toLocaleString('en-US')} 款`).replace(/\bn\s*([≥≤<>])/g,'樣本數 $1');
+  const node=(tag,value,cls)=>{const n=document.createElement(tag);if(value!==undefined)n.textContent=readable(value);if(cls)n.className=cls;return n;};
   const s=(tag,attrs={},value)=>{const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,String(v)));if(value!==undefined)n.textContent=value;return n;};
-  const text=(parent,x,y,value,attrs={})=>{const n=s('text',{x,y,fill:'#18382e','font-size':14,'pointer-events':'none',...attrs},value);parent.append(n);return n;};
+  const text=(parent,x,y,value,attrs={})=>{const n=s('text',{x,y,fill:'#18382e','font-size':14,'pointer-events':'none',...attrs},readable(value));parent.append(n);return n;};
   const number=v=>Number.isFinite(v)?v.toLocaleString('en-US',{maximumFractionDigits:v!==0&&Math.abs(v)<.01?6:2}):'未提供';
   const short=v=>Math.abs(v)>=1e9?`${number(v/1e9)}B`:Math.abs(v)>=1e6?`${number(v/1e6)}M`:Math.abs(v)>=1e3?`${number(v/1e3)}k`:number(v);
   const axisLabel=(label,unit)=>unit&&!(label||'').includes(unit)?`${label||'數值'} (${unit})`:label||unit||'數值';
   const finite=values=>values.filter(Number.isFinite);
   const contentWidth=el=>{const css=getComputedStyle(el);return Math.max(0,el.clientWidth-(parseFloat(css.paddingLeft)||0)-(parseFloat(css.paddingRight)||0));};
   function width(value,size=14){measure.font=`${size}px ${FONT}`;return measure.measureText(String(value)).width;}
-  function wrap(value,limit,size=14){const output=[];for(const paragraph of String(value||'').split('\n')){let line='';for(const token of paragraph.match(/\S+\s*|\s+/g)||['']){if(width(line+token,size)<=limit){line+=token;continue;}if(line.trim()){output.push(line.trim());line='';}if(width(token,size)<=limit){line=token;continue;}for(const char of token){if(line&&width(line+char,size)>limit){output.push(line.trim());line='';}line+=char;}}output.push(line.trim());}return output;}
+  function wrap(value,limit,size=14){const output=[];for(const paragraph of readable(value||'').split('\n')){let line='';for(const token of paragraph.match(/\S+\s*|\s+/g)||['']){if(width(line+token,size)<=limit){line+=token;continue;}if(line.trim()){output.push(line.trim());line='';}if(width(token,size)<=limit){line=token;continue;}for(const char of token){if(line&&width(line+char,size)>limit){output.push(line.trim());line='';}line+=char;}}output.push(line.trim());}return output;}
   function niceScale(values,{integer=false,zero=true,count=4}={}){
     const valid=finite(values);let low=valid.length?Math.min(...valid):0,high=valid.length?Math.max(...valid):1;
     if(zero){low=Math.min(0,low);high=Math.max(0,high);}if(low===high){if(high===0)high=1;else{low-=Math.abs(low)*.1;high+=Math.abs(high)*.1;}}
@@ -32,12 +38,12 @@
     return {min:0,max,ticks,position:value=>value>=0?Math.log1p(value)/top:NaN};
   }
   function mark(element,label,callback,item){
-    const description=label+(typeof callback==='function'?'\n點選或按 Enter 查看對應資料。':'');
+    const description=readable(label)+(typeof callback==='function'?'\n點選或按 Enter 查看對應資料。':'');
     element.setAttribute('tabindex','0');element.setAttribute('aria-label',description);element.dataset.chartLabel=description;
     if(typeof callback==='function'){element.setAttribute('role','button');element.classList.add('game-chart-selectable');element.addEventListener('click',()=>callback(item));element.addEventListener('keydown',event=>{if(event.key==='Enter'||event.key===' '){event.preventDefault();callback(item);}});}return element;
   }
   function tooltips(figure,svg,id){
-    const tip=node('div',undefined,'game-chart-tooltip');tip.id=id;tip.setAttribute('role','tooltip');tip.hidden=true;figure.append(tip);let active=null;
+    const tip=node('div',undefined,'game-chart-tooltip');tip.id=id;tip.setAttribute('role','tooltip');tip.hidden=true;figure.append(tip);let active=null,focused=null,pointerMode=false,escaped=false;
     function hide(){tip.hidden=true;if(active)active.removeAttribute('aria-describedby');active=null;}
     function place(event){
       if(!active)return;const box=active.getBoundingClientRect(),pointer=event?.type?.startsWith('pointer');
@@ -46,11 +52,18 @@
       y=y+14+rect.height>innerHeight?Math.max(8,y-rect.height-12):y+14;
       tip.style.left=`${x}px`;tip.style.top=`${y}px`;
     }
-    function show(event){const target=event.target.closest?.('[data-chart-label]');if(!target||!svg.contains(target))return;hide();active=target;tip.textContent=target.dataset.chartLabel;tip.hidden=false;target.setAttribute('aria-describedby',id);place(event);}
-    svg.addEventListener('pointerover',show);svg.addEventListener('pointermove',place);svg.addEventListener('pointerleave',hide);
-    svg.addEventListener('focusin',show);svg.addEventListener('focusout',hide);svg.addEventListener('keydown',event=>{if(event.key==='Escape')hide();});
-    svg.addEventListener('pointerout',event=>{if(active&&!active.contains(event.relatedTarget))hide();});
-    figure.querySelector('.game-chart-viewport')?.addEventListener('scroll',hide,{passive:true});
+    function targetOf(event){const target=event.target.closest?.('[data-chart-label]');return target&&svg.contains(target)?target:null;}
+    function show(target,event){if(!target)return;hide();active=target;tip.textContent=target.dataset.chartLabel;tip.hidden=false;target.setAttribute('aria-describedby',id);place(event);}
+    function focusTooltip(){if(focused&&!escaped)show(focused);else hide();}
+    svg.addEventListener('focusin',event=>{focused=targetOf(event);pointerMode=false;escaped=false;focusTooltip();});
+    svg.addEventListener('focusout',()=>{focused=null;escaped=false;hide();});
+    svg.addEventListener('pointerover',event=>{if(focused&&!pointerMode)return;escaped=false;show(targetOf(event),event);});
+    svg.addEventListener('pointermove',event=>{if(focused&&!pointerMode&&!movedPointers.has(event))return;if(movedPointers.has(event)){pointerMode=true;escaped=false;}if(!escaped)show(targetOf(event),event);});
+    svg.addEventListener('pointerdown',event=>{pointerMode=true;escaped=false;show(targetOf(event),event);});
+    svg.addEventListener('pointerleave',()=>{pointerMode=false;focusTooltip();});
+    svg.addEventListener('pointerout',event=>{if(focused&&!pointerMode)return;if(active&&!active.contains(event.relatedTarget))hide();});
+    svg.addEventListener('keydown',event=>{if(event.key==='Escape'){escaped=true;hide();}});
+    figure.querySelector('.game-chart-viewport')?.addEventListener('scroll',()=>{if(focused&&!pointerMode)focusTooltip();else hide();},{passive:true});
   }
   function legend(svg,series,W,force=false){if(series.length<2&&!force)return 8;let x=16,y=18;for(const item of series){const label=item.label||item.key||'數值',needed=Math.min(W-32,width(label)+28);if(x+needed>W-16&&x>16){x=16;y+=23;}svg.append(s('rect',{x,y:y-11,width:12,height:12,rx:2,fill:item.color}));text(svg,x+19,y,label);x+=needed+20;}return y+14;}
   function spacedTicks(scale,length,gap){const values=[];for(const value of scale.ticks){if(!values.length||(scale.position(value)-scale.position(values[values.length-1]))*length>=gap)values.push(value);}const last=scale.ticks[scale.ticks.length-1];if(values[values.length-1]!==last){if(values.length>1&&(scale.position(last)-scale.position(values[values.length-1]))*length<gap)values.pop();if(!values.length||(scale.position(last)-scale.position(values[values.length-1]))*length>=gap)values.push(last);}return values;}
@@ -59,7 +72,7 @@
   function provenance(parent,config){const values=[config.source,config.method].filter(Boolean);if(!values.length)return;const detail=node('details',undefined,'game-chart-provenance');detail.append(node('summary','來源與分析方法'));values.forEach(value=>detail.append(node('p',value)));parent.append(detail);}
   function exportImage(svg){
     const stored=exports.get(svg);if(!stored)return svg.cloneNode(true);
-    const {config,W,H}=stored,titleLines=wrap(config.title||'資料圖表',W-40,20),descriptionLines=wrap(config.description||'',W-40),scaleNote=scaleDescription(config),sourceLines=wrap([scatterSummary(config),scaleNote,config.source,config.method].filter(Boolean).join('\n'),W-40);
+    const {config,W,H}=stored,titleLines=wrap(config.title||'資料圖表',W-40,20),descriptionLines=wrap(config.description||'',W-40),scaleNote=scaleDescription(config),sourceLines=wrap([config.availability?.status==='limited'?`資料局限：${config.availability.reason} ${config.availability.action}`:'',scatterSummary(config),scaleNote,config.source,config.method].filter(Boolean).join('\n'),W-40);
     const header=24+titleLines.length*26+(config.description?descriptionLines.length*20+10:0),footer=sourceLines.length*20+28;
     const output=s('svg',{xmlns:NS,width:W,height:header+H+footer,viewBox:`0 0 ${W} ${header+H+footer}`,'font-family':FONT,role:'img'});
     output.append(s('title',{},config.title||'資料圖表'),s('desc',{},config.description||''),s('metadata',{},JSON.stringify(config)),s('rect',{width:W,height:header+H+footer,fill:'#fff'}));
@@ -111,7 +124,7 @@
     valid.forEach(row=>{const a=left+x.position(row.lower)*plotW,b=left+x.position(row.upper)*plotW,height=y.position(row.values[0])*plotH;svg.append(mark(s('rect',{x:a+.5,y:top+plotH-height,width:Math.max(1,b-a-1),height,fill:series[0].color}),`${row.label} · ${number(row.values[0])} 款；範圍 ${number(row.lower)} 至 ${number(row.upper)}`));});text(svg,14,18,config.yLabel||'遊戲款數',{fill:'#4d665c'});text(svg,left+plotW/2,top+plotH+47,[config.xLabel,config.xUnit||config.unit].filter(Boolean).join(' · '),{'text-anchor':'middle',fill:'#4d665c'});return top+plotH+63;
   }
   function boxPlot(svg,config,rows,W){
-    const left=Math.min(180,Math.max(125,Math.round(W*.23))),right=30,top=20,plotW=W-left-right,rowH=56,plotH=rows.length*rowH;
+    const left=Math.min(210,Math.max(165,Math.round(W*.26))),right=30,top=20,plotW=W-left-right,rowH=56,plotH=rows.length*rowH;
     const values=finite(rows.flatMap(row=>[...(row.values||[]),...(row.outliers||[])])),x=axis(values,config.xScale,{count:5,integer:/[款份次人]/.test(config.unit||'')});grid(svg,x,{left,top,plotW,plotH},true);
     rows.forEach((row,i)=>{const cy=top+(i+.5)*rowH;[...wrap(row.label,left-24).slice(0,2),`n = ${number(row.n)}`].forEach((line,j,a)=>text(svg,left-14,cy+(j-(a.length-1)/2)*16+5,line,{'text-anchor':'end'}));if(!row.values||row.values.length<5||row.values.some(value=>!Number.isFinite(value))){text(svg,left+5,cy+5,'未提供');return;}
       const [low,q1,median,q3,high]=row.values.map(value=>left+x.position(value)*plotW),group=s('g');group.append(s('line',{x1:low,x2:high,y1:cy,y2:cy,stroke:'#336f60','stroke-width':2}),s('line',{x1:low,x2:low,y1:cy-8,y2:cy+8,stroke:'#336f60','stroke-width':2}),s('line',{x1:high,x2:high,y1:cy-8,y2:cy+8,stroke:'#336f60','stroke-width':2}),s('rect',{x:q1,y:cy-12,width:Math.max(1,q3-q1),height:24,fill:'#b8dacf',stroke:'#14745b','stroke-width':1.5}),s('line',{x1:median,x2:median,y1:cy-12,y2:cy+12,stroke:'#12493b','stroke-width':2.5}));
@@ -126,7 +139,7 @@
     text(svg,14,18,[config.yLabel,config.yUnit].filter(Boolean).join(' · '),{fill:'#4d665c'});text(svg,left+plotW/2,top+plotH+48,[config.xLabel,config.xUnit].filter(Boolean).join(' · '),{'text-anchor':'middle',fill:'#4d665c'});return top+plotH+64;
   }
   function heatmapPlot(svg,config,rows,series,W){
-    const left=Math.min(190,Math.max(130,Math.round(W*.23))),right=20,top=54,plotW=W-left-right,cellW=plotW/Math.max(1,series.length),rowH=52,plotH=rows.length*rowH;
+    const left=Math.min(215,Math.max(170,Math.round(W*.26))),right=20,top=54,plotW=W-left-right,cellW=plotW/Math.max(1,series.length),rowH=52,plotH=rows.length*rowH;
     const labels=series.map(item=>wrap(item.label||item.key,cellW-10));labels.forEach((label,j)=>label.slice(0,2).forEach((line,i)=>text(svg,left+(j+.5)*cellW,18+i*17,line,{'text-anchor':'middle'})));
     rows.forEach((row,i)=>{[...wrap(row.label,left-24).slice(0,2),`n = ${number(row.n)}`].forEach((line,j,a)=>text(svg,left-12,top+(i+.5)*rowH+(j-(a.length-1)/2)*15+5,line,{'text-anchor':'end'}));series.forEach((item,j)=>{const value=row.values?.[j],valid=Number.isFinite(value),ratio=valid?Math.max(0,Math.min(1,value/100)):0,rgb=[Math.round(240-220*ratio),Math.round(247-135*ratio),Math.round(243-157*ratio)],color=valid?`rgb(${rgb.join(',')})`:'#ecefed';
         const linear=rgb.map(channel=>channel/255<=.04045?channel/3294.6:((channel/255+.055)/1.055)**2.4),luminance=.2126*linear[0]+.7152*linear[1]+.0722*linear[2];
@@ -137,23 +150,51 @@
   function scatterSummary(config){
     if(config.type!=='scatter'||!config.summary)return '';
     const info=config.summary,rho=Number.isFinite(info.spearman_rho)?info.spearman_rho.toFixed(4):'無法計算';
-    return `完整配對 n = ${number(info.paired_rows)} · 圖中 ${number(info.displayed_rows)} 點 · Spearman ρ = ${rho}（使用全部完整配對）`;
+    return `兩個數值均有資料：${number(info.paired_rows)} 款 · 圖中顯示 ${number(info.displayed_rows)} 款 · 秩相關（Spearman ρ）= ${rho}（使用全部有效配對）`;
   }
   function chartTable(figure,config,rows,series,points){
     if(config.type==='scatter'){table(figure,['遊戲／記錄','ID',`${config.xLabel||'X'} (${config.xUnit||''})`,`${config.yLabel||'Y'} (${config.yUnit||''})`],points.map(point=>[point.label||point.id,point.id||'',number(point.x),number(point.y)]));return;}
     if(config.type==='histogram'){table(figure,['區間','下界（原始值）','上界（原始值）','遊戲款數'],rows.map(row=>[row.label,number(row.lower),number(row.upper),number(row.values?.[0])]));return;}
-    if(config.type==='boxplot'){table(figure,['分類','n','下鬚','Q1','中位數','Q3','上鬚','離群值總數','圖中離群值'],rows.map(row=>[row.label,number(row.n),...(row.values||[null,null,null,null,null]).map(number),number(row.outlier_count),(row.outliers||[]).map(number).join(', ')||'—']));return;}
-    if(config.type==='heatmap'||config.type==='stacked_bar'){table(figure,['分類','n',...series.map(item=>item.label)],rows.map(row=>[row.label,number(row.n),...series.map((_,j)=>Number.isFinite(row.values?.[j])?`${number(row.values[j])}% (${number(row.counts?.[j])} 款)`:'未提供')]));return;}
+    if(config.type==='boxplot'){table(figure,['分類','樣本數（款）','下鬚','第 25 百分位（Q1）','中位數','第 75 百分位（Q3）','上鬚','離群值總數','圖中離群值'],rows.map(row=>[row.label,number(row.n),...(row.values||[null,null,null,null,null]).map(number),number(row.outlier_count),(row.outliers||[]).map(number).join(', ')||'—']));return;}
+    if(config.type==='heatmap'||config.type==='stacked_bar'){table(figure,['分類','樣本數（款）',...series.map(item=>item.label)],rows.map(row=>[row.label,number(row.n),...series.map((_,j)=>Number.isFinite(row.values?.[j])?`${number(row.values[j])}% (${number(row.counts?.[j])} 款)`:'未提供')]));return;}
     table(figure,['分類／時期',...series.map(item=>`${item.label}${config.unit?` (${config.unit})`:''}`)],rows.map(row=>[row.label,...series.map((_,j)=>number(row.values?.[j]))]));
   }
   function dispose(container){const target=typeof container==='string'?document.getElementById(container):container;if(target){observers.get(target)?.disconnect();observers.delete(target);}}
+  function readiness(figure,config){
+    const info=config.availability;if(!info||info.status==='available')return;
+    const compact=config.compactReadiness&&info.status==='limited';
+    const box=node(compact?'details':'div',undefined,'game-chart-readiness');box.dataset.status=info.status;
+    if(compact){
+      box.classList.add('game-chart-readiness-compact');
+      const coverage=info.count_basis==='sum_of_two_cohorts_including_any_overlap'?'兩組資料需注意':Number.isFinite(info.valid_rows)?`可用 ${number(info.valid_rows)}${Number.isFinite(info.total_rows)?` / ${number(info.total_rows)}`:''} 款`:'';
+      box.append(node('summary',['資料有局限',coverage,'查看說明'].filter(Boolean).join(' · ')));
+    }else {box.setAttribute('role','status');box.append(node('strong',info.status==='unavailable'?'目前資料無法產生這張圖':'這張圖的資料有局限'));}
+    if(info.reason)box.append(node('p',info.reason));
+    if(info.count_basis==='sum_of_two_cohorts_including_any_overlap')box.append(node('p',`有數值資料：所選組 ${number(info.selected_valid_rows)} 款；對照組 ${number(info.baseline_valid_rows)} 款。兩組可有重疊，不能直接相加當作獨立遊戲總數。`,'game-chart-readiness-count'));
+    else if(Number.isFinite(info.valid_rows)){const total=Number.isFinite(info.total_rows)?`／篩選樣本 ${number(info.total_rows)} 款`:'';box.append(node('p',`此圖可用資料：${number(info.valid_rows)} 款${total}`,'game-chart-readiness-count'));}
+    if(info.action)box.append(node('p',`你可以：${info.action}`));
+    if(info.requirements?.length){const detail=node('details');detail.append(node('summary','需要哪些資料？'));const list=node('ul');info.requirements.forEach(value=>list.append(node('li',value)));detail.append(list);box.append(detail);}
+    figure.append(box);
+  }
+  function readingHelp(figure,config){
+    const messages=[];
+    if(config.type==='boxplot')messages.push('箱內是中央 50% 的遊戲（Q1–Q3），中間線是中位數；鬚線以 1.5 倍四分位距為界，外面的點是離群值，不一定是錯誤。');
+    else if(config.type==='histogram')messages.push('每條柱表示數值落在該範圍的遊戲款數，可用來看資料集中在哪裡。');
+    else if(config.type==='scatter')messages.push('每點代表一款遊戲。秩相關（ρ）比較兩個數值的排序關係：接近 +1 同向、−1 反向，接近 0 表示較弱的單調關係；不是因果或收益預測。');
+    else if(config.type==='heatmap'||config.type==='stacked_bar')messages.push('樣本數是這組包含的遊戲款數；每組比例以自己的樣本數計算，並非整體市場佔有率。');
+    else if(/中位數/.test(config.title||''))messages.push('中位數是數值排序後的中間位置，較少受極端作品影響；不代表下一款遊戲的預期表現。');
+    if(!messages.length)return;figure.append(node('p',messages.join(' '),'game-chart-reading-help'));
+  }
   function render(container,config){
     const target=typeof container==='string'?document.getElementById(container):container;if(!target)throw new Error('Chart container was not found.');dispose(target);
     const rows=Array.isArray(config.rows)?config.rows:[],series=(config.series?.length?config.series:[{label:'數值'}]).map((item,i)=>({...item,color:item.color||COLORS[i%COLORS.length]})),points=(config.points||[]).filter(point=>Number.isFinite(point.x)&&Number.isFinite(point.y));
     const type=config.type||'bar',title=config.title||'資料圖表',figure=node('figure',undefined,'game-chart');figure.append(node('figcaption',title,'game-chart-caption'));if(config.description)figure.append(node('p',config.description,'game-chart-note'));
     if(!['bar','line','histogram','boxplot','scatter','heatmap','stacked_bar'].includes(type))throw new Error('Unsupported chart type.');
+    readiness(figure,config);
+    if(config.availability?.status==='unavailable'){provenance(figure,config);target.replaceChildren(figure);return null;}
     const values=finite(rows.flatMap(row=>row.values||[]));if(type==='scatter'?!points.length:!rows.length||!values.length){figure.append(node('p','沒有可繪製的資料；缺漏值不會當作零。','game-chart-empty'));provenance(figure,config);target.replaceChildren(figure);return null;}
-    if(type==='scatter'||type==='boxplot'){const label=node('label','顯示尺度','game-chart-scale'),select=node('select');select.setAttribute('aria-label','顯示尺度');for(const [value,labelText] of [['log1p','log1p 對數壓縮'],['linear','原始線性']]){const option=node('option',labelText);option.value=value;select.append(option);}select.value=config.xScale==='log1p'?'log1p':'linear';select.addEventListener('change',()=>render(target,{...config,xScale:select.value,...(type==='scatter'?{yScale:select.value}:{})}));label.append(select);figure.append(label);}
+    readingHelp(figure,config);
+    if(type==='scatter'||type==='boxplot'){const label=node('label','顯示尺度','game-chart-scale'),select=node('select');select.setAttribute('aria-label','顯示尺度');for(const [value,labelText] of [['log1p','壓縮大數值（log1p）'],['linear','原始數值（線性）']]){const option=node('option',labelText);option.value=value;select.append(option);}select.value=config.xScale==='log1p'?'log1p':'linear';select.addEventListener('change',()=>render(target,{...config,xScale:select.value,...(type==='scatter'?{yScale:select.value}:{})}));label.append(select);figure.append(label);}
     const scaleNote=scaleDescription(config);if(scaleNote)figure.append(node('p',scaleNote,'game-chart-scale-note'));
     const summary=scatterSummary(config);if(summary)figure.append(node('p',summary,'game-chart-statistics'));
     const measuredWidth=contentWidth(target),availableWidth=Math.max(0,measuredWidth-2),W=Math.floor(Math.max(type==='bar'?380:type==='boxplot'||type==='heatmap'?560:640,Math.min(1100,availableWidth||760))),uid=`game-chart-${++serial}`;

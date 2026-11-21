@@ -152,20 +152,14 @@ window.PlanningFlow = (() => {
     document.querySelector('.intro').after(host); render();
   }
   function render() {
+    const state = read(), workspace=readWorkspace(); window.GameShell?.updatePlanning(state);
     const host = document.getElementById('workflow-panel'); if (!host) return;
-    const state = read(), workspace=readWorkspace(); host.replaceChildren();
+    host.replaceChildren();
     const savedCount=workspace.findings.length,scenarioCount=['a','b'].filter(k=>workspace.budget_scenarios[k]).length;
     host.append(element('strong', state ? describe(state) : savedCount||scenarioCount?`已保存 ${savedCount} 份分析依據、${scenarioCount} 個預算方案`:'從分析依據到開發規劃'));
-    const nav = element('nav', undefined, 'workflow-steps'); nav.setAttribute('aria-label', '規劃流程');
-    const steps = [['comparison', '/', '1 歷史市場比較'], ['references', '/revenue#reference-panel', '2 相近 Steam 遊戲'],
-      ['budget', '/planning#budget-section', '3 成本預算'], ['summary', '/plan', '4 規劃摘要']];
-    steps.forEach(([key, href, label]) => {
-      if (key === 'references' && state?.comparison.platform === 'mobile') {nav.append(element('span', '2 Android 相近遊戲暫未提供', 'workflow-unavailable')); return;}
-      const a = element('a', label); a.href = href; if (key === page) a.setAttribute('aria-current', 'step'); nav.append(a);
-    });
-    host.append(nav, element('p', state ? '這是你保存的規劃情境。各頁可來回查看；歷史資料、參考作品與個人預算仍分開解讀。' : '可先在市場分析保存依據，或保存成本方案；若要建立選定條件的完整規劃，請在歷史比較選擇 A 或 B。', 'fine'));
+    host.append(element('p', state ? '這是你保存的規劃情境。用左側步驟來回查看；歷史資料、參考作品與個人預算仍分開解讀。' : '可先保存市場分析發現或成本方案；要建立完整規劃，請從 Step 1 選擇條件 A 或 B。', 'fine'));
     if (state?.context_note) host.append(element('p', state.context_note, 'sample-warning'));
-    host.append(element('p', '規劃暫存在此瀏覽器分頁；關閉前請匯出摘要。沒有自動同步至伺服器。', 'fine'));
+    const storage = element('details'); storage.append(element('summary', '規劃的保存方式'), element('p', '規劃暫存在此瀏覽器分頁；關閉前請匯出摘要。沒有自動同步至伺服器。', 'fine')); host.append(storage);
     if (storageError||workspaceError) host.append(element('p', storageError||workspaceError, 'sample-warning'));
   }
   async function legacySourceChecks(state,get) {
